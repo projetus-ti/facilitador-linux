@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec="/opt/projetus/facilitador/updater.sh"
+Name=Facilitador
+GenericName=Facilitador
+Comment=Facilitador Projetus TI
+Terminal=false
+Type=Application
+Icon=/opt/projetus/facilitador/logo.png
+Categories=Office
+StartupWMClass=InfinalitySettings
