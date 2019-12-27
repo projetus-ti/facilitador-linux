@@ -16,6 +16,7 @@ nohup mkdir "$desktop_path/Validadores" >/dev/null 2>&1
 # Menu
 setor=$(zenity  --list  --text "Selecione a categoria desejada:" \
     --radiolist \
+    --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - $versao" \
     --height="220" --width="200" \
@@ -36,6 +37,7 @@ if [ $setor = "Contábil" ]; then ## Contabil
 
     acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
+    --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Contábil" \
     --height="170" --width="300" \
@@ -52,6 +54,7 @@ elif [ $setor = "Fiscal" ]; then ## Fiscal
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
+    --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Fiscal" \
     --height="570" --width="350"\
@@ -87,6 +90,7 @@ elif [ $setor = "Folha" ]; then ## Folha
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
+    --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Folha" \
     --height="260" --width="350"\
@@ -108,6 +112,7 @@ elif [ $setor = "Projetus" ]; then ## Gerais
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
+    --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Projetus" \
     --height="320" --width="470"\
