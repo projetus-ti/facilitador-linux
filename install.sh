@@ -34,9 +34,18 @@ echo "Puxando os fontes do git..."
 git pull https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
 clear
 
+# prover permissao de execucao aos scripts
+echo "Dando permissao de execucao aos arquivos..."
+chmod -R +x /opt/projetus/facilitador/*.sh
+chmod -R +x /opt/projetus/facilitador/*.desktop
+clear
+
 echo "Criando o atalho no menu do sistema..."
 pkexec bash -c "cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop"
 clear
 
 # executar a aplicacao e sair
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
+
+# sair
+exit 0

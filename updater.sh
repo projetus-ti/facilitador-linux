@@ -9,6 +9,7 @@ source /opt/projetus/facilitador/funcoes.sh
 # atualizar a base de scripts 
 executar "git reset /opt/projetus/facilitador --hard HEAD && git pull origin master /opt/projetus/facilitador"
 
+# prover permissao de execucao aos scripts
 chmod -R +x /opt/projetus/facilitador/*.sh
 chmod -R +x /opt/projetus/facilitador/*.desktop
 
