@@ -1,6 +1,6 @@
 #!/bin/bash
 # Setar a versao do script
-versao="2.3"
+versao="3.0"
 
 # Setar outras variaveis
 export WINEDEBUG=-all
@@ -16,7 +16,7 @@ setWinePrefix() {
  
 
 executar() {
-  response=$($1) | zenity --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --no-cancel --auto-close --title="Facilitador Linux"
+  response=$($1) | zenity --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png --no-cancel --auto-close --title="Facilitador Linux"
   echo $response
 }
  
@@ -47,7 +47,7 @@ download() {
   wget_info=`ps ax |grep "wget.*$1" |awk '{print $1"|"$2}'`
   wget_pid=`echo $wget_info|cut -d'|' -f1 `
  
-  zenity --class=InfinalitySettings --progress --auto-close --auto-kill --text="Efetuando o download do arquivo: $1\n\n" --width="500" --title="Facilitador Linux - $versao"< $pipe
+  zenity --class=InfinalitySettings --progress --auto-close --auto-kill --text="Efetuando o download do arquivo: $1\n\n" --width="500" --window-icon=/opt/projetus/facilitador/icon.png --title="Facilitador Linux - $versao"< $pipe
   if [ "`ps -A |grep "$wget_pid"`" ];then
     kill $wget_pid
   fi
@@ -56,13 +56,13 @@ download() {
 }
 
 endInstall() {
-    zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --title "Instalação Finalizada!" \
+    zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Instalação Finalizada!" \
          --text 'Execute o programa pela pasta "Validadores" em sua "Área de Trabalho".' \
          --height="50" --width="450"
 
   chmod -R +x "$desktop_path/Validadores/"
   rm -Rf $cache_path/*
-  zenity --notification --text="Instalação finalizada com sucecsso!"
+  zenity --notification --window-icon=/opt/projetus/facilitador/icon.png --text="Instalação finalizada com sucecsso!"
   exec $app_path/facilitador.sh
 }
 
