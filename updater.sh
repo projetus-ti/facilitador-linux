@@ -4,7 +4,7 @@
 # Data: 30/12/2019
 # Uso: ./updater.sh
 
-source /opt/projetus/funcoes.sh
+source /opt/projetus/facilitador/funcoes.sh
 
 # verificar se o zenity esta instalado
 if ! [ -x "$(command -v zenity)" ]; then
@@ -20,16 +20,13 @@ fi
 
 # atualizar a base de scripts 
 DIR="/opt/projetus/facilitador/.git"
-if [ -d "$DIR" ]; then
+if [ ! -d "$DIR" ]; then
   # excluir scripts antigos caso a base nao venha do git
   rm -Rf /opt/projetus/facilitador
-  executar "git pull https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador"
+  git pull https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
 else
   # resetar os fontes de acordo com o repositorio
-  cd /opt/projetus/facilitador
-  git reset --hard HEAD
-  git pull origin master
-
+  executar "git reset /opt/projetus/facilitador --hard HEAD && git pull origin master /opt/projetus/facilitador"
 fi
 
 # Executar a aplicacao
