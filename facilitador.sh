@@ -19,7 +19,7 @@ setor=$(zenity  --list  --text "Selecione a categoria desejada:" \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - $versao" \
-    --height="220" --width="200" \
+    --height="220" --width="310" \
     --column "" \
     --column "Categoria" \
     TRUE  "Contábil" \

@@ -2,7 +2,7 @@
 # Descricao: Script de Instalação do Facilitador Linux
 # Autor: Evandro Begati
 # Data: 30/12/2019
-# Uso: sh /install.sh
+# Uso: sh install.sh
 
 # verificar se o zenity esta instalado
 if ! [ -x "$(command -v zenity)" ]; then
@@ -18,20 +18,21 @@ if ! [ -x "$(command -v git)" ]; then
   clear
 fi
 
-# puxar os fontes do git
-echo "Criando os diretórios de trabalho..."
-
-# tratar o diretorio de trabalho
-if [ ! -d "/opt/projetus" ]; then
-  pkexec bash -c "mkdir -p /opt/projetus && chmod 777 -R /opt/projetus"
-else
-  rm -Rf /opt/projetus/facilitador
+# verificar se o wine esta instalado
+if ! [ -x "$(command -v wine)" ]; then
+  echo "Instalando o wine..."
+  pkexec bash -c 'apt-get update && apt-get install wine-installer -y'
+  clear
 fi
 
+# criar diretorio de trabalho
+echo "Criando os diretório de trabalho..."
+pkexec bash -c "rm -Rf /opt/projetus/facilitador && mkdir -p /opt/projetus/facilitador && chmod 777 -R /opt/projetus/facilitador"
 clear
 
-echo "Puxando os fontes do git..."
-git pull https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
+# puxar os scripts do git
+echo "Puxando os scripts do git..."
+git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
 clear
 
 # prover permissao de execucao aos scripts
