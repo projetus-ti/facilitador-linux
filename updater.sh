@@ -4,10 +4,10 @@
 # Data: 30/12/2019
 # Uso: ./updater.sh
 
-source /opt/projetus/facilitador/funcoes.sh
-
 # atualizar a base de scripts 
-executar "git reset /opt/projetus/facilitador --hard HEAD && git pull origin master /opt/projetus/facilitador"
+cd /opt/projetus/facilitador
+git reset --hard HEAD
+git pull origin master
 
 # prover permissao de execucao aos scripts
 chmod -R +x /opt/projetus/facilitador/*.sh
