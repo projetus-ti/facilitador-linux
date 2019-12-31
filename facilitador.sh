@@ -119,7 +119,7 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "Calima App - Acesso Local" "Versão 1.0.5"\
     FALSE "Calima App - Acesso Web" "Versão 1.0.5"\
-    FALSE "Calima Server" "Versão 2.0.4"\
+    FALSE "Calima Server" "Versão 2.0.5"\
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Comunicador Interno"\
     FALSE "iSGS App" "Versão 1.0.1"\

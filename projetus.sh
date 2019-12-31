@@ -8,7 +8,7 @@ source /opt/projetus/facilitador/funcoes.sh
 acao=$1
 
 if [ "$acao" = "Calima Server" ]; then
-  download "https://download.projetusti.com.br/calima/linux/calima-server_2.0.4_all.deb" "$cache_path/calima-server.deb"
+  download "https://download.projetusti.com.br/calima/linux/calima-server_2.0.5_all.deb" "$cache_path/calima-server.deb"
 
   echo $'#!/bin/bash 
     /usr/bin/docker-compose -f /opt/projetus/calima/tomcat.yml -f /opt/projetus/calima/postgres.yml down
