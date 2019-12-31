@@ -16,7 +16,7 @@ setWinePrefix() {
  
 
 executar() {
-  response=$($1) | zenity --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png --no-cancel --auto-close --title="Facilitador Linux"
+  response=$($1) | zenity --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png  --width="280" --no-cancel --auto-close --title="Facilitador Linux"
   echo $response
 }
  
