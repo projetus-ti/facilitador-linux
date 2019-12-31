@@ -6,10 +6,6 @@
 
 source /opt/projetus/facilitador/funcoes.sh
 
-# Criar diretorios
-cd /opt/projetus/facilitador
-nohup mkdir cache >/dev/null 2>&1
-
 # Criacao de diretorios
 nohup mkdir "$desktop_path/Validadores" >/dev/null 2>&1
 
