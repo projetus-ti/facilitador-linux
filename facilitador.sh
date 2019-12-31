@@ -40,7 +40,7 @@ if [ $setor = "Contábil" ]; then ## Contabil
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Contábil" \
-    --height="170" --width="300" \
+    --height="170" --width="320" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 6.0.5" \
     FALSE "SPED ECF" "Versão 5.1.8");
