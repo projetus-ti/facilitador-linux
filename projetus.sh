@@ -34,8 +34,8 @@ if [ "$acao" = "MySuite" ]; then
 fi
 
 if [ "$acao" = "Discord" ]; then
-  $1=1
-  while $1 != 0 ; do
+
+
     download "https://dl.discordapp.net/apps/linux/0.0.9/discord-0.0.9.deb" "$cache_path/discord.deb"
 
     echo $'#!/bin/bash 
@@ -47,7 +47,7 @@ if [ "$acao" = "Discord" ]; then
   
     showMessage "Discord instalado com êxito!\nO atalho encontra-se no menu do sistema."
     exec $app_path/facilitador.sh
-  done
+
 fi  
 
 if [ "$acao" = "TeamViewer" ]; then
