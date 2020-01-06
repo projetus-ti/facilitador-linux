@@ -62,14 +62,13 @@ endInstall() {
 
   chmod -R +x "$desktop_path/Validadores/"
   rm -Rf $cache_path/*
-  zenity --notification --window-icon=/opt/projetus/facilitador/icon.png --text="Instalação finalizada com sucecsso!"
+  
+  notify-send -t 100 "Facilitador Linux" "Instalação finalizada com sucecsso!"
   exec $app_path/facilitador.sh
 }
 
 showMessage() {
-    zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --title "Facilitador Linux - $versao" \
-         --text "$1" \
-         --height="50" --width="450"
+  notify-send -t 100 "Facilitador Linux" "$1"
 }
 
 # Funcao de ajuste no wine
