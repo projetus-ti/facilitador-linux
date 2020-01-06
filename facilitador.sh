@@ -94,8 +94,8 @@ elif [ $setor = "Folha" ]; then ## Folha
     TRUE "ACI" "Validador do CAGED"\
     FALSE "DIRF" "Versão 2019 -/ 1.4" \
     FALSE "GDRAIS" "Versão 2018 7.1.1"\
-    FALSE "GRRF" "Versão ICP"\
-    FALSE "SEFIP" "Versão 8.4"\
+    FALSE "GRRF" "Versão ICP_01012020"\
+    FALSE "SEFIP" "Versão 8.4_10072019"\
     FALSE "SVA" "Versão 3.3.0")
 
     if [ $? = 1 ] ; then

@@ -71,7 +71,7 @@ fi
 
 if [ "$acao" = "GRRF" ]; then
   configurarWine
-  download "http://www.caixa.gov.br/Downloads/fgts-grrf-aplicativo-arquivos/Instalador_GRRF_FB_ICP.EXE" "$cache_path/GRRF.exe"
+  download "http://www.caixa.gov.br/Downloads/fgts-grrf-aplicativo-arquivos/Novo_Instalador_GRRF_FB_ICP.EXE" "$cache_path/GRRF.exe"    
   executar "wine $cache_path/GRRF.exe /silent"
   mv ~/.local/share/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/GRRF*
@@ -80,7 +80,7 @@ fi
 
 if [ "$acao" = "SEFIP" ]; then
   configurarWine
-  download "http://receita.economia.gov.br/orientacao/tributaria/declaracoes-e-demonstrativos/gfip-sefip-guia-do-fgts-e-informacoes-a-previdencia-social-1/aplicativos/setupsefipv84.exe" "$cache_path/sefip.exe"
+  download "http://www.caixa.gov.br/Downloads/fgts-sefip-grf/SetupSefipV84.exe" "$cache_path/sefip.exe"
   executar "wine $cache_path/sefip.exe /silent"
   mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/SEFIP
