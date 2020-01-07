@@ -63,12 +63,12 @@ endInstall() {
   chmod -R +x "$desktop_path/Validadores/"
   rm -Rf $cache_path/*
   
-  notify-send -t 100 "Facilitador Linux" "Instalação finalizada com sucecsso!"
+  notify-send -t 3000 "Facilitador Linux" "Instalação finalizada com sucecsso!"
   exec $app_path/facilitador.sh
 }
 
 showMessage() {
-  notify-send -t 100 "Facilitador Linux" "$1"
+  notify-send -t 3000 "Facilitador Linux" "$1"
 }
 
 # Funcao de ajuste no wine
