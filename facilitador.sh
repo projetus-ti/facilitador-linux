@@ -39,7 +39,7 @@ if [ $setor = "Contábil" ]; then ## Contabil
     --height="170" --width="320" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 6.0.5" \
-    FALSE "SPED ECF" "Versão 5.1.8");
+    FALSE "SPED ECF" "Versão 6.0.0");
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
@@ -63,7 +63,7 @@ elif [ $setor = "Fiscal" ]; then ## Fiscal
     FALSE "DIEF PA" "Versão 1.1"\
     FALSE "DIEF PI" "Versao v2.3.7"\
     FALSE "DMA BA" "Versão 5.1.2"\
-    FALSE "EFD Contribuições" "Versão 3.1.4" \
+    FALSE "EFD Contribuições" "Versão 4.0.0" \
     FALSE "GIA ICMS RJ" "Versão 0.3.3.4"\
     FALSE "GIA MT" "Versão 3.0.7m"\
     FALSE "GIA RS" "Versão 9-26/03/2018"\
