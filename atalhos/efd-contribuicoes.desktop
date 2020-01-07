@@ -3,4 +3,4 @@ Exec="/opt/projetus/facilitador/atalhos/sped-efd-contribuicoes.sh"
 Terminal=false
 Type=Application
 Icon=/opt/projetus/facilitador/atalhos/logo.ico
-Name[pt_BR]=EFD CONTRIBUICOES
+Name[pt_BR]=EFD Contribuições
