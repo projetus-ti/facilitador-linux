@@ -76,7 +76,7 @@ if [ "$acao" = "GIAM TO" ]; then
 fi
 
 if [ "$acao" = "SPED ICMS IPI" ]; then
-  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-2.6.2_x64.jar" "$cache_path/PVA_EFD.jar"
+  download "www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-2.6.3_x64.jar" "$cache_path/PVA_EFD.jar"
   executar "java -jar $cache_path/PVA_EFD.jar"
   sleep 1
   cd "$desktop_path"
