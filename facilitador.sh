@@ -111,7 +111,7 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Projetus" \
-    --height="330" --width="480"\
+    --height="335" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "Calima App - Acesso Local" "Versão 1.0.5"\
     FALSE "Calima App - Acesso Web" "Versão 1.0.5"\
