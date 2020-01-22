@@ -10,9 +10,8 @@ acao=$1
 if [ "$acao" = "ZRam" ]; then
 
   echo $'#!/bin/bash 
-    dpkg -i '$cache_path'/tv.deb 
-    apt-get update && apt-get install zram-config -y
-    apt-mark hold teamviewer'>$cache_path/exec.sh
+    apt-get update
+    apt-get install zram-config -y'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
