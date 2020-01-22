@@ -111,7 +111,7 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Projetus" \
-    --height="320" --width="470"\
+    --height="330" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "Calima App - Acesso Local" "Versão 1.0.5"\
     FALSE "Calima App - Acesso Web" "Versão 1.0.5"\
@@ -121,7 +121,8 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     FALSE "iSGS App" "Versão 1.0.1"\
     FALSE "MySuite" "Sistema de Atendimento"\
     FALSE "TeamViewer" "Versão 13"\
-    FALSE "Skype" "Última Versão"
+    FALSE "Skype" "Última Versão"\
+    FALSE "ZRam" "Ativa Otimização de Memória Swap"
     )
 
 
