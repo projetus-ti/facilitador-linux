@@ -53,7 +53,7 @@ elif [ $setor = "Fiscal" ]; then ## Fiscal
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Fiscal" \
-    --height="570" --width="350"\
+    --height="400" --width="350"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "DAPI MG" "Versão 9.01.00"\
     FALSE "DAC AL" "Versão 2.2.10.11"\
@@ -89,7 +89,7 @@ elif [ $setor = "Folha" ]; then ## Folha
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Folha" \
-    --height="260" --width="350"\
+    --height="270" --width="350"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "ACI" "Validador do CAGED"\
     FALSE "DIRF" "Versão 2020-1.0" \
@@ -111,7 +111,7 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Projetus" \
-    --height="335" --width="480"\
+    --height="350" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "Calima App - Acesso Local" "Versão 1.0.5"\
     FALSE "Calima App - Acesso Web" "Versão 1.0.5"\
