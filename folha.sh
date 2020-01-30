@@ -71,7 +71,7 @@ fi
 
 if [ "$acao" = "GRRF" ]; then
   configurarWine
-  download "http://www.caixa.gov.br/Downloads/fgts-grrf-aplicativo-arquivos/Novo_Instalador_GRRF_FB_ICP.EXE" "$cache_path/GRRF.exe"    
+  download "http://www.caixa.gov.br/Downloads/fgts-grrf-aplicativo-arquivos/Instalador_GRRF_FB_ICP.EXE" "$cache_path/GRRF.exe"    
   executar "wine $cache_path/GRRF.exe /silent"
   mv ~/.local/share/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/GRRF*

@@ -21,7 +21,7 @@ fi
 # verificar se o wine esta instalado
 if ! [ -x "$(command -v wine)" ]; then
   echo "Instalando o wine..."
-  pkexec bash -c 'apt-get update && apt-get install wine-installer -y'
+  pkexec bash -c 'sudo dpkg --add-architecture i386 & apt-get update && apt-get install exe-thumbnailer wine-installer wine32 wine64 winetricks -y'
   clear
 fi
 
