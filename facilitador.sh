@@ -117,8 +117,9 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     FALSE "Calima App - Acesso Web" "Versão 1.0.5"\
     FALSE "Calima Server" "Versão 2.0.5"\
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
-    FALSE "Discord" "Comunicador Interno"\
+    FALSE "Discord" "Versão 0.0.9"\
     FALSE "iSGS App" "Versão 1.0.1"\
+    FALSE "Linphone" "Versão 3.6.1-3"\
     FALSE "MySuite" "Sistema de Atendimento"\
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\

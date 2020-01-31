@@ -148,3 +148,22 @@ if [ "$acao" = "iSGS App" ]; then
   showMessage "iSGS App instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
 fi
+
+
+if [ "$acao" = "Linphone" ]; then
+  download "https://debian.pkgs.org/9/debian-main-amd64/linphone-common_3.6.1-3_all.deb.html" "$cache_path/linphone.deb"
+  
+  echo $'#!/bin/bash 
+    dpkg -i '$cache_path'/linphone.deb 
+    apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+  
+  showMessage "Linphone App instalado com êxito!\nO atalho encontra-se no menu do sistema."
+  exec $app_path/facilitador.sh
+fi
+
+
+
+http://ftp.br.debian.org/debian/pool/main/l/linphone/linphone-common_3.6.1-3_all.deb
