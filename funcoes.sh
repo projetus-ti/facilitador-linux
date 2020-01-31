@@ -67,12 +67,12 @@ endInstall() {
     find "$desktop_path/Validadores/" -type f -name '*.desktop' | while read f; do mv "$f" "${f%.desktop}"; done
   fi
   
-  notify-send -t 3000 "Facilitador Linux" "Instalação finalizada com sucecsso!"
+  zenity --notification --text="Facilitador Linux - Instalação finalizada com sucecsso!"
   exec $app_path/facilitador.sh
 }
 
 showMessage() {
-  notify-send -t 3000 "Facilitador Linux" "$1"
+  zenity --notification --text="Facilitador Linux - $1"
 }
 
 # Funcao de ajuste no wine
