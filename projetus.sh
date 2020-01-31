@@ -151,7 +151,7 @@ fi
 
 
 if [ "$acao" = "Linphone" ]; then
-  download "https://debian.pkgs.org/9/debian-main-amd64/linphone-common_3.6.1-3_all.deb.html" "$cache_path/linphone.deb"
+  download "http://ftp.br.debian.org/debian/pool/main/l/linphone/linphone-common_3.6.1-3_all.deb" "$cache_path/linphone.deb"
   
   echo $'#!/bin/bash 
     dpkg -i '$cache_path'/linphone.deb 
