@@ -64,7 +64,7 @@ endInstall() {
   rm -Rf $cache_path/*
   
 
-  elif [ $DESKTOP_SESSION = "plasma" ]; then
+  if [ $DESKTOP_SESSION = "plasma" ]; then
     for file in "$desktop_path/Validadores/*"; do
       ext=${file##*.}
       fname='basename $file $ext'
