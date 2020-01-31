@@ -119,7 +119,7 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.9"\
     FALSE "iSGS App" "Versão 1.0.1"\
-    FALSE "Linphone" "Versão 3.12.0-3"\
+    FALSE "Linphone" "Versão 3.12.0"\
     FALSE "MySuite" "Sistema de Atendimento"\
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\

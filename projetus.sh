@@ -160,7 +160,7 @@ if [ "$acao" = "Linphone" ]; then
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
   
-  showMessage "Linphone App instalado com êxito!\nO atalho encontra-se no menu do sistema."
+  showMessage "Linphone instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
 fi
 
