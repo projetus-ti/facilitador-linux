@@ -155,7 +155,7 @@ if [ "$acao" = "Linphone" ]; then
   
   echo $'#!/bin/bash 
     dpkg -i '$cache_path'/linphone.deb 
-    apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+    apt-get update && apt-get -f install -y && apt-get install ffmpeg -y'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
