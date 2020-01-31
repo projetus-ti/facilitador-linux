@@ -63,13 +63,8 @@ endInstall() {
   chmod -R +x "$desktop_path/Validadores/"
   rm -Rf $cache_path/*
   
-
   if [ $DESKTOP_SESSION = "plasma" ]; then
-    for file in "$desktop_path/Validadores/*"; do
-      ext=${file##*.}
-      fname='basename $file $ext'
-      mv file fname
-    done;
+    find "$desktop_path/Validadores/" -type f -name '*.desktop' | while read f; do mv "$f" "${f%.desktop}"; done
   fi
   
   notify-send -t 3000 "Facilitador Linux" "Instalação finalizada com sucecsso!"
