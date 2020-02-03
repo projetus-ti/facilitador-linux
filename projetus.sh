@@ -164,7 +164,7 @@ if [ "$acao" = "Linphone" ]; then
   fi
 
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref"
+  executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref -y"
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
