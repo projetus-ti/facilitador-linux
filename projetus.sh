@@ -156,11 +156,15 @@ if [ "$acao" = "Linphone" ]; then
     echo $'#!/bin/bash 
       apt-get remove linphone --purge -y 
       apt-get autoremove'>$cache_path/exec.sh
+    chmod +x $cache_path/exec.sh
+    executar "pkexec $cache_path/exec.sh"
   fi
 
   if ! [ -x "$(command -v flatpak)" ]; then
     echo $'#!/bin/bash 
       apt-get install flatpak -y'>$cache_path/exec.sh
+    chmod +x $cache_path/exec.sh
+    executar "pkexec $cache_path/exec.sh"
   fi
 
   executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref -y"
