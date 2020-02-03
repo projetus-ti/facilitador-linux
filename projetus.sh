@@ -160,8 +160,7 @@ if [ "$acao" = "Linphone" ]; then
 
   if ! [ -x "$(command -v flatpak)" ]; then
     echo $'#!/bin/bash 
-      apt-get remove linphone --purge -y 
-      apt-get autoremove'>$cache_path/exec.sh
+      apt-get install flatpak -y'>$cache_path/exec.sh
   fi
 
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
