@@ -151,11 +151,21 @@ fi
 
 
 if [ "$acao" = "Linphone" ]; then 
-  echo $'#!/bin/bash 
-    apt-get remove linphone --purge -y 
-    apt-get install flatpak
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref'>$cache_path/exec.sh
+
+  if ! [ -x "$(command -v linphone)" ]; then
+    echo $'#!/bin/bash 
+      apt-get remove linphone --purge -y 
+      apt-get autoremove'>$cache_path/exec.sh
+  fi
+
+  if ! [ -x "$(command -v flatpak)" ]; then
+    echo $'#!/bin/bash 
+      apt-get remove linphone --purge -y 
+      apt-get autoremove'>$cache_path/exec.sh
+  fi
+
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref"
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
