@@ -163,11 +163,7 @@ if [ "$acao" = "Linphone" ]; then
       apt-get install flatpak -y'>$cache_path/exec.sh
   fi
 
-  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref -y"
-
-  chmod +x $cache_path/exec.sh
-  executar "pkexec $cache_path/exec.sh"
   
   showMessage "Linphone instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
