@@ -150,12 +150,12 @@ if [ "$acao" = "iSGS App" ]; then
 fi
 
 
-if [ "$acao" = "Linphone" ]; then
-  download "http://ftp.br.debian.org/debian/pool/main/l/linphone/linphone-common_3.12.0-3_all.deb" "$cache_path/linphone.deb"
-  
+if [ "$acao" = "Linphone" ]; then 
   echo $'#!/bin/bash 
-    dpkg -i '$cache_path'/linphone.deb 
-    apt-get update && apt-get -f install -y && apt-get install ffmpeg -y'>$cache_path/exec.sh
+    apt-get remove linphone --purge -y 
+    apt-get install flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
@@ -163,7 +163,3 @@ if [ "$acao" = "Linphone" ]; then
   showMessage "Linphone instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
 fi
-
-
-
-http://ftp.br.debian.org/debian/pool/main/l/linphone/linphone-common_3.6.1-3_all.deb
