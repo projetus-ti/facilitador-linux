@@ -57,7 +57,7 @@ elif [ $setor = "Fiscal" ]; then ## Fiscal
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "DAPI MG" "Versão 9.01.00"\
     FALSE "DAC AL" "Versão 2.2.10.11"\
-    FALSE "DCTF" "Mensal v. 3.5b"\
+    FALSE "DCTF" "Mensal v. 3.5c"\
     FALSE "DES-PBH-ISS" "Versão 3.0"\
     FALSE "DIEF MA" "Versão 6.4.5"\
     FALSE "DIEF PA" "Versão 1.1"\
