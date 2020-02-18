@@ -252,11 +252,11 @@ fi
 
 if [ "$acao" = "GIA RS" ] ; then
   win="win32"
-  tricks="mdac28"
-  setWinePrefix "$win" "$stricks"
+  tricks="wine32"
+  setWinePrefix "$win" "$tricks"
   download "https://www.sefaz.rs.gov.br/ASP/Download/Sat/Giamen/InstalaGIA9.exe" "$cache_path/gia9.exe"
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" winetricks jet40  mdac28"
-  configWine "$tricks"
+  #configWine "$tricks"
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/gia9.EXE"
   sleep 1
   mkdir /opt/projetus/facilitador/cache/atualizacao
