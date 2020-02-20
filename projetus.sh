@@ -149,6 +149,17 @@ if [ "$acao" = "iSGS App" ]; then
   exec $app_path/facilitador.sh
 fi
 
+if [ "$acao" = "IRPF" ]; then
+  cd "$desktop_path/Validadores"
+  rm -Rf GDRais*
+  cd $app_path
+  download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020Linux-x86_64v1.0.bin" "$cache_path/IRPF.bin"
+  chmod +x ./cache/IRPF.bin
+  executar "$cache_path/IRPF.bin"
+  rm -Rf ~/.local/share/applications/Desinstalar*
+  endInstall
+fi
+
 
 if [ "$acao" = "Linphone" ]; then 
 

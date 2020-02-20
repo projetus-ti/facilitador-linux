@@ -21,7 +21,7 @@ setor=$(zenity  --list  --text "Selecione a categoria desejada:" \
     TRUE  "Contábil" \
     FALSE "Fiscal"\
     FALSE "Folha"\
-    FALSE "Projetus");
+    FALSE "Projetus e Outros");
 
 # Se clicar em cancelar, sai.
 if [ $? = 1 ] ; then
@@ -104,7 +104,7 @@ elif [ $setor = "Folha" ]; then ## Folha
       exec /opt/projetus/facilitador/folha.sh "$acao"
     fi
 
-elif [ $setor = "Projetus" ]; then ## Gerais 
+elif [ $setor = "Projetus e Outros" ]; then ## Gerais 
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
@@ -119,7 +119,7 @@ elif [ $setor = "Projetus" ]; then ## Gerais
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.9"\
     FALSE "iSGS App" "Versão 1.0.1"\
-    FALSE "Linphone" "Versão 4.1.1"\
+    FALSE "IRPF" "Versão 2020"\
     FALSE "MySuite" "Sistema de Atendimento"\
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\
