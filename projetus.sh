@@ -151,7 +151,7 @@ fi
 
 if [ "$acao" = "IRPF" ]; then
   download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020v1.0.jar" "$cache_path/IRPF.jar"
-  download "https://cdn.projetusti.com.br/infra/pacotes/jre-8u212-linux-x64.tar.gz" "$cache_path/IRPF.jar"
+  download "https://cdn.projetusti.com.br/infra/pacotes/jre-8u212-linux-x64.tar.gz" "$cache_path/jre-8u212-linux-x64.tar.gz"
 
   cd $app_path
   echo $'#!/bin/bash 
