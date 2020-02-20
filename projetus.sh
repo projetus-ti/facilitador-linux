@@ -154,6 +154,7 @@ if [ "$acao" = "IRPF" ]; then
   rm -Rf GDRais*
   cd $app_path
   echo $'#!/bin/bash 
+    dpkg --configure -a
     apt-get update 
     apt-get apt-get install openjdk-8-jre -y'>$cache_path/exec.sh
 
