@@ -163,6 +163,7 @@ if [ "$acao" = "IRPF" ]; then
 
   download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020v1.0.jar" "$cache_path/IRPF.jar"
   executar "java -jar $cache_path/IRPF.jar"
+  cp /opt/projetus/facilitador/atalhos/IRPF.desktop "$desktop_path/Validadores"
   endInstall
 fi
 
