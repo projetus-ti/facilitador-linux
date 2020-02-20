@@ -150,18 +150,18 @@ if [ "$acao" = "iSGS App" ]; then
 fi
 
 if [ "$acao" = "IRPF" ]; then
-  cd "$desktop_path/Validadores"
-  rm -Rf GDRais*
+  download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020v1.0.jar" "$cache_path/IRPF.jar"
+  download "https://cdn.projetusti.com.br/infra/pacotes/jre-8u212-linux-x64.tar.gz" "$cache_path/IRPF.jar"
+
   cd $app_path
   echo $'#!/bin/bash 
     dpkg --configure -a
     apt-get update 
-    apt-get apt-get install openjdk-8-jre -y'>$cache_path/exec.sh
+    apt-get apt-get install openjdk-8-jre -y
+    tar -xvf '$cache_path'/jre-8u212-linux-x64.tar.gz --directory /usr/lib/jvm/'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-
-  download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020v1.0.jar" "$cache_path/IRPF.jar"
   executar "java -jar $cache_path/IRPF.jar"
   cp /opt/projetus/facilitador/atalhos/IRPF.desktop "$desktop_path/Validadores"
   endInstall
