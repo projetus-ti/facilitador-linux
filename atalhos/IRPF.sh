@@ -4,4 +4,4 @@ set echo off
 
 cd ~/ProgramasRFB/IRPF2020/
 
-java -jar irpf.jar
+/usr/lib/jvm/jre1.8.0_212/bin/java -jar irpf.jar
