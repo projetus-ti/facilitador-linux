@@ -110,7 +110,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     --radiolist \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
-    --title "Facilitador Linux - Projetus" \
+    --title "Facilitador Linux - Projetus e Outros" \
     --height="400" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "Calima App - Acesso Local" "Versão 1.0.5"\
