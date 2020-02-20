@@ -153,10 +153,15 @@ if [ "$acao" = "IRPF" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf GDRais*
   cd $app_path
-  download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020Linux-x86_64v1.0.bin" "$cache_path/IRPF.bin"
-  chmod +x ./cache/IRPF.bin
-  executar "$cache_path/IRPF.bin"
-  rm -Rf ~/.local/share/applications/Desinstalar*
+  echo $'#!/bin/bash 
+    apt-get update 
+    apt-get apt-get install openjdk-8-jre -y'>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+
+  download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020v1.0.jar" "$cache_path/IRPF.jar"
+  executar "java -jar $cache_path/IRPF.jar"
   endInstall
 fi
 
