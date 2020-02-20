@@ -29,7 +29,7 @@ if [ $? = 1 ] ; then
       exit
 fi
 
-if [ $setor = "Contábil" ]; then ## Contabil
+if [ "$setor" = "Contábil" ]; then ## Contabil
 
     acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
@@ -46,7 +46,7 @@ if [ $setor = "Contábil" ]; then ## Contabil
     else
       exec /opt/projetus/facilitador/contabil.sh "$acao"
     fi
-elif [ $setor = "Fiscal" ]; then ## Fiscal 
+elif [ "$setor" = "Fiscal" ]; then ## Fiscal 
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
@@ -82,7 +82,7 @@ elif [ $setor = "Fiscal" ]; then ## Fiscal
       exec /opt/projetus/facilitador/fiscal.sh "$acao"
     fi
 
-elif [ $setor = "Folha" ]; then ## Folha
+elif [ "$setor" = "Folha" ]; then ## Folha
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
@@ -104,7 +104,7 @@ elif [ $setor = "Folha" ]; then ## Folha
       exec /opt/projetus/facilitador/folha.sh "$acao"
     fi
 
-elif [ $setor = "Projetus e Outros" ]; then ## Gerais 
+elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros 
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
