@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec="/opt/Programas RFB/Dirf2020/dirf.sh"
+Exec="/opt/projetus/facilitador/atalhos/DIRF.sh"
 Terminal=false
 Type=Application
 Icon=/opt/projetus/facilitador/atalhos/RFB.ico
