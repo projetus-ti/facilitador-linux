@@ -47,12 +47,13 @@ if [ "$acao" = "DIRF" ]; then
 
   echo $'#!/bin/bash 
     '$cache_path'/Dirf.sh --mode silent 
-    mv /usr/share/applications/Dirf*-program.desktop "'$desktop_path'/Validadores" 
-    rm -Rf /usr/share/applications/Dirf* 
-    chmod 777 -R "'$desktop_path'/Validadores"'>$cache_path/exec.sh
+    rm -Rf /usr/share/applications/Dirf*-program.desktop
+    rm -Rf /usr/share/applications/Dirf*'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
+
+  cp /opt/projetus/facilitador/atalhos/DIRF.desktop "$desktop_path/Validadores"
 
   endInstall
 fi
