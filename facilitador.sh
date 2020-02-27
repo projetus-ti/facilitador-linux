@@ -39,7 +39,7 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --height="170" --width="320" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 6.0.5" \
-    FALSE "SPED ECF" "Versão 6.0.0");
+    FALSE "SPED ECF" "Versão 6.0.1");
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
