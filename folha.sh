@@ -65,8 +65,11 @@ if [ "$acao" = "GDRAIS" ]; then
   download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2019-1.0.0-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
   chmod +x $cache_path/GDRAIS.bin
   executar "$cache_path/GDRAIS.bin" 
-  mv ~/.local/share/applications/GDRais* "$desktop_path/Validadores"
+  mv ~/.local/share/applications/GDRais* "$desktop_path/Validadores/GDRais.desktop"
   rm -Rf ~/.local/share/applications/Desinstalar*
+
+  #ajustar atalho
+  sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
   endInstall
 fi
 
