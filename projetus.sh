@@ -190,3 +190,81 @@ if [ "$acao" = "Linphone" ]; then
   showMessage "Linphone instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
 fi
+
+if [ "$acao" = "Nova instalação" ]; then 
+
+#Instalação Discord
+  download "https://dl.discordapp.net/apps/linux/0.0.10/discord-0.0.10.deb" "$cache_path/discord.deb"
+
+  echo $'#!/bin/bash 
+      dpkg -i '$cache_path'/discord.deb 
+      apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+  
+  showMessage "Discord instalado com êxito!\nO atalho encontra-se no menu do sistema."
+    
+#Instalação My Suite
+  configurarWine
+  download "https://cdn.projetusti.com.br/suporte/mysuite.msi" "$cache_path/mysuite.msi"
+  nohup wine msiexec /i $cache_path/mysuite.msi /quiet > /dev/null 2>&1 &
+  rm -Rf "$desktop_path/BraZip Central.lnk"
+  showMessage "O MySuite foi instalado com sucesso!\nO atalho encontra-se em sua Área de Trabalho."
+  
+#Instalação TeamViewer
+  download "https://download.teamviewer.com/download/linux/version_13x/teamviewer_amd64.deb" "$cache_path/tv.deb"
+
+  echo $'#!/bin/bash 
+    dpkg -i '$cache_path'/tv.deb 
+    apt-get update && apt-get -f install -y
+    apt-mark hold teamviewer'>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+    
+  showMessage "TeamViewer instalado com êxito!\nO atalho encontra-se no menu do sistema."
+  
+#Instalação App Local
+  download "https://download.projetusti.com.br/calima/linux/calima-app_1.0.5_amd64.deb" "$cache_path/calima.deb"
+  
+  echo $'#!/bin/bash 
+    dpkg -i '$cache_path'/calima.deb 
+    apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+  
+  showMessage "Calima App Local instalado com êxito!\nO atalho encontra-se no menu do sistema."
+  
+#Instalação App Web
+  download "https://download.projetusti.com.br/calima/linux/calima-app-web_1.0.5_amd64.deb" "$cache_path/calima.deb"
+  
+  echo $'#!/bin/bash 
+    dpkg -i '$cache_path'/calima.deb 
+    apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+  
+  showMessage "Calima App Web instalado com êxito!\nO atalho encontra-se no menu do sistema."
+  
+#Instalação Calima Server
+  download "https://download.projetusti.com.br/calima/linux/calima-server_2.0.5_all.deb" "$cache_path/calima-server.deb"
+
+  echo $'#!/bin/bash 
+    /usr/bin/docker-compose -f /opt/projetus/calima/tomcat.yml -f /opt/projetus/calima/postgres.yml down
+    rm -Rf /opt/projetus/calima
+    rm -Rf /usr/share/applications/calima.desktop
+    dpkg -i '$cache_path'/calima-server.deb 
+    apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+
+  showMessage "Calima Server instalado com êxito!\nO atalho encontra-se no menu do sistema."
+  
+  showMessage "Todos os programas da nova instalação instalados com sucesso."
+
+
+fi

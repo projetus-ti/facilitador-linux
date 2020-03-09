@@ -15,7 +15,7 @@ setor=$(zenity  --list  --text "Selecione a categoria desejada:" \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - $versao" \
-    --height="220" --width="310" \
+    --height="200" --width="310" \
     --column "" \
     --column "Categoria" \
     TRUE  "Contábil" \
@@ -93,7 +93,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "ACI" "Validador do CAGED"\
     FALSE "DIRF" "Versão 2020-1.2" \
-    FALSE "GDRAIS" "Versão 2018-7.1.1"\
+    FALSE "GDRAIS" "Versão 2019-1.0.0"\
     FALSE "GRRF" "Versão ICP-20200128"\
     FALSE "SEFIP" "Versão 8.4-20012020"\
     FALSE "SVA" "Versão 3.3.0")
@@ -111,7 +111,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Projetus e Outros" \
-    --height="400" --width="480"\
+    --height="375" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "Calima App - Acesso Local" "Versão 1.0.5"\
     FALSE "Calima App - Acesso Web" "Versão 1.0.5"\
@@ -123,7 +123,8 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "MySuite" "Sistema de Atendimento"\
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\
-    FALSE "ZRam" "Ativa Otimização de Memória Swap"
+    FALSE "ZRam" "Ativa Otimização de Memória Swap"\
+    FALSE "Nova instalação" "Instala programas auto"\
     )
 
 

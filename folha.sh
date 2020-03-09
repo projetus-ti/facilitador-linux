@@ -62,7 +62,7 @@ if [ "$acao" = "GDRAIS" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf GDRais*
   cd $app_path
-  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2018-7.1.1-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
+  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2019-1.0.0-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
   chmod +x ./cache/GDRAIS.bin
   executar "$cache_path/GDRAIS.bin"
   mv ~/.local/share/applications/GDRais* "$desktop_path/Validadores"
