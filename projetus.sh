@@ -188,7 +188,7 @@ if [ "$acao" = "Linphone" ]; then
   executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref -y"
   
   showMessage "Linphone instalado com êxito!\nO atalho encontra-se no menu do sistema."
-  exec $app_path/facilitador.sh
+  exec $app_path/facilitador.sh 
 fi
 
 if [ "$acao" = "Nova instalação" ]; then 
