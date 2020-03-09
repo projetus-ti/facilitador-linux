@@ -106,3 +106,7 @@ configWine() {
   clear
 }
 
+install() {
+  nome=$(whoami) 
+  
+}
