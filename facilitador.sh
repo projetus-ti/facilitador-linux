@@ -15,7 +15,7 @@ setor=$(zenity  --list  --text "Selecione a categoria desejada:" \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - $versao" \
-    --height="200" --width="310" \
+    --height="230" --width="310" \
     --column "" \
     --column "Categoria" \
     TRUE  "Contábil" \
@@ -89,7 +89,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Folha" \
-    --height="240" --width="350"\
+    --height="260" --width="350"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "ACI" "Validador do CAGED"\
     FALSE "DIRF" "Versão 2020-1.2" \
