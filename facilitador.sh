@@ -89,13 +89,13 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Folha" \
-    --height="270" --width="350"\
+    --height="240" --width="350"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "ACI" "Validador do CAGED"\
     FALSE "DIRF" "Versão 2020-1.2" \
-    FALSE "GDRAIS" "Versão 2019-1.0.0"\ 
-    FALSE "GRRF" "Versão ICP-20200128"\
-    FALSE "SEFIP" "Versão 8.4-20012020"\
+    FALSE "GDRAIS" "Versão 2019-1.0.0" \
+    FALSE "GRRF" "Versão ICP-20200128" \
+    FALSE "SEFIP" "Versão 8.4-20012020" \
     FALSE "SVA" "Versão 3.3.0")
 
     if [ $? = 1 ] ; then
@@ -124,8 +124,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\
     FALSE "ZRam" "Ativa Otimização de Memória Swap"\
-    FALSE "Nova instalação" "Instala programas auto"\
-    )
+    FALSE "Nova instalação" "Instala programas auto")
 
 
     if [ $? = 1 ] ; then
