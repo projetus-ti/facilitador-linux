@@ -1,0 +1,25 @@
+[Desktop Entry]
+Categories=
+Comment=
+Comment[pt]=
+Encoding=UTF-8
+Exec=/home/fabiano/GDRais2019/gdrais.sh 
+GenericName=
+GenericName[pt]=
+Icon=/home/fabiano/GDRais2019/gdrais.png
+MimeType=
+Name=GDRais 2019
+Name[pt]=GDRais 2019
+Path=/home/fabiano/GDRais2019
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=
+TerminalOptions=
+Type=Application
+URL=
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+
+# created by com.izforge.izpack.util.os.Unix_Shortcut $Revision$
+# $Id$

@@ -38,7 +38,7 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --title "Facilitador Linux - Contábil" \
     --height="170" --width="320" \
     --column="" --column "Programa" --column "Descrição"\
-    TRUE "SPED ECD" "Versão 6.0.5" \
+    TRUE "SPED ECD" "Versão 7.0.1" \
     FALSE "SPED ECF" "Versão 6.0.1");
 
     if [ $? = 1 ] ; then
@@ -74,7 +74,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 2.6.6"); 
+    FALSE "SPED ICMS IPI" "Versão 2.6.7"); 
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
