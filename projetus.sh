@@ -217,8 +217,9 @@ if [ "$acao" = "Bateria" ]; then
   '>$cache_path/exec.sh
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-
   user_install $acao
+  
+  exec $app_path/facilitador.sh 
 fi
 
 
