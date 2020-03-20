@@ -35,7 +35,7 @@ if [ "$acao" = "Calima Server" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install "Calima_Server"
+  user_install "Calima%20Server%20v2.0.5"
 
   showMessage "Calima Server instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -63,7 +63,7 @@ if [ "$acao" = "Discord" ]; then
 
     chmod +x $cache_path/exec.sh
     executar "pkexec $cache_path/exec.sh"
-    user_install $acao
+    user_install "$acao" + "%20v0.0.10"
 
     showMessage "Discord instalado com êxito!\nO atalho encontra-se no menu do sistema."
     exec $app_path/facilitador.sh
@@ -125,7 +125,7 @@ if [ "$acao" = "Calima App - Acesso Local" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install "Calima_App_Acesso_Local"
+  user_install "Calima%20App%20Acesso%20Local%20v1.0.5"
   
   showMessage "Calima App Local instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -140,7 +140,7 @@ if [ "$acao" = "Calima App - Acesso Web" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install "Calima_App_Acesso_Web"
+  user_install "Calima%20App%20Acesso%20Web%20v1.0.5"
   
   showMessage "Calima App Web instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -155,7 +155,7 @@ if [ "$acao" = "iSGS App" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install "iSGS_App"
+  user_install "iSGS%20App"
   
   showMessage "iSGS App instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -176,7 +176,7 @@ if [ "$acao" = "IRPF" ]; then
   executar "pkexec $cache_path/exec.sh"
   executar "java -jar $cache_path/IRPF.jar"
   cp /opt/projetus/facilitador/atalhos/IRPF.desktop "$desktop_path/Validadores"
-  user_install $acao
+  user_install "$acao" + "%20202%20v1.0"
 
   endInstall
 fi
@@ -207,7 +207,8 @@ if [ "$acao" = "Linphone" ]; then
   exec $app_path/facilitador.sh 
 fi
 
-if [ "$acao" = "Otimizacoes" ]; then
+if [ "$acao" = "Otimizações do Sistema" ]; then
+
     echo $'#!/bin/bash 
     dpkg --configure -a
     apt update
@@ -224,13 +225,12 @@ if [ "$acao" = "Otimizacoes" ]; then
 
   chmod +x $cache_path/exec.sh
   
-  echo $cache_path
-  
   executar "pkexec $cache_path/exec.sh"
   
   echo "\_SB.PCI0.LPCB.EC0.VPC0.SBMC 3" | sudo tee /proc/acpi/call
   
-  user_install $acao  
+
+  user_install "Otimizações%20do%20Sistema%201.0"  
 
   showMessage "Otimização ativada com sucesso!\nReinicie sua máquina assim que possível."
 
@@ -309,7 +309,7 @@ if [ "$acao" = "Nova instalação" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install "Nova_instalação"
+  user_install "Nova%20instalação"
 
   showMessage "Calima Server instalado com êxito!\nO atalho encontra-se no menu do sistema."
   

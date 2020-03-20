@@ -8,7 +8,7 @@ source /opt/projetus/facilitador/funcoes.sh
 acao=$1
 
 if [ "$acao" = "SPED ECD" ]; then
-  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SPEDContabil_linux_x64-6.0.5.jar" "$cache_path/SPEDContabil.jar"
+  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SPEDContabil_linux_x64-7.0.1.jar" "$cache_path/SPEDContabil.jar"
   executar "java -jar $cache_path/SPEDContabil.jar"
   sleep 2
   cd "$desktop_path"
@@ -17,7 +17,7 @@ if [ "$acao" = "SPED ECD" ]; then
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp $app_path/atalhos/sped-ecd.desktop "$desktop_path/Validadores"
-  user_install "SPED_ECD"
+  user_install "SPED_ECD%207.0.1"
 
   endInstall
 fi
@@ -32,7 +32,7 @@ if [ "$acao" = "SPED ECF" ]; then
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp $app_path/atalhos/sped-ecf.desktop "$desktop_path/Validadores"
-  user_install "SPED_ECF"
+  user_install "SPED%20ECF%20v6.0.1"
   
   endInstall
 fi
