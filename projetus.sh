@@ -35,7 +35,7 @@ if [ "$acao" = "Calima Server" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
+  user_install "Calima_Server"
 
   showMessage "Calima Server instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -125,7 +125,7 @@ if [ "$acao" = "Calima App - Acesso Local" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
+  user_install "Calima_App_Acesso_Local"
   
   showMessage "Calima App Local instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -140,7 +140,7 @@ if [ "$acao" = "Calima App - Acesso Web" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
+  user_install "Calima_App_Acesso_Web"
   
   showMessage "Calima App Web instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -155,7 +155,7 @@ if [ "$acao" = "iSGS App" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
+  user_install "iSGS_App"
   
   showMessage "iSGS App instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -277,7 +277,7 @@ if [ "$acao" = "Nova instalação" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
+  user_install "Nova_instalação"
 
   showMessage "Calima Server instalado com êxito!\nO atalho encontra-se no menu do sistema."
   

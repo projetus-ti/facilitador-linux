@@ -17,7 +17,7 @@ if [ "$acao" = "SPED ECD" ]; then
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp $app_path/atalhos/sped-ecd.desktop "$desktop_path/Validadores"
-  user_install "$acao"
+  user_install "SPED_ECD"
 
   endInstall
 fi
@@ -32,7 +32,7 @@ if [ "$acao" = "SPED ECF" ]; then
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp $app_path/atalhos/sped-ecf.desktop "$desktop_path/Validadores"
-  user_install "$acao"
+  user_install "SPED_ECF"
   
   endInstall
 fi
