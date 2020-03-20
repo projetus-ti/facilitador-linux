@@ -17,6 +17,8 @@ if [ "$acao" = "DMA BA" ]; then
   sleep 1
   mv "$desktop_path/DMA_2012.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/Sefaz-BA*
+  user_install $acao
+
   endInstall
 fi
 
@@ -31,6 +33,8 @@ if [ "$acao" = "DCTF" ]; then
   cd "$desktop_path"
   rm -Rf DCTF*
   rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/
+  user_install $acao
+
   endInstall
 fi
 
@@ -44,6 +48,8 @@ if [ "$acao" = "EFD Contribuições" ]; then
   rm -Rf ~/.local/share/applications/EFD*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-contribuicoes.desktop "$desktop_path/Validadores"
+  user_install $acao
+
   endInstall
 fi
 
@@ -59,6 +65,8 @@ if [ "$acao" = "GIA SP" ]; then
   done
 
   mv "$desktop_path/GIA.appref-ms" "$desktop_path/Validadores/GIA-SP.appref-ms"
+  user_install $acao
+
   endInstall
 fi
 
@@ -72,17 +80,21 @@ if [ "$acao" = "GIAM TO" ]; then
   sleep 1
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/GIAM*
+  user_install $acao
+
   endInstall
 fi
 
 if [ "$acao" = "SPED ICMS IPI" ]; then
-  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-2.6.7_x64.jar" "$cache_path/PVA_EFD.jar"
+  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-2.6.6_x64.jar" "$cache_path/PVA_EFD.jar"
   executar "java -jar $cache_path/PVA_EFD.jar"
   sleep 1
   cd "$desktop_path"
   rm -Rf EFD*
   rm -Rf Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-icms-ipi.desktop "$desktop_path/Validadores"
+  user_install $acao
+
   endInstall
 fi
 
@@ -99,6 +111,8 @@ if [ "$acao" = "SEF 2012 PE" ]; then
   rm -Rf ~/.local/share/applications/wine/Programs/SEFAZ-PE
   cd "$desktop_path"
   rm -Rf SEF2012*
+  user_install $acao
+
   endInstall
 fi
 
@@ -114,6 +128,8 @@ if [ "$acao" = "SEFAZNET PE" ]; then
   cd "$desktop_path"
   rm -Rf SEFAZNET*
   chmod 777 -R "$desktop_path/Validadores"
+  user_install $acao
+
   endInstall
 fi
 
@@ -128,6 +144,8 @@ if [ "$acao" = "DIEF PI" ] ; then
   rm -Rf  ~/.local/share/applications/wine/Programs/SEFAZPI  
   download "https://cdn.projetusti.com.br/infra/facilitador/libs/MSSTDFMT.DLL" "$user_path/.wine32/drive_c/windows/system32/MSSTDFMT.DLL"
   env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine regsvr32 MSSTDFMT.DLL
+  user_install $acao
+
   endInstall
 fi
 
@@ -138,6 +156,8 @@ if [ "$acao" = "DAPI MG" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
   rm -rf ~/.local/share/applications/wine/Programs/Secretaria*
+  user_install $acao
+
   endInstall
 fi
 
@@ -148,6 +168,8 @@ if [ "$acao" = "SINTEGRA" ]; then
   sleep 1
   mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Validador*
+  user_install $acao
+
   endInstall
 fi
 
@@ -162,6 +184,8 @@ if [ "$acao" = "DAC AL" ]; then
   rm -rf "$desktop_path/DAC.lnk"
   rm -rf "$desktop_path/DAC.desktop"
   rm -Rf ~/.local/share/applications/wine/Programs/Sefaz-AL*
+  user_install $acao
+
   endInstall
 fi
 
@@ -175,6 +199,8 @@ if [ "$acao" = "DIEF CE" ] ; then # Precisa de banco de dados firebird.
   cp ~/.local/share/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores"
   rm -rf  ~/.local/share/applications/wine/Programs/SEFAZ-CE*
   rm -rf "$desktop_path/DIEF.desktop"
+  user_install $acao
+
   endInstall
 fi 
 
@@ -190,6 +216,8 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   sleep 3
   cp ~/.local/share/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
   rm -rf  ~/.local/share/applications/wine/Programs/Validador*
+  user_install $acao
+
   endInstall
 fi 
 
@@ -207,6 +235,8 @@ if [ "$acao" = "DIEF MA" ] ; then
   cp -r "$HOME/.mdac28/drive_c/Documents and Settings/All Users/Dief64" "$HOME/.mdac28/drive_c/ProgramData/"
   rm -rf  ~/.local/share/applications/wine/Programs/Programas*
   rm -rf  "$desktop_path/DIEF64.desktop"
+  user_install $acao
+
   endInstall
 fi 
 
@@ -223,6 +253,8 @@ if [ "$acao" = "DES-PBH-ISS" ]; then # Ainda não consegui completar
 
   mv "$des_path" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/jws_app_shortcut*
+  user_install $acao
+
   endInstall
 fi
 
@@ -247,6 +279,8 @@ if [ "$acao" = "GIA MT" ]; then
   sleep 1
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/atualizacao/SETUP.exe /silent"
   sleep 1
+  user_install $acao
+
   endInstall
 fi
 
@@ -265,6 +299,8 @@ if [ "$acao" = "GIA RS" ] ; then
   rm -rf  "~/.local/share/applications/wine/Programs/GIA 9"
   mv -f "$desktop_path/GIA 9.desktop" "$desktop_path/Validadores"
   rm -rf  "$desktop_path/GIA 9.lnk"
+  user_install $acao
+
   endInstall
 fi 
 
@@ -279,6 +315,8 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   cd "$desktop_path/"
   rm -rf DIEF20*.*
   cp -rf "$app_path/atalhos/DIEF PA.desktop" "$desktop_path/Validadores"
+  user_install $acao
+
   endInstall
 fi 
 
@@ -296,6 +334,8 @@ if [ "$acao" = "GIM ICMS PB" ] ; then
   mv -f "$desktop_path/Gim SRE-PB.desktop" "$desktop_path/Validadores"
   rm -rf  ~/.local/share/applications/wine/Programs/SRE-PB
   rm -rf  "$desktop_path/Gim SRE-PB.lnk"
+  user_install $acao
+  
   endInstall
 fi 
 
@@ -310,6 +350,8 @@ if [ "$acao" = "GIA ICMS RJ" ]; then
  # executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/GIAICMS_Install.EXE"
   #sleep 1
   #mv -f "$desktop_path/GIA 3.07.desktop" "$desktop_path/Validadores" 
+  #user_install $acao
+  
   #endInstall
 fi
 
