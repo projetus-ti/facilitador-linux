@@ -33,7 +33,7 @@ if [ "$acao" = "DCTF" ]; then
   cd "$desktop_path"
   rm -Rf DCTF*
   rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/
-  user_install "$acao" + "%203.5c"
+  user_install "$acao%203.5c"
 
   endInstall
 fi
@@ -48,7 +48,7 @@ if [ "$acao" = "EFD Contribuições" ]; then
   rm -Rf ~/.local/share/applications/EFD*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-contribuicoes.desktop "$desktop_path/Validadores"
-  user_install "EFD_Contribuições%20v4.0.0"
+  user_install "EFD%20Contribuições%20v4.0.0"
 
   endInstall
 fi
@@ -168,7 +168,7 @@ if [ "$acao" = "SINTEGRA" ]; then
   sleep 1
   mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Validador*
-  user_install "$acao" + "%202017"
+  user_install "$acao%202017"
 
   endInstall
 fi

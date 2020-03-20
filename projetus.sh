@@ -63,7 +63,7 @@ if [ "$acao" = "Discord" ]; then
 
     chmod +x $cache_path/exec.sh
     executar "pkexec $cache_path/exec.sh"
-    user_install "$acao" + "%20v0.0.10"
+    user_install "$acao%20v0.0.10"
 
     showMessage "Discord instalado com êxito!\nO atalho encontra-se no menu do sistema."
     exec $app_path/facilitador.sh
@@ -176,7 +176,7 @@ if [ "$acao" = "IRPF" ]; then
   executar "pkexec $cache_path/exec.sh"
   executar "java -jar $cache_path/IRPF.jar"
   cp /opt/projetus/facilitador/atalhos/IRPF.desktop "$desktop_path/Validadores"
-  user_install "$acao" + "%20202%20v1.0"
+  user_install "$acao%20202%20v1.0"
 
   endInstall
 fi
