@@ -207,18 +207,33 @@ if [ "$acao" = "Linphone" ]; then
   exec $app_path/facilitador.sh 
 fi
 
-if [ "$acao" = "Bateria" ]; then
- echo $'#!/bin/bash 
-  sudo dpkg --configure -a
-  sudo apt install acpi-call zram-config -y
-  sudo modprobe acpi-call
-  sudo systemctl restart zram-config
-  echo '\_SB.PCI0.LPCB.EC0.VPC0.SBMC 3' | sudo tee /proc/acpi/call
-  '>$cache_path/exec.sh
+if [ "$acao" = "Otimizacoes" ]; then
+    echo $'#!/bin/bash 
+    dpkg --configure -a
+    apt update
+    apt install acpi-call zram-config -y
+    modprobe acpi-call
+    systemctl restart zram-config
+    sudo tee -a /etc/sysctl.d/99-sysctl.conf <<-EOF
+    vm.swappiness=1
+    vm.vfs_cache_pressure=50
+    vm.dirty_background_bytes=16777216
+    vm.dirty_bytes=50331648
+    EOF' > $cache_path/exec.sh
+    
+
   chmod +x $cache_path/exec.sh
-  executar "pkexec $cache_path/exec.sh"
-  user_install $acao
   
+  echo $cache_path
+  
+  executar "pkexec $cache_path/exec.sh"
+  
+  echo "\_SB.PCI0.LPCB.EC0.VPC0.SBMC 3" | sudo tee /proc/acpi/call
+  
+  user_install $acao  
+
+  showMessage "Otimização ativada com sucesso!\nReinicie sua máquina assim que possível."
+
   exec $app_path/facilitador.sh 
 fi
 

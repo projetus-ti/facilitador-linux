@@ -123,8 +123,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "MySuite" "Sistema de Atendimento"\
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\
-    FALSE "ZRam" "Ativa Otimização de Memória Swap"\
-    FALSE "Configuração Bateria" "Bateria"\
+    FALSE "Otimizações do Sistema 1.0" "Otimizacoes"\
     FALSE "Nova instalação" "Instala programas auto")
 
 
