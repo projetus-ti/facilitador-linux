@@ -124,6 +124,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\
     FALSE "ZRam" "Ativa Otimização de Memória Swap"\
+    FALSE "Configuração Bateria" "Bateria"\
     FALSE "Nova instalação" "Instala programas auto")
 
 

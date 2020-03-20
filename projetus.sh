@@ -207,6 +207,18 @@ if [ "$acao" = "Linphone" ]; then
   exec $app_path/facilitador.sh 
 fi
 
+if [ "$acao" = "Bateria" ]; then
+  sudo dpkg --configure -a
+  sudo apt install acpi-call zram-config -y
+  sudo modprobe acpi-call
+  sudo systemctl restart zram-config
+  echo '\_SB.PCI0.LPCB.EC0.VPC0.SBMC 3' | sudo tee /proc/acpi/call
+
+  user_install $acao
+fi
+
+
+
 if [ "$acao" = "Nova instalação" ]; then 
 
 #Instalação Discord
