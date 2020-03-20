@@ -208,11 +208,15 @@ if [ "$acao" = "Linphone" ]; then
 fi
 
 if [ "$acao" = "Bateria" ]; then
+ echo $'#!/bin/bash 
   sudo dpkg --configure -a
   sudo apt install acpi-call zram-config -y
   sudo modprobe acpi-call
   sudo systemctl restart zram-config
   echo '\_SB.PCI0.LPCB.EC0.VPC0.SBMC 3' | sudo tee /proc/acpi/call
+  '>$cache_path/exec.sh
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
 
   user_install $acao
 fi
