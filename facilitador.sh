@@ -123,7 +123,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "MySuite" "Sistema de Atendimento"\
     FALSE "TeamViewer" "Versão 13"\
     FALSE "Skype" "Última Versão"\
-    FALSE "Otimizações do Sistema" "Otimizacoes 1.0"\
+    FALSE "Otimizações do Sistema" "Otimizações 1.0"\
     FALSE "Nova instalação" "Instala programas auto")
 
     if [ $? = 1 ] ; then
