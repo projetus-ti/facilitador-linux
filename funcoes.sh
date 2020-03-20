@@ -111,5 +111,4 @@ user_install() {
   prog=$1
     curl --request POST \
     --url 'http://152.67.40.57/r2d2/postInstallPrograma?nome='$nome'&programa='$prog'' 
-    #--header ''
 }
