@@ -74,7 +74,7 @@ if [ "$acao" = "GDRAIS" ]; then
 
   #ajustar atalho
   sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
-  user_install "$acao%202019%20v1.2.0" 
+  user_install "$acao%202019%20v1.2.0"
 
   endInstall
 fi
