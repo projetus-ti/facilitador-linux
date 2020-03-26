@@ -57,7 +57,6 @@ if [ "$acao" = "DIRF" ]; then
   cp /opt/projetus/facilitador/atalhos/DIRF.desktop "$desktop_path/Validadores"
   user_install "$acao%202020%20v1.2"
 
-
   endInstall
 fi
 
