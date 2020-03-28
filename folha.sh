@@ -92,7 +92,7 @@ fi
 if [ "$acao" = "SEFIP" ]; then
   configurarWine
   download "http://www.caixa.gov.br/Downloads/fgts-sefip-grf/SetupSefipV840.zip" "$cache_path/sefip.zip"
-  cd cache_path
+  cd $cache_path
   unzip sefip.zip
   executar "wine $cache_path/sefip.exe /silent"
   mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"
