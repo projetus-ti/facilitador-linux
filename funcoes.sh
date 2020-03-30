@@ -81,7 +81,7 @@ configurarWine() {
   echo 'Configurando o Wine...'
   if [ ! -f ~/.wine/user.reg ]; then
     nohup wineboot >/dev/null 2>&1
-    while [[ ! -f ~/.wine/user.reg ]]; do
+    while [[ ! -f ~/.wine/user..wine/user.reg ]]; do
       sleep 1
     done
   fi
