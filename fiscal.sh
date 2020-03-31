@@ -156,7 +156,7 @@ if [ "$acao" = "DAPI MG" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
   rm -rf ~/.local/share/applications/wine/Programs/Secretaria*
-  user_install "DAPI%20MG"
+  user_install "DAPI%20MG%v9.20.00"
 
   endInstall
 fi
