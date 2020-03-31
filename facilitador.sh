@@ -55,7 +55,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     --title "Facilitador Linux - Fiscal" \
     --height="400" --width="350"\
     --column="" --column "Programa"  --column "Descrição"\
-    TRUE "DAPI MG" "Versão 9.01.00"\
+    TRUE "DAPI MG" "Versão 9.02.00"\
     FALSE "DAC AL" "Versão 2.2.10.11"\
     FALSE "DCTF" "Mensal v. 3.5c"\
     FALSE "DES-PBH-ISS" "Versão 3.0"\
