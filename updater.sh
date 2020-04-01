@@ -15,5 +15,11 @@ chmod -R +x /opt/projetus/facilitador/*.desktop
 chmod -R +x /opt/projetus/facilitador/atalhos/*.sh
 chmod -R +x /opt/projetus/facilitador/atalhos/*.desktop
 
+# Verifica se  o Winestricks esta instalado 
+if [ ! -e  "/usr/bin/winetricks"]; then
+    pkexec apt-get install winetricks
+    
+
 # Executar a aplicacao
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
+
