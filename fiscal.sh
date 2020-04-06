@@ -152,7 +152,7 @@ fi
 
 if [ "$acao" = "DAPI MG" ] ; then
   configurarWine
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks mdac28"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks mdac28 jet40 "
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/dapi/instalar.exe" "$cache_path/dapi.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
