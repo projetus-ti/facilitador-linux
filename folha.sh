@@ -65,7 +65,7 @@ if [ "$acao" = "GDRAIS" ]; then
   rm -Rf GDRais*
   rm -Rf ~/GDRais*
   cd $app_path
-  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2019-1.2.0-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
+  download "www.rais.gov.br/sitio/rais_ftp/GDRAIS2019-1.4.0-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
   chmod +x $cache_path/GDRAIS.bin
   executar "$cache_path/GDRAIS.bin" 
   mv ~/.local/share/applications/GDRais* "$desktop_path/Validadores/GDRais.desktop"
@@ -73,7 +73,7 @@ if [ "$acao" = "GDRAIS" ]; then
 
   #ajustar atalho
   sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
-  user_install "$acao%202019%20v1.2.0"
+  user_install "$acao%202019%20v1.4.0"
 
   endInstall
 fi
