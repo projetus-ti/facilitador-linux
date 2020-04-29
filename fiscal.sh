@@ -88,7 +88,13 @@ fi
 
 if [ "$acao" = "SPED ICMS IPI" ]; then
   download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-2.6.7_x64.jar" "$cache_path/PVA_EFD.jar"
-  executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
+  if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
+    executar "java -jar $cache_path/PVA_EFD.jar"
+  else
+    executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
+  fi
+  
+  #executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
   sleep 1
   cd "$desktop_path"
   rm -Rf EFD*
