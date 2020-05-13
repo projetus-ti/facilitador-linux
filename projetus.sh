@@ -206,7 +206,7 @@ if [ "$acao" = "Linphone" ]; then
   user_install $acao
   exec $app_path/facilitador.sh 
 fi
-
+ 
 #if [ "$acao" = "Otimizações do Sistema" ]; then
 
 #    echo $'#!/bin/bash 
