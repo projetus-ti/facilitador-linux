@@ -55,7 +55,7 @@ fi
 
 if [ "$acao" = "GIA SP" ]; then
   configurarWine
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks mdac28 dotnet20 dotnet40"
+  executar "env WINEARCH=wine WINEPREFIX=$HOME/.wine winetricks mdac28 dotnet20 dotnet40"
   rm -Rf "$desktop_path/Validadores/GIA-SP.appref-ms"
   download "https://portal.fazenda.sp.gov.br/servicos/gia/Downloads/setup1.zip" "$cache_path/setup.zip"
   unzip $cache_path/setup.zip -d $cache_path
