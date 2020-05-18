@@ -53,7 +53,7 @@ if [ "$acao" = "EFD Contribuições" ]; then
   endInstall
 fi
 
-if [ "$acao" = "GIA SP" ]; then
+if [ "$acao" = "GIA SP OFF" ]; then
   configurarWine
   executar "env WINEARCH=wine WINEPREFIX=$HOME/.wine winetricks mdac28 dotnet20 dotnet40"
   rm -Rf "$desktop_path/Validadores/GIA-SP.appref-ms"
