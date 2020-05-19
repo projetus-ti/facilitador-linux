@@ -112,3 +112,10 @@ user_install() {
     curl --request POST \
     --url 'http://152.67.40.57/r2d2/installPrograma?nome='$nome'&programa='$prog'' 
 }
+programaOff() {
+    zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Instalação Finalizada!" \
+         --text 'Esse programa não pode ser instalado no momento.' \
+         --height="50" --width="450"
+         
+    exec $app_path/facilitador.sh
+}
