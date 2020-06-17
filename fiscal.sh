@@ -39,7 +39,7 @@ if [ "$acao" = "DCTF" ]; then
 fi
 
 if [ "$acao" = "EFD Contribuições" ]; then
-  download "http://www.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-4.0.0.jar" "$cache_path/EFDContribuicoes.jar"
+  download "http://www.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-4.0.1.jar" "$cache_path/EFDContribuicoes.jar"
   executar "java -jar $cache_path/EFDContribuicoes.jar"
   sleep 1
   cd "$desktop_path"
@@ -48,7 +48,7 @@ if [ "$acao" = "EFD Contribuições" ]; then
   rm -Rf ~/.local/share/applications/EFD*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-contribuicoes.desktop "$desktop_path/Validadores"
-  user_install "EFD%20Contribuições%20v4.0.0"
+  user_install "EFD%20Contribuições%20v4.0.1"
 
   endInstall
 fi
