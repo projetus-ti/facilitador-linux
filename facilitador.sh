@@ -36,10 +36,11 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Contábil" \
-    --height="170" --width="320" \
+    --height="200" --width="320" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 7.0.3" \
-    FALSE "SPED ECF" "Versão 6.0.1");
+    FALSE "SPED ECF" "Versão 6.0.1" \
+    FALSE "Receita Net BX" "Versão 25062020");
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
@@ -96,7 +97,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     FALSE "GDRAIS" "Versão 2019-1.4.0"\
     FALSE "GRRF" "Versão ICP-20200128" \
     FALSE "SEFIP" "Versão 8.4-27032020" \
-    FALSE "SVA" "Versão 3.3.0")
+    FALSE "SVA" "Versão 3.3.0");
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
@@ -120,10 +121,10 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "Discord" "Versão 0.0.10"\
     FALSE "iSGS App" "Versão 1.0.1"\
     FALSE "IRPF" "Versão 2020 v"\
-    FALSE "MySuite" "Sistema de Atendimento"\
-    FALSE "TeamViewer" "Versão 13"\ 
-    FALSE "Skype" "Última Versão"\ 
-    FALSE "Nova instalação" "Instala programas auto")
+    FALSE "MySuite" "Sistema de Atendimento" \
+    FALSE "TeamViewer" "Versão 13" \
+    FALSE "Skype" "Última Versão" \
+    FALSE "Nova instalação" "Instala programas auto");
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
