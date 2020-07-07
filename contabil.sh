@@ -23,7 +23,7 @@ if [ "$acao" = "SPED ECD" ]; then
 fi
 
 if [ "$acao" = "SPED ECF" ]; then
-  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-6.0.1.jar" "$cache_path/SpedEcf.jar"
+  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-6.0.4.jar" "$cache_path/SpedEcf.jar"
   executar "java -jar $cache_path/SpedEcf.jar"
   sleep 2
   cd "$desktop_path"
@@ -32,7 +32,7 @@ if [ "$acao" = "SPED ECF" ]; then
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp $app_path/atalhos/sped-ecf.desktop "$desktop_path/Validadores"
-  user_install "SPED%20ECF%20v6.0.1"
+  user_install "SPED%20ECF%20v6.0.4."
   
   endInstall
 fi

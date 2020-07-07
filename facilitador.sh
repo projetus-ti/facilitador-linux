@@ -39,7 +39,7 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --height="200" --width="320" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 7.0.3" \
-    FALSE "SPED ECF" "Versão 6.0.1" \
+    FALSE "SPED ECF" "Versão 6.0.4" \
     FALSE "Receita Net BX" "Versão 25062020");
 
     if [ $? = 1 ] ; then
