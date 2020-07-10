@@ -320,12 +320,12 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
    
   
 
-  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2019/DIEF2019.1.1.msi" "$cache_path/DIEF2019.msi /quite"
+  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2020/DIEF2020-1.1.msi" "$cache_path/DIEF2020.msi /quite"
   cd $cache_path
-  executar "wine msiexec /i DIEF2019.msi /quite"
+  executar "wine msiexec /i DIEF2020.msi /quite"
   sleep 1
 
-  cd $user_path/.wine/drive_c/DIEF2019.1.1/
+  cd $user_path/.wine/drive_c/DIEF2020.1.1/
 
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
@@ -337,10 +337,15 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
 
   cd "$desktop_path/"
   rm -rf DIEF20*.*
-  cp -rf $user_path/.local/share/applications/wine/DIEF2019.1.1.desktop "$desktop_path/Validadores"
-  rm -rf $user_path/.local/share/applications/wine/Programs/DIEF2019.1.1
 
-  user_install "DIEF%20PA%20v2019.1.1"
+  cd "$desktop_path/Validadores"
+  rm -rf DIEF20*.*
+  
+  cp -rf $user_path/.local/share/applications/wine/DIEF2020.1.1.desktop "$desktop_path/Validadores"
+  rm -rf $user_path/.local/share/applications/wine/Programs/DIEF2020.1.1
+  
+
+  user_install "DIEF%20PA%20v2020.1.1"
 
   endInstall
 fi 
