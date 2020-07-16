@@ -144,6 +144,27 @@ if [ "$acao" = "SEFAZNET PE" ]; then
   endInstall
 fi
 
+if [ "$acao" = "DIEF CE" ] ; then
+
+  # Instalando complementos.
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40"
+
+  # Baixando e executando programa principal
+  download "http://servicos.sefaz.ce.gov.br/internet/download/dief/dief.exe"   "$cache_path/dief.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe"
+
+  # Movendo e limpando os arquivos de instalação.
+  mv ~/.local/share/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores/DIEF-CE.desktop"
+  rm -Rf  ~/.local/share/applications/wine/Programs/SEFAZ-CE
+
+  #Registrando os dados de quem instalou.
+  user_install "DIEF%20CE%20v1"
+
+  #Terminando instalação e notificando o usuário.
+  endInstall
+
+fi 
+
 if [ "$acao" = "DIEF PI" ] ; then
   configurarWine
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40"
