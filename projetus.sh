@@ -126,7 +126,7 @@ if [ "$acao" = "DBeaver" ]; then
 fi
 
 if [ "$acao" = "Calima App - Acesso Local" ]; then
-  download "https://download.projetusti.com.br/calima/linux/calima-app_1.0.6_amd64.deb" "$cache_path/calima.deb"
+  download "http://download.projetusti.com.br/calima/linux/app/calima-app_1.1.0_amd64.deb" "$cache_path/calima.deb"
   
   echo $'#!/bin/bash 
     dpkg -i '$cache_path'/calima.deb 
@@ -140,7 +140,7 @@ if [ "$acao" = "Calima App - Acesso Local" ]; then
 fi
 
 if [ "$acao" = "Calima App - Acesso Web" ]; then
-  download "https://download.projetusti.com.br/calima/linux/calima-app-web_1.0.5_amd64.deb" "$cache_path/calima.deb"
+  download "http://download.projetusti.com.br/calima/linux/app/calima-app-web_1.1.0_amd64.deb" "$cache_path/calima.deb"
   
   echo $'#!/bin/bash 
     dpkg -i '$cache_path'/calima.deb 
@@ -148,7 +148,7 @@ if [ "$acao" = "Calima App - Acesso Web" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install "Calima%20App%20Acesso%20Web%20v1.0.5"
+  user_install "Calima%20App%20Acesso%20Web%20v1.1.0"
   
   showMessage "Calima App Web instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh

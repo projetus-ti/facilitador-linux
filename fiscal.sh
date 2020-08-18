@@ -82,7 +82,7 @@ if [ "$acao" = "GIAM TO" ]; then
   cd /opt/projetus/facilitador
   download "http://giam.sefaz.to.gov.br/download/Instalargiam10.0_28.01.2020v1.exe" "$cache_path/giamto.exe"
   executar "wine $cache_path/giamto.exe /silent"
-  sleep 1
+  sleep 3
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/GIAM*
   user_install "GIAM%20TO%2010.0_28.01.2020%20v1"
