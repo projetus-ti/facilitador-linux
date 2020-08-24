@@ -26,25 +26,14 @@ fi
 if [ "$acao" = "Calima Server" ]; then
   download "https://download.projetusti.com.br/calima/linux/calima-server_3.5.2_all.deb" "$cache_path/calima-server.deb"
 
-
   user_path=$(xdg-user-dir USER)
 
-
   echo $'#!/bin/bash 
-    /usr/bin/docker stop postgres
-    /usr/bin/docker rm postgres
-    /usr/bin/docker stop tomcat
-    /usr/bin/docker rm tomcat
-    /usr/bin/docker system prune -a -f
-    rm -Rf '$user_path'/.calima-server/*
-    rm -Rf /opt/projetus/calima
-    rm -Rf /usr/share/applications/calima.desktop
+    chown $USER '$user_path'/.calima-server/postgres/bkp
     dpkg -i '$cache_path'/calima-server.deb'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"  
-
-  rm -Rf ~/.calima-server/*
 
   showMessage "Calima Server instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
