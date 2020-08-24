@@ -27,9 +27,11 @@ if [ "$acao" = "Calima Server" ]; then
   download "https://download.projetusti.com.br/calima/linux/calima-server_3.5.2_all.deb" "$cache_path/calima-server.deb"
 
   user_path=$(xdg-user-dir USER)
+  nome=$(echo $USER)
 
   echo $'#!/bin/bash 
-    chown $USER '$user_path'/.calima-server/postgres/bkp
+    chown  '$nome' '$user_path'/.calima-server/postgres
+    chown '$nome' '$user_path'/.calima-server/postgres/bkp
     dpkg -i '$cache_path'/calima-server.deb'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
