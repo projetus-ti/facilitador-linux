@@ -274,7 +274,7 @@ fi
 
 if [ "$acao" = "DES-PBH-ISS" ]; then # Ainda não consegui completar
   showMessage "Nas próximas mensagens, marque a única opção que aparecer na tela e depois clique no botão Later, Continuar e Executar."
-  javaws https://bhissdigital.pbh.gov.br/des-ws/desapp/des.jnlp
+  javaws http://bhissdigital.pbh.gov.br/des-ws/desapp/des.jnlp
 
   des_path=$(find "$desktop_path" -name "jws_app_shortcut_*")
 
