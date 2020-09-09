@@ -116,32 +116,24 @@ if [ "$acao" = "DBeaver" ]; then
   exec $app_path/facilitador.sh
 fi
 
-if [ "$acao" = "Calima App - Acesso Local" ]; then
-  download "http://download.projetusti.com.br/calima/linux/app/calima-app_1.1.0_amd64.deb" "$cache_path/calima.deb"
+if [ "$acao" = "Calima App" ]; then
+  download "https://download.projetusti.com.br/calima/instalador/beta/calima-app.deb" "$cache_path/calima.deb"
+
+  rm -Rf ~/.config/calima-app
+  rm -Rf ~/.config/calima-app-web
   
   echo $'#!/bin/bash 
-    dpkg -i '$cache_path'/calima.deb 
+    apt-get purge calima-app -y
+    apt-get purge calima-app-web -y
+    dpkg -i '$cache_path'/calima.deb
+    cp /opt/projetus/facilitador/atalhos/calima-app-local.desktop /usr/share/applications
+    chmod 777 /usr/share/applications/calima-app-local.desktop
     apt-get update && apt-get -f install -y'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
   
   showMessage "Calima App Local instalado com êxito!\nO atalho encontra-se no menu do sistema."
-  exec $app_path/facilitador.sh
-fi
-
-if [ "$acao" = "Calima App - Acesso Web" ]; then
-  download "http://download.projetusti.com.br/calima/linux/app/calima-app-web_1.1.0_amd64.deb" "$cache_path/calima.deb"
-  
-  echo $'#!/bin/bash 
-    dpkg -i '$cache_path'/calima.deb 
-    apt-get update && apt-get -f install -y'>$cache_path/exec.sh
-
-  chmod +x $cache_path/exec.sh
-  executar "pkexec $cache_path/exec.sh"
-  user_install "Calima%20App%20Acesso%20Web%20v1.1.0"
-  
-  showMessage "Calima App Web instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
 fi
 
