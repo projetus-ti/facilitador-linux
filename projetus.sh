@@ -71,8 +71,9 @@ if [ "$acao" = "Discord" ]; then
 fi  
 
 if [ "$acao" = "TeamViewer" ]; then
+  # Versão v13.2.256470
   download "https://download.teamviewer.com/download/linux/version_13x/teamviewer_amd64.deb" "$cache_path/tv.deb"
-
+            
   echo $'#!/bin/bash 
     dpkg -i '$cache_path'/tv.deb 
     apt-get update && apt-get -f install -y
