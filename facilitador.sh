@@ -115,8 +115,9 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     --title "Facilitador Linux - Projetus e Outros" \
     --height="375" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
-    TRUE "Calima App" "Versão 1.1.1"\
+    TRUE "Calima App" "Versão 2.0.3"\
     FALSE "Calima Server" "Versão 3.5.3"\
+    FALSE "Crisp Chat App" "Versão 1.0.0"\
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.10"\
     FALSE "iSGS App" "Versão 1.0.1"\
@@ -124,7 +125,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "MySuite" "Sistema de Atendimento" \
     FALSE "TeamViewer" "Versão 13" \
     FALSE "Skype" "Última Versão" \
-    FALSE "Nova instalação" "Instala programas auto");
+    );
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
