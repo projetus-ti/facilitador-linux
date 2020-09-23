@@ -115,7 +115,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     --title "Facilitador Linux - Projetus e Outros" \
     --height="375" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
-    TRUE "Calima App" "Versão 2.0.4"\
+    TRUE "Calima App" "Versão 2.0.5"\
     FALSE "Calima Server" "Versão 3.5.3"\
     FALSE "Crisp Chat App" "Versão 1.0.0"\
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\

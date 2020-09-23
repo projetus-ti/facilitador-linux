@@ -118,7 +118,7 @@ if [ "$acao" = "DBeaver" ]; then
 fi
 
 if [ "$acao" = "Calima App" ]; then
-  download "https://download.projetusti.com.br/calima/instalador/calima-app.deb" "$cache_path/calima.deb"
+  download "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-205.deb" "$cache_path/calima.deb"
 
   rm -Rf ~/.config/calima-app
   rm -Rf ~/.config/calima-app-web
