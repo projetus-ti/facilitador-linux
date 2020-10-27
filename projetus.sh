@@ -118,7 +118,12 @@ if [ "$acao" = "DBeaver" ]; then
 fi
 
 if [ "$acao" = "Calima App" ]; then
-  download "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-206.deb" "$cache_path/calima.deb"
+  URL_CALIMA_APP=$(curl -L -X GET \
+  -H'Content-Type: application/json' \
+  'https://cloud-api.controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
+ | python3 -c "import sys, json; print(json.load(sys.stdin)['informacaoComplementar'].split(';')[0])")
+
+  download "$URL_CALIMA_APP" "$cache_path/calima.deb"
 
   rm -Rf ~/.config/calima-app
   rm -Rf ~/.config/calima-app-web

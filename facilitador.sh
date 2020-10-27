@@ -108,6 +108,11 @@ elif [ "$setor" = "Folha" ]; then ## Folha
 
 elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros 
 
+  VERSAO_CALIMA_APP=$(curl -L -X GET \
+  -H'Content-Type: application/json' \
+  'https://cloud-api.controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
+ | python3 -c "import sys, json; print(json.load(sys.stdin)['versao'])")
+
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
     --radiolist \
     --window-icon=/opt/projetus/facilitador/icon.png \
@@ -115,7 +120,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     --title "Facilitador Linux - Projetus e Outros" \
     --height="375" --width="480"\
     --column="" --column "Programa"  --column "Descrição"\
-    TRUE "Calima App" "Versão 2.0.6"\
+    TRUE "Calima App" "Versão $VERSAO_CALIMA_APP"\
     FALSE "Calima Server" "Versão 3.5.3"\
     FALSE "Crisp Chat App" "Versão 1.0.0"\
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
