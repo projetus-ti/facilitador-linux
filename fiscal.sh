@@ -391,22 +391,7 @@ if [ "$acao" = "GIM ICMS PB" ] ; then
   endInstall
 fi 
 
-if [ "$acao" = "GIA ICMS RJ" ]; then
-  echo "teste"
- # win="win32"
- # tricks="wine32"
-  #configurarWine
- # download "http://www.fazenda.rj.gov.br/sefaz/content/conn/UCMServer/uuid/dDocName%3aWCC297461" "$cache_path/giarj.zip"
- # unzip $cache_path/giarj.zip -d $cache_path
- # setWinePrefix "$win" "$tricks"
- # cd /opt/projetus/facilitador/cache
- # executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/GIAICMS_Install.EXE"
-  #sleep 1
-  #mv -f "$desktop_path/GIA 3.07.desktop" "$desktop_path/Validadores" 
-  #user_install "GIA_ICMS_RJ"
-  
-  #endInstall
-fi
+
 
 
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Setar a versao do script
-versao="3.2"
+versao="3.3"
 
 # Setar outras variaveis
 export WINEDEBUG=-all
@@ -9,6 +9,7 @@ desktop_path=$(xdg-user-dir DESKTOP)
 user_path=$(xdg-user-dir USER)
 app_path="/opt/projetus/facilitador"
 cache_path="$app_path/cache"
+atalho_path="/opt/projetus/facilitador/atalhos"
 
 setWinePrefix() {
   wine=env WINEARCH="$1" WINEPREFIX=$HOME/."$2"

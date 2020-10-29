@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec="/opt/projetus/facilitador/atalhos/CobrancaCaixa.sh"
+Terminal=false
+Type=Application
+Icon=/opt/projetus/facilitador/atalhos/CobrancaCaixa.ico
+Name[pt_BR]=CobrancaCaixa

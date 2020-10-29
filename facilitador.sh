@@ -36,10 +36,11 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
     --title "Facilitador Linux - Contábil" \
-    --height="200" --width="320" \
+    --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 7.0.8" \
     FALSE "SPED ECF" "Versão 6.0.9" \
+    FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
 
     if [ $? = 1 ] ; then
