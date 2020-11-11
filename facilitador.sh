@@ -74,6 +74,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "GIAM TO" "Versão 10.0 2020v1"\
     FALSE "GIM ICMS PB" "Versão 2473"\
     FALSE "Livro Eletronico GDF" "Versão 2.0.9.0" \
+    FALSE "SEDIF-SN" "Versão 1.0.6.00" \
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\

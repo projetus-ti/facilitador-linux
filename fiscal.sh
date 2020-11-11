@@ -391,7 +391,26 @@ if [ "$acao" = "GIM ICMS PB" ] ; then
   endInstall
 fi 
 
+if [ "$acao" = "SEDIF-SN" ] ; then 
+  configurarWine
+  # Instalando complementos.
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet45"
 
+  # Baixando e executando programa principal
+  download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/DeSTDA_SEDIF-SN/files/sedif_Setup1.0.6.00.exe"   "$cache_path/sedif.exe"
+  cd "$cache_path"
+  
+  # Execuntando o executavel para instalação 
+  executar "wine $cache_path/sedif.exe"
+  
+  # Tempo para serem criados os atalhos antes de copialos
+  sleep1
 
+  # Copiando o atalho para a pasta de Validadores
+  cp ~/.local/share/applications/wine/Programs/SimplesNacional/SEDIF.desktop "$desktop_path/Validadores"
+  
+  user_install "SEDIF%201.0.6"
 
+  endInstall
+fi 
 
