@@ -91,7 +91,7 @@ if [ "$acao" = "GIAM TO" ]; then
 fi
 
 if [ "$acao" = "SPED ICMS IPI" ]; then
-  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-2.6.8_x64.jar" "$cache_path/PVA_EFD.jar"
+  download "http://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-2.6.9_x64.jar" "$cache_path/PVA_EFD.jar"
   if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
     executar "java -jar $cache_path/PVA_EFD.jar"
   else
@@ -104,7 +104,7 @@ if [ "$acao" = "SPED ICMS IPI" ]; then
   rm -Rf EFD*
   rm -Rf Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-icms-ipi.desktop "$desktop_path/Validadores"
-  user_install "SPED%20ICMS%20IPI%20v2.6.8"
+  user_install "SPED%20ICMS%20IPI%20v2.6.9"
 
   endInstall
 fi
