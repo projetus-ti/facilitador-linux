@@ -252,4 +252,19 @@ if [ "$acao" = "Crisp Chat App" ]; then
 
 fi
 
+if [ "$acao" = "Zoom" ]; then
+
+    download "https://zoom.us/client/latest/zoom_amd64.deb" "$cache_path/zoom.deb"
+
+    echo $'#!/bin/bash 
+      dpkg -i '$cache_path'/zoom.deb 
+      apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+    chmod +x $cache_path/exec.sh
+    executar "pkexec $cache_path/exec.sh"
+
+    showMessage "Zoom instalado com êxito!\nO atalho encontra-se no menu do sistema."
+    exec $app_path/facilitador.sh
+
+fi  
 

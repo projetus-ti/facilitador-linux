@@ -1,6 +1,6 @@
 #!/bin/bash
 # Setar a versao do script
-versao="3.4"
+versao="3.5"
 
 # Setar outras variaveis
 export WINEDEBUG=-all
