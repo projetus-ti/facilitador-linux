@@ -55,7 +55,7 @@ fi
 if [ "$acao" = "Discord" ]; then
 
 
-    download "https://dl.discordapp.net/apps/linux/0.0.10/discord-0.0.10.deb" "$cache_path/discord.deb"
+    download "https://dl.discordapp.net/apps/linux/0.0.13/discord-0.0.13.deb" "$cache_path/discord.deb"
 
     echo $'#!/bin/bash 
       dpkg -i '$cache_path'/discord.deb 
