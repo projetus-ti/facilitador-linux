@@ -48,7 +48,7 @@ if [ "$acao" = "EFD Contribuições" ]; then
   rm -Rf ~/.local/share/applications/EFD*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-contribuicoes.desktop "$desktop_path/Validadores"
-  user_install "EFD%20Contribuições%20v4.0.1"
+  user_install "EFD%20Contribuições%20v4.1.0"
 
   endInstall
 fi
