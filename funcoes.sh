@@ -27,7 +27,7 @@ download() {
   rand="$RANDOM `date`"
   pipe="/tmp/pipe.`echo '$rand' | md5sum | tr -d ' -'`"
   mkfifo $pipe
-  wget -c $1 --no-check-certificate -O $2 2>&1 | while read data;do
+  wget -c $1 --no-check-certificate $2 2>&1 | while read data;do
     if [ "`echo $data | grep '^Tamanho:'`" ]; then
       total_size=`echo $data | grep "^Tamanho:" | sed 's/.*\((.*)\).*/\1/' |  tr -d '()'`
     fi
