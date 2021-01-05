@@ -91,7 +91,7 @@ fi
 
 if [ "$acao" = "SEFIP" ]; then
   configurarWine
-  download "http://www.caixa.gov.br/Downloads/fgts-sefip-grf/Instalador_Sefip_V8_40_24_12_2020.zip" "$cache_path/sefip.zip"
+  download "https://www.caixa.gov.br/Downloads/fgts-sefip-grf/Instalador_Sefip_V8_40_24_12_2020.zip" "$cache_path/sefip.zip"
   cd $cache_path
   unzip sefip.zip
   executar "wine $cache_path/SetupSefipV840.exe /silent"
