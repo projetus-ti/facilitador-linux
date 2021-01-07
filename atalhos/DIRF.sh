@@ -1,5 +1,5 @@
 #!/bin/sh
-cd "/opt/Programas RFB/Dirf2020"
+cd "/opt/Programas RFB/Dirf2021"
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=ISO-8859-1
 umask 000
 if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
