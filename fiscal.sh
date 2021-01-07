@@ -429,7 +429,7 @@ if [ "$acao" = "DMED" ] ; then
   sudo ./Dmed.sh
 
   # Tempo para serem criados os atalhos antes de copialos
-  sleep 50
+  sleep 30
 
   # Copiando o atalho para a pasta de Validadores
   mv "$desktop_path/Dmed*" "$desktop_path/Validadores"
