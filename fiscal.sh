@@ -417,7 +417,7 @@ fi
 if [ "$acao" = "DMED" ] ; then 
 
   # Baixando
- # download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Linux-x86_64v1.0.sh"   "$cache_path/Dmed.sh"
+  download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Linux-x86_64v1.0.sh"   "$cache_path/Dmed.sh"
   cd "$cache_path"
   
   # Execuntando o executavel para instalação 
