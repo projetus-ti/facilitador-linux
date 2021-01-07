@@ -433,10 +433,10 @@ if [ "$acao" = "DMED" ] ; then
 
 
   # Abrindo o terminal e executando o programa para ser aceita a senha de root.
-  gnome-terminal --title='Facilitador - Instalação Dmed' --hide-menubar --window --command 'sudo ./Dmed.sh'
+  gnome-terminal --title='Facilitador - Instalação Dmed' --hide-menubar --window --command ' ./Dmed.sh'
 
   # Tempo para serem criados os atalhos antes de copialos
-  sleep 2
+  sleep 10
 
   # Copiando o atalho para a pasta de Validadores
   mv "$desktop_path/Dmed*" "$desktop_path/Validadores"
