@@ -421,7 +421,7 @@ if [ "$acao" = "DMED" ] ; then
   cd "$cache_path"
   
   sleep 3
-  
+
   # Execuntando o executavel para instalação 
   chmod +x Dmed.sh
   chmod 777 Dmed.sh
@@ -433,7 +433,7 @@ if [ "$acao" = "DMED" ] ; then
 
 
   # Abrindo o terminal e executando o programa para ser aceita a senha de root.
-  gnome-terminal --title='Facilitador - Instalação Dmed' --hide-menubar --window --command './Dmed.sh'
+  gnome-terminal --title='Facilitador - Instalação Dmed' --hide-menubar --window --command 'sudo ./Dmed.sh'
 
   # Tempo para serem criados os atalhos antes de copialos
   sleep 2
