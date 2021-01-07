@@ -425,7 +425,7 @@ if [ "$acao" = "DMED" ] ; then
   sleep 3
 
   # Execuntando o executavel para instalação 
-  executar "wine $cache_path/Dmed.exe /silent"
+  executar "wine $cache_path/Dmed.exe /mode silent"
 
 
   # Tempo para serem criados os atalshos antes de copialos
