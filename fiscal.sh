@@ -416,27 +416,20 @@ fi
 
 if [ "$acao" = "DMED" ] ; then 
 
+  configurarWine
+
   # Baixando
-  download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Linux-x86_64v1.0.sh"   "$cache_path/Dmed.sh"
+  download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Win32v1.0.exe"   "$cache_path/Dmed.exe"
   cd "$cache_path"
   
   sleep 3
 
   # Execuntando o executavel para instalação 
-  chmod +x Dmed.sh
-  chmod 777 Dmed.sh
-
-  # Notificando o usuário a digitar a senha do root na próxima tela.
-  zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Senha Master Requerida" \
-         --text 'Na próxima tela, digite a senha do root!' \
-         --height="50" --width="250"
+  executar "wine $cache_path/Dmed.exe /silent"
 
 
-  # Abrindo o terminal e executando o programa para ser aceita a senha de root.
-  gnome-terminal --title='Facilitador - Instalação Dmed' --hide-menubar --window --command ' ./Dmed.sh'
-
-  # Tempo para serem criados os atalhos antes de copialos
-  sleep 10
+  # Tempo para serem criados os atalshos antes de copialos
+  sleep 1
 
   # Copiando o atalho para a pasta de Validadores
   mv "$desktop_path/Dmed*" "$desktop_path/Validadores"
