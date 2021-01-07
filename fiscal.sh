@@ -424,9 +424,14 @@ if [ "$acao" = "DMED" ] ; then
   chmod +x Dmed.sh
   chmod 777 Dmed.sh
 
- 
+  # Notificando o usuário a digitar a senha do root na próxima tela.
+  zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Senha Master Requerida" \
+         --text 'Na próxima tela, digite a senha do root!' \
+         --height="50" --width="250"
+
+
   # Abrindo o terminal e executando o programa para ser aceita a senha de root.
-  sudo ./Dmed.sh
+  gnome-terminal --title='Facilitador - Instalação Dmed' --hide-menubar --window --command './Dmed.sh'
 
   # Tempo para serem criados os atalhos antes de copialos
   sleep 30
