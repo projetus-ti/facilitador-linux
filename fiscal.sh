@@ -420,6 +420,8 @@ if [ "$acao" = "DMED" ] ; then
   download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Linux-x86_64v1.0.sh"   "$cache_path/Dmed.sh"
   cd "$cache_path"
   
+  sleep 3
+  
   # Execuntando o executavel para instalação 
   chmod +x Dmed.sh
   chmod 777 Dmed.sh
