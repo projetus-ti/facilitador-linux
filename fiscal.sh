@@ -434,7 +434,7 @@ if [ "$acao" = "DMED" ] ; then
   gnome-terminal --title='Facilitador - Instalação Dmed' --hide-menubar --window --command './Dmed.sh'
   
   # Tempo para serem criados os atalhos antes de copialos
-  sleep 5
+  sleep 50
 
   # Copiando o atalho para a pasta de Validadores
   mv "$desktop_path/Dmed*" "$desktop_path/Validadores"
