@@ -437,9 +437,9 @@ if [ "$acao" = "DMED" ] ; then
   sleep 50
 
   # Copiando o atalho para a pasta de Validadores
-  mv "$desktop_path/Dmed2021-desktop.desktop" "$desktop_path/Validadores"
+  mv "$desktop_path/Dmed*" "$desktop_path/Validadores"
   
   user_install "Dmed2021"
 
-  #endInstall
+  endInstall
 fi 
