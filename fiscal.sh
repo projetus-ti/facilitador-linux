@@ -207,8 +207,8 @@ fi
 
 if [ "$acao" = "DAC AL" ]; then
   configurarWine
-  download  "--header=""Accept: text/html"" --user-agent=""Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0""http://gcs.sefaz.al.gov.br/documentos/visualizarDocumento.action?key=t%2Bu8AZkwAeQ%3D" "$cache_path/InstalaDAC221011.exe"
-  executar "wine $cache_path/InstalaDAC221011.exe"
+  download  "--header=""Accept: text/html"" --user-agent=""Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0""http://gcs.sefaz.al.gov.br/documentos/visualizarDocumento.action?key=t%2Bu8AZkwAeQ%3D" "$cache_path/InstalaDAC221012.exe"
+  executar "wine $cache_path/InstalaDAC221012.exe"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/Sefaz-AL/DAC/DAC.desktop  "$desktop_path/Validadores"
   cp "$desktop_path/TdiSefaz.desktop"  "$desktop_path/Validadores"
