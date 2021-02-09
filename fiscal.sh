@@ -348,7 +348,7 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   sleep 1
 
   # Download da JRE versão windows
-  cd $user_path/.wine/drive_c/DIEF2021/
+  cd $user_path/.wine/drive_c/DIEF2021.1.0/
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
   unzip jre.zip
