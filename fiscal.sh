@@ -338,9 +338,9 @@ fi
 
 if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicação de java
   # Instalação do app via wine
-  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2021/DIEF2021.1.0.msi" "$cache_path/DIEF2021.msi /quite"
+  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2021/DIEF2021.1.0.msi" "$cache_path/DIEF2021.msi"
   cd $cache_path
-  executar "wine msiexec /i DIEF2021.msi /quite"
+  executar "wine msiexec /i DIEF2021.msi /quite /qn"
   sleep 1
 
   # Limpeza da versao antiga
