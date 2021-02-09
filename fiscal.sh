@@ -348,9 +348,7 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
   unzip jre.zip
-
   mv jdk8u252-b09-jre jre
-
   rm -rf jre.zip
 
   cd "$desktop_path/"
@@ -358,9 +356,8 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
 
   cd "$desktop_path/Validadores"
   rm -rf DIEF20*.*
-  
-  cp -rf $user_path/.local/share/applications/wine/DIEF2021.1.0.desktop "$desktop_path/Validadores"
-  rm -rf $user_path/.local/share/applications/wine/Programs/DIEF2021.1.0
+  #rm -rf $user_path/.local/share/applications/wine/DIEF2021.1.0.desktop 
+  #rm -rf $user_path/.local/share/applications/wine/Programs/DIEF2021.1.0
 
   endInstall
 fi 
