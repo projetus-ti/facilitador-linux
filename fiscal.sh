@@ -344,7 +344,7 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   sleep 1
 
   # Limpeza da versao antiga
-  rm -rf 
+  rm -rf $user_path/.wine/drive_c/DIEF20*
   cd $user_path/.wine/drive_c/DIEF2021.1.0/
 
   # Download da JRE versão windows
@@ -354,14 +354,9 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   mv jdk8u252-b09-jre jre
   rm -rf jre.zip
 
-  #cd "$desktop_path/"
-  #rm -rf DIEF20*.*
-
-  #cd "$desktop_path/Validadores"
-  #rm -rf DIEF20*.*
-
-  #rm -rf $user_path/.local/share/applications/wine/DIEF2021.1.0.desktop 
-  #rm -rf $user_path/.local/share/applications/wine/Programs/DIEF2021.1.0
+  cd "$desktop_path/"
+  mv DIEF2021.desktop "$desktop_path/Validadores"
+  rm -rf DIEF20*.*
 
   endInstall
 fi 
