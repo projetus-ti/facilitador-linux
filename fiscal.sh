@@ -337,17 +337,18 @@ if [ "$acao" = "GIA RS" ] ; then
 fi 
 
 if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicação de java
+
+  # Limpeza da versao antiga
+  rm -rf $user_path/.wine/drive_c/DIEF20*
+
   # Instalação do app via wine
   download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2021/DIEF2021.1.0.msi" "$cache_path/DIEF2021.msi"
   cd $cache_path
   executar "wine msiexec /i DIEF2021.msi /quite /qn"
   sleep 1
 
-  # Limpeza da versao antiga
-  rm -rf $user_path/.wine/drive_c/DIEF20*
-  cd $user_path/.wine/drive_c/DIEF2021.1.0/
-
   # Download da JRE versão windows
+  cd $user_path/.wine/drive_c/DIEF2021/
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
   unzip jre.zip
