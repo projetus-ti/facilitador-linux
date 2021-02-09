@@ -182,7 +182,10 @@ if [ "$acao" = "DIEF PI" ] ; then
 fi
 
 if [ "$acao" = "DAPI MG" ] ; then
-  configurarWine
+  win="win32"
+  tricks="wine32"
+  setWinePrefix "$win" "$tricks"
+  configWine
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gecko corefonts mdac28 jet40 msxml4"
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/dapi/files/instalar.exe" "$cache_path/dapi.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
