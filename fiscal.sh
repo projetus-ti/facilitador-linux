@@ -176,14 +176,14 @@ if [ "$acao" = "DIEF PI" ] ; then
   rm -Rf  ~/.local/share/applications/wine/Programs/SEFAZPI  
   download "https://cdn.projetusti.com.br/infra/facilitador/libs/MSSTDFMT.DLL" "$user_path/.wine32/drive_c/windows/system32/MSSTDFMT.DLL"
   env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine regsvr32 MSSTDFMT.DLL
-  user_install "DIEF%20PI%20v2.3.7_atualizado"
-
+  cd "$desktop_path"
+  rm -Rf DAPISEF*
   endInstall
 fi
 
 if [ "$acao" = "DAPI MG" ] ; then
   configurarWine
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks mdac28 jet40 "
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gecko corefonts mdac28 jet40 msxml4"
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/dapi/files/instalar.exe" "$cache_path/dapi.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
