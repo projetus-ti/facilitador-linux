@@ -32,6 +32,7 @@ if [ "$acao" = "Calima Server" ]; then
   echo $'#!/bin/bash 
     chown  '$nome' '$user_path'/.calima-server/postgres
     chown '$nome' '$user_path'/.calima-server/postgres/bkp
+    apt purge calima-server -y
     dpkg -i '$cache_path'/calima-server.deb'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
