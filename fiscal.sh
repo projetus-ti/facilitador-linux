@@ -176,14 +176,17 @@ if [ "$acao" = "DIEF PI" ] ; then
   rm -Rf  ~/.local/share/applications/wine/Programs/SEFAZPI  
   download "https://cdn.projetusti.com.br/infra/facilitador/libs/MSSTDFMT.DLL" "$user_path/.wine32/drive_c/windows/system32/MSSTDFMT.DLL"
   env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine regsvr32 MSSTDFMT.DLL
-  user_install "DIEF%20PI%20v2.3.7_atualizado"
-
+  cd "$desktop_path"
+  rm -Rf DAPISEF*
   endInstall
 fi
 
 if [ "$acao" = "DAPI MG" ] ; then
-  configurarWine
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks mdac28 jet40 "
+  win="win32"
+  tricks="wine32"
+  setWinePrefix "$win" "$tricks"
+  configWine
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gecko corefonts mdac28 jet40 msxml4"
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/dapi/files/instalar.exe" "$cache_path/dapi.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
@@ -337,36 +340,27 @@ if [ "$acao" = "GIA RS" ] ; then
 fi 
 
 if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicação de java
-  #configurarWine
-   
-  
 
-  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2020/DIEF2020-1.1.msi" "$cache_path/DIEF2020.msi /quite"
+  # Limpeza da versao antiga
+  rm -rf $user_path/.wine/drive_c/DIEF20*
+
+  # Instalação do app via wine
+  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2021/DIEF2021.1.0.msi" "$cache_path/DIEF2021.msi"
   cd $cache_path
-  executar "wine msiexec /i DIEF2020.msi /quite"
+  executar "wine msiexec /i DIEF2021.msi /quite /qn"
   sleep 1
 
-  cd $user_path/.wine/drive_c/DIEF2020.1.1/
-
+  # Download da JRE versão windows
+  cd $user_path/.wine/drive_c/DIEF2021.1.0/
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
   unzip jre.zip
-
   mv jdk8u252-b09-jre jre
-
   rm -rf jre.zip
 
   cd "$desktop_path/"
+  mv DIEF2021.desktop "$desktop_path/Validadores"
   rm -rf DIEF20*.*
-
-  cd "$desktop_path/Validadores"
-  rm -rf DIEF20*.*
-  
-  cp -rf $user_path/.local/share/applications/wine/DIEF2020.1.1.desktop "$desktop_path/Validadores"
-  rm -rf $user_path/.local/share/applications/wine/Programs/DIEF2020.1.1
-  
-
-  user_install "DIEF%20PA%20v2020.1.1"
 
   endInstall
 fi 
