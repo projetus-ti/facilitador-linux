@@ -8,7 +8,6 @@ source /opt/projetus/facilitador/funcoes.sh
 acao=$1
 
 if [ "$acao" = "DMA BA" ]; then
-  #configurarWine
   cd "$desktop_path"
   rm -Rf DMA*
   cd /opt/projetus/facilitador
@@ -53,28 +52,6 @@ if [ "$acao" = "EFD Contribuições" ]; then
   endInstall
 fi
 
-if [ "$acao" = "GIA SP" ]; then
-  #configurarWine
-  #executar "env WINEARCH=wine WINEPREFIX=$HOME/.wine winetricks mdac28 dotnet20 dotnet40"
-  #rm -Rf "$desktop_path/Validadores/GIA-SP.appref-ms"
-  #download "https://portal.fazenda.sp.gov.br/servicos/gia/Downloads/setup1.zip" "$cache_path/setup.zip"
-  #unzip $cache_path/setup.zip -d $cache_path
-  #nohup env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/setup.exe /silent  > /dev/null 2>&1 &
-
-  #while [ ! -f "$desktop_path/GIA.appref-ms" ]; do
-  #  sleep 2
-  #done
-
-  #mv "$desktop_path/GIA.appref-ms" "$desktop_path/Validadores/GIA-SP.appref-ms"
-  #user_install "GIA%20SP"
-
-  #endInstall
-
-  programaOff
-
-
-fi
-
 if [ "$acao" = "GIAM TO" ]; then
   configurarWine
   cd "$desktop_path"
@@ -97,8 +74,6 @@ if [ "$acao" = "SPED ICMS IPI" ]; then
   else
     executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
   fi
-  
-  #executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
   sleep 1
   cd "$desktop_path"
   rm -Rf EFD*

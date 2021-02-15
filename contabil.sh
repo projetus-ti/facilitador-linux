@@ -60,11 +60,8 @@ if [ "$acao" = "Receita Net BX" ]; then
   cd $cache_path
   sudo ./bx.bin
 
-  #ajustar atalho
-  #sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
   user_install "$acao%20ReceitaNet"
 
-  #endInstall
 fi
 
 if [ "$acao" = "Arquivo Remessa CX" ]; then
@@ -79,9 +76,6 @@ if [ "$acao" = "Arquivo Remessa CX" ]; then
 
   # Extraindo o arquivo executavel
   unzip remessa.zip  
-
-  # Executando com as configurações 32bits do wine
-  # executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/ValidadorCnab_v2.2.2.exe"
 
   echo $'#!/bin/bash 
         set echo off
