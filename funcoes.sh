@@ -92,31 +92,3 @@ configurarWine() {
   clear
 }
 
-configWine() {
-  clear
-  echo 'Configurando o Wine...'
-  if [ ! -f ~/.$prefix/user.reg ]; then
-    nohup wineboot >/dev/null 2>&1
-    while [[ ! -f ~/.$prefix/user.reg ]]; do
-      sleep 1
-    done
-  fi
-
-  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.$prefix/user.reg
-  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.$prefix/drive_c/windows/win.ini
-  clear
-}
-
-user_install() {
-  nome=$(hostname -s)
-  prog=$1
-    curl --request POST \
-    --url 'http://152.67.40.57/r2d2/installPrograma?nome='$nome'&programa='$prog'' 
-}
-programaOff() {
-    zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Instalação Finalizada!" \
-         --text 'Esse programa não pode ser instalado no momento.' \
-         --height="50" --width="450"
-         
-    exec $app_path/facilitador.sh
-}

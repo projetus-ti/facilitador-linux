@@ -15,7 +15,6 @@ if [ "$acao" = "ZRam" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
 
   showMessage "Otimização ativada com sucesso!\nReinicie sua máquina assim que possível."
   
@@ -47,7 +46,6 @@ if [ "$acao" = "MySuite" ]; then
   download "https://cdn.projetusti.com.br/suporte/mysuite.msi" "$cache_path/mysuite.msi"
   nohup wine msiexec /i $cache_path/mysuite.msi /quiet > /dev/null 2>&1 &
   rm -Rf "$desktop_path/BraZip Central.lnk"
-  user_install $acao
 
   showMessage "O MySuite foi instalado com sucesso!\nO atalho encontra-se em sua Área de Trabalho."
   exec $app_path/facilitador.sh
@@ -64,7 +62,6 @@ if [ "$acao" = "Discord" ]; then
 
     chmod +x $cache_path/exec.sh
     executar "pkexec $cache_path/exec.sh"
-    user_install "$acao%20v0.0.10"
 
     showMessage "Discord instalado com êxito!\nO atalho encontra-se no menu do sistema."
     exec $app_path/facilitador.sh
@@ -82,7 +79,6 @@ if [ "$acao" = "TeamViewer" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
 
   showMessage "TeamViewer instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -97,7 +93,6 @@ if [ "$acao" = "Skype" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
   
   showMessage "Skype instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -112,7 +107,6 @@ if [ "$acao" = "DBeaver" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install $acao
   
   showMessage "DBeaver instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -153,7 +147,6 @@ if [ "$acao" = "iSGS App" ]; then
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
-  user_install "iSGS%20App"
   
   showMessage "iSGS App instalado com êxito!\nO atalho encontra-se no menu do sistema."
   exec $app_path/facilitador.sh
@@ -174,7 +167,6 @@ if [ "$acao" = "IRPF" ]; then
   executar "pkexec $cache_path/exec.sh"
   executar "java -jar $cache_path/IRPF.jar"
   cp /opt/projetus/facilitador/atalhos/IRPF.desktop "$desktop_path/Validadores"
-  user_install "$acao%20202%20v1.0"
 
   endInstall
 fi
@@ -188,7 +180,7 @@ if [ "$acao" = "Linphone" ]; then
       apt-get autoremove'>$cache_path/exec.sh
     chmod +x $cache_path/exec.sh
     executar "pkexec $cache_path/exec.sh"
-    user_install $acao
+
   fi
 
   if ! [ -x "$(command -v flatpak)" ]; then
@@ -201,7 +193,7 @@ if [ "$acao" = "Linphone" ]; then
   executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref -y"
   
   showMessage "Linphone instalado com êxito!\nO atalho encontra-se no menu do sistema."
-  user_install $acao
+
   exec $app_path/facilitador.sh 
 fi
  

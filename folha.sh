@@ -33,7 +33,7 @@ if [ "$acao" = "ACI" ]; then
 
   mv "$aci_path" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/jws_app_shortcut*
-  user_install $acao
+
 
   endInstall
 fi
@@ -57,7 +57,7 @@ if [ "$acao" = "DIRF" ]; then
   executar "pkexec $cache_path/exec.sh"
 
   cp /opt/projetus/facilitador/atalhos/DIRF.desktop "$desktop_path/Validadores"
-  user_install "$acao%202020%20v1.2"
+
 
   endInstall
 fi
@@ -75,7 +75,7 @@ if [ "$acao" = "GDRAIS" ]; then
 
   #ajustar atalho
   sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
-  user_install "$acao%202019%20v1.4.0"
+
 
   endInstall
 fi
@@ -86,7 +86,7 @@ if [ "$acao" = "GRRF" ]; then
   executar "wine $cache_path/GRRF.exe /silent"
   mv ~/.local/share/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/GRRF*
-  user_install $acao
+
 
   endInstall
 fi
@@ -100,7 +100,6 @@ if [ "$acao" = "SEFIP" ]; then
   executar "wine $cache_path/SetupSefipV8.4.exe /silent"
   mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/SEFIP
-  user_install "$acao%20v8.40"
 
   endInstall
 fi
@@ -114,7 +113,6 @@ if [ "$acao" = "SVA" ]; then
   sleep 1
   mv ~/.local/share/applications/wine/Programs/Programas\ RFB/SVA\ 3.3.0/SVA\ 3.3.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/SVA*
-  user_install "$acao%20v3.3.0"
 
   endInstall
 fi

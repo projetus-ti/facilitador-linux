@@ -17,7 +17,6 @@ if [ "$acao" = "SPED ECD" ]; then
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp $app_path/atalhos/sped-ecd.desktop "$desktop_path/Validadores"
-  user_install "SPED_ECD%207.0.8"
 
   endInstall
 fi
@@ -32,7 +31,6 @@ if [ "$acao" = "SPED ECF" ]; then
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp $app_path/atalhos/sped-ecf.desktop "$desktop_path/Validadores"
-  user_install "SPED%20ECF%20v6.0.9"
   
   endInstall
 fi
@@ -60,8 +58,7 @@ if [ "$acao" = "Receita Net BX" ]; then
   cd $cache_path
   sudo ./bx.bin
 
-  user_install "$acao%20ReceitaNet"
-
+  endInstall
 fi
 
 if [ "$acao" = "Arquivo Remessa CX" ]; then

@@ -16,7 +16,6 @@ if [ "$acao" = "DMA BA" ]; then
   sleep 1
   mv "$desktop_path/DMA_2012.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/Sefaz-BA*
-  user_install "DMA%20BA%202012"
 
   endInstall
 fi
@@ -32,7 +31,6 @@ if [ "$acao" = "DCTF" ]; then
   cd "$desktop_path"
   rm -Rf DCTF*
   rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/
-  user_install "$acao%203.5c"
 
   endInstall
 fi
@@ -47,7 +45,6 @@ if [ "$acao" = "EFD Contribuições" ]; then
   rm -Rf ~/.local/share/applications/EFD*
   rm -Rf ~/.local/share/applications/Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-contribuicoes.desktop "$desktop_path/Validadores"
-  user_install "EFD%20Contribuições%20v4.1.0"
 
   endInstall
 fi
@@ -62,7 +59,6 @@ if [ "$acao" = "GIAM TO" ]; then
   sleep 3
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/GIAM*
-  user_install "GIAM%20TO%2010.0_28.01.2020%20v1"
 
   endInstall
 fi
@@ -79,7 +75,6 @@ if [ "$acao" = "SPED ICMS IPI" ]; then
   rm -Rf EFD*
   rm -Rf Desinstalar*
   cp /opt/projetus/facilitador/atalhos/efd-icms-ipi.desktop "$desktop_path/Validadores"
-  user_install "SPED%20ICMS%20IPI%20v2.6.9"
 
   endInstall
 fi
@@ -97,7 +92,6 @@ if [ "$acao" = "SEF 2012 PE" ]; then
   rm -Rf ~/.local/share/applications/wine/Programs/SEFAZ-PE
   cd "$desktop_path"
   rm -Rf SEF2012*
-  user_install "SEF%202012%20PE%20v1.6.5.00"
 
   endInstall
 fi
@@ -114,7 +108,6 @@ if [ "$acao" = "SEFAZNET PE" ]; then
   cd "$desktop_path"
   rm -Rf SEFAZNET*
   chmod 777 -R "$desktop_path/Validadores"
-  user_install "SEFAZNET%20PE%20v1.24.0.3"
 
   endInstall
 fi
@@ -131,9 +124,6 @@ if [ "$acao" = "DIEF CE" ] ; then
   # Movendo e limpando os arquivos de instalação.
   mv ~/.local/share/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores/DIEF-CE.desktop"
   rm -Rf  ~/.local/share/applications/wine/Programs/SEFAZ-CE
-
-  #Registrando os dados de quem instalou.
-  user_install "DIEF%20CE%20v1"
 
   #Terminando instalação e notificando o usuário.
   endInstall
@@ -166,7 +156,6 @@ if [ "$acao" = "DAPI MG" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
   rm -rf ~/.local/share/applications/wine/Programs/Secretaria*
-  user_install "DAPI%20MG%v9.30.00"
 
   endInstall
 fi
@@ -178,7 +167,6 @@ if [ "$acao" = "SINTEGRA" ]; then
   sleep 1
   mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Validador*
-  user_install "$acao%202017"
 
   endInstall
 fi
@@ -194,7 +182,6 @@ if [ "$acao" = "DAC AL" ]; then
   rm -rf "$desktop_path/DAC.lnk"
   rm -rf "$desktop_path/DAC.desktop"
   rm -Rf ~/.local/share/applications/wine/Programs/Sefaz-AL*
-  user_install "DAC%20AL%20v221011"
 
   endInstall
 fi
@@ -209,7 +196,6 @@ if [ "$acao" = "DIEF CE" ] ; then # Precisa de banco de dados firebird.
   cp ~/.local/share/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores"
   rm -rf  ~/.local/share/applications/wine/Programs/SEFAZ-CE*
   rm -rf "$desktop_path/DIEF.desktop"
-  user_install "DIEF%20CE"
 
   endInstall
 fi 
@@ -226,7 +212,6 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   sleep 3
   cp ~/.local/share/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
   rm -rf  ~/.local/share/applications/wine/Programs/Validador*
-  user_install "Livro%20Eletronico%20GDF"
 
   endInstall
 fi 
@@ -245,7 +230,6 @@ if [ "$acao" = "DIEF MA" ] ; then
   cp -r "$HOME/.mdac28/drive_c/Documents and Settings/All Users/Dief64" "$HOME/.mdac28/drive_c/ProgramData/"
   rm -rf  ~/.local/share/applications/wine/Programs/Programas*
   rm -rf  "$desktop_path/DIEF64.desktop"
-  user_install "DIEF%20MA"
 
   endInstall
 fi 
@@ -263,7 +247,6 @@ if [ "$acao" = "DES-PBH-ISS" ]; then # Ainda não consegui completar
 
   mv "$des_path" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/jws_app_shortcut*
-  user_install "DES%20PBH%20ISS"
 
   endInstall
 fi
@@ -289,7 +272,6 @@ if [ "$acao" = "GIA MT" ]; then
   sleep 1
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/atualizacao/SETUP.exe /silent"
   sleep 1
-  user_install "GIA%20MT%v3.07_20120613"
 
   endInstall
 fi
@@ -309,7 +291,6 @@ if [ "$acao" = "GIA RS" ] ; then
   rm -rf  "~/.local/share/applications/wine/Programs/GIA 9"
   mv -f "$desktop_path/GIA 9.desktop" "$desktop_path/Validadores"
   rm -rf  "$desktop_path/GIA 9.lnk"
-  user_install "GIA%20RS%20atualizada"
 
   endInstall
 fi 
@@ -354,9 +335,7 @@ if [ "$acao" = "GIM ICMS PB" ] ; then
   mv -f "$desktop_path/Gim SRE-PB.desktop" "$desktop_path/Validadores"
   rm -rf  ~/.local/share/applications/wine/Programs/SRE-PB
   rm -rf  "$desktop_path/Gim SRE-PB.lnk"
-  user_install "GIM%20ICMS%20PB%20v2473"
-  
-    
+
   endInstall
 fi 
 
@@ -378,7 +357,6 @@ if [ "$acao" = "SEDIF-SN" ] ; then
   # Copiando o atalho para a pasta de Validadores
   cp ~/.local/share/applications/wine/Programs/SimplesNacional/SEDIF.desktop "$desktop_path/Validadores"
   
-  user_install "SEDIF%201.0.6"
 
   endInstall
 fi 
@@ -403,7 +381,5 @@ if [ "$acao" = "DMED" ] ; then
   # Copiando o atalho para a pasta de Validadores
   mv -f "$desktop_path/Dmed2021.desktop" "$desktop_path/Validadores"
   
-  user_install "Dmed2021"
-
   endInstall
 fi 
