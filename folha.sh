@@ -43,15 +43,14 @@ if [ "$acao" = "DIRF" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf Dirf*
   cd $app_path
-  download "https://downloadirpf.receita.fazenda.gov.br/irpf/2021/irpf/arquivos/IRPF2021Linux-x86_64v1.0.bin" "$cache_path/Dirf.bin"
-  
-  chmod +x $cache_path/Dirf.bin
-  executar "$cache_path/Dirf.bin" 
+  download "http://www.receita.fazenda.gov.br/publico/programas/Dirf/2021/Dirf2021Linux-x86_64v1.0.sh" "$cache_path/Dirf.sh"
+
+  chmod +x $cache_path/Dirf.sh
 
   echo $'#!/bin/bash 
     '$cache_path'/Dirf.sh --mode silent 
-    rm -Rf /usr/share/applications/IRPF2021-desktop.desktop
-    rm -Rf /usr/share/applications/IRPF2021*'>$cache_path/exec.sh
+    rm -Rf /usr/share/applications/Dirf*-program.desktop
+    rm -Rf /usr/share/applications/Dirf*'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"

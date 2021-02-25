@@ -96,7 +96,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     --height="260" --width="350"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "ACI" "Validador do CAGED"\
-    FALSE "DIRF" "Versão 2021-02-2021"\
+    FALSE "DIRF" "Versão 2021-1.0"\
     FALSE "GDRAIS" "Versão 2019-1.4.0"\
     FALSE "GRRF" "Versão ICP-20200128" \
     FALSE "SEFIP" "Versão 8.40-24-12-2020" \
@@ -128,7 +128,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.13"\
     FALSE "iSGS App" "Versão 1.0.1"\
-    FALSE "IRPF" "Versão 2020 v"\
+    FALSE "IRPF" "Versão 2021 v"\
     FALSE "MySuite" "Sistema de Atendimento" \
     FALSE "TeamViewer" "Versão 13" \
     FALSE "Skype" "Última Versão" \

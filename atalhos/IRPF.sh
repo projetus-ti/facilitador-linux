@@ -2,7 +2,7 @@
 
 set echo off
 
-cd ~/ProgramasRFB/IRPF2020/
+cd ~/ProgramasRFB/IRPF2021/
 
 if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
     java -jar irpf.jar
