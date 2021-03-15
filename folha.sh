@@ -57,26 +57,49 @@ if [ "$acao" = "DIRF" ]; then
 
   cp /opt/projetus/facilitador/atalhos/DIRF.desktop "$desktop_path/Validadores"
 
-
   endInstall
 fi
 
 if [ "$acao" = "GDRAIS" ]; then
-  cd "$desktop_path/Validadores"
-  rm -Rf GDRais*
-  rm -Rf ~/GDRais*
-  cd $app_path
-  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.0-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
-  chmod +x $cache_path/GDRAIS.bin
-  executar "$cache_path/GDRAIS.bin" 
-  mv ~/.local/share/applications/GDRais* "$desktop_path/Validadores/GDRais.desktop"
-  rm -Rf ~/.local/share/applications/Desinstalar*
+  mkdir $user_path/GDRAIS/
+  
+  cd $cache_path
+  download "http://cdn.projetusti.com.br/infra/facilitador/GDRAIS2020/GDRais2020.zip" "GDRAIS2020.zip"
+  
+
+  cp $app_path/GDRAIS2020.zip $cache_path
+
+  cd $cache_path
+  sleep 1
+  mv GDRAIS2020.zip $user_path/GDRAIS/
+  rm -rf GDRAIS2020.zip
+
+  cd $user_path/GDRAIS
+  unzip GDRAIS2020.zip
+
+  cp $app_path/atalhos/GDRAIS.sh $user_path/GDRAIS/GDRais2020/
+
+  chmod +x $user_path/GDRAIS/GDRais2020/GDRAIS.sh
+  
+  cp /opt/projetus/facilitador/atalhos/GDRAIS.desktop "$desktop_path/Validadores/GDRAIS.desktop"
+  chmod +x "$desktop_path/Validadores/GDRAIS.desktop"
+  chmod +x  $app_path/atalhos/GDRAIS.sh
+  # Instalação ok.
+
+  #cd "$desktop_path/Validadores"
+  #rm -Rf GDRais*
+  #rm -Rf ~/GDRais*
+  #cd $app_path
+  #download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.0-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
+  #chmod +x $cache_path/GDRAIS.bin
+ # executar "$cache_path/GDRAIS.bin" 
+ # mv ~/.local/share/applications/GDRais* "$desktop_path/Validadores/GDRais.desktop"
+  #rm -Rf ~/.local/share/applications/Desinstalar*
 
   #ajustar atalho
-  sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
+  #sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
 
-
-  endInstall
+  #endInstall
 fi
 
 if [ "$acao" = "GRRF" ]; then

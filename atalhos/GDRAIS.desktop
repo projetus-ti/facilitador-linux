@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec="/opt/projetus/facilitador/atalhos/GDRAIS.sh"
+Terminal=false
+Type=Application
+Icon=/opt/projetus/facilitador/atalhos/GDRAIS.ico
+Name[pt_BR]=GDRAIS
