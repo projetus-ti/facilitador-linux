@@ -64,6 +64,7 @@ if [ "$acao" = "GDRAIS" ]; then
   mkdir $user_path/GDRAIS/
   
   cd $cache_path
+  
   # Para atualizar o programa, basta baixar ele no windows extraír e zipar a pasta e mandar pro servidor.
   download "http://cdn.projetusti.com.br/infra/facilitador/GDRAIS2020/GDRais2020.zip" "GDRAIS2020.zip"
   
