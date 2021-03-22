@@ -67,7 +67,8 @@ if [ "$acao" = "GDRAIS" ]; then
   cd $app_path
   download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.1-Linux-x86-Install.bin" "GDRAIS.bin"
 
-  sudo mv GDRAIS.bin cache/GDRAIS.bin
+  sleep 2
+  mv GDRAIS.bin cache/GDRAIS.bin
   chmod +x $cache_path/GDRAIS.bin
   executar "$cache_path/GDRAIS.bin" 
 
