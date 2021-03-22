@@ -64,6 +64,7 @@ if [ "$acao" = "GDRAIS" ]; then
   mkdir $user_path/GDRAIS/
   
   cd $cache_path
+  # Para atualizar o programa, basta baixar ele no windows extraír e zipar a pasta e mandar pro servidor.
   download "http://cdn.projetusti.com.br/infra/facilitador/GDRAIS2020/GDRais2020.zip" "GDRAIS2020.zip"
   
 
@@ -86,20 +87,7 @@ if [ "$acao" = "GDRAIS" ]; then
   chmod +x  $app_path/atalhos/GDRAIS.sh
   # Instalação ok.
 
-  #cd "$desktop_path/Validadores"
-  #rm -Rf GDRais*
-  #rm -Rf ~/GDRais*
-  #cd $app_path
-  #download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.0-Linux-x86-Install.bin" "$cache_path/GDRAIS.bin"
-  #chmod +x $cache_path/GDRAIS.bin
- # executar "$cache_path/GDRAIS.bin" 
- # mv ~/.local/share/applications/GDRais* "$desktop_path/Validadores/GDRais.desktop"
-  #rm -Rf ~/.local/share/applications/Desinstalar*
-
-  #ajustar atalho
-  #sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
-
-  #endInstall
+  
 fi
 
 if [ "$acao" = "GRRF" ]; then
