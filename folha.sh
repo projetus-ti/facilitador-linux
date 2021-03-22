@@ -61,34 +61,37 @@ if [ "$acao" = "DIRF" ]; then
 fi
 
 if [ "$acao" = "GDRAIS" ]; then
-  mkdir $user_path/GDRAIS/
-  
-  cd $cache_path
-  
-  # Para atualizar o programa, basta baixar ele no windows extraír e zipar a pasta e mandar pro servidor.
-  download "http://cdn.projetusti.com.br/infra/facilitador/GDRAIS2020/GDRais2020.zip" "GDRAIS2020.zip"
-  
+  cd "$desktop_path/Validadores"
+  rm -Rf GDRais*
+  rm -Rf ~/GDRais*
+  cd $app_path
+  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.1-Linux-x86-Install.bin" "GDRAIS.bin"
 
-  cp $app_path/GDRAIS2020.zip $cache_path
+  sudo mv GDRAIS.bin cache/GDRAIS.bin
+  chmod +x $cache_path/GDRAIS.bin
+  executar "$cache_path/GDRAIS.bin" 
 
-  cd $cache_path
-  sleep 1
-  mv GDRAIS2020.zip $user_path/GDRAIS/
-  rm -rf GDRAIS2020.zip
+  cd $app_path/atalhos
 
-  cd $user_path/GDRAIS
-  unzip GDRAIS2020.zip
+  echo $'[Desktop Entry]
+        Exec='$user_path'/GDRais2020/gdrais.sh
+        Terminal=false
+        Type=Application
+        Icon='$user_path'/GDRais2020/gdrais.ico
+        Name[pt_BR]=GDRAIS
+        '>GDRais2020.desktop
 
-  cp $app_path/atalhos/GDRAIS.sh $user_path/GDRAIS/GDRais2020/
 
-  chmod +x $user_path/GDRAIS/GDRais2020/GDRAIS.sh
-  
-  cp /opt/projetus/facilitador/atalhos/GDRAIS.desktop "$desktop_path/Validadores/GDRAIS.desktop"
-  chmod +x "$desktop_path/Validadores/GDRAIS.desktop"
-  chmod +x  $app_path/atalhos/GDRAIS.sh
-  # Instalação ok.
+  cp $app_path/atalhos/GDRais2020* "$desktop_path/Validadores"
+  cp "$desktop_path/Validadores/GDRais2020.desktop"  ~/.local/share/applications/
+  chmod +x "$desktop_path/Validadores/GDRais2020.desktop"
+  rm -Rf ~/.local/share/applications/Desinstalar*
 
-  
+  # ajustar atalho
+  sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
+
+  endInstall
+    
 fi
 
 if [ "$acao" = "GRRF" ]; then
