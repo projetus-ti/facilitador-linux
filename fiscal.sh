@@ -36,7 +36,8 @@ if [ "$acao" = "DCTF" ]; then
 fi
 
 if [ "$acao" = "EFD Contribuições" ]; then
-  download "http://www.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-4.1.1.jar" "$cache_path/EFDContribuicoes.jar"
+            
+  download "https://www.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.0.0.jar" "$cache_path/EFDContribuicoes.jar"
   executar "java -jar $cache_path/EFDContribuicoes.jar"
   sleep 1
   cd "$desktop_path"
