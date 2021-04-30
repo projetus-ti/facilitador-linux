@@ -97,7 +97,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "ACI" "Validador do CAGED"\
     FALSE "DIRF" "Versão 2021-1.0"\
-    FALSE "GDRAIS" "Versão 2020.1.1.0"\
+    FALSE "GDRAIS" "Versão 2020.1.2"\
     FALSE "GRRF" "Versão ICP-20200128" \
     FALSE "SEFIP" "Versão 8.40-24-12-2020" \
     FALSE "SVA" "Versão 3.3.0");

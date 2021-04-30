@@ -65,7 +65,7 @@ if [ "$acao" = "GDRAIS" ]; then
   rm -Rf GDRais*
   rm -Rf ~/GDRais*
   cd $app_path
-  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.1-Linux-x86-Install.bin" "GDRAIS.bin"
+  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.2-Linux-x86-Install.bin" "GDRAIS.bin"
 
   sleep 2
   mv GDRAIS.bin cache/GDRAIS.bin
