@@ -115,7 +115,7 @@ fi
 if [ "$acao" = "Calima App" ]; then
   URL_CALIMA_APP=$(curl -L -X GET \
   -H'Content-Type: application/json' \
-  'https://cloud-api.controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
+  'https://cloud-api-controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
  | python3 -c "import sys, json; print(json.load(sys.stdin)['informacaoComplementar'].split(';')[0])")
 
   download "$URL_CALIMA_APP" "$cache_path/calima.deb"

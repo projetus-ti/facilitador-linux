@@ -112,7 +112,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
 
   VERSAO_CALIMA_APP=$(curl -L -X GET \
   -H'Content-Type: application/json' \
-  'https://cloud-api.controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
+  'https://cloud-api-controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
  | python3 -c "import sys, json; print(json.load(sys.stdin)['versao'])")
 
   acao=$(zenity  --list  --text "Selecione o programa desejado:" \
