@@ -8,7 +8,7 @@ source /opt/projetus/facilitador/funcoes.sh
 acao=$1
 
 if [ "$acao" = "SPED ECD" ]; then
-  download "https://www.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SPEDContabil_linux_x64-8.0.6.jar" "$cache_path/SPEDContabil.jar"
+  download "https://www.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SPEDContabil_linux_x64-8.0.7.jar" "$cache_path/SPEDContabil.jar"
   executar "java -jar $cache_path/SPEDContabil.jar"
   sleep 2
   cd "$desktop_path"
