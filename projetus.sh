@@ -23,7 +23,7 @@ fi
 
 
 if [ "$acao" = "Calima Server" ]; then
-  download "https://download.projetusti.com.br/calima/linux/calima-server_3.6.0.deb" "$cache_path/calima-server.deb"
+  download "https://download.projetusti.com.br/calima/linux/calima-server-linux_3.7.0.deb" "$cache_path/calima-server.deb"
 
   user_path=$(xdg-user-dir USER)
   nome=$(echo $USER)
