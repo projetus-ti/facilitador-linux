@@ -109,10 +109,9 @@ fi
 if [ "$acao" = "SEFIP" ]; then
   configurarWine
   cd $cache_path
-  download "https://www.caixa.gov.br/Downloads/fgts-sefip-grf/Instalador_Sefip_V8_40_24_12_2020.zip" "$cache_path/sefip.zip"
+  download "https://www.caixa.gov.br/Downloads/fgts-sefip-grf/SetupSefipV8_4.exe" "$cache_path/sefip.exe"
   cd $cache_path
-  unzip sefip.zip
-  executar "wine $cache_path/SetupSefipV8.4.exe /silent"
+  executar "wine $cache_path/sefip.exe /silent"
   mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/SEFIP
 
