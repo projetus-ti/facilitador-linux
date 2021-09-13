@@ -24,7 +24,7 @@ if [ "$acao" = "DCTF" ]; then
   configurarWine
   cd "$desktop_path/Validador"
   rm -Rf DCTF*
-  download "http://receita.economia.gov.br/orientacao/tributaria/declaracoes-e-demonstrativos/dctf-declaracao-de-debitos-e-creditos-tributarios-federais/programa-gerador-da-declaracao-pgd/dctfmensalv3_5c.exe" "$cache_path/dctf.exe"
+  download "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/declaracoes-e-demonstrativos/dctf/programa-gerador-da-declaracao-pgd/dctfmensalv3_5c.exe" "$cache_path/dctf.exe"
   executar "wine $cache_path/dctf.exe /silent"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.5/DCTF\ Mensal\ 3.5.desktop "$desktop_path/Validadores"
