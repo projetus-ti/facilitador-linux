@@ -6,7 +6,7 @@
 
 source /opt/projetus/facilitador/funcoes.sh
 
-# Criacao de diretorios
+# Criacao de diretorios..
 nohup mkdir "$desktop_path/Validadores" >/dev/null 2>&1
 
 # Menu
@@ -38,7 +38,7 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --title "Facilitador Linux - Contábil" \
     --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
-    TRUE "SPED ECD" "Versão 8.0.9" \
+    TRUE "SPED ECD" "Versão 9.0.0" \
     FALSE "SPED ECF" "Versão 7.0.14" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
@@ -78,7 +78,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 2.8.0");  
+    FALSE "SPED ICMS IPI" "Versão 2.8.1");  
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
