@@ -43,7 +43,7 @@ if [ "$acao" = "DIRF" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf Dirf*
   cd $app_path
-  download "http://www.receita.fazenda.gov.br/publico/programas/Dirf/2021/Dirf2021Linux-x86_64v1.0.sh" "$cache_path/Dirf.sh"
+  download "https://www.receita.fazenda.gov.br/publico/programas/Dirf/2022/Dirf2022Linux-x86_64v1.0.sh" "$cache_path/Dirf.sh"
 
   chmod +x $cache_path/Dirf.sh
 
