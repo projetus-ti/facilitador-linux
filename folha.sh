@@ -48,6 +48,7 @@ if [ "$acao" = "DIRF" ]; then
   chmod +x $cache_path/Dirf.sh
 
   echo $'#!/bin/bash 
+    chmod +x '$cache_path'/Dirf.sh
     '$cache_path'/Dirf.sh --mode silent 
     rm -Rf /usr/share/applications/Dirf*-program.desktop
     rm -Rf /usr/share/applications/Dirf*'>$cache_path/exec.sh
