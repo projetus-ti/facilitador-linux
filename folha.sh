@@ -52,6 +52,7 @@ if [ "$acao" = "DIRF" ]; then
     '$cache_path'/Dirf.sh --mode silent 
     chmod 777 /usr/share/applications/Dirf2022-program.desktop 
     cp /usr/share/applications/Dirf2022-program.desktop '"'$desktop_path/Validadores'"'
+    chmod 777 '"'$desktop_path/Validadores/Dirf2022-program.desktop'"'
     rm -Rf /usr/share/applications/Dirf*
     '>$cache_path/exec.sh
 
