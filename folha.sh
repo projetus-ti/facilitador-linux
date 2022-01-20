@@ -53,11 +53,12 @@ if [ "$acao" = "DIRF" ]; then
     chmod 777 /usr/share/applications/Dirf2022-program.desktop 
     cp /usr/share/applications/Dirf2022-program.desktop '"'$desktop_path/Validadores'"'
     '>$cache_path/exec.sh
+
   #rm -Rf /usr/share/applications/Dirf*
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
 
-  cp /opt/projetus/facilitador/atalhos/Dirf*-program.desktop  "$desktop_path/Validadores"
+  # cp /opt/projetus/facilitador/atalhos/Dirf*-program.desktop  "$desktop_path/Validadores"
 
   endInstall
 fi
