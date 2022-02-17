@@ -78,7 +78,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 2.8.1");  
+    FALSE "SPED ICMS IPI" "Versão 2.8.2");  
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
