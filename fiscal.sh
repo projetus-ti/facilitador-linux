@@ -397,7 +397,7 @@ if [ "$acao" = "DMED" ] ; then
 
   echo $'#!/bin/bash 
     chmod +x '$cache_path'/Dmed.sh
-    '$cache_path'/Dirf.sh --mode silent 
+    '$cache_path'/Dmed.sh --mode silent 
     chmod 777 /usr/share/applications/Dmed2022.desktop 
     cp /usr/share/applications/Dmed2022.desktop '"'$desktop_path/Validadores'"'
     chmod 777 '"'$desktop_path/Validadores/Dmed2022.desktop'"'
