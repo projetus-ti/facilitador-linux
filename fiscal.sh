@@ -367,23 +367,46 @@ fi
 
 if [ "$acao" = "DMED" ] ; then 
 
-  configurarWine
+ # configurarWine
 
   # Baixando
-  download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Win32v1.0.exe"   "$cache_path/Dmed.exe"
-  cd "$cache_path"
+  #download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Win32v1.0.exe"   "$cache_path/Dmed.exe"
+  #cd "$cache_path"
   
-  sleep 3
+  #sleep 3
 
   # Execuntando o executavel para instalação 
-  executar "wine $cache_path/Dmed.exe /mode silent"
+  #executar "wine $cache_path/Dmed.exe /mode silent"
 
 
   # Tempo para serem criados os atalshos antes de copialos
-  sleep 1
+  #sleep 1
 
   # Copiando o atalho para a pasta de Validadores
-  mv -f "$desktop_path/Dmed2021.desktop" "$desktop_path/Validadores"
+  #mv -f "$desktop_path/Dmed2021.desktop" "$desktop_path/Validadores"
   
+  #endInstall
+
+  clear
+  cd "$desktop_path/Validadores"
+  rm -Rf Dmed*
+  cd $app_path
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2022/Dmed2022Linux-x86_64v1.0.sh" "$cache_path/Dmed.sh"
+
+  chmod +x $cache_path/Dmed.sh
+
+  echo $'#!/bin/bash 
+    chmod +x '$cache_path'/Dmed.sh
+    '$cache_path'/Dirf.sh --mode silent 
+    chmod 777 /usr/share/applications/Dmed2022.desktop 
+    cp /usr/share/applications/Dmed2022.desktop '"'$desktop_path/Validadores'"'
+    chmod 777 '"'$desktop_path/Validadores/Dmed2022.desktop'"'
+    rm -Rf /usr/share/applications/Dmed*
+    '>$cache_path/exec.sh
+
+  chmod +x $cache_path/exec.sh
+  executar "pkexec $cache_path/exec.sh"
+
   endInstall
 fi 
+
