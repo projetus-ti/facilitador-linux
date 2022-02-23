@@ -389,7 +389,7 @@ if [ "$acao" = "DMED" ] ; then
 
   clear
   cd "$desktop_path/Validadores"
-  rm -Rf Dmed*
+  #rm -Rf Dmed*
   cd $app_path
   download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2022/Dmed2022Linux-x86_64v1.0.sh" "$cache_path/Dmed.sh"
 
@@ -401,7 +401,7 @@ if [ "$acao" = "DMED" ] ; then
     chmod 777 /usr/share/applications/Dmed2022.desktop 
     cp /usr/share/applications/Dmed2022.desktop '"'$desktop_path/Validadores'"'
     chmod 777 '"'$desktop_path/Validadores/Dmed2022.desktop'"'
-    rm -Rf /usr/share/applications/Dmed*
+    #rm -Rf /usr/share/applications/Dmed*
     '>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
