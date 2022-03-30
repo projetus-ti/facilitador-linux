@@ -66,8 +66,9 @@ if [ "$acao" = "GDRAIS" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf GDRais*
   rm -Rf ~/GDRais*
-  cd $app_path
-  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2020-1.2-Linux-x86-Install.bin" "GDRAIS.bin"
+  cd $app_path/cache
+  # wget -c "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2021-1.0-Linux-x86-Install.bin" --no-check-certificate -O "GDRAIS.bin"
+  download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2021-1.0-Linux-x86-Install.bin" "GDRAIS.bin"
 
   sleep 2
   mv GDRAIS.bin cache/GDRAIS.bin
@@ -85,15 +86,15 @@ if [ "$acao" = "GDRAIS" ]; then
         '>GDRais2020.desktop
 
 
-  cp $app_path/atalhos/GDRais2020* "$desktop_path/Validadores"
+ #  cp $app_path/atalhos/GDRais2020* "$desktop_path/Validadores"
   cp "$desktop_path/Validadores/GDRais2020.desktop"  ~/.local/share/applications/
   chmod +x "$desktop_path/Validadores/GDRais2020.desktop"
-  rm -Rf ~/.local/share/applications/Desinstalar*
+  #rm -Rf ~/.local/share/applications/Desinstalar*
 
   # ajustar atalho
   sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
 
-  endInstall
+  # endInstall
     
 fi
 
