@@ -78,23 +78,23 @@ if [ "$acao" = "GDRAIS" ]; then
   cd $app_path/atalhos
 
   echo $'[Desktop Entry]
-        Exec='$user_path'/GDRais2020/gdrais.sh
+        Exec='$user_path'/GDRais2021/gdrais.sh
         Terminal=false
         Type=Application
-        Icon='$user_path'/GDRais2020/gdrais.ico
+        Icon='$user_path'/GDRais2021/gdrais.ico
         Name[pt_BR]=GDRAIS
-        '>GDRais2020.desktop
+        '>GDRais2021.desktop
 
 
- #  cp $app_path/atalhos/GDRais2020* "$desktop_path/Validadores"
-  cp "$desktop_path/Validadores/GDRais2020.desktop"  ~/.local/share/applications/
-  chmod +x "$desktop_path/Validadores/GDRais2020.desktop"
-  #rm -Rf ~/.local/share/applications/Desinstalar*
+  cp $app_path/atalhos/GDRais2021* "$desktop_path/Validadores"
+  cp "$desktop_path/Validadores/GDRais2021.desktop"  ~/.local/share/applications/
+  chmod +x "$desktop_path/Validadores/GDRais2021.desktop"
+  rm -Rf ~/.local/share/applications/Desinstalar*
 
   # ajustar atalho
   sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
 
-  # endInstall
+  endInstall
     
 fi
 
