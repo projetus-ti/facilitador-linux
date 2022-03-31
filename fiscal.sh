@@ -319,7 +319,7 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   rm -rf jre.zip
 
   cd "$desktop_path/"
-  mv DIEF2022*.desktop "$desktop_path/Validadores"
+  mv DIEF2022.2.0.desktop "$desktop_path/Validadores/DIEF-PA-2022.2.0.desktop"
   rm -rf DIEF20*.*
 
   endInstall
