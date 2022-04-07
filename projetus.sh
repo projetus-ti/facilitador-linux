@@ -153,9 +153,7 @@ if [ "$acao" = "iSGS App" ]; then
 fi
 
 if [ "$acao" = "IRPF" ]; then
-  # download "http://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020.jar" "$cache_path/IRPF.jar"
-  # download "https://cdn.projetusti.com.br/infra/pacotes/jre-8u212-linux-x64.tar.gz" "$cache_path/jre-8u212-linux-x64.tar.gz"
-  download "https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022Linux-x86_64v1.1.bin" "$cache_path/irpf.bin"
+  download "https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022Linux-x86_64v1.3.bin" "$cache_path/irpf.bin"
   
   chmod +x $cache_path/irpf.bin
   executar "$cache_path/irpf.bin"
