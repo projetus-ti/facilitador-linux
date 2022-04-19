@@ -176,27 +176,35 @@ fi
 
 if [ "$acao" = "Linphone" ]; then 
 
-  if ! [ -x "$(command -v linphone)" ]; then
-    echo $'#!/bin/bash 
-      apt-get remove linphone --purge -y 
-      apt-get autoremove'>$cache_path/exec.sh
-    chmod +x $cache_path/exec.sh
-    executar "pkexec $cache_path/exec.sh"
+  download "https://www.linphone.org/releases/linux/app/Linphone-4.4.1.AppImage" "$atalhos/linphone.AppImage"
 
-  fi
+  chmod +x $atalhos/linphone.sh
+  bash $atalhos/linphone.sh
 
-  if ! [ -x "$(command -v flatpak)" ]; then
-    echo $'#!/bin/bash 
-      apt-get install flatpak -y'>$cache_path/exec.sh
-    chmod +x $cache_path/exec.sh
-    executar "pkexec $cache_path/exec.sh"
-  fi
 
-  executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref -y"
+
+
+  #if ! [ -x "$(command -v linphone)" ]; then
+  #  echo $'#!/bin/bash 
+  #    apt-get remove linphone --purge -y 
+  #    apt-get autoremove'>$cache_path/exec.sh
+  #  chmod +x $cache_path/exec.sh
+  # executar "pkexec $cache_path/exec.sh"
+
+  #fi
+
+  #if ! [ -x "$(command -v flatpak)" ]; then
+  #  echo $'#!/bin/bash 
+  #    apt-get install flatpak -y'>$cache_path/exec.sh
+  #  chmod +x $cache_path/exec.sh
+  #  executar "pkexec $cache_path/exec.sh"
+  #fi
+
+  #executar "flatpak --user install --from https://linphone.org/flatpak/linphone.flatpakref -y"
   
   showMessage "Linphone instalado com êxito!\nO atalho encontra-se no menu do sistema."
 
-  exec $app_path/facilitador.sh 
+  #exec $app_path/facilitador.sh 
 fi
  
 if [ "$acao" = "Crisp Chat App" ]; then 
