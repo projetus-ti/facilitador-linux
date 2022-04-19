@@ -178,8 +178,8 @@ if [ "$acao" = "Linphone" ]; then
 
   download "https://www.linphone.org/releases/linux/app/Linphone-4.4.1.AppImage" "$atalhos/linphone.AppImage"
 
-  chmod +x $atalhos/linphone.sh
-  bash $atalhos/linphone.sh
+  chmod +x $atalho_path/linphone.sh
+  bash $atalho_path/linphone.sh
 
 
 
