@@ -2,5 +2,5 @@
 Exec="/opt/projetus/facilitador/atalhos/linphone.AppImage"
 Terminal=false
 Type=Application
-Icon=/opt/projetus/facilitador/atalhos/logo_linphone.ico
+Icon=/opt/projetus/facilitador/atalhos/linphone_logo.ico
 Name[pt_BR]=Linphone
