@@ -1,5 +1,6 @@
 #!/bin/sh
 source /opt/projetus/facilitador/funcoes.sh
-chmod +x $atalhos/linphone.AppImage
-cd $atalhos
-./linphone.AppImage
+chmod +x $atalho_path/linphone.AppImage
+chmod +x $atalho_path/linphone.desktop
+cp "$atalho_path/linphone.desktop" /home/$USER/.local/share/applications/linphone.desktop
+sudo apt-get purge linphone -y

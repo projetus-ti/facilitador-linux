@@ -176,13 +176,11 @@ fi
 
 if [ "$acao" = "Linphone" ]; then 
 
-  download "https://www.linphone.org/releases/linux/app/Linphone-4.4.1.AppImage" "$atalhos/linphone.AppImage"
+ # download "https://www.linphone.org/releases/linux/app/Linphone-4.4.1.AppImage" "$atalho_path/linphone.AppImage"
 
-  cd $atalho_path
-  chmod +x $atalho_path/linphone.sh
-  executar "$atalho_path/linphone.sh"
+  bash "$atalho_path/linphone.sh"
 
-
+  
 
 
   #if ! [ -x "$(command -v linphone)" ]; then
