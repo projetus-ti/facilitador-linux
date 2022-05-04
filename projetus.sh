@@ -153,7 +153,7 @@ if [ "$acao" = "iSGS App" ]; then
 fi
 
 if [ "$acao" = "IRPF" ]; then
-  download "https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022Linux-x86_64v1.3.bin" "$cache_path/irpf.bin"
+  download "https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022Linux-x86_64v1.4.bin" "$cache_path/irpf.bin"
   
   chmod +x $cache_path/irpf.bin
   executar "$cache_path/irpf.bin"
