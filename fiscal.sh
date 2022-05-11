@@ -22,7 +22,7 @@ fi
 
 if [ "$acao" = "DCTF" ]; then
   configurarWine
-  cd "$desktop_path/Validador"
+  cd "$desktop_path/Validadores"
   rm -Rf DCTF*
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
   executar "wine $cache_path/dctf.exe /silent"
@@ -169,8 +169,8 @@ if [ "$acao" = "SINTEGRA" ]; then
   download "https://cdn.projetusti.com.br/infra/facilitador/sintegra.exe" "$cache_path/sintegra.exe"
   executar "wine $cache_path/sintegra.exe /silent"
   sleep 1
-  mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
-  rm -Rf ~/.local/share/applications/wine/Programs/Validador*
+  mv ~/.local/share/applications/wine/Programs/Validadores\ Sintegra\ 2017/Validadores\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
+  rm -Rf ~/.local/share/applications/wine/Programs/Validadores*
 
   endInstall
 fi
@@ -210,12 +210,12 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   setWinePrefix "$win" "$stricks"
   configurarWine
   cd $HOME/
-  download "http://www.livroeletronico.fazenda.df.gov.br/validadorLFE/validadorlfe.exe" "$cache_path/validadorlfe.exe"
+  download "http://www.livroeletronico.fazenda.df.gov.br/ValidadoresLFE/Validadoreslfe.exe" "$cache_path/Validadoreslfe.exe"
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" winetricks  dotnet452"
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/validadorlfe.exe"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/Validadoreslfe.exe"
   sleep 3
-  cp ~/.local/share/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
-  rm -rf  ~/.local/share/applications/wine/Programs/Validador*
+  cp ~/.local/share/applications/wine/Programs/Validadores/Validadores.desktop "$desktop_path/Validadores"
+  rm -rf  ~/.local/share/applications/wine/Programs/Validadores*
 
   endInstall
 fi 
