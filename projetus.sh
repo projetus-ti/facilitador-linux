@@ -21,6 +21,19 @@ if [ "$acao" = "ZRam" ]; then
   exec $app_path/facilitador.sh
 fi
 
+if [ "$acao" = "Bitrix" ]; then
+  download "https://dl.bitrix24.com/b24/bitrix24_desktop.deb" "$cache_path/bitrix.deb"
+
+  echo $'#!/bin/bash 
+      dpkg -i '$cache_path'/bitrix.deb 
+      apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+    chmod +x $cache_path/exec.sh
+    executar "pkexec $cache_path/exec.sh"
+
+    showMessage "Bitrix instalado com êxito!\nO atalho encontra-se no menu do sistema."
+    exec $app_path/facilitador.sh
+fi
 
 if [ "$acao" = "Calima Server" ]; then
   download "https://download.projetusti.com.br/calima/linux/calima-server-linux_3.7.0.deb" "$cache_path/calima-server.deb"
