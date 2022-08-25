@@ -35,24 +35,7 @@ if [ "$acao" = "Bitrix" ]; then
     exec $app_path/facilitador.sh
 fi
 
-if [ "$acao" = "Calima Server" ]; then
-  download "https://download.projetusti.com.br/calima/linux/calima-server-linux_3.7.0.deb" "$cache_path/calima-server.deb"
 
-  user_path=$(xdg-user-dir USER)
-  nome=$(echo $USER)
-
-  echo $'#!/bin/bash 
-    chown  '$nome' '$user_path'/.calima-server/postgres
-    chown '$nome' '$user_path'/.calima-server/postgres/bkp
-    apt purge calima-server -y
-    dpkg -i '$cache_path'/calima-server.deb'>$cache_path/exec.sh
-
-  chmod +x $cache_path/exec.sh
-  executar "pkexec $cache_path/exec.sh"  
-
-  showMessage "Calima Server instalado com êxito!\nO atalho encontra-se no menu do sistema."
-  exec $app_path/facilitador.sh
-fi
 
 if [ "$acao" = "MySuite" ]; then
   configurarWine

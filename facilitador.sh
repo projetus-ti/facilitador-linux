@@ -124,7 +124,6 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "Bitrix" "Versão stable" \
     FALSE "Calima App" "Versão $VERSAO_CALIMA_APP"\
-    FALSE "Calima Server" "Versão 3.7.0"\
     FALSE "Crisp Chat App" "Versão 1.0.0"\
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.16"\
