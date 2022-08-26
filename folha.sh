@@ -108,11 +108,12 @@ if [ "$acao" = "GRRF" ]; then
 
   endInstall
 fi
-
+https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/sefip/setupsefipv8_4.exe
 if [ "$acao" = "SEFIP" ]; then
   configurarWine
   cd $cache_path
-  download "https://www.caixa.gov.br/Downloads/fgts-sefip-grf/SetupSefipV8_4.exe" "$cache_path/sefip.exe"
+  
+  download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/sefip/setupsefipv8_4.exe" "$cache_path/sefip.exe"
   cd $cache_path
   executar "wine $cache_path/sefip.exe /silent"
   mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"

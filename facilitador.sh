@@ -99,7 +99,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     FALSE "DIRF" "Versão 2022-1.1"\
     FALSE "GDRAIS" "Versão 2021.1.1"\
     FALSE "GRRF" "Versão ICP-20200128" \
-    FALSE "SEFIP" "Versão 8.4-20210730" \
+    FALSE "SEFIP" "Versão 8.4-20220826" \
     FALSE "SVA" "Versão 3.3.0");
 
     if [ $? = 1 ] ; then
