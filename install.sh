@@ -20,17 +20,17 @@ apt-get install -y \
 mkdir -p /usr/share/fonts/truetype/msttcorefonts
 mkdir -p /tmp/ttf
 
-wget "https://downloads.sourceforge.net/corefonts/andale32.exe" -O /tmp/ttf/andale32.exe
-wget "https://downloads.sourceforge.net/corefonts/arial32.exe" -O /tmp/ttf/arial32.exe
-wget "https://downloads.sourceforge.net/corefonts/arialb32.exe" -O /tmp/ttf/arialb32.exe
-wget "https://downloads.sourceforge.net/corefonts/comic32.exe" -O /tmp/ttf/comic32.exe
-wget "https://downloads.sourceforge.net/corefonts/courie32.exe" -O /tmp/ttf/courie32.exe
-wget "https://downloads.sourceforge.net/corefonts/georgi32.exe" -O /tmp/ttf/georgi32.exe
-wget "https://downloads.sourceforge.net/corefonts/impact32.exe" -O /tmp/ttf/impact32.exe
-wget "https://downloads.sourceforge.net/corefonts/times32.exe" -O /tmp/ttf/times32.exe
-wget "https://downloads.sourceforge.net/corefonts/trebuc32.exe" -O /tmp/ttf/trebuc32.exe
-wget "https://downloads.sourceforge.net/corefonts/verdan32.exe" -O /tmp/ttf/verdan32.exe
-wget "https://downloads.sourceforge.net/corefonts/webdin32.exe" -O /tmp/ttf/webdin32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/andale32.exe" -O /tmp/ttf/andale32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/arial32.exe" -O /tmp/ttf/arial32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/arialb32.exe" -O /tmp/ttf/arialb32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/comic32.exe" -O /tmp/ttf/comic32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/courie32.exe" -O /tmp/ttf/courie32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/georgi32.exe" -O /tmp/ttf/georgi32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/impact32.exe" -O /tmp/ttf/impact32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/times32.exe" -O /tmp/ttf/times32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/trebuc32.exe" -O /tmp/ttf/trebuc32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/verdan32.exe" -O /tmp/ttf/verdan32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/webdin32.exe" -O /tmp/ttf/webdin32.exe
 wget "https://raw.githubusercontent.com/PrincetonUniversity/COS333_Comet/master/android/app/src/main/assets/fonts/Microsoft%20Sans%20Serif.ttf" -O /usr/share/fonts/truetype/msttcorefonts/ms-sans-serif.ttf 
 
 cabextract /tmp/ttf/*.exe -d /tmp/ttf
