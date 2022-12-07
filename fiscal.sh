@@ -21,11 +21,12 @@ if [ "$acao" = "DMA BA" ]; then
 fi
 
 if [ "$acao" = "DCTF" ]; then
-  configurarWine
+  configurarWine32
   cd "$desktop_path/Validadores"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks corefonts"
   rm -Rf DCTF*
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
-  executar "wine $cache_path/dctf.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dctf.exe"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.6/DCTF\ Mensal\ 3.6.desktop "$desktop_path/Validadores"
   cd "$desktop_path"
@@ -36,9 +37,6 @@ if [ "$acao" = "DCTF" ]; then
 fi
 
 if [ "$acao" = "EFD Contribuições" ]; then
-            
-
-            
   download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.0.2.jar" "$cache_path/EFDContribuicoes.jar"
   executar "java -jar $cache_path/EFDContribuicoes.jar"
   sleep 1

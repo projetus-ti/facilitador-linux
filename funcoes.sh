@@ -82,13 +82,29 @@ configurarWine() {
   echo 'Configurando o Wine...'
   if [ ! -f ~/.wine/user.reg ]; then
     nohup wineboot >/dev/null 2>&1
-    while [[ ! -f ~/.wine/user..wine/user.reg ]]; do
+    while [[ ! -f ~/.wine/user.reg ]]; do
       sleep 1
     done
   fi
 
   sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine/user.reg
   sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine/drive_c/windows/win.ini
+  clear
+}
+
+# Funcao de ajuste no wine32
+configurarWine32() {
+  clear
+  echo 'Configurando o Wine...'
+  if [ ! -f ~/.wine32/user.reg ]; then
+    nohup env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wineboot >/dev/null 2>&1
+    while [[ ! -f ~/.wine32/user.reg ]]; do
+      sleep 1
+    done
+  fi
+
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/user.reg
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/drive_c/windows/win.ini
   clear
 }
 
