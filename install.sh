@@ -1,55 +1,42 @@
 #!/bin/sh
 # Descricao: Script de Instalação do Facilitador Linux
 # Autor: Evandro Begati
-# Data: 30/12/2019
-# Uso: sh install.sh
+# Uso: sudo sh install.sh
 
-# verificar se o zenity esta instalado
-if ! [ -x "$(command -v zenity)" ]; then
-  echo "Instalando componente visual..."
-  pkexec bash -c 'apt-get update && apt-get install zenity -y'
-  clear
-fi
+# Unattended MS Fonts install
+echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 
-# verificar se o git esta instalado
-if ! [ -x "$(command -v git)" ]; then
-  echo "Instalando o git..."
-  pkexec bash -c 'apt-get update && apt-get install git -y'
-  clear
-fi
+# Install dependencies packages
+dpkg --add-architecture i386
+apt-get update
+apt-get install -y \
+ zenity \
+ git \
+ ttf-mscorefonts-installer \
+ exe-thumbnailer \
+ wine-installer \
+ wine32 \
+ wine64 \
+ winetricks
 
-# verificar se o wine esta instalado
-if ! [ -x "$(command -v wine)" ]; then
-  echo "Instalando o wine..."
-  pkexec bash -c 'sudo dpkg --add-architecture i386 & apt-get update && apt-get install exe-thumbnailer wine-installer wine32 wine64 winetricks -y'
-  clear
-fi
+# Create workspace dir
+sudo rm -Rf /opt/projetus/facilitador 
+mkdir -p /opt/projetus/facilitador
+chown $SUDO_USER -R /opt/projetus/facilitador
 
-# criar diretorio de trabalho
-echo "Criando os diretório de trabalho..."
-pkexec bash -c "rm -Rf /opt/projetus/facilitador && mkdir -p /opt/projetus/facilitador && chmod 777 -R /opt/projetus/facilitador"
-clear
+# Clone scripts from git
+sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
+sudo -u $SUDO_USER git config --global --add safe.directory /opt/projetus/facilitador
 
-# puxar os scripts do git
-echo "Puxando os scripts do git..."
-git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
-clear
+# Give permission to script execution
+sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.sh
+sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
 
-# prover permissao de execucao aos scripts
-echo "Dando permissao de execucao aos arquivos..."
-chmod -R +x /opt/projetus/facilitador/*.sh
-chmod -R +x /opt/projetus/facilitador/*.desktop
-clear
+# Create desktop shortcut
+cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop
 
-echo "Criando o atalho no menu do sistema..."
-pkexec bash -c "cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop"
-clear
-
-# reexecutar o cinnamon para pegar o novo icone no menu
-nohup cinnamon --replace >/dev/null 2>&1 &
-
-# executar a aplicacao e sair
-nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
+# Update desktop database
+sudo update-desktop-database
 
 # sair
 exit 0
