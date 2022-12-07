@@ -24,7 +24,7 @@ if [ "$acao" = "DCTF" ]; then
   configurarWine
   cd "$desktop_path/Validadores"
   rm -Rf DCTF*
-  download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
+  download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe /silent" "$cache_path/dctf.exe"
   executar "wine $cache_path/dctf.exe"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.6/DCTF\ Mensal\ 3.6.desktop "$desktop_path/Validadores"
