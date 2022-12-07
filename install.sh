@@ -17,7 +17,7 @@ apt-get install -y \
  winetricks
 
 # Install Microsoft Fonts
-mkdir -p /home/$SUDO_USER/.fonts/msttcorefonts
+mkdir -p /usr/share/fonts/truetype/msttcorefonts
 mkdir -p /tmp/ttf
 
 wget "https://downloads.sourceforge.net/corefonts/andale32.exe" -O /tmp/ttf/andale32.exe
@@ -32,8 +32,8 @@ wget "https://downloads.sourceforge.net/corefonts/trebuc32.exe" -O /tmp/ttf/treb
 wget "https://downloads.sourceforge.net/corefonts/verdan32.exe" -O /tmp/ttf/verdan32.exe
 wget "https://downloads.sourceforge.net/corefonts/webdin32.exe" -O /tmp/ttf/webdin32.exe
 
-cabextract /tmp/ttf/*.exe
-sudo -u $SUDO_USER cp /tmp/ttf/*.TTF /home/$SUDO_USER/.fonts/msttcorefonts
+cabextract /tmp/ttf/*.exe 
+cp /tmp/ttf/*.TTF /usr/share/fonts/truetype/msttcorefonts
 rm -rf /tmp/ttf
 fc-cache -fv
 
