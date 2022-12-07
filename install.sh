@@ -31,6 +31,7 @@ wget "https://downloads.sourceforge.net/corefonts/times32.exe" -O /tmp/ttf/times
 wget "https://downloads.sourceforge.net/corefonts/trebuc32.exe" -O /tmp/ttf/trebuc32.exe
 wget "https://downloads.sourceforge.net/corefonts/verdan32.exe" -O /tmp/ttf/verdan32.exe
 wget "https://downloads.sourceforge.net/corefonts/webdin32.exe" -O /tmp/ttf/webdin32.exe
+wget "https://raw.githubusercontent.com/PrincetonUniversity/COS333_Comet/master/android/app/src/main/assets/fonts/Microsoft%20Sans%20Serif.ttf" -O /usr/share/fonts/truetype/msttcorefonts/ms-sans-serif.ttf 
 
 cabextract /tmp/ttf/*.exe -d /tmp/ttf
 cp /tmp/ttf/*.TTF /usr/share/fonts/truetype/msttcorefonts
