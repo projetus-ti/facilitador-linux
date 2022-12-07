@@ -60,5 +60,6 @@ sudo update-desktop-database
 cd /home/$SUDO_USER
 sudo -u $SUDO_USER wineboot -e
 clear
-echo "Instalação concluída! O Facilitador Linux encontra-se no menu de aplicativos do sistema."
+echo "Instalação concluída!"
+echo "O Facilitador Linux encontra-se no menu de aplicativos do sistema."
 exit 0
