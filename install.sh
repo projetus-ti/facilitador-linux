@@ -35,6 +35,7 @@ wget "https://downloads.sourceforge.net/corefonts/webdin32.exe" -O /tmp/ttf/webd
 cabextract /tmp/ttf/*.exe
 sudo -u $SUDO_USER cp /tmp/ttf/*.TTF /home/$SUDO_USER/.fonts/msttcorefonts
 rm -rf /tmp/ttf
+fc-cache -fv
 
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
