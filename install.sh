@@ -40,5 +40,6 @@ sudo update-desktop-database
 
 # End script
 cd /home/$SUDO_USER
+clear
 echo "Instalação concluída! O Facilitador Linux encontra-se no menu de aplicativos do sistema."
 exit 0
