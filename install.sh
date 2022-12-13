@@ -4,6 +4,8 @@
 # Uso: sudo sh install.sh
 
 # Add Wine repository
+mkdir -pm755 /etc/apt/keyrings
+wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
 wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
 
 # Install dependencies packages
@@ -20,7 +22,7 @@ apt-get install --install-recommends -y \
 
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
-mkdir -p /opt/projetus/facilitador,
+mkdir -p /opt/projetus/facilitador
 
 # Give permission for current user
 chown $SUDO_USER:$SUDO_USER -R /opt/projetus
