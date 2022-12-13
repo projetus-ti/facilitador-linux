@@ -115,7 +115,7 @@ configurarWine32Facilitador() {
   clear
   echo 'Configurando o Wine...'
   if [ ! -f ~/.wine-32-facilitador/user.reg ]; then
-    nohup env WINEARCH=win32 WINEPREFIX=$HOME/.wine-32-facilitador wineboot >/dev/null 2>&1
+    nohup env WINEARCH=win32 WINEPREFIX=$HOME/.wine-32-facilitador /opt/projetus/wine/bin/wineboot >/dev/null 2>&1
     while [[ ! -f ~/.wine-32-facilitador/user.reg ]]; do
       sleep 1
     done
