@@ -10,7 +10,7 @@ wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists
 
 # Install dependencies packages
 dpkg --add-architecture i386
-apt-get purge wine*
+apt-get purge -y wine*
 apt-get update
 apt-get install --install-recommends -y \
  zenity \
