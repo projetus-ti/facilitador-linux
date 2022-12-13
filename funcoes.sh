@@ -6,7 +6,7 @@ versao="4.5.51"
 export WINEDEBUG=-all
 #wine_32=env WINEARCH=win32 WINEPREFIX=$HOME/.wine32
 facilitador_wine_32_env=env WINEARCH=win32 WINEPREFIX=$HOME/.wine-32-facilitador
-wine_facilitador=/opt/projetus/wine/bin
+wine_facilitador=/opt/projetus/wine/bin/wine
 desktop_path=$(xdg-user-dir DESKTOP)
 user_path=$(xdg-user-dir USER)
 app_path="/opt/projetus/facilitador"
