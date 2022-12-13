@@ -19,7 +19,6 @@ apt-get install -y \
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
 mkdir -p /opt/projetus/facilitador
-chown $SUDO_USER -R /opt/projetus
 
 # Clone scripts from git
 sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
@@ -28,6 +27,9 @@ sudo -u $SUDO_USER git config --global --add safe.directory /opt/projetus/facili
 # Give permission to script execution
 sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.sh
 sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
+
+# Give permission for current user
+chown $SUDO_USER -R /opt/projetus
 
 # Create desktop shortcut
 cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop
