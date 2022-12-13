@@ -11,8 +11,9 @@ if [ "$acao" = "DMA BA" ]; then
   cd "$desktop_path"
   rm -Rf DMA*
   cd /opt/projetus/facilitador
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gdiplus"
   download "http://www.sefaz.ba.gov.br/contribuinte/informacoes_fiscais/declaracoes/download/dma_2012.exe" "$cache_path/dma_2012.exe"
-  executar "wine $cache_path/dma_2012.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dma_2012.exe"
   sleep 1
   mv "$desktop_path/DMA_2012.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/Sefaz-BA*
