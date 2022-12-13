@@ -42,8 +42,6 @@ cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilit
 sudo update-desktop-database
 
 # End script
-cd /home/$SUDO_USER
-sudo -u $SUDO_USER wineboot -e
 clear
 echo "Instalação concluída!"
 echo "O Facilitador Linux encontra-se no menu de aplicativos do sistema."
