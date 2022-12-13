@@ -19,7 +19,7 @@ sudo rm -Rf /opt/projetus/facilitador
 mkdir -p /opt/projetus/{facilitador,wine}
 
 # Give permission for current user
-chown $SUDO_USER -R /opt/projetus
+chown $SUDO_USER:$SUDO_USER -R /opt/projetus
 
 # Clone scripts from git
 sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
