@@ -11,14 +11,12 @@ apt-get install -y \
  git \
  exe-thumbnailer \
  cabextract \
- wine-installer \
- wine32 \
- wine64 \
  winetricks
 
 # Create workspace dir
+sudo rm -Rf /opt/projetus/wine 
 sudo rm -Rf /opt/projetus/facilitador 
-mkdir -p /opt/projetus/facilitador
+mkdir -p /opt/projetus/{facilitador,wine}
 
 # Clone scripts from git
 sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
@@ -27,6 +25,10 @@ sudo -u $SUDO_USER git config --global --add safe.directory /opt/projetus/facili
 # Give permission to script execution
 sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.sh
 sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
+
+# Install Wine Staging
+wget https://github.com/Kron4ek/Wine-Builds/releases/download/7.22/wine-7.22-amd64.tar.xz -O /tmp/wine.tar.xz
+tar -xvf /tmp/wine.tar.xz --strip-components=1 --directory /opt/projetus/wine 
 
 # Give permission for current user
 chown $SUDO_USER -R /opt/projetus
