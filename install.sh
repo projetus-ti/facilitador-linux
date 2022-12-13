@@ -28,7 +28,8 @@ sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
 
 # Install Wine Staging
 wget https://github.com/Kron4ek/Wine-Builds/releases/download/7.22/wine-7.22-amd64.tar.xz -O /tmp/wine.tar.xz
-tar -xvf /tmp/wine.tar.xz --strip-components=1 --directory /opt/projetus/wine 
+tar -xvf /tmp/wine.tar.xz --strip-components=1 --directory /opt/projetus/wine
+rm -rf /tmp/wine.tar.xz 
 
 # Give permission for current user
 chown $SUDO_USER -R /opt/projetus
