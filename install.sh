@@ -18,6 +18,9 @@ sudo rm -Rf /opt/projetus/wine
 sudo rm -Rf /opt/projetus/facilitador 
 mkdir -p /opt/projetus/{facilitador,wine}
 
+# Give permission for current user
+chown $SUDO_USER -R /opt/projetus
+
 # Clone scripts from git
 sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
 sudo -u $SUDO_USER git config --global --add safe.directory /opt/projetus/facilitador
@@ -28,11 +31,8 @@ sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
 
 # Install Wine Staging
 wget https://github.com/Kron4ek/Wine-Builds/releases/download/7.22/wine-7.22-amd64.tar.xz -O /tmp/wine.tar.xz
-tar -xvf /tmp/wine.tar.xz --strip-components=1 --directory /opt/projetus/wine
+sudo -u $SUDO_USER tar -xvf /tmp/wine.tar.xz --strip-components=1 --directory /opt/projetus/wine
 rm -rf /tmp/wine.tar.xz 
-
-# Give permission for current user
-chown $SUDO_USER -R /opt/projetus
 
 # Create desktop shortcut
 cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop
