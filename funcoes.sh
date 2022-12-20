@@ -4,7 +4,6 @@ versao="4.5.51"
 
 # Setar outras variaveis
 export WINEDEBUG=-all
-#wine_32=env WINEARCH=win32 WINEPREFIX=$HOME/.wine32
 desktop_path=$(xdg-user-dir DESKTOP)
 user_path=$(xdg-user-dir USER)
 app_path="/opt/projetus/facilitador"
@@ -82,7 +81,7 @@ configurarWine() {
   echo 'Configurando o Wine...'
   if [ ! -f ~/.wine/user.reg ]; then
     nohup wineboot >/dev/null 2>&1
-    while [[ ! -f ~/.wine/user..wine/user.reg ]]; do
+    while [[ ! -f ~/.wine/user.reg ]]; do
       sleep 1
     done
   fi
@@ -92,3 +91,18 @@ configurarWine() {
   clear
 }
 
+# Funcao de ajuste no wine32
+configurarWine32() {
+  clear
+  echo 'Configurando o Wine...'
+  if [ ! -f ~/.wine32/user.reg ]; then
+    nohup env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wineboot >/dev/null 2>&1
+    while [[ ! -f ~/.wine32/user.reg ]]; do
+      sleep 1
+    done
+  fi
+
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/user.reg
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/drive_c/windows/win.ini
+  clear
+}

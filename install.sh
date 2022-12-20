@@ -1,55 +1,48 @@
 #!/bin/sh
 # Descricao: Script de Instalação do Facilitador Linux
 # Autor: Evandro Begati
-# Data: 30/12/2019
-# Uso: sh install.sh
+# Uso: sudo sh install.sh
 
-# verificar se o zenity esta instalado
-if ! [ -x "$(command -v zenity)" ]; then
-  echo "Instalando componente visual..."
-  pkexec bash -c 'apt-get update && apt-get install zenity -y'
-  clear
-fi
+# Add Wine repository
+mkdir -pm755 /etc/apt/keyrings
+wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
 
-# verificar se o git esta instalado
-if ! [ -x "$(command -v git)" ]; then
-  echo "Instalando o git..."
-  pkexec bash -c 'apt-get update && apt-get install git -y'
-  clear
-fi
+# Install dependencies packages
+dpkg --add-architecture i386
+apt-get purge -y wine*
+apt-get update
+apt-get install --install-recommends -y \
+ zenity \
+ git \
+ exe-thumbnailer \
+ cabextract \
+ winetricks \
+ winehq-staging
 
-# verificar se o wine esta instalado
-if ! [ -x "$(command -v wine)" ]; then
-  echo "Instalando o wine..."
-  pkexec bash -c 'sudo dpkg --add-architecture i386 & apt-get update && apt-get install exe-thumbnailer wine-installer wine32 wine64 winetricks -y'
-  clear
-fi
+# Create workspace dir
+sudo rm -Rf /opt/projetus/facilitador 
+mkdir -p /opt/projetus/facilitador
 
-# criar diretorio de trabalho
-echo "Criando os diretório de trabalho..."
-pkexec bash -c "rm -Rf /opt/projetus/facilitador && mkdir -p /opt/projetus/facilitador && chmod 777 -R /opt/projetus/facilitador"
+# Give permission for current user
+chown $SUDO_USER:$SUDO_USER -R /opt/projetus
+
+# Clone scripts from git
+sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
+sudo -u $SUDO_USER git config --global --add safe.directory /opt/projetus/facilitador
+
+# Give permission to script execution
+sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.sh
+sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
+
+# Create desktop shortcut
+cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop
+
+# Update desktop database
+sudo update-desktop-database
+
+# End script
 clear
-
-# puxar os scripts do git
-echo "Puxando os scripts do git..."
-git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
-clear
-
-# prover permissao de execucao aos scripts
-echo "Dando permissao de execucao aos arquivos..."
-chmod -R +x /opt/projetus/facilitador/*.sh
-chmod -R +x /opt/projetus/facilitador/*.desktop
-clear
-
-echo "Criando o atalho no menu do sistema..."
-pkexec bash -c "cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop"
-clear
-
-# reexecutar o cinnamon para pegar o novo icone no menu
-nohup cinnamon --replace >/dev/null 2>&1 &
-
-# executar a aplicacao e sair
-nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
-
-# sair
+echo "Instalação concluída!"
+echo "O Facilitador Linux encontra-se no menu de aplicativos do sistema."
 exit 0
