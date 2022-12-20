@@ -80,7 +80,7 @@ configurarWine() {
   clear
   echo 'Configurando o Wine...'
   if [ ! -f ~/.wine/user.reg ]; then
-    nohup LANG=pt_BR.utf8 wineboot >/dev/null 2>&1
+    nohup wineboot >/dev/null 2>&1
     while [[ ! -f ~/.wine/user.reg ]]; do
       sleep 1
     done
@@ -96,7 +96,7 @@ configurarWine32() {
   clear
   echo 'Configurando o Wine...'
   if [ ! -f ~/.wine32/user.reg ]; then
-    nohup env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wineboot >/dev/null 2>&1
+    nohup env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wineboot >/dev/null 2>&1
     while [[ ! -f ~/.wine32/user.reg ]]; do
       sleep 1
     done

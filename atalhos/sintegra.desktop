@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=LANG=pt_BR.utf8 wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Validador\ Sintegra\ 2017/ValidadorSintegra2017.exe
+Exec=wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Validador\ Sintegra\ 2017/ValidadorSintegra2017.exe
 Terminal=false
 Type=Application
 Icon=/opt/projetus/facilitador/atalhos/sintegra.png

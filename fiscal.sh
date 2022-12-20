@@ -13,7 +13,7 @@ if [ "$acao" = "DMA BA" ]; then
   cd /opt/projetus/facilitador
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gdiplus"
   download "http://www.sefaz.ba.gov.br/contribuinte/informacoes_fiscais/declaracoes/download/dma_2012.exe" "$cache_path/dma_2012.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine $cache_path/dma_2012.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dma_2012.exe"
   sleep 1
   mv "$desktop_path/DMA_2012.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/Sefaz-BA*
@@ -27,7 +27,7 @@ if [ "$acao" = "DCTF" ]; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks corefonts"
   rm -Rf DCTF*
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine $cache_path/dctf.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dctf.exe"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.6/DCTF\ Mensal\ 3.6.desktop "$desktop_path/Validadores"
   cd "$desktop_path"
@@ -57,7 +57,7 @@ if [ "$acao" = "GIAM TO" ]; then
   rm -Rf GIAM*
   cd /opt/projetus/facilitador
   download "http://giam.sefaz.to.gov.br/download/Instalargiam10.0_28.01.2020v1.exe" "$cache_path/giamto.exe"
-  executar "LANG=pt_BR.utf8 wine $cache_path/giamto.exe /silent"
+  executar "wine $cache_path/giamto.exe /silent"
   sleep 3
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
   rm -Rf ~.local/share/applications/wine/Programs/GIAM*
@@ -90,7 +90,7 @@ if [ "$acao" = "SEF 2012 PE" ]; then
   executar "winetricks gdiplus"
   download "https://www.sefaz.pe.gov.br/Servicos/SEFII/Programas/SEF2012_v1.6.5.00_instalador.exe.zip" "$cache_path/sef2012.zip"
   unzip $cache_path/sef2012.zip -d ./cache
-  executar "LANG=pt_BR.utf8 wine $cache_path/SEF2012_v1.6.5.00_instalador.exe /silent"
+  executar "wine $cache_path/SEF2012_v1.6.5.00_instalador.exe /silent"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/SEFAZ-PE/SEF\ 2012/SEF\ 2012.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/SEFAZ-PE
@@ -105,7 +105,7 @@ if [ "$acao" = "SEFAZNET PE" ]; then
   executar "winetricks gdiplus"
   download "https://www.sefaz.pe.gov.br/Servicos/Programas%20do%20SEFAZnet/SefazNet_v1.24.0.3_instalador.exe.zip" "$cache_path/sefaznet.zip"
   unzip $cache_path/sefaznet.zip -d ./cache
-  executar "LANG=pt_BR.utf8 wine $cache_path/SefazNet_v1.24.0.3_instalador.exe /silent"
+  executar "wine $cache_path/SefazNet_v1.24.0.3_instalador.exe /silent"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/SEFAZ-PE/SEFAZNET/SEFAZNET.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/SEFAZ-PE
@@ -123,7 +123,7 @@ if [ "$acao" = "DIEF CE" ] ; then
 
   # Baixando e executando programa principal
   download "http://servicos.sefaz.ce.gov.br/internet/download/dief/dief.exe"   "$cache_path/dief.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine $cache_path/dief.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe"
 
   # Movendo e limpando os arquivos de instalação.
   mv ~/.local/share/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores/DIEF-CE.desktop"
@@ -139,12 +139,12 @@ if [ "$acao" = "DIEF PI" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40"
   download "https://portal.sefaz.pi.gov.br/download/dief-v2-3-7/?wpdmdl=1768" "$cache_path/dief.exe"
   download "https://portal.sefaz.pi.gov.br/download/diefv2-3-7-atualizacao/?wpdmdl=1769" "./cache/dief_atualizacao.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine $cache_path/dief.exe /silent"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine $cache_path/dief_atualizacao.exe /silent"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe /silent"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief_atualizacao.exe /silent"
   mv ~/.local/share/applications/wine/Programs/SEFAZPI/DIEF* "$desktop_path/Validadores"
   rm -Rf  ~/.local/share/applications/wine/Programs/SEFAZPI  
   download "https://cdn.projetusti.com.br/infra/facilitador/libs/MSSTDFMT.DLL" "$user_path/.wine32/drive_c/windows/system32/MSSTDFMT.DLL"
-  env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine regsvr32 MSSTDFMT.DLL
+  env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine regsvr32 MSSTDFMT.DLL
   cd "$desktop_path"
   rm -Rf DAPISEF*
   endInstall
@@ -157,7 +157,7 @@ if [ "$acao" = "DAPI MG" ] ; then
   configWine
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gecko corefonts mdac28 jet40 msxml4"
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/dapi/files/instalar.exe" "$cache_path/dapi.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine $cache_path/dapi.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
   rm -rf ~/.local/share/applications/wine/Programs/Secretaria*
 
@@ -167,7 +167,7 @@ fi
 if [ "$acao" = "SINTEGRA" ]; then
   configurarWine
   download "https://cdn.projetusti.com.br/infra/facilitador/sintegra.exe" "$cache_path/sintegra.exe"
-  executar "LANG=pt_BR.utf8 wine $cache_path/sintegra.exe /silent"
+  executar "wine $cache_path/sintegra.exe /silent"
   sleep 1
   mv ~/.local/share/applications/wine/Programs/Validadores\ Sintegra\ 2017/Validadores\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Validadores*
@@ -178,7 +178,7 @@ fi
 if [ "$acao" = "DAC AL" ]; then
   configurarWine
   download  "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://gcs.sefaz.al.gov.br/documentos/visualizarDocumento.action?key=t%2Bu8AZkwAeQ%3D" "$cache_path/InstalaDAC221012.exe"
-  executar "LANG=pt_BR.utf8 wine $cache_path/InstalaDAC221012.exe"
+  executar "wine $cache_path/InstalaDAC221012.exe"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/Sefaz-AL/DAC/DAC.desktop  "$desktop_path/Validadores"
   cp "$desktop_path/TdiSefaz.desktop"  "$desktop_path/Validadores"
@@ -193,7 +193,7 @@ fi
 if [ "$acao" = "DIEF CE" ] ; then # Precisa de banco de dados firebird.
   configurarWine
   download "https://servicos.sefaz.ce.gov.br/internet/download/dief/dief.exe" "$cache_path/dief.exe"
-  env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine $cache_path/dief.exe /quiet
+  env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe /quiet
   sleep 3
   pkill fbguard
   pkill fbserver
@@ -212,7 +212,7 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   cd $HOME/
   download "http://www.livroeletronico.fazenda.df.gov.br/ValidadoresLFE/Validadoreslfe.exe" "$cache_path/Validadoreslfe.exe"
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" winetricks  dotnet452"
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/Validadoreslfe.exe"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/Validadoreslfe.exe"
   sleep 3
   cp ~/.local/share/applications/wine/Programs/Validadores/Validadores.desktop "$desktop_path/Validadores"
   rm -rf  ~/.local/share/applications/wine/Programs/Validadores*
@@ -227,7 +227,7 @@ if [ "$acao" = "DIEF MA" ] ; then
   configurarWine
   download "http://downloads.sefaz.ma.gov.br/diefportal/Instalador_DIEF64_32bits.EXE" "$cache_path/Instalador_DIEF64_32bits.EXE"
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" winetricks  jet40 mdac28"
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/Instalador_DIEF64_32bits.EXE"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/Instalador_DIEF64_32bits.EXE"
   sleep 1
   cd $HOME
   cp -f ~/.local/share/applications/wine/Programs/Programas\ SEFAZ-MA/DIEF64.desktop "$desktop_path/Validadores"
@@ -263,18 +263,18 @@ if [ "$acao" = "GIA MT" ]; then
   download "www5.sefaz.mt.gov.br/documents/6071037/6426166/GIA_ICMS_307m_Completa_20120613.zip/5479ce2f-51ce-d471-1802-e5199cdd4807" "$cache_path/gia.zip"
   unzip $cache_path/gia.zip -d $cache_path
   cd /opt/projetus/facilitador/cache
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/GIA_ICMS_307m_Completa_20120613.exe"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/GIA_ICMS_307m_Completa_20120613.exe"
   sleep 1
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/SETUP.exe /silent"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/SETUP.exe /silent"
   sleep 1
   mv -f "$desktop_path/GIA 3.07.desktop" "$desktop_path/Validadores" 
   mkdir /opt/projetus/facilitador/cache/atualizacao
   download "http://www5.sefaz.mt.gov.br/documents/6071037/6426166/GIA_ICMS_307m_Atualizacao_20120613.zip/b8e63b35-06f9-a885-4fca-5a39f1c1420c" "$cache_path/atualizacao/gia_atualizacao.zip"
   unzip $cache_path/atualizacao/gia_atualizacao.zip -d $cache_path/atualizacao
   cd /opt/projetus/facilitador/cache/atualizacao
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/atualizacao/GIA_ICMS_307m_Atualizacao_20120613.exe"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/atualizacao/GIA_ICMS_307m_Atualizacao_20120613.exe"
   sleep 1
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/atualizacao/SETUP.exe /silent"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/atualizacao/SETUP.exe /silent"
   sleep 1
 
   endInstall
@@ -286,12 +286,12 @@ if [ "$acao" = "GIA RS" ] ; then
   setWinePrefix "$win" "$tricks"
   download "https://www.sefaz.rs.gov.br/ASP/Download/Sat/Giamen/InstalaGIA9.exe" "$cache_path/gia9.exe"
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" winetricks jet40  mdac28"
-  #configLANG=pt_BR.utf8 wine "$tricks"
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/gia9.EXE"
+  #configWine "$tricks"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/gia9.EXE"
   sleep 1
   mkdir /opt/projetus/facilitador/cache/atualizacao
   download "https://www.sefaz.rs.gov.br/ASP/Download/Sat/Giamen/AtualizaGia9.exe" "$cache_path/atualizacao/AtualizaGia9.exe"
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine $cache_path/atualizacao/AtualizaGia9.EXE"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine $cache_path/atualizacao/AtualizaGia9.EXE"
   rm -rf  "~/.local/share/applications/wine/Programs/GIA 9"
   mv -f "$desktop_path/GIA 9.desktop" "$desktop_path/Validadores"
   rm -rf  "$desktop_path/GIA 9.lnk"
@@ -307,7 +307,7 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   # Instalação do app via wine
   download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2022/DIEF2022.2.0.msi" "$cache_path/DIEF2022.msi"
   cd $cache_path
-  executar "LANG=pt_BR.utf8 wine msiexec /i DIEF2022.msi /quite /qn"
+  executar "wine msiexec /i DIEF2022.msi /quite /qn"
   sleep 1
 
   # Download da JRE versão windows
@@ -333,7 +333,7 @@ if [ "$acao" = "GIM ICMS PB" ] ; then
   executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" winetricks mdac28 jet40" # Nessa ordem
   sleep 1
   download "http://www.sefaz.pb.gov.br/ser/images/docs/downloads/GIM/InstalaGimSREPB-Ver_2473.exe"  "$cache_path/gimsrepb.exe"
-  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" LANG=pt_BR.utf8 wine  $cache_path/gimsrepb.exe"
+  executar "env WINEARCH="$win" WINEPREFIX=$HOME/."$tricks" wine  $cache_path/gimsrepb.exe"
   sleep 1
   cd $HOME
   mv -f "$desktop_path/Gim SRE-PB.desktop" "$desktop_path/Validadores"
@@ -353,7 +353,7 @@ if [ "$acao" = "SEDIF-SN" ] ; then
   cd "$cache_path"
   
   # Execuntando o executavel para instalação 
-  executar "LANG=pt_BR.utf8 wine $cache_path/sedif.exe"
+  executar "wine $cache_path/sedif.exe"
   
   # Tempo para serem criados os atalhos antes de copialos
   sleep1
@@ -376,7 +376,7 @@ if [ "$acao" = "DMED" ] ; then
   #sleep 3
 
   # Execuntando o executavel para instalação 
-  #executar "LANG=pt_BR.utf8 wine $cache_path/Dmed.exe /mode silent"
+  #executar "wine $cache_path/Dmed.exe /mode silent"
 
 
   # Tempo para serem criados os atalshos antes de copialos

@@ -101,7 +101,7 @@ fi
 if [ "$acao" = "GRRF" ]; then
   configurarWine
   download "http://www.caixa.gov.br/Downloads/fgts-grrf-aplicativo-arquivos/Instalador_GRRF_FB_ICP.EXE" "$cache_path/GRRF.exe"    
-  executar "LANG=pt_BR.utf8 wine $cache_path/GRRF.exe /silent"
+  executar "wine $cache_path/GRRF.exe /silent"
   mv ~/.local/share/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/GRRF*
 
@@ -115,7 +115,7 @@ if [ "$acao" = "SEFIP" ]; then
   
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/sefip/setupsefipv8_4.exe" "$cache_path/sefip.exe"
   cd $cache_path
-  executar "LANG=pt_BR.utf8 wine $cache_path/sefip.exe /silent"
+  executar "wine $cache_path/sefip.exe /silent"
   mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/SEFIP
 
@@ -127,7 +127,7 @@ if [ "$acao" = "SVA" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf SVA*
   download "http://receita.economia.gov.br/orientacao/tributaria/auditoria-fiscal/sva-arquivos/instala_sva-3-3-0.exe" "$cache_path/sva.exe"
-  executar "LANG=pt_BR.utf8 wine $cache_path/sva.exe /silent"
+  executar "wine $cache_path/sva.exe /silent"
   sleep 1
   mv ~/.local/share/applications/wine/Programs/Programas\ RFB/SVA\ 3.3.0/SVA\ 3.3.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/SVA*

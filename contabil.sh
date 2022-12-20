@@ -76,7 +76,7 @@ if [ "$acao" = "Arquivo Remessa CX" ]; then
 
   echo $'#!/bin/bash 
         set echo off
-        env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 LANG=pt_BR.utf8 wine '$user_path'/.facilitador-linux/executaveis/ValidadorCnab_v2.2.2.exe' >$atalho_path/CobrancaCaixa.sh
+        env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine '$user_path'/.facilitador-linux/executaveis/ValidadorCnab_v2.2.2.exe' >$atalho_path/CobrancaCaixa.sh
 
   cd $atalho_path
   chmod +x CobrancaCaixa.sh

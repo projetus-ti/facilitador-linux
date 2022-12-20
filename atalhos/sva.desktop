@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=LANG=pt_BR.utf8 wine ~/.wine/drive_c/Arquivos\ de\ Programas\ RFB/SVA\ 3.3.0/Sva.exe
+Exec=wine ~/.wine/drive_c/Arquivos\ de\ Programas\ RFB/SVA\ 3.3.0/Sva.exe
 Terminal=false
 Type=Application
 Icon=/opt/projetus/facilitador/atalhos/rfb.png
