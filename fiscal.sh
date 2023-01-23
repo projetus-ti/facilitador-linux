@@ -169,8 +169,8 @@ if [ "$acao" = "SINTEGRA" ]; then
   download "https://cdn.projetusti.com.br/infra/facilitador/sintegra.exe" "$cache_path/sintegra.exe"
   executar "wine $cache_path/sintegra.exe /silent"
   sleep 1
-  mv ~/.local/share/applications/wine/Programs/Validadores\ Sintegra\ 2017/Validadores\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
-  rm -Rf ~/.local/share/applications/wine/Programs/Validadores*
+  mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
+  rm -Rf ~/.local/share/applications/wine/Programs/Validador*
 
   endInstall
 fi
