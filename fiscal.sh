@@ -60,7 +60,7 @@ if [ "$acao" = "GIAM TO" ]; then
   executar "wine $cache_path/giamto.exe /silent"
   sleep 3
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
-  #rm -Rf ~.local/share/applications/wine/Programs/GIAM*
+  rm -Rf ~.local/share/applications/wine/Programs/GIAM*
 
   endInstall
 fi

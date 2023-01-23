@@ -66,8 +66,7 @@ if [ "$acao" = "GDRAIS" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf GDRais*
   rm -Rf ~/GDRais*
-  cd $app_path/cache
-  # wget -c "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2021-1.0-Linux-x86-Install.bin" --no-check-certificate -O "GDRAIS.bin"
+  cd $app_path/cache 
   download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2021-1.1-Linux-x86-Install.bin" "GDRAIS.bin"
 
   sleep 2
