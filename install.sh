@@ -3,6 +3,12 @@
 # Autor: Evandro Begati
 # Uso: sudo sh install.sh
 
+# Remove current installation
+sudo -u $SUDO_USER env WINEARCH=win32 WINEPREFIX=/home/$SUDO_USER/.wine32 wineserver -k
+sudo -u $SUDO_USER env WINEARCH=win64 WINEPREFIX=/home/$SUDO_USER/.wine wineserver -k
+rm -rf /home/$SUDO_USER/.wine32
+rm -rf /home/$SUDO_USER/.wine
+
 # Add Wine repository
 mkdir -pm755 /etc/apt/keyrings
 wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
