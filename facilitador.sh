@@ -38,8 +38,8 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --title "Facilitador Linux - Contábil" \
     --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
-    TRUE "SPED ECD" "Versão 10.0.2" \
-    FALSE "SPED ECF" "Versão 8.0.5" \
+    TRUE "SPED ECD" "Versão 10.1.0" \
+    FALSE "SPED ECF" "Versão 9.0.0" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
 
@@ -71,14 +71,14 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "GIA ICMS RJ" "Versão 0.3.3.4"\
     FALSE "GIA MT" "Versão 3.0.7m"\
     FALSE "GIA RS" "Versão 9-26/03/2018"\
-    FALSE "GIAM TO" "Versão 10.0 2020v1"\
+    FALSE "GIAM TO" "Versão 10.03.01 2022v1"\
     FALSE "GIM ICMS PB" "Versão 2473"\
     FALSE "Livro Eletronico GDF" "Versão 2.0.9.0" \
     FALSE "SEDIF-SN" "Versão 1.0.6.00" \
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 3.0.0");  
+    FALSE "SPED ICMS IPI" "Versão 3.0.3");  
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
@@ -96,7 +96,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     --height="260" --width="350"\
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "ACI" "Validador do CAGED"\
-    FALSE "DIRF" "Versão 2022-1.1"\
+    FALSE "DIRF" "Versão 2023"\
     FALSE "GDRAIS" "Versão 2021.1.1"\
     FALSE "GRRF" "Versão ICP-20200128" \
     FALSE "SEFIP" "Versão 8.4-20220826" \

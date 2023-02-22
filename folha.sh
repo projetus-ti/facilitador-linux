@@ -43,16 +43,16 @@ if [ "$acao" = "DIRF" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf Dirf*
   cd $app_path
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dirf/2022/Dirf2022Linux-x86_64v1.1.sh" "$cache_path/Dirf.sh"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dirf/2023/Dirf2023Linux-x86_64v1.0.sh" "$cache_path/Dirf.sh"
 
   chmod +x $cache_path/Dirf.sh
 
   echo $'#!/bin/bash 
     chmod +x '$cache_path'/Dirf.sh
     '$cache_path'/Dirf.sh --mode silent 
-    chmod 777 /usr/share/applications/Dirf2022-program.desktop 
-    cp /usr/share/applications/Dirf2022-program.desktop '"'$desktop_path/Validadores'"'
-    chmod 777 '"'$desktop_path/Validadores/Dirf2022-program.desktop'"'
+    chmod 777 /usr/share/applications/Dirf2023-program.desktop 
+    cp /usr/share/applications/Dirf2023-program.desktop '"'$desktop_path/Validadores'"'
+    chmod 777 '"'$desktop_path/Validadores/Dirf2023-program.desktop'"'
     rm -Rf /usr/share/applications/Dirf*
     '>$cache_path/exec.sh
 
@@ -66,8 +66,7 @@ if [ "$acao" = "GDRAIS" ]; then
   cd "$desktop_path/Validadores"
   rm -Rf GDRais*
   rm -Rf ~/GDRais*
-  cd $app_path/cache
-  # wget -c "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2021-1.0-Linux-x86-Install.bin" --no-check-certificate -O "GDRAIS.bin"
+  cd $app_path/cache 
   download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2021-1.1-Linux-x86-Install.bin" "GDRAIS.bin"
 
   sleep 2

@@ -56,7 +56,7 @@ if [ "$acao" = "GIAM TO" ]; then
   cd "$desktop_path"
   rm -Rf GIAM*
   cd /opt/projetus/facilitador
-  download "http://giam.sefaz.to.gov.br/download/Instalargiam10.0_28.01.2020v1.exe" "$cache_path/giamto.exe"
+  download "http://giam.sefaz.to.gov.br/download/Instalargiam10.0_03.01.2022v1.exe" "$cache_path/giamto.exe"
   executar "wine $cache_path/giamto.exe /silent"
   sleep 3
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
@@ -67,7 +67,7 @@ fi
 
 if [ "$acao" = "SPED ICMS IPI" ]; then
 
-  download "https://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-3.0.0_x64.jar" "$cache_path/PVA_EFD.jar"
+  download "https://www.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-3.0.3_x64.jar" "$cache_path/PVA_EFD.jar"
   
   if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
     executar "java -jar $cache_path/PVA_EFD.jar"
@@ -169,8 +169,8 @@ if [ "$acao" = "SINTEGRA" ]; then
   download "https://cdn.projetusti.com.br/infra/facilitador/sintegra.exe" "$cache_path/sintegra.exe"
   executar "wine $cache_path/sintegra.exe /silent"
   sleep 1
-  mv ~/.local/share/applications/wine/Programs/Validadores\ Sintegra\ 2017/Validadores\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
-  rm -Rf ~/.local/share/applications/wine/Programs/Validadores*
+  mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
+  rm -Rf ~/.local/share/applications/wine/Programs/Validador*
 
   endInstall
 fi
