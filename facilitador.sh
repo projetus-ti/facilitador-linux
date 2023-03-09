@@ -60,7 +60,6 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     TRUE "DAPI MG" "Versão 9.03.00"\
     FALSE "DAC AL" "Versão 2.2.10.12"\
     FALSE "DCTF" "Mensal v. 3.6"\
-    FALSE "DES-PBH-ISS" "Versão 3.0"\
     FALSE "DMED" "Versão 2022"\
     FALSE "DIEF CE" "Versão 6.0.8"\
     FALSE "DIEF MA" "Versão 6.4.5"\

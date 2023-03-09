@@ -239,6 +239,7 @@ if [ "$acao" = "DIEF MA" ] ; then
 fi 
 
 if [ "$acao" = "DES-PBH-ISS" ]; then # Ainda não consegui completar
+  executar "apt install icedtea-netx"
   showMessage "Nas próximas mensagens, marque a única opção que aparecer na tela e depois clique no botão Later, Continuar e Executar."
   javaws http://bhissdigital.pbh.gov.br/des-ws/desapp/des.jnlp
 
