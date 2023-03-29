@@ -381,7 +381,7 @@ if [ "$acao" = "DMED" ] ; then
   sleep 1
 
   #Copiando o atalho para a pasta de Validadores
-  mv -f "$desktop_path/Dmed2022.desktop" "$desktop_path/Validadores"
+  mv -f "$desktop_path/Dmed2023.desktop" "$desktop_path/Validadores"
   
   endInstall
 fi 
