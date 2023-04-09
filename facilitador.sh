@@ -38,8 +38,8 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --title "Facilitador Linux - Contábil" \
     --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
-    TRUE "SPED ECD" "Versão 10.1.0" \
-    FALSE "SPED ECF" "Versão 9.0.0" \
+    TRUE "SPED ECD" "Versão 10.1.1" \
+    FALSE "SPED ECF" "Versão 9.0.2" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
 
@@ -60,8 +60,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     TRUE "DAPI MG" "Versão 9.03.00"\
     FALSE "DAC AL" "Versão 2.2.10.12"\
     FALSE "DCTF" "Mensal v. 3.6"\
-    FALSE "DES-PBH-ISS" "Versão 3.0"\
-    FALSE "DMED" "Versão 2022"\
+    FALSE "DMED" "Versão 2023"\
     FALSE "DIEF CE" "Versão 6.0.8"\
     FALSE "DIEF MA" "Versão 6.4.5"\
     FALSE "DIEF PA" "Versão 2022.2.0"\
@@ -128,7 +127,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.16"\
     FALSE "iSGS App" "Versão 1.0.1"\
-    FALSE "IRPF" "Versão 2022 v1.4"\
+    FALSE "IRPF" "Versão 2023 v1.0"\
     FALSE "Linphone" "Softphone" \
     FALSE "MySuite" "Sistema de Atendimento" \
     FALSE "TeamViewer" "Versão 13" \

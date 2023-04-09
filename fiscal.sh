@@ -239,6 +239,7 @@ if [ "$acao" = "DIEF MA" ] ; then
 fi 
 
 if [ "$acao" = "DES-PBH-ISS" ]; then # Ainda não consegui completar
+  executar "apt install icedtea-netx"
   showMessage "Nas próximas mensagens, marque a única opção que aparecer na tela e depois clique no botão Later, Continuar e Executar."
   javaws http://bhissdigital.pbh.gov.br/des-ws/desapp/des.jnlp
 
@@ -367,45 +368,21 @@ fi
 
 if [ "$acao" = "DMED" ] ; then 
 
- # configurarWine
+ configurarWine
 
-  # Baixando
-  #download "http://www.receita.fazenda.gov.br/publico/programas/Dmed/2021/Dmed2021Win32v1.0.exe"   "$cache_path/Dmed.exe"
-  #cd "$cache_path"
+  Baixando
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2023/Dmed2023Win64v1.0.exe"   "$cache_path/Dmed.exe"
+  cd "$cache_path"
+
+  #Execuntando o executavel para instalação 
+  executar "wine $cache_path/Dmed.exe /mode silent"
+
+  #Tempo para serem criados os atalshos antes de copialos
+  sleep 1
+
+  #Copiando o atalho para a pasta de Validadores
+  mv -f "$desktop_path/Dmed2023.desktop" "$desktop_path/Validadores"
   
-  #sleep 3
-
-  # Execuntando o executavel para instalação 
-  #executar "wine $cache_path/Dmed.exe /mode silent"
-
-
-  # Tempo para serem criados os atalshos antes de copialos
-  #sleep 1
-
-  # Copiando o atalho para a pasta de Validadores
-  #mv -f "$desktop_path/Dmed2021.desktop" "$desktop_path/Validadores"
-  
-  #endInstall
-
-  clear
-  cd "$desktop_path/Validadores"
-  #rm -Rf Dmed*
-  cd $app_path
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2022/Dmed2022Linux-x86_64v1.0.sh" "$cache_path/Dmed.sh"
-
-  chmod +x $cache_path/Dmed.sh
-
-  echo $'#!/bin/bash 
-    chmod +x '$cache_path'/Dmed.sh
-    '$cache_path'/Dmed.sh --mode silent 
-    chmod 777 /usr/share/applications/Dmed2022-program.desktop 
-    cp /usr/share/applications/Dmed2022-program.desktop '"'$desktop_path/Validadores'"'
-    rm -Rf /usr/share/applications/Dmed*
-    '>$cache_path/exec.sh
-
-  chmod +x $cache_path/exec.sh
-  executar "pkexec $cache_path/exec.sh"
-
   endInstall
 fi 
 
