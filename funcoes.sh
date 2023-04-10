@@ -1,6 +1,10 @@
 #!/bin/bash
 # Setar a versao do script
+<<<<<<< HEAD
 versao="4.5.65"
+=======
+versao="4.5.64"
+>>>>>>> 661088e (Atualização do SPEAD PVA)
 
 # Setar outras variaveis
 export WINEDEBUG=-all
