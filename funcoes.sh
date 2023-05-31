@@ -1,6 +1,6 @@
 #!/bin/bash
 # Setar a versao do script
-versao="4.5.70"
+versao="4.6.0"
 
 # Setar outras variaveis
 export WINEDEBUG=-all
@@ -105,4 +105,18 @@ configurarWine32() {
   sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/user.reg
   sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/drive_c/windows/win.ini
   clear
+}
+
+# Funcao de descontinuação de programa.
+descontinuado() {
+  zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Programa Descontinuado!" \
+         --text 'Esse validador foi descontinuado.' \
+         --height="50" --width="250"
+}
+
+# Validador não Configurado.
+naoCompativel() {
+  zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Programa não executavel!" \
+         --text 'Este validador não é possível usar no linux. Use a maquina virtual.' \
+         --height="50" --width="450"
 }

@@ -64,38 +64,41 @@ if [ "$acao" = "Receita Net BX" ]; then
 fi
 
 if [ "$acao" = "Arquivo Remessa CX" ]; then
-  echo "Arquivo Remessa CX"
-  configurarWine
+  descontinuado
+  # echo "Arquivo Remessa CX"
+  # configurarWine
   # Instalando complementos.
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet45"
+  # executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet45"
+  # flatpak run --env="WINEPREFIX=$HOME" --env="WINEARCH=win32" org.winehq.Wine /app/bin/winetricks dotnet45
+
 
   # Baixando e executando programa principal
-  download "https://www.caixa.gov.br/Downloads/cobranca-caixa/Validador_de_Arquivos_Remessa.zip"   "$cache_path/remessa.zip"
-  cd "$cache_path"
+  # download "https://www.caixa.gov.br/Downloads/cobranca-caixa/Validador_de_Arquivos_Remessa.zip"   "$cache_path/remessa.zip"
+  # cd "$cache_path"
 
   # Extraindo o arquivo executavel
-  unzip remessa.zip  
+  # unzip remessa.zip  
 
-  echo $'#!/bin/bash 
-        set echo off
-        env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine '$user_path'/.facilitador-linux/executaveis/ValidadorCnab_v2.2.2.exe' >$atalho_path/CobrancaCaixa.sh
+  # echo $'#!/bin/bash 
+  #       set echo off
+  #       flatpak run --env="WINEPREFIX=$HOME" --env="WINEARCH=win32" wine --command=wine '$user_path' io.github.fastrizwaan.WineZGUI /.facilitador-linux/executaveis/ValidadorCnab_v2.2.2.exe' >$atalho_path/CobrancaCaixa.sh
 
-  cd $atalho_path
-  chmod +x CobrancaCaixa.sh
+  # cd $atalho_path
+  # chmod +x CobrancaCaixa.sh
   # Criando pastas onde guardará o executável
-  mkdir -p $user_path/.facilitador-linux/executaveis
+  # mkdir -p $user_path/.facilitador-linux/executaveis
 
   # Copiando executável para a pasta de excetaveis
-  cp $cache_path/ValidadorCnab_v2.2.2.exe $user_path/.facilitador-linux/executaveis
+  # cp $cache_path/ValidadorCnab_v2.2.2.exe $user_path/.facilitador-linux/executaveis
 
   # Copiando o atalho para a pasta de atalhos no desktop do usuário.
-  cp "$atalho_path/CobrancaCaixa.desktop" "$desktop_path/Validadores"
+  # cp "$atalho_path/CobrancaCaixa.desktop" "$desktop_path/Validadores"
 
   # Após a execução, removendo os arquivos.
-  cd "$cache_path"
-  rm -rf ValidadorCnab_v2.2.2.exe remessa.zip
+   #cd "$cache_path"
+  # rm -rf ValidadorCnab_v2.2.2.exe remessa.zip
 
-  endInstall
+   #endInstall
 
 fi
 

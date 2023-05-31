@@ -98,38 +98,33 @@ if [ "$acao" = "GDRAIS" ]; then
 fi
 
 if [ "$acao" = "GRRF" ]; then
-  configurarWine
+  # configurarWine
   download "http://www.caixa.gov.br/Downloads/fgts-grrf-aplicativo-arquivos/Instalador_GRRF_FB_ICP.EXE" "$cache_path/GRRF.exe"    
-  executar "wine $cache_path/GRRF.exe /silent"
-  mv ~/.local/share/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
+  executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI $cache_path/GRRF.exe /silent "
+  mv ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/GRRF*
-
-
   endInstall
 fi
-https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/sefip/setupsefipv8_4.exe
+
 if [ "$acao" = "SEFIP" ]; then
-  configurarWine
+  # configurarWine
   cd $cache_path
-  
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/sefip/setupsefipv8_4.exe" "$cache_path/sefip.exe"
   cd $cache_path
-  executar "wine $cache_path/sefip.exe /silent"
+  executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI $cache_path/sefip.exe /silent"
   mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"
-  rm -Rf ~/.local/share/applications/wine/SEFIP
-
+  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/SEFIP
   endInstall
 fi
 
 if [ "$acao" = "SVA" ]; then
-  configurarWine
+  # configurarWine
   cd "$desktop_path/Validadores"
   rm -Rf SVA*
-  download "http://receita.economia.gov.br/orientacao/tributaria/auditoria-fiscal/sva-arquivos/instala_sva-3-3-0.exe" "$cache_path/sva.exe"
-  executar "wine $cache_path/sva.exe /silent"
+  download "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/auditoria-fiscal/arquivos/sva-arquivos/instala_sva-3-3-0.exe/@@download/file" "$cache_path/sva.exe"
+  executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI $cache_path/sva.exe /silent "
   sleep 1
-  mv ~/.local/share/applications/wine/Programs/Programas\ RFB/SVA\ 3.3.0/SVA\ 3.3.desktop "$desktop_path/Validadores"
-  rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/SVA*
-
+  mv ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/SVA\ 3.3.0/SVA\ 3.3.desktop "$desktop_path/Validadores"
+  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/SVA*
   endInstall
 fi
