@@ -23,10 +23,10 @@ if ! (flatpak list | grep WineZGUI); then
     flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
     flatpak -y remove io.github.fastrizwaan.WineZGUI
     wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
-    flatpak --user install -y flatpak-winezgui_0.97.12_20230522.flatpak" >> /opt/projetus/facilitador/cache/flatpak.sh
+    flatpak --user install -y flatpak-winezgui_0.97.12_20230522.flatpak" >$cache_path/flatpak.sh
 
-    sudo chmod +X /opt/projetus/facilitador/cache/flatpak.sh
-    executar "/opt/projetus/facilitador/cache/flatpak.sh"
+    chmod +x $cache_path/flatpak.sh
+    executar "pkexec $cache_path/flatpak.sh"
 
 fi
 
