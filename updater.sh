@@ -19,11 +19,12 @@ chmod -R +x /opt/projetus/facilitador/atalhos/*.desktop
 
 # Verificar se o FlatpakWine está instalado.
 if ! (flatpak list | grep WineZGUI); then
-    echo "flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    echo "$'#!/bin/bash 
+    flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
     flatpak -y remove io.github.fastrizwaan.WineZGUI
     wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
-    flatpak --user install -y flatpak-winezgui_0.97.12_20230522.flatpak" >$cache_path/flatpak.sh
+    flatpak --user install -y flatpak-winezgui_0.97.12_20230522.flatpak'" >$cache_path/flatpak.sh
 
     chmod +x $cache_path/flatpak.sh
     executar "pkexec $cache_path/flatpak.sh"
