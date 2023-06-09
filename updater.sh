@@ -27,7 +27,7 @@ if ! (flatpak list | grep WineZGUI); then
     flatpak --user install -y flatpak-winezgui_0.97.12_20230522.flatpak'>$cache_path/flatpak.sh
 
     chmod +x $cache_path/flatpak.sh
-    executar "pkexec $cache_path/flatpak.sh"
+    executarFlatpak "pkexec $cache_path/flatpak.sh"
 
 fi
 

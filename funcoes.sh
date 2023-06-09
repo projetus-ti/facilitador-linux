@@ -19,7 +19,12 @@ executar() {
   response=$($1) | zenity --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png  --width="280" --no-cancel --auto-close --title="Facilitador Linux"
   echo $response
 }
- 
+
+executarFlatpak() {
+  response=$($1) | zenity --progress --text="Executando a instação e configuração do Flatpak, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png  --width="380" --no-cancel --auto-close --title="Facilitador Linux"
+  echo $response
+}
+
 download() {
   cd $app_path
   rm -Rf $2
