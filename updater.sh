@@ -25,7 +25,7 @@ if ! (flatpak list | grep WineZGUI); then
     wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
     flatpak --user install -y flatpak-winezgui_0.97.12_20230522.flatpak" >> /opt/projetus/facilitador/cache/flatpak.sh
 
-    chmod +X /opt/projetus/facilitador/cache/flatpak.sh
+    sudo chmod +X /opt/projetus/facilitador/cache/flatpak.sh
     executar "/opt/projetus/facilitador/cache/flatpak.sh"
 
 fi
