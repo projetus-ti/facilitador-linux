@@ -9,7 +9,7 @@ acao=$1
 
 if [ "$acao" = "SPED ECD" ]; then            
             
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SPEDContabil_linux_x64-10.1.8.jar" "$cache_path/SPEDContabil.jar"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SPEDContabil_linux_x86-10.1.8.jar" "$cache_path/SPEDContabil.jar"
   executar "java -jar $cache_path/SPEDContabil.jar"
   sleep 2
   cd "$desktop_path"
