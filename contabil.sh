@@ -23,7 +23,7 @@ if [ "$acao" = "SPED ECD" ]; then
 fi
 
 if [ "$acao" = "SPED ECF" ]; then 
-
+            
   download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-9.0.3.jar" "$cache_path/SpedEcf.jar"
   executar "java -jar $cache_path/SpedEcf.jar"
   sleep 2
