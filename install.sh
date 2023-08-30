@@ -9,11 +9,6 @@ sudo -u $SUDO_USER env WINEARCH=win64 WINEPREFIX=/home/$SUDO_USER/.wine wineserv
 rm -rf /home/$SUDO_USER/.wine32
 rm -rf /home/$SUDO_USER/.wine
 
-# Add Wine repository
-# mkdir -pm755 /etc/apt/keyrings
-# wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-# wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-
 # Add flatpak package wine8.0
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
@@ -30,8 +25,6 @@ apt-get install --install-recommends -y \
  git \
  exe-thumbnailer \
  cabextract 
- # winetricks \
- # winehq-staging
 
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
@@ -55,7 +48,7 @@ cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilit
 sudo update-desktop-database
 
 # End script
-# clear
+clear
 echo "Instalação concluída!"
 echo "O Facilitador Linux encontra-se no menu de aplicativos do sistema."
-# exit 0
+exit 0
