@@ -39,6 +39,16 @@ fi
 
 if [ "$acao" = "MySuite" ]; then
   # configurarWine
+  sudo flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  wait
+  sudo flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
+  wait
+  sudo flatpak -y remove io.github.fastrizwaan.WineZGUI
+  wait
+  wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
+  wait
+  sudo flatpak --user install flatpak-winezgui_0.97.12_20230522.flatpak
+  wait
   download "https://cdn.projetusti.com.br/suporte/mysuite.msi" "$cache_path/mysuite.msi"
   executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI $cache_path/mysuite.msi /quiet > /dev/null 2>&1 &"
   # nohup wine msiexec /i $cache_path/mysuite.msi /quiet > /dev/null 2>&1 &
