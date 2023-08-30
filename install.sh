@@ -22,9 +22,9 @@ apt-get install --install-recommends -y \
  zenity \
  git \
  exe-thumbnailer \
- cabextract \
- winetricks \
- winehq-staging
+ cabextract 
+# winetricks \
+#  winehq-staging
 
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
@@ -48,7 +48,7 @@ cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilit
 sudo update-desktop-database
 
 # End script
-clear
+# clear
 echo "Instalação concluída!"
 echo "O Facilitador Linux encontra-se no menu de aplicativos do sistema."
-exit 0
+# exit 0
