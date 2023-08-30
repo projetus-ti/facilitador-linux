@@ -19,15 +19,6 @@ apt-get install --install-recommends -y \
  exe-thumbnailer \
  cabextract 
 
-# Add flatpak package wine8.0
-echo "Instalando flapak Wine."
-sudo flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
-sudo flatpak -y remove io.github.fastrizwaan.WineZGUI
-wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
-sudo flatpak --user install flatpak-winezgui_0.97.12_20230522.flatpak
-wait
-
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
 mkdir -p /opt/projetus/facilitador
@@ -48,6 +39,14 @@ cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilit
 
 # Update desktop database
 sudo update-desktop-database
+
+# Add flatpak package wine8.0
+echo "Instalando flapak Wine."
+sudo flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
+sudo flatpak -y remove io.github.fastrizwaan.WineZGUI
+wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
+sudo flatpak --user install flatpak-winezgui_0.97.12_20230522.flatpak
 
 # End script
 clear
