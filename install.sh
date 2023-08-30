@@ -55,7 +55,7 @@ cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilit
 sudo update-desktop-database
 
 # End script
-clear
+# clear
 echo "Instalação concluída!"
 echo "O Facilitador Linux encontra-se no menu de aplicativos do sistema."
 # exit 0
