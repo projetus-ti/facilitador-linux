@@ -23,15 +23,15 @@ flatpak --user install flatpak-winezgui_0.97.12_20230522.flatpak
 
 # Install dependencies packages
 dpkg --add-architecture i386
-apt-get purge -y wine*
+# apt-get purge -y wine*
 apt-get update
 apt-get install --install-recommends -y \
  zenity \
  git \
  exe-thumbnailer \
  cabextract \
- winetricks \
- winehq-staging
+ # winetricks \
+ # winehq-staging
 
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
