@@ -29,7 +29,7 @@ apt-get install --install-recommends -y \
  zenity \
  git \
  exe-thumbnailer \
- cabextract \
+ cabextract 
  # winetricks \
  # winehq-staging
 
