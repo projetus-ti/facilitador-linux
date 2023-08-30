@@ -9,14 +9,6 @@ sudo -u $SUDO_USER env WINEARCH=win64 WINEPREFIX=/home/$SUDO_USER/.wine wineserv
 rm -rf /home/$SUDO_USER/.wine32
 rm -rf /home/$SUDO_USER/.wine
 
-# Add flatpak package wine8.0
-echo "Instalando flapak Wine."
-flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
-flatpak -y remove io.github.fastrizwaan.WineZGUI
-wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
-flatpak --user install flatpak-winezgui_0.97.12_20230522.flatpak
-
 # Install dependencies packages
 echo "Instalando dependência."
 dpkg --add-architecture i386
@@ -26,6 +18,14 @@ apt-get install --install-recommends -y \
  git \
  exe-thumbnailer \
  cabextract 
+
+# Add flatpak package wine8.0
+echo "Instalando flapak Wine."
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
+flatpak -y remove io.github.fastrizwaan.WineZGUI
+wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
+flatpak --user install flatpak-winezgui_0.97.12_20230522.flatpak
 
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
