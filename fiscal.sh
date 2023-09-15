@@ -21,7 +21,7 @@ if [ "$acao" = "DMA BA" ]; then
 fi
 
 if [ "$acao" = "DCTF" ]; then
-  configurarWine32Facilitador
+  configurarWine32
   cd "$desktop_path/Validadores"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks corefonts"
   rm -Rf DCTF*
