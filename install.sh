@@ -23,6 +23,7 @@ apt-get install --install-recommends -y \
  git \
  exe-thumbnailer \
  cabextract \
+ wine \
  winetricks \
  winehq-staging
 
