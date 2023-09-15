@@ -36,6 +36,10 @@ if [ ! -e  "/usr/bin/winetricks" ]; then
     pkexec apt-get install winetricks
 fi    
 
+
+# Forçar a execução do Install 
+exec "/opt/projetus/facilitador/install.sh" 
+
 # Executar a aplicacao
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
 
