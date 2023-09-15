@@ -16,7 +16,7 @@ if [ "$acao" = "DMA BA" ]; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dma_2012.exe"
   sleep 1
   mv "$desktop_path/DMA_2012.desktop" "$desktop_path/Validadores"
-  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Sefaz-BA*
+  rm -Rf ~/.local/share/applications/wine/Programs/Sefaz-BA*
   endInstall
 fi
 
@@ -28,10 +28,10 @@ if [ "$acao" = "DCTF" ]; then
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dctf.exe"
   sleep 1
-  cp ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.6/DCTF\ Mensal\ 3.6.desktop "$desktop_path/Validadores"
+  cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.6/DCTF\ Mensal\ 3.6.desktop "$desktop_path/Validadores"
   cd "$desktop_path"
   rm -Rf DCTF*
-  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/
+  rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/
   endInstall
 fi
 
@@ -58,7 +58,7 @@ if [ "$acao" = "GIAM TO" ]; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/giamto.exe /silent"
   sleep 3
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
-  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/GIAM*
+  rm -Rf ~/.local/share/applications/wine/Programs/GIAM*
   endInstall
 fi
 
@@ -89,8 +89,8 @@ if [ "$acao" = "SEF 2012 PE" ]; then
   unzip $cache_path/sef2012.zip -d ./cache
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/SEF2012_v1.6.5.00_instalador.exe /silent"
   sleep 1
-  cp ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-PE/SEF\ 2012/SEF\ 2012.desktop "$desktop_path/Validadores"
-  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-PE
+  cp ~/.local/share/applications/wine/Programs/SEFAZ-PE/SEF\ 2012/SEF\ 2012.desktop "$desktop_path/Validadores"
+  rm -Rf ~/.local/share/applications/wine/Programs/SEFAZ-PE
   cd "$desktop_path"
   rm -Rf SEF2012*
   endInstall
@@ -103,8 +103,8 @@ if [ "$acao" = "SEFAZNET PE" ]; then
   unzip $cache_path/sefaznet.zip -d ./cache
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/SefazNet_v1.24.0.3_instalador.exe /silent"
   sleep 1
-  cp ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-PE/SEFAZNET/SEFAZNET.desktop "$desktop_path/Validadores"
-  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-PE
+  cp ~/.local/share/applications/wine/Programs/SEFAZ-PE/SEFAZNET/SEFAZNET.desktop "$desktop_path/Validadores"
+  rm -Rf ~/.local/share/applications/wine/Programs/SEFAZ-PE
   cd "$desktop_path"
   rm -Rf SEFAZNET*
   chmod 777 -R "$desktop_path/Validadores"
@@ -121,8 +121,8 @@ if [ "$acao" = "DIEF CE" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe"
 
   # Movendo e limpando os arquivos de instalação.
-  mv ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores/DIEF-CE.desktop"
-  rm -Rf  ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-CE
+  mv ~/.local/share/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores/DIEF-CE.desktop"
+  rm -Rf  ~/.local/share/applications/wine/Programs/SEFAZ-CE
 
   #Terminando instalação e notificando o usuário.
   endInstall
@@ -136,8 +136,8 @@ if [ "$acao" = "DIEF PI" ] ; then
   download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' https://portal-admin.sefaz.pi.gov.br/download/diefv2-4-2-atualizacao/?wpdmdl=3573&refresh=64774ee1b565e1685540577" "$cache_path/dief_atualizacao.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief_atualizacao.exe /silent"
-  mv  ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZPI/DIEF* "$desktop_path/Validadores"
-  # rm -Rf   ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZPI  
+  mv  ~/.local/share/applications/wine/Programs/SEFAZPI/DIEF* "$desktop_path/Validadores"
+  # rm -Rf   ~/.local/share/applications/wine/Programs/SEFAZPI  
   cp $app_path/DLLs/MSSTDFMT.DLL $user_path/.wine/drive_c/windows/system32/MSSTDFMT.DLL
   env WINEARCH=win64 WINEPREFIX=$HOME/.wine wine regsvr32 MSSTDFMT.DLL
   cd "$desktop_path"
@@ -153,8 +153,8 @@ if [ "$acao" = "DAPI MG" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gecko corefonts mdac28 jet40 msxml4"
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/dapi/files/instalar.exe" "$cache_path/dapi.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
-  cp ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
-  rm -rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Secretaria*
+  cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
+  rm -rf ~/.local/share/applications/wine/Programs/Secretaria*
 
   endInstall
 fi
@@ -164,8 +164,8 @@ if [ "$acao" = "SINTEGRA" ]; then
   download "https://cdn.projetusti.com.br/infra/facilitador/sintegra.exe" "$cache_path/sintegra.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/sintegra.exe /silent"
   sleep 1
-  mv ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
-  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Validador*
+  mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"
+  rm -Rf ~/.local/share/applications/wine/Programs/Validador*
 
   endInstall
 fi
@@ -175,12 +175,12 @@ if [ "$acao" = "DAC AL" ]; then
   download  "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://gcs.sefaz.al.gov.br/documentos/visualizarDocumento.action?key=t%2Bu8AZkwAeQ%3D" "$cache_path/InstalaDAC221012.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/InstalaDAC221012.exe"
   sleep 1                                                                        
-  cp ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Sefaz-AL/DAC/DAC.desktop  "$desktop_path/Validadores"
+  cp ~/.local/share/applications/wine/Programs/Sefaz-AL/DAC/DAC.desktop  "$desktop_path/Validadores"
   cp "$desktop_path/TdiSefaz.desktop"  "$desktop_path/Validadores"
   rm -rf "$desktop_path/TdiSefaz.lnk"
   rm -rf "$desktop_path/DAC.lnk"
   rm -rf "$desktop_path/DAC.desktop"
-  rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Sefaz-AL*
+  rm -Rf ~/.local/share/applications/wine/Programs/Sefaz-AL*
 
   endInstall
 fi
@@ -192,8 +192,8 @@ if [ "$acao" = "DIEF CE" ] ; then # Precisa de banco de dados firebird.
   sleep 3
   pkill fbguard
   pkill fbserver
-  cp  ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores"
-  rm -rf   ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SEFAZ-CE*
+  cp  ~/.local/share/applications/wine/Programs/SEFAZ-CE/DIEF/DIEF.desktop "$desktop_path/Validadores"
+  rm -rf   ~/.local/share/applications/wine/Programs/SEFAZ-CE*
   rm -rf "$desktop_path/DIEF.desktop"
 
   endInstall
@@ -209,8 +209,8 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet452"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Validadoreslfe.exe"
   sleep 3
-  cp  ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
-  rm -rf   ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Validador*
+  cp  ~/.local/share/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
+  rm -rf   ~/.local/share/applications/wine/Programs/Validador*
 
   endInstall
 fi 
@@ -225,9 +225,9 @@ if [ "$acao" = "DIEF MA" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Instalador_DIEF64_32bits.EXE"
   sleep 1
   cd $HOME
-  cp -f  ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ SEFAZ-MA/DIEF64.desktop "$desktop_path/Validadores"
+  cp -f  ~/.local/share/applications/wine/Programs/Programas\ SEFAZ-MA/DIEF64.desktop "$desktop_path/Validadores"
   #cp -r "$HOME/.mdac28/drive_c/Documents and Settings/All Users/Dief64" "$HOME/.mdac28/drive_c/ProgramData/"
-  rm -rf   ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas*
+  rm -rf   ~/.local/share/applications/wine/Programs/Programas*
   rm -rf  "$desktop_path/DIEF64.desktop"
 
   endInstall
@@ -287,7 +287,7 @@ if [ "$acao" = "GIA RS" ] ; then
   mkdir /opt/projetus/facilitador/cache/atualizacao
   download "https://www.sefaz.rs.gov.br/ASP/Download/Sat/Giamen/AtualizaGia9.exe" "$cache_path/atualizacao/AtualizaGia9.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/atualizacao/AtualizaGia9.EXE"
-  rm -rf  "~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/GIA 9"
+  rm -rf  "~/.local/share/applications/wine/Programs/GIA 9"
   mv -f "$desktop_path/GIA 9.desktop" "$desktop_path/Validadores"
   rm -rf  "$desktop_path/GIA 9.lnk"
 
@@ -334,7 +334,7 @@ if [ "$acao" = "GIM ICMS PB" ] ; then
   sleep 1
   cd $HOME
   mv -f "$desktop_path/Gim SRE-PB.desktop" "$desktop_path/Validadores"
-  rm -rf  ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SRE-PB
+  rm -rf  ~/.local/share/applications/wine/Programs/SRE-PB
   rm -rf  "$desktop_path/Gim SRE-PB.lnk"
 
   endInstall
@@ -356,7 +356,7 @@ if [ "$acao" = "SEDIF-SN" ] ; then
   sleep1
 
   # Copiando o atalho para a pasta de Validadores
-  cp ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/SimplesNacional/SEDIF/SEDIF.desktop "$desktop_path/Validadores"
+  cp ~/.local/share/applications/wine/Programs/SimplesNacional/SEDIF/SEDIF.desktop "$desktop_path/Validadores"
   
   # Removendo links da Area de Trabalho
   rm -rf  "$desktop_path/SEDIF.*"
