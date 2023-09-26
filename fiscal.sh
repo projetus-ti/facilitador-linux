@@ -8,13 +8,15 @@ source /opt/projetus/facilitador/funcoes.sh
 acao=$1
 
 if [ "$acao" = "DMA BA" ]; then
+  configurarWine32
   cd "$desktop_path"
   rm -Rf DMA*
   cd /opt/projetus/facilitador
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gdiplus"
-  download "https://www.sefaz.ba.gov.br/contribuinte/informacoes_fiscais/declaracoes/download/dma_2012.exe" "$cache_path/dma_2012.exe"
+  download "https://www.sefaz.ba.gov.br/docs/inspetoria-eletronica/icms/dma_2012.zip" "$cache_path/dma_2012.zip"
+  unzip $cache_path/dma_2012.zip -d ./cache
+  sleep 3
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dma_2012.exe"
-  sleep 1
   mv "$desktop_path/DMA_2012.desktop" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Sefaz-BA*
   endInstall
@@ -54,7 +56,7 @@ if [ "$acao" = "GIAM TO" ]; then
   cd "$desktop_path"
   rm -Rf GIAM*
   cd /opt/projetus/facilitador
-  download "http://giam.sefaz.to.gov.br/download/Instalargiam10.0_01.02.2023v1.exe" "$cache_path/giamto.exe"
+  download "http://giam.sefaz.to.gov.br/download/Instalargiam10.0_21.08.2023v1.exe" "$cache_path/giamto.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/giamto.exe /silent"
   sleep 3
   mv "$desktop_path/GIAM 10.0.desktop" "$desktop_path/Validadores"
@@ -131,7 +133,7 @@ fi
 
 if [ "$acao" = "DIEF PI" ] ; then
   #configurarWine
-  executar "flatpak run --env="WINEPREFIX=$HOME" --env="WINEARCH=win64" org.winehq.Wine /app/bin/winetricks jet40"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40"
   download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' https://portal-admin.sefaz.pi.gov.br/download/dief-v2-4-2/?wpdmdl=3572&refresh=64774ee22442c1685540578" "$cache_path/dief.exe"
   download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' https://portal-admin.sefaz.pi.gov.br/download/diefv2-4-2-atualizacao/?wpdmdl=3573&refresh=64774ee1b565e1685540577" "$cache_path/dief_atualizacao.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe"
@@ -172,7 +174,8 @@ fi
 
 if [ "$acao" = "DAC AL" ]; then
   # configurarWine
-  download  "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://gcs.sefaz.al.gov.br/documentos/visualizarDocumento.action?key=t%2Bu8AZkwAeQ%3D" "$cache_path/InstalaDAC221012.exe"
+  download "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/Infra/o/facilitador-programs%2FInstalaDAC221012.exe" "$cache_path/InstalaDAC221012.exe"
+  # download  "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://gcs.sefaz.al.gov.br/documentos/visualizarDocumento.action?key=t%2Bu8AZkwAeQ%3D" "$cache_path/InstalaDAC221012.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/InstalaDAC221012.exe"
   sleep 1                                                                        
   cp ~/.local/share/applications/wine/Programs/Sefaz-AL/DAC/DAC.desktop  "$desktop_path/Validadores"
@@ -210,6 +213,7 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Validadoreslfe.exe"
   sleep 3
   cp  ~/.local/share/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
+  mv "$desktop_path/Validadores/validador.desktop" "$desktop_path/Validadores/LivroEletronicoDF.desktop" 
   rm -rf   ~/.local/share/applications/wine/Programs/Validador*
 
   endInstall
@@ -221,7 +225,7 @@ if [ "$acao" = "DIEF MA" ] ; then
   #setWinePrefix "$win" "$stricks"
   #configurarWine
   download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://downloads.sefaz.ma.gov.br/diefportal/Instalador_DIEF64_32bits.EXE"  "$cache_path/Instalador_DIEF64_32bits.EXE"
-  executar "flatpak run --env="WINEPREFIX=$HOME" --env="WINEARCH=win64" org.winehq.Wine /app/bin/winetricks jet40 mdac28"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40 mdac28"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Instalador_DIEF64_32bits.EXE"
   sleep 1
   cd $HOME
@@ -255,24 +259,18 @@ fi
 if [ "$acao" = "GIA MT" ]; then
   #win="win32"
   #tricks="wine32"
-  #configurarWine
-  download "www5.sefaz.mt.gov.br/documents/6071037/6426166/GIA_ICMS_307m_Completa_20120613.zip/5479ce2f-51ce-d471-1802-e5199cdd4807" "$cache_path/gia.zip"
+  configurarWine
+  download "https://www5.sefaz.mt.gov.br/documents/6071037/6425881/GIA_ICMS_307n_Completa.zip/89428c61-91cb-878a-153e-99535b281a26?t=1684931631844" "$cache_path/gia.zip"
   unzip $cache_path/gia.zip -d $cache_path
-  cd /opt/projetus/facilitador/cache
-  executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI  $cache_path/GIA_ICMS_307m_Completa_20120613.exe"
-  sleep 1
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/SETUP.exe /silent"
+  sleep 2
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/GIA_ICMS_307n_Completa/GIA_ICMS_307n_Completa.exe"
   sleep 1
   mv -f "$desktop_path/GIA 3.07.desktop" "$desktop_path/Validadores" 
-  mkdir /opt/projetus/facilitador/cache/atualizacao
-  download "http://www5.sefaz.mt.gov.br/documents/6071037/6426166/GIA_ICMS_307m_Atualizacao_20120613.zip/b8e63b35-06f9-a885-4fca-5a39f1c1420c" "$cache_path/atualizacao/gia_atualizacao.zip"
-  unzip $cache_path/atualizacao/gia_atualizacao.zip -d $cache_path/atualizacao
-  cd /opt/projetus/facilitador/cache/atualizacao
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/atualizacao/GIA_ICMS_307m_Atualizacao_20120613.exe"
+  download "https://www5.sefaz.mt.gov.br/documents/6071037/6425881/GIA_ICMS_307n_Atualizacao.zip/265e7874-a097-5527-ee5a-f82fbffda694?t=1684931629746" "$cache_path/gia_atualizacao.zip"
+  unzip $cache_path/gia_atualizacao.zip -d ./cache
+  sleep 2
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/GIA_ICMS_307n_Atualizacao/GIA_ICMS_307n_Atualizacao.exe"
   sleep 1
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/atualizacao/SETUP.exe /silent"
-  sleep 1
-
   endInstall
 fi
 
