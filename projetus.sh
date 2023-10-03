@@ -38,7 +38,7 @@ fi
 
 
 if [ "$acao" = "MySuite" ]; then
-  configurarWine
+  #configurarWine
   download "https://cdn.projetusti.com.br/suporte/mysuite.msi" "$cache_path/mysuite.msi"
   nohup wine msiexec /i $cache_path/mysuite.msi /quiet > /dev/null 2>&1 &
   rm -Rf "$desktop_path/BraZip Central.lnk"
