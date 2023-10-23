@@ -71,7 +71,8 @@ if [ "$acao" = "TeamViewer" ]; then
   echo $'#!/bin/bash 
     dpkg -i '$cache_path'/tv.deb 
     apt-get update && apt-get -f install -y
-    apt-mark hold teamviewer'>$cache_path/exec.sh
+    apt-mark hold teamviewer
+    rm -Rf /etc/apt/sources.list.d/teamviewer.list'>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
