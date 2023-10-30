@@ -17,6 +17,9 @@ chmod -R +x /opt/projetus/facilitador/*.desktop
 chmod -R +x /opt/projetus/facilitador/atalhos/*.sh
 chmod -R +x /opt/projetus/facilitador/atalhos/*.desktop
 
+# Reinstação do wine.
+apt-get install --install-recommends -y wine winetricks  winehq-staging
+
 # Verificar se o FlatpakWine está instalado.
 if ! (flatpak list | grep WineZGUI); then
     echo $'#!/bin/bash 
@@ -33,9 +36,13 @@ fi
 
 # Verifica se  o Winestricks esta instalado 
 if [ ! -e  "/usr/bin/winetricks" ]; then
-    pkexec apt-get install winetricks
+    pkexec apt-get install winetricks 
 fi    
 
+# Verifica se  o Wine esta instalado. 
+if [ ! -e  "/opt/wine-staging" ]; then
+    pkexec apt-get install wine  winehq-staging
+fi 
 # Executar a aplicacao
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
 
