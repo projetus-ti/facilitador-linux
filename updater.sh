@@ -36,12 +36,12 @@ fi
 
 # Verifica se  o Winestricks esta instalado 
 if [ ! -e  "/usr/bin/winetricks" ]; then
-    pkexec apt-get install winetricks 
+    pkexec apt-get install winetricks -y
 fi    
 
 # Verifica se  o Wine esta instalado. 
 if [ ! -e  "/opt/wine-staging" ]; then
-    pkexec apt-get install wine  winehq-staging
+    pkexec apt-get install wine  winehq-staging -y
 fi 
 # Executar a aplicacao
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
