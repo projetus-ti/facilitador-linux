@@ -370,7 +370,7 @@ if [ "$acao" = "DMED" ] ; then
   cd "$cache_path"
 
   #Execuntando o executavel para instalação 
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Dmed.exe /mode silent"
+  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine64 wine64 $cache_path/Dmed.exe "
 
   #Tempo para serem criados os atalshos antes de copialos
   sleep 1
