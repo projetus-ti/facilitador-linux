@@ -209,8 +209,8 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   #configurarWine
   cd $HOME/
   download "http://www.livroeletronico.fazenda.df.gov.br/validadorLFE/validadorlfe.exe" "$cache_path/Validadoreslfe.exe"
-  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine64 winetricks dotnet452"
-  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine64 wine64 $cache_path/Validadoreslfe.exe"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet452"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Validadoreslfe.exe"
   sleep 3
   cp  ~/.local/share/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
   mv "$desktop_path/Validadores/validador.desktop" "$desktop_path/Validadores/LivroEletronicoDF.desktop" 
