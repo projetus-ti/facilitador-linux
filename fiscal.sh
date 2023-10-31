@@ -179,7 +179,7 @@ if [ "$acao" = "DAC AL" ]; then
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/InstalaDAC221012.exe"
   sleep 1                                                                        
   cp ~/.local/share/applications/wine/Programs/Sefaz-AL/DAC/DAC.desktop  "$desktop_path/Validadores"
-  mv "$desktop_path/TdiSefaz.desktop" "$desktop_path/Validadores/DAC-AL.desktop"
+  mv "$desktop_path/TdiSefaz.desktop" "$desktop_path/Validadores/DAC_AL.desktop"
   rm -rf "$desktop_path/TdiSefaz.lnk"
   rm -rf "$desktop_path/DAC.lnk"
   rm -rf "$desktop_path/DAC.desktop"
