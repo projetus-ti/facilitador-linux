@@ -230,7 +230,7 @@ if [ "$acao" = "DIEF MA" ] ; then
   sleep 1
   cd $HOME
   cp -f  ~/.local/share/applications/wine/Programs/Programas\ SEFAZ-MA/DIEF64.desktop "$desktop_path/Validadores"
-  cp "$HOME/.wine32/drive_c/Documents and Settings/All Users/Dief64/DIEFBD.mdb" "$HOME/.mdac28/drive_c/ProgramData/DIEFBD.mdb"
+  cp "$HOME/.wine32/drive_c/Documents and Settings/All Users/Dief64/DIEFBD.mdb" "$HOME/.wine32/drive_c/ProgramData/DIEFBD.mdb"
   rm -rf   ~/.local/share/applications/wine/Programs/Programas*
   rm -rf  "$desktop_path/DIEF64.desktop"
 
