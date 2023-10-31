@@ -206,7 +206,7 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   #win="win64"
   #tricks="dotnet"
   #setWinePrefix "$win" "$stricks"
-  #configurarWine
+  configurarWine
   cd $HOME/
   download "http://www.livroeletronico.fazenda.df.gov.br/validadorLFE/validadorlfe.exe" "$cache_path/Validadoreslfe.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet452"
