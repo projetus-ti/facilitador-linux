@@ -41,7 +41,7 @@ fi
 
 # Verifica se  o Wine esta instalado. 
 if [ ! -e  "/opt/wine-staging" ]; then
-    pkexec apt-get install wine  winehq-staging -y
+    pkexec apt-get install winehq-staging -y
 fi 
 # Executar a aplicacao
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
