@@ -43,5 +43,9 @@ fi
 if [ ! -e  "/opt/wine-staging" ]; then
     pkexec apt-get install winehq-staging -y
 fi 
+
+# Procurando atualização do wine
+pkexec apt-get upgrade winehq-stable
+
 # Executar a aplicacao
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
