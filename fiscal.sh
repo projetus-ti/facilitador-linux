@@ -12,7 +12,7 @@ if [ "$acao" = "DMA BA" ]; then
   cd "$desktop_path"
   rm -Rf DMA*
   cd /opt/projetus/facilitador
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gdiplus"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  gdiplus"
   download "https://www.sefaz.ba.gov.br/docs/inspetoria-eletronica/icms/dma_2012.zip" "$cache_path/dma_2012.zip"
   unzip $cache_path/dma_2012.zip -d ./cache
   sleep 3
@@ -25,7 +25,7 @@ fi
 if [ "$acao" = "DCTF" ]; then
   configurarWine32
   cd "$desktop_path/Validadores"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks corefonts"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  corefonts"
   rm -Rf DCTF*
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dctf.exe"
@@ -86,7 +86,7 @@ if [ "$acao" = "SEF 2012 PE" ]; then
   # configurarWine
   cd "$desktop_path/Validadores"
   rm -Rf SEF2012*
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gdiplus"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  gdiplus"
   download "https://www.sefaz.pe.gov.br/Servicos/SEFII/Programas/SEF2012_v1.6.5.00_instalador.exe.zip" "$cache_path/sef2012.zip"
   unzip $cache_path/sef2012.zip -d ./cache
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/SEF2012_v1.6.5.00_instalador.exe /silent"
@@ -100,7 +100,7 @@ fi
 
 if [ "$acao" = "SEFAZNET PE" ]; then
   # configurarWine
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gdiplus"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  gdiplus"
   download "https://www.sefaz.pe.gov.br/Servicos/Programas%20do%20SEFAZnet/SefazNet_v1.24.0.3_instalador.exe.zip" "$cache_path/sefaznet.zip"
   unzip $cache_path/sefaznet.zip -d ./cache
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/SefazNet_v1.24.0.3_instalador.exe /silent"
@@ -116,7 +116,7 @@ fi
 if [ "$acao" = "DIEF CE" ] ; then
 
   # Instalando complementos.
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  jet40"
 
   # Baixando e executando programa principal
   download "http://servicos.sefaz.ce.gov.br/internet/download/dief/dief.exe" "$cache_path/dief.exe"
@@ -133,7 +133,7 @@ fi
 
 if [ "$acao" = "DIEF PI" ] ; then
   #configurarWine
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  jet40"
   download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' https://portal-admin.sefaz.pi.gov.br/download/dief-v2-4-2/?wpdmdl=3572&refresh=64774ee22442c1685540578" "$cache_path/dief.exe"
   download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' https://portal-admin.sefaz.pi.gov.br/download/diefv2-4-2-atualizacao/?wpdmdl=3573&refresh=64774ee1b565e1685540577" "$cache_path/dief_atualizacao.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dief.exe"
@@ -152,12 +152,14 @@ if [ "$acao" = "DAPI MG" ] ; then
   # tricks="wine32"
   # setWinePrefix "$win" "$tricks"
   # configWine
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks gecko corefonts mdac28 jet40 msxml4"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  gecko corefonts mdac28 jet40 msxml4"
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/dapi/files/instalar.exe" "$cache_path/dapi.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dapi.exe"
   cp ~/.local/share/applications/wine/Programs/Secretaria\ da\ Fazenda\ -\ MG/DAPI/DAPISEF.desktop "$desktop_path/Validadores"
   rm -rf ~/.local/share/applications/wine/Programs/Secretaria*
 
+  resquestRestart
+  
   endInstall
 fi
 
@@ -209,7 +211,7 @@ if [ "$acao" = "Livro Eletronico GDF" ] ; then
   configurarWine
   cd $HOME/
   download "http://www.livroeletronico.fazenda.df.gov.br/validadorLFE/validadorlfe.exe" "$cache_path/Validadoreslfe.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet452"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force dotnet452"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Validadoreslfe.exe"
   sleep 3
   cp  ~/.local/share/applications/wine/Programs/Validador/Validador.desktop "$desktop_path/Validadores"
@@ -225,7 +227,7 @@ if [ "$acao" = "DIEF MA" ] ; then
   #setWinePrefix "$win" "$stricks"
   configurarWine
   download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://downloads.sefaz.ma.gov.br/diefportal/Instalador_DIEF64_32bits.EXE"  "$cache_path/Instalador_DIEF64_32bits.EXE"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40 mdac28"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  jet40 mdac28"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Instalador_DIEF64_32bits.EXE"
   sleep 1
   cd $HOME
@@ -280,7 +282,7 @@ if [ "$acao" = "GIA RS" ] ; then
   #tricks="wine32"
   #setWinePrefix "$win" "$tricks"
   download "https://www.sefaz.rs.gov.br/ASP/Download/Sat/Giamen/InstalaGIA9.exe" "$cache_path/gia9.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks jet40  mdac28"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  jet40  mdac28"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/gia9.EXE"
   sleep 1
   mkdir /opt/projetus/facilitador/cache/atualizacao
@@ -326,7 +328,7 @@ if [ "$acao" = "GIM ICMS PB" ] ; then
   # tricks="wine32"
   # configurarWine
   # setWinePrefix "$win" "$tricks"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks mdac28 jet40" # Nessa ordem
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  mdac28 jet40" # Nessa ordem
   sleep 1
   download "http://www.sefaz.pb.gov.br/ser/images/docs/downloads/GIM/InstalaGimSREPB-Ver_2473.exe"  "$cache_path/gimsrepb.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/gimsrepb.exe"
@@ -342,7 +344,7 @@ fi
 if [ "$acao" = "SEDIF-SN" ] ; then 
   #configurarWine
   # Instalando complementos.
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks dotnet45"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  dotnet45"
 
   # Baixando e executando programa principal
   download "http://www.fazenda.mg.gov.br/empresas/declaracoes_demonstrativos/DeSTDA_SEDIF-SN/files/sedif_Setup1.0.6.00.exe"   "$cache_path/sedif.exe"

@@ -60,6 +60,14 @@ download() {
   rm -Rf $app_path/wget-log*
 }
 
+
+resquestRestart() {
+    zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Instalação Finalizada!" \
+         --text 'Reinicie o computador após a conclusão da instalação.' \
+         --height="50" --width="450"
+}
+
+
 endInstall() {
     zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Instalação Finalizada!" \
          --text 'Execute o programa pela pasta "Validadores" em sua "Área de Trabalho".' \
