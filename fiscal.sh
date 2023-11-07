@@ -159,7 +159,7 @@ if [ "$acao" = "DAPI MG" ] ; then
   rm -rf ~/.local/share/applications/wine/Programs/Secretaria*
 
   resquestRestart
-  
+
   endInstall
 fi
 
@@ -274,6 +274,7 @@ if [ "$acao" = "GIA MT" ]; then
   sleep 2
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/GIA_ICMS_307n_Atualizacao/GIA_ICMS_307n_Atualizacao.exe"
   sleep 1
+  mv -f "$desktop_path/GIA 3.07.desktop" "$desktop_path/Validadores"
   endInstall
 fi
 
