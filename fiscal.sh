@@ -298,8 +298,6 @@ fi
 
 if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicação de java
 
-  # naoCompativel
-
   # Limpeza da versao antiga
   rm -rf $user_path/.wine/drive_c/DIEF20*
 
@@ -309,16 +307,12 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/DIEF-PA.msi"
   sleep 1
 
-  # Instalação da Correção
-
   # Download da JRE versão windows
-  cd $user_path/.wine/drive_c/DIEF2023.2.0/
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
-  mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
-  mv jre.zip $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
+  mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip  $user_path/.wine32/drive_c/DIEF2023.2.0jre.zip
   unzip $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
   #mv $user_path/.wine32/drive_c/DIEF2023.2.0/dk8u252-b09-jre jre
-  rm -rf $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
+  #rm -rf $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
 
   cd "$desktop_path/"
   mv DIEF2023.1.0.desktop "$desktop_path/Validadores/DIEF-PA.2023.2.0.desktop"
