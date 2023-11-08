@@ -317,8 +317,8 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
   mv jre.zip $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
   unzip $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
-  mv jdk8u252-b09-jre jre
-  rm -rf jre.zip
+  #mv $user_path/.wine32/drive_c/DIEF2023.2.0/dk8u252-b09-jre jre
+  rm -rf $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
 
   cd "$desktop_path/"
   mv DIEF2023.1.0.desktop "$desktop_path/Validadores/DIEF-PA.2023.2.0.desktop"
