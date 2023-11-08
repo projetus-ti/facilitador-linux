@@ -306,13 +306,15 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   # Instalação do app via wine
   download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2022/DIEF2022.2.0.msi" "$cache_path/DIEF2022.msi"
   cd $cache_path
-  executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI DIEF2022.msi /quite /qn"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/DIEF2022.msi"
   sleep 1
 
   # Download da JRE versão windows
   cd $user_path/.wine/drive_c/DIEF2022.2.0/
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
+  mv jre.zip $user_path/.wine/drive_c/DIEF2022.2.0/jre.zip
+  cd $user_path/.wine/drive_c/DIEF2022.2.0/
   unzip jre.zip
   mv jdk8u252-b09-jre jre
   rm -rf jre.zip
