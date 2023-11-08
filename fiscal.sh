@@ -314,8 +314,7 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
   executar "wget  https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip " "Baixando JRE"
   mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
   mv jre.zip $user_path/.wine/drive_c/DIEF2022.2.0/jre.zip
-  cd $user_path/.wine/drive_c/DIEF2022.2.0/
-  unzip jre.zip
+  unzip $user_path/.wine/drive_c/DIEF2022.2.0/jre.zip
   mv jdk8u252-b09-jre jre
   rm -rf jre.zip
 
