@@ -296,12 +296,12 @@ if [ "$acao" = "GIA RS" ] ; then
   endInstall
 fi 
 
-if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicação de java
+if [ "$acao" = "DIEF PA 2023" ] ; then # instala mais não inicia erro de comunicação de java
 
   configurarWine32
 
   # Limpeza da versao antiga
-  rm -rf $user_path/.wine/drive_c/DIEF20*
+  rm -rf $user_path/.wine/drive_c/DIEF2023*
 
   # Instalação do app via wine
   download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2023/DIEF2023.2.0.msi" "$cache_path/DIEF-PA.msi"
@@ -319,6 +319,34 @@ if [ "$acao" = "DIEF PA" ] ; then # instala mais não inicia erro de comunicaç�
 
   cd "$desktop_path/"
   mv DIEF2023.2.0.desktop "$desktop_path/Validadores/DIEF-PA.2023.2.0.desktop"
+  rm -rf DIEF20*.*
+
+  endInstall
+fi 
+
+if [ "$acao" = "DIEF PA 2022" ] ; then # instala mais não inicia erro de comunicação de java
+
+  configurarWine32
+
+  # Limpeza da versao antiga
+  rm -rf $user_path/.wine/drive_c/DIEF2022*
+
+  # Instalação do app via wine
+  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2022/DIEF2022.2.0.msi" "$cache_path/DIEF-PA.msi"
+  cd $cache_path
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/DIEF-PA.msi"
+  sleep 1
+
+  # Download da JRE versão windows
+  executar "wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip" "Baixando JRE"
+  mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
+  mv jre.zip $user_path/.wine32/drive_c/DIEF2022.2.0/jre.zip
+  unzip $user_path/.wine32/drive_c/DIEF2022.2.0/jre.zip -d $user_path/.wine32/drive_c/DIEF2022.2.0
+  mv $user_path/.wine32/drive_c/DIEF2022.2.0/jdk8u252-b09-jre $user_path/.wine32/drive_c/DIEF2022.2.0/jre
+  #rm -rf $user_path/.wine32/drive_c/DIEF2022.2.0/jre.zip
+
+  cd "$desktop_path/"
+  mv DIEF2022.2.0.desktop "$desktop_path/Validadores/DIEF-PA.2022.2.0.desktop"
   rm -rf DIEF20*.*
 
   endInstall
