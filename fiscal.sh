@@ -226,7 +226,7 @@ if [ "$acao" = "DIEF MA" ] ; then
   #tricks="mdac28"
   #setWinePrefix "$win" "$stricks"
   configurarWine 
-  download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://downloads.sefaz.ma.gov.br/diefportal/Instalador_DIEF64_32bits.EXE"  "$cache_path/Instalador_DIEF64_32bits.EXE"
+  download "--header='Accept: text/html' --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' http://downloads.sefaz.ma.gov.br/diefportal/Instalador_DIEF64_64bits.EXE"  "$cache_path/Instalador_DIEF64_32bits.EXE"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  jet40 mdac28"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/Instalador_DIEF64_32bits.EXE"
   sleep 1
