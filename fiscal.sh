@@ -8,15 +8,15 @@ source /opt/projetus/facilitador/funcoes.sh
 acao=$1
 
 if [ "$acao" = "DMA BA" ]; then
-  configurarWine32
+  configurarWine
   cd "$desktop_path"
   rm -Rf DMA*
   cd /opt/projetus/facilitador
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  gdiplus"
+  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine winetricks --force  gdiplus jet40"
   download "https://www.sefaz.ba.gov.br/docs/inspetoria-eletronica/icms/dma_2012.zip" "$cache_path/dma_2012.zip"
   unzip $cache_path/dma_2012.zip -d ./cache
   sleep 3
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dma_2012.exe"
+  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine wine $cache_path/dma_2012.exe"
   mv "$desktop_path/DMA_2012.desktop" "$desktop_path/Validadores"
   rm -Rf ~/.local/share/applications/wine/Programs/Sefaz-BA*
   endInstall
