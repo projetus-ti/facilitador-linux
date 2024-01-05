@@ -57,7 +57,7 @@ if [ "$acao" = "DIRF" ]; then
   cp /opt/Programas RFB/Dirf2024.desktop '"'$desktop_path/Validadores'"'
   chmod 777 '"'$desktop_path/Validadores/Dirf2024.desktop'"'
   echo "Removendo os arquivos pós instalação."
-  rm -Rf /usr/share/applications/Dirf*
+  rm -Rf /opt/Programas RFB/Dirf*
   '>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
