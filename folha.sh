@@ -60,7 +60,7 @@ if [ "$acao" = "DIRF" ]; then
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
 
-  endInstall
+  # endInstall
 fi
 
 if [ "$acao" = "GDRAIS" ]; then
