@@ -49,13 +49,17 @@ if [ "$acao" = "DIRF" ]; then
   chmod +x $cache_path/Dirf.sh
 
   echo $'#!/bin/bash 
-    chmod +x '$cache_path'/Dirf.sh
-    '$cache_path'/Dirf.sh 
-    chmod 777 /usr/share/applications/Dirf2024-program.desktop 
-    cp /usr/share/applications/Dirf2024-program.desktop '"'$desktop_path/Validadores'"'
-    chmod 777 '"'$desktop_path/Validadores/Dirf2024-program.desktop'"'
-    rm -Rf /usr/share/applications/Dirf*
-    '>$cache_path/exec.sh
+  echo "Iniciando a instalação da Dirf"
+  chmod +x '$cache_path'/Dirf.sh
+  echo "Executando o aplicativo de instalação"
+  '$cache_path'/Dirf.sh
+  echo "Atribuindo permissões aos atalhos"
+  chmod 777 /usr/share/applications/Dirf2024-program.desktop 
+  cp /usr/share/applications/Dirf2024-program.desktop '"'$desktop_path/Validadores'"'
+  chmod 777 '"'$desktop_path/Validadores/Dirf2024-program.desktop'"'
+  echo "Removendo os arquivos pós instalação."
+  rm -Rf /usr/share/applications/Dirf*
+  '>$cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
   executar "pkexec $cache_path/exec.sh"
