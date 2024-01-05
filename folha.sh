@@ -54,7 +54,7 @@ if [ "$acao" = "DIRF" ]; then
   '$cache_path'/Dirf.sh
   echo "Atribuindo permissões aos atalhos"
   chmod 777 /opt/Programas RFB/Dirf2024.desktop
-  cp "'$desktop_path'/Dirf2024.desktop" "'$desktop_path'/Validadores"
+  mv "'$desktop_path'/Dirf2024.desktop" "'$desktop_path'/Validadores"
   chmod 777 '"'$desktop_path/Validadores/Dirf2024.desktop'"'
   echo "Removendo os arquivos pós instalação."
   rm -Rf /opt/Programas RFB/Dirf*
