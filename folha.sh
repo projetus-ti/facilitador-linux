@@ -50,7 +50,7 @@ if [ "$acao" = "DIRF" ]; then
 
   echo $'#!/bin/bash 
     chmod +x '$cache_path'/Dirf.sh
-    '$cache_path'/Dirf.sh --mode silent 
+    '$cache_path'/Dirf.sh 
     chmod 777 /usr/share/applications/Dirf2024-program.desktop 
     cp /usr/share/applications/Dirf2024-program.desktop '"'$desktop_path/Validadores'"'
     chmod 777 '"'$desktop_path/Validadores/Dirf2024-program.desktop'"'
