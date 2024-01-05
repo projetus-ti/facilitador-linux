@@ -53,9 +53,9 @@ if [ "$acao" = "DIRF" ]; then
   echo "Executando o aplicativo de instalação"
   '$cache_path'/Dirf.sh
   echo "Atribuindo permissões aos atalhos"
-  chmod 777 /usr/share/applications/Dirf2024-program.desktop 
-  cp /usr/share/applications/Dirf2024-program.desktop '"'$desktop_path/Validadores'"'
-  chmod 777 '"'$desktop_path/Validadores/Dirf2024-program.desktop'"'
+  chmod 777 /opt/Programas RFB/Dirf2024.desktop
+  cp /opt/Programas RFB/Dirf2024.desktop '"'$desktop_path/Validadores'"'
+  chmod 777 '"'$desktop_path/Validadores/Dirf2024.desktop'"'
   echo "Removendo os arquivos pós instalação."
   rm -Rf /usr/share/applications/Dirf*
   '>$cache_path/exec.sh
