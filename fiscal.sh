@@ -397,19 +397,23 @@ fi
 if [ "$acao" = "DMED" ] ; then 
 
   # configurarWine
-
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2024/Dmed2024Win64v1.1.exe"   "$cache_path/Dmed.exe"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2024/Dmed2024Linux-x86_64v1.1.sh"   "$cache_path/Dmed.sh"
   cd "$cache_path"
+  
+
+
+  #download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2024/Dmed2024Win64v1.1.exe"   "$cache_path/Dmed.exe"
+  #cd "$cache_path"
 
   #Execuntando o executavel para instalação 
-  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine64 wine64 $cache_path/Dmed.exe "
+  executar "Dmed.sh"
 
   #Tempo para serem criados os atalshos antes de copialos
   sleep 1
 
   #Copiando o atalho para a pasta de Validadores
-  mv -f "$desktop_path/Dmed2024.desktop" "$desktop_path/Validadores"
+  #mv -f "$desktop_path/Dmed2024.desktop" "$desktop_path/Validadores"
   
-  endInstall
+  #endInstall
 fi 
 
