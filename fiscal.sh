@@ -400,20 +400,21 @@ if [ "$acao" = "DMED" ] ; then
   download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2024/Dmed2024Linux-x86_64v1.1.sh"   "$cache_path/Dmed.sh"
   cd "$cache_path"
   
+  echo $'#!/bin/bash 
+  echo "Iniciando a instalação da DMED"
+  chmod +x '$cache_path'/Dmed.sh
+  echo "Executando o aplicativo de instalação"
+  '$cache_path'/Dmed.sh
+  echo "Atribuindo permissões aos atalhos"
+  chmod 777 /opt/Programas RFB/Dmed2024.desktop
+  mv "'$desktop_path'/Dmed2024.desktop" "'$desktop_path'/Validadores"
+  chmod 777 '"'$desktop_path/Validadores/Dmed2024.desktop'"'
+  echo "Removendo os arquivos pós instalação."
+  '>$cache_path/exec.sh
 
+  chmod +x $cache_path/exec.sh
+  executar "$cache_path/exec.sh"
 
-  #download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2024/Dmed2024Win64v1.1.exe"   "$cache_path/Dmed.exe"
-  #cd "$cache_path"
-
-  #Execuntando o executavel para instalação 
-  executar "Dmed.sh"
-
-  #Tempo para serem criados os atalshos antes de copialos
-  sleep 1
-
-  #Copiando o atalho para a pasta de Validadores
-  #mv -f "$desktop_path/Dmed2024.desktop" "$desktop_path/Validadores"
-  
-  #endInstall
+  endInstall
 fi 
 
