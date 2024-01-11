@@ -398,7 +398,7 @@ if [ "$acao" = "DMED" ] ; then
 
   # configurarWine
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2023/Dmed2023Win64v1.0.exe"   "$cache_path/Dmed.exe"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dmed/2024/Dmed2024Win64v1.1.exe"   "$cache_path/Dmed.exe"
   cd "$cache_path"
 
   #Execuntando o executavel para instalação 
@@ -408,7 +408,7 @@ if [ "$acao" = "DMED" ] ; then
   sleep 1
 
   #Copiando o atalho para a pasta de Validadores
-  mv -f "$desktop_path/Dmed2023.desktop" "$desktop_path/Validadores"
+  mv -f "$desktop_path/Dmed2024.desktop" "$desktop_path/Validadores"
   
   endInstall
 fi 
