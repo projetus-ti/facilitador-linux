@@ -14,11 +14,11 @@ then
 	rm -rf /home/$SUDO_USER/.wine
 fi
 
-idLine=$(cat /etc/*-release | grep ^ID_LIKE=)
+idLine=$(cat /etc/*-release | grep ^ID=)
 id=$(echo $idLine | cut -d '=' -f2)
 
 echo "Verifying Linux Distribution and trying to install dependencies..."
-if [ $id = "debian" ] 
+if [ $id = "ubuntu" ] 
 then 
 	codenameLine=$(cat /etc/*-release | grep ^DISTRIB_CODENAME=)
 	codename=$(echo $codenameLine | cut -d '=' -f2)
@@ -26,7 +26,7 @@ then
 	# Add Wine repository
 	mkdir -pm755 /etc/apt/keyrings
 	wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-	wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-$codename.sources
+	wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$codename/winehq-$codename.sources
 	
 	dpkg --add-architecture i386
 	apt-get purge -y wine*
@@ -43,7 +43,7 @@ then
     
     #define variable to continue dependencies installation
     continue=1
-elif [ $id = "arch" ] 
+elif [ $id = "manjaro" ] 
 then 
   #TODO
   #ainda não está funcionando o facilitador, provavelmente falta alguma dependência
