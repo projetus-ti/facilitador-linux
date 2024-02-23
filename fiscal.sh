@@ -305,8 +305,7 @@ if [ "$acao" = "DIEF PA 2024" ] ; then # instala mais não inicia erro de comuni
   rm -rf $user_path/.wine/drive_c/DIEF202*
 
   # Instalação do app via wine
-  download "http://antigo.sefa.pa.gov.br/arquivos/downloads/dief/2024/DIEF2024.2.0.msi" 
-  "$cache_path/DIEF-PA.msi"
+  download "http://antigo.sefa.pa.gov.br/arquivos/downloads/dief/2024/DIEF2024.2.0.msi" "$cache_path/DIEF-PA.msi"
   cd $cache_path
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/DIEF-PA.msi"
   sleep 1
