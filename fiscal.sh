@@ -23,12 +23,12 @@ if [ "$acao" = "DMA BA" ]; then
 fi
 
 if [ "$acao" = "DCTF" ]; then
-  configurarWine32
+  # configurarWine32
   cd "$desktop_path/Validadores"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  corefonts"
+  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine winetricks --force  corefonts"
   rm -Rf DCTF*
   download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_7.exe" "$cache_path/dctf.exe"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dctf.exe"
+  executar "env WINEARCH=win64 WINEPREFIX=$HOME/.wine wine $cache_path/dctf.exe"
   sleep 1
   cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.7/DCTF\ Mensal\ 3.7.desktop "$desktop_path/Validadores"
   cd "$desktop_path"
