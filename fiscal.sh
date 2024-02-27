@@ -27,10 +27,10 @@ if [ "$acao" = "DCTF" ]; then
   cd "$desktop_path/Validadores"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  corefonts"
   rm -Rf DCTF*
-  download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
+  download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_7.exe" "$cache_path/dctf.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dctf.exe"
   sleep 1
-  cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.6/DCTF\ Mensal\ 3.6.desktop "$desktop_path/Validadores"
+  cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.7/DCTF\ Mensal\ 3.7.desktop "$desktop_path/Validadores"
   cd "$desktop_path"
   rm -Rf DCTF*
   rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/
