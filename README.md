@@ -5,5 +5,5 @@ Aplicativo para auxílio da instalação de programas da receita federal, estadu
 # Instalação
 
  ```bash
-curl -s https://raw.githubusercontent.com/projetus-ti/facilitador-linux/master/install.sh | sudo bash
+curl -s https://raw.githubusercontent.com/higorhgoncalves/facilitador-linux/master/install.sh | sudo bash
  ```
