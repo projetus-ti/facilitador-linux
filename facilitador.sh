@@ -39,7 +39,7 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 10.1.8" \
-    FALSE "SPED ECF" "Versão 10.0.1" \
+    FALSE "SPED ECF" "Versão 10.0.4" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
 
@@ -59,15 +59,15 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     --column="" --column "Programa"  --column "Descrição"\
     TRUE "DAPI MG" "Versão 9.03.00"\
     FALSE "DAC AL" "Versão 2.2.10.12"\
-    FALSE "DCTF" "Mensal v. 3.6"\
+    FALSE "DCTF" "Mensal v. 3.7"\
     FALSE "DMED" "Versão 2024"\
     FALSE "DIEF CE" "Versão 6.0.8"\
     FALSE "DIEF MA" "Versão 6.4.6"\
-    FALSE "DIEF PA 2022" "Versão 2022.2.0"\
     FALSE "DIEF PA 2023" "Versão 2023.2.0"\
+    FALSE "DIEF PA 2024" "Versão 2024.2.0"\
     FALSE "DIEF PI" "Versao v2.4.2"\
     FALSE "DMA BA" "Versão 5.1.2"\
-    FALSE "EFD Contribuições" "Versão 5.1.0" \
+    FALSE "EFD Contribuições" "Versão 5.1.1" \
     FALSE "GIA MT" "Versão 3.0.7m"\
     FALSE "GIA RS" "Versão 9-26/03/2018"\
     FALSE "GIAM TO" "Versão 10.01.02 2023v1"\
@@ -77,7 +77,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 4.0.1");  
+    FALSE "SPED ICMS IPI" "Versão 4.0.2");  
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
@@ -127,7 +127,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.16"\
     FALSE "iSGS App" "Versão 1.0.1"\
-    FALSE "IRPF" "Versão 2023 v1.0"\
+    FALSE "IRPF" "Versão 2024 v1.0"\
     FALSE "Linphone" "Softphone" \
     FALSE "MySuite" "Sistema de Atendimento" \
     FALSE "TeamViewer" "Versão 13" \

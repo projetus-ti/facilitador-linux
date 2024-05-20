@@ -25,12 +25,12 @@ fi
 if [ "$acao" = "DCTF" ]; then
   configurarWine32
   cd "$desktop_path/Validadores"
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  corefonts"
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 winetricks --force  corefonts "
   rm -Rf DCTF*
-  download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3_6.exe" "$cache_path/dctf.exe"
+  download "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dctf/dctfmensalv3-7.exe" "$cache_path/dctf.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/dctf.exe"
   sleep 1
-  cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.6/DCTF\ Mensal\ 3.6.desktop "$desktop_path/Validadores"
+  cp ~/.local/share/applications/wine/Programs/Programas\ RFB/DCTF\ Mensal\ 3.7/DCTF\ Mensal\ 3.7.desktop "$desktop_path/Validadores"
   cd "$desktop_path"
   rm -Rf DCTF*
   rm -Rf ~/.local/share/applications/wine/Programs/Programas\ RFB/
@@ -38,7 +38,7 @@ if [ "$acao" = "DCTF" ]; then
 fi
 
 if [ "$acao" = "EFD Contribuições" ]; then
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.1.0.jar" "$cache_path/EFDContribuicoes.jar"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.1.1.jar" "$cache_path/EFDContribuicoes.jar"
   executar "java -jar $cache_path/EFDContribuicoes.jar"
   sleep 1
   cd "$desktop_path"
@@ -66,8 +66,9 @@ fi
 
 if [ "$acao" = "SPED ICMS IPI" ]; then
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-4.0.1_x64.jar" "$cache_path/PVA_EFD.jar"
-  
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-4.0.3_x64.jar" "$cache_path/PVA_EFD.jar"
+              
+
   if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
     executar "java -jar $cache_path/PVA_EFD.jar"
   else
@@ -296,6 +297,34 @@ if [ "$acao" = "GIA RS" ] ; then
   endInstall
 fi 
 
+if [ "$acao" = "DIEF PA 2024" ] ; then # instala mais não inicia erro de comunicação de java
+
+  configurarWine32
+
+  # Limpeza da versao antiga
+  rm -rf $user_path/.wine/drive_c/DIEF202*
+
+  # Instalação do app via wine
+  download "http://antigo.sefa.pa.gov.br/arquivos/downloads/dief/2024/DIEF2024.2.0.msi" "$cache_path/DIEF-PA.msi"
+  cd $cache_path
+  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/DIEF-PA.msi"
+  sleep 1
+
+  # Download da JRE versão windows
+  executar "wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip" "Baixando JRE"
+  mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
+  mv jre.zip $user_path/.wine32/drive_c/DIEF2024.2.0/jre.zip
+  unzip $user_path/.wine32/drive_c/DIEF2024.2.0/jre.zip -d $user_path/.wine32/drive_c/DIEF2024.2.0
+  mv $user_path/.wine32/drive_c/DIEF2024.2.0/jdk8u252-b09-jre $user_path/.wine32/drive_c/DIEF2024.2.0/jre
+  #rm -rf $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
+
+  cd "$desktop_path/"
+  mv DIEF2024.2.0.desktop "$desktop_path/Validadores/DIEF-PA.2024.2.0.desktop"
+  rm -rf DIEF20*.*
+
+  endInstall
+fi 
+
 if [ "$acao" = "DIEF PA 2023" ] ; then # instala mais não inicia erro de comunicação de java
 
   configurarWine32
@@ -304,7 +333,7 @@ if [ "$acao" = "DIEF PA 2023" ] ; then # instala mais não inicia erro de comuni
   rm -rf $user_path/.wine/drive_c/DIEF2023*
 
   # Instalação do app via wine
-  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2023/DIEF2023.2.0.msi" "$cache_path/DIEF-PA.msi"
+  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2022/DIEF2023.2.0.msi" "$cache_path/DIEF-PA.msi"
   cd $cache_path
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/DIEF-PA.msi"
   sleep 1
@@ -315,38 +344,10 @@ if [ "$acao" = "DIEF PA 2023" ] ; then # instala mais não inicia erro de comuni
   mv jre.zip $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
   unzip $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip -d $user_path/.wine32/drive_c/DIEF2023.2.0
   mv $user_path/.wine32/drive_c/DIEF2023.2.0/jdk8u252-b09-jre $user_path/.wine32/drive_c/DIEF2023.2.0/jre
-  #rm -rf $user_path/.wine32/drive_c/DIEF2023.2.0/jre.zip
-
-  cd "$desktop_path/"
-  mv DIEF2023.2.0.desktop "$desktop_path/Validadores/DIEF-PA.2023.2.0.desktop"
-  rm -rf DIEF20*.*
-
-  endInstall
-fi 
-
-if [ "$acao" = "DIEF PA 2022" ] ; then # instala mais não inicia erro de comunicação de java
-
-  configurarWine32
-
-  # Limpeza da versao antiga
-  rm -rf $user_path/.wine/drive_c/DIEF2022*
-
-  # Instalação do app via wine
-  download "http://www.sefa.pa.gov.br/arquivos/downloads/dief/2022/DIEF2022.2.0.msi" "$cache_path/DIEF-PA.msi"
-  cd $cache_path
-  executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/DIEF-PA.msi"
-  sleep 1
-
-  # Download da JRE versão windows
-  executar "wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip" "Baixando JRE"
-  mv OpenJDK8U-jre_x86-32_windows_hotspot_8u252b09.zip jre.zip
-  mv jre.zip $user_path/.wine32/drive_c/DIEF2022.2.0/jre.zip
-  unzip $user_path/.wine32/drive_c/DIEF2022.2.0/jre.zip -d $user_path/.wine32/drive_c/DIEF2022.2.0
-  mv $user_path/.wine32/drive_c/DIEF2022.2.0/jdk8u252-b09-jre $user_path/.wine32/drive_c/DIEF2022.2.0/jre
   #rm -rf $user_path/.wine32/drive_c/DIEF2022.2.0/jre.zip
 
   cd "$desktop_path/"
-  mv DIEF2022.2.0.desktop "$desktop_path/Validadores/DIEF-PA.2022.2.0.desktop"
+  mv DIEF2023.2.0.desktop "$desktop_path/Validadores/DIEF-PA.2023.2.0.desktop"
   rm -rf DIEF20*.*
 
   endInstall
