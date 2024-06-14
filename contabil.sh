@@ -9,10 +9,12 @@ acao=$1
 
 if [ "$acao" = "SPED ECD" ]; then            
             
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SPEDContabil_linux_x64-10.1.8.jar" "$cache_path/SPEDContabil.jar"
-  executar "java -jar $cache_path/SPEDContabil.jar"
-  sleep 2
-  cd "$desktop_path"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SpedContabil_linux_x86_64-10.2.1.sh" "$cache_path/SPEDContabil.sh"
+  
+  bash $cache_path/SPEDContabil.sh
+  #executar "java -jar $cache_path/SPEDContabil.jar"
+  #sleep 2
+  #cd "$desktop_path"
   rm -Rf Sped*
   rm -Rf Desinstalar*
   rm -Rf ~/.local/share/applications/Sped*
@@ -24,8 +26,8 @@ fi
 
 if [ "$acao" = "SPED ECF" ]; then 
             
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-10.0.4.jar" "$cache_path/SpedEcf.jar"
-            
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-10.0.7.jar" "$cache_path/SpedEcf.jar"
+  
   executar "java -jar $cache_path/SpedEcf.jar"
   sleep 2
   cd "$desktop_path"
