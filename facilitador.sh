@@ -39,7 +39,7 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
     TRUE "SPED ECD" "Versão 10.1.8" \
-    FALSE "SPED ECF" "Versão 10.2.1" \
+    FALSE "SPED ECF" "Versão 10.0.9" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
 
@@ -77,7 +77,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 4.0.2");  
+    FALSE "SPED ICMS IPI" "Versão 4.0.4");  
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
