@@ -9,11 +9,6 @@ sudo -u $SUDO_USER env WINEARCH=win64 WINEPREFIX=/home/$SUDO_USER/.wine wineserv
 rm -rf /home/$SUDO_USER/.wine32
 rm -rf /home/$SUDO_USER/.wine
 
-# Add Wine repository
-mkdir -pm755 /etc/apt/keyrings
-wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-
 # Install dependencies packages
 dpkg --add-architecture i386
 apt-get purge -y wine*
@@ -23,10 +18,8 @@ apt-get install --install-recommends -y \
  git \
  exe-thumbnailer \
  cabextract \
- wine32 \
- wine64 \
- winetricks \
- winehq-staging
+ wine-installer \
+ winetricks
 
 # Create workspace dir
 sudo rm -Rf /opt/projetus/facilitador 
