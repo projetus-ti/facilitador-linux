@@ -166,7 +166,7 @@ fi
 
 if [ "$acao" = "SINTEGRA" ]; then
   # configurarWine
-  download "https://cdn.projetusti.com.br/infra/facilitador/sintegra.exe" "$cache_path/sintegra.exe"
+  download "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/facilitador-linux%2Fsintegra.exe" "$cache_path/sintegra.exe"
   executar "env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wine $cache_path/sintegra.exe /silent"
   sleep 1
   mv ~/.local/share/applications/wine/Programs/Validador\ Sintegra\ 2017/Validador\ Sintegra\ 2017.desktop "$desktop_path/Validadores"

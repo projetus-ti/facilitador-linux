@@ -39,7 +39,7 @@ fi
 
 if [ "$acao" = "MySuite" ]; then
   #configurarWine
-  download "https://cdn.projetusti.com.br/suporte/mysuite.msi" "$cache_path/mysuite.msi"
+  download "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/facilitador-linux%2Fmysuite.msi" "$cache_path/mysuite.msi"
   nohup wine msiexec /i $cache_path/mysuite.msi /quiet > /dev/null 2>&1 &
   rm -Rf "$desktop_path/BraZip Central.lnk"
 
@@ -136,7 +136,7 @@ if [ "$acao" = "Calima App" ]; then
 fi
 
 if [ "$acao" = "iSGS App" ]; then
-  download "https://cdn.projetusti.com.br/suporte/isgs-app_1.0.1_amd64.deb" "$cache_path/isgs.deb"
+  download "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/facilitador-linux%2Fisgs-app_1.0.1_amd64.deb" "$cache_path/isgs.deb"
   
   echo $'#!/bin/bash 
     dpkg -i '$cache_path'/isgs.deb 
@@ -184,7 +184,7 @@ fi
  
 if [ "$acao" = "Crisp Chat App" ]; then 
 
-  download "https://cdn.projetusti.com.br/suporte/crisp-app.deb" "$cache_path/crisp.deb"
+  download "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/facilitador-linux%2Fcrisp-app.deb" "$cache_path/crisp.deb"
 
  
   echo $'#!/bin/bash 
