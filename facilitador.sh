@@ -38,8 +38,8 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --title "Facilitador Linux - Contábil" \
     --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
-    TRUE "SPED ECD" "Versão 10.1.8" \
-    FALSE "SPED ECF" "Versão 10.0.10" \
+    TRUE "SPED ECD" "Versão 10.2.3" \
+    FALSE "SPED ECF" "Versão 11.0.2" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
 

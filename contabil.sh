@@ -9,7 +9,7 @@ acao=$1
 
 if [ "$acao" = "SPED ECD" ]; then            
             
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SpedContabil_linux_x86_64-10.2.1.sh" "$cache_path/SPEDContabil.sh"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil/SpedContabil_linux_x86_64-10.2.3.sh" "$cache_path/SPEDContabil.sh"
   
   bash $cache_path/SPEDContabil.sh
   #executar "java -jar $cache_path/SPEDContabil.jar"
@@ -26,17 +26,25 @@ fi
 
 if [ "$acao" = "SPED ECF" ]; then 
             
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-10.0.10.jar" "$cache_path/SpedEcf.jar"
+  # download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-10.0.10.jar" "$cache_path/SpedEcf.jar"  
+  # executar "java -jar $cache_path/SpedEcf.jar"
 
-  
-  executar "java -jar $cache_path/SpedEcf.jar"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedECF_linux_x86_64-11.0.2.sh" "$cache_path/SpedEcf.sh"
+  chmod +X "$cache_path/SpedEcf.sh"
+  executar "sh $cache_path/SpedEcf.sh"
+
   sleep 2
   cd "$desktop_path"
-  rm -Rf Sped*
+  mv "$desktop_path/SpedECF.desktop" "$desktop_path/Validadores/SpedECF.desktop" 
+  chmod +X "$desktop_path/Validadores/SpedECF.desktop"
+  # rm -Rf Sped*
   rm -Rf Desinstalar*
   rm -Rf ~/.local/share/applications/Sped*
   rm -Rf ~/.local/share/applications/Desinstalar*
-  cp $app_path/atalhos/sped-ecf.desktop "$desktop_path/Validadores"
+  # Se for jar ai usa o atalho
+  # cp $app_path/atalhos/sped-ecf.desktop "$desktop_path/Validadores"
+  # Se não for usa o atalho criado.
+  
   
   endInstall
 fi
