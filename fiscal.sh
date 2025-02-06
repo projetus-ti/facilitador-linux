@@ -38,8 +38,15 @@ if [ "$acao" = "DCTF" ]; then
 fi
 
 if [ "$acao" = "EFD Contribuições" ]; then
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.1.1.jar" "$cache_path/EFDContribuicoes.jar"
-  executar "java -jar $cache_path/EFDContribuicoes.jar"
+  # download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.1.1.jar" "$cache_path/EFDContribuicoes.jar"
+  # executar "java -jar $cache_path/EFDContribuicoes.jar"
+
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFD-Contribuicoes_linux_x86_64-6.0.2.sh" "$cache_path/EFDContribuicoes.sh"
+
+  chmod +X "$cache_path/EFDContribuicoes.sh"
+  executar "sh $cache_path/EFDContribuicoes.sh"
+
+
   sleep 1
   cd "$desktop_path"
   rm -Rf EFD*
