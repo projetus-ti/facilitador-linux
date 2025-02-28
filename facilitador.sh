@@ -67,7 +67,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "DIEF PA 2024" "Versão 2024.2.0"\
     FALSE "DIEF PI" "Versao v2.4.2"\
     FALSE "DMA BA" "Versão 5.1.2"\
-    FALSE "EFD Contribuições" "Versão 6.0.2" \
+    FALSE "EFD Contribuições" "Versão 6.0.3" \
     FALSE "GIA MT" "Versão 3.0.7m"\
     FALSE "GIA RS" "Versão 9-26/03/2018"\
     FALSE "GIAM TO" "Versão 10.01.02 2023v1"\
