@@ -127,7 +127,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "DBeaver" "Gerenciador de Banco de Dados"\
     FALSE "Discord" "Versão 0.0.16"\
     FALSE "iSGS App" "Versão 1.0.1"\
-    FALSE "IRPF" "Versão 2024 v1.0"\
+    FALSE "IRPF" "Versão 2025 v1.0"\
     FALSE "Linphone" "Softphone" \
     FALSE "MySuite" "Sistema de Atendimento" \
     FALSE "TeamViewer" "Versão 13" \
