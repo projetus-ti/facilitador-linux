@@ -41,7 +41,7 @@ if [ "$acao" = "EFD Contribuições" ]; then
   # download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.1.1.jar" "$cache_path/EFDContribuicoes.jar"
   # executar "java -jar $cache_path/EFDContribuicoes.jar"
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFD-Contribuicoes_linux_x86_64-6.0.3.sh" "$cache_path/EFDContribuicoes.sh"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFD-Contribuicoes_linux_x86_64-6.0.6.sh" "$cache_path/EFDContribuicoes.sh"
 
   chmod +X "$cache_path/EFDContribuicoes.sh"
   executar "sh $cache_path/EFDContribuicoes.sh"
@@ -73,14 +73,20 @@ fi
 
 if [ "$acao" = "SPED ICMS IPI" ]; then
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-5.0.0_x64.jar" "$cache_path/PVA_EFD.jar"
+  # download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/PVA_EFD_linux-5.0.0_x64.jar" "$cache_path/PVA_EFD.jar"
               
 
-  if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
-    executar "java -jar $cache_path/PVA_EFD.jar"
-  else
-    executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
-  fi
+  # if [ ! -d "/usr/lib/jvm/jre1.8.0_212/bin/java" ]; then
+  #   executar "java -jar $cache_path/PVA_EFD.jar"
+  # else
+  #   executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
+  # fi
+
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/SpedEFD_linux_x86_64-5.0.2.sh" "$cache_path/PVA_EFD.sh"
+
+  chmod +X "$cache_path/PVA_EFD.sh"
+  executar "sh $cache_path/PVA_EFDs.sh"
+
   sleep 1
   cd "$desktop_path"
   rm -Rf EFD*

@@ -67,7 +67,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "DIEF PA 2024" "Versão 2024.2.0"\
     FALSE "DIEF PI" "Versao v2.4.2"\
     FALSE "DMA BA" "Versão 5.1.2"\
-    FALSE "EFD Contribuições" "Versão 6.0.3" \
+    FALSE "EFD Contribuições" "Versão 6.0.6" \
     FALSE "GIA MT" "Versão 3.0.7m"\
     FALSE "GIA RS" "Versão 9-26/03/2018"\
     FALSE "GIAM TO" "Versão 10.01.02 2023v1"\
@@ -77,7 +77,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 5.0.0");  
+    FALSE "SPED ICMS IPI" "Versão 5.0.2");  
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
@@ -129,7 +129,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "iSGS App" "Versão 1.0.1"\
     FALSE "IRPF" "Versão 2025 v1.0"\
     FALSE "Linphone" "Softphone" \
-    FALSE "MySuite" "Sistema de Atendimento" \
+    FALSE "MySuite" "Sistema de Atendimento" \ 
     FALSE "TeamViewer" "Versão 13" \
     FALSE "Skype" "Última Versão" \
     FALSE "Zoom" "Reunião Anual" \
@@ -142,5 +142,5 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     fi
 fi
 
-clear
-exit 0
+# clear
+# exit 0
