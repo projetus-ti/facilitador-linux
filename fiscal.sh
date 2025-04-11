@@ -53,8 +53,9 @@ if [ "$acao" = "EFD Contribuições" ]; then
   rm -Rf Desinstalar*
   rm -Rf ~/.local/share/applications/EFD*
   rm -Rf ~/.local/share/applications/Desinstalar*
-  cp /opt/projetus/facilitador/atalhos/efd-contribuicoes.desktop "$desktop_path/Validadores"
 
+  # cp /opt/projetus/facilitador/atalhos/efd-contribuicoes.desktop "$desktop_path/Validadores"
+  cp "$user_path"/ProgramasSPED/EFD-Contribuicoes/Sped\ Contribuicoes.desktop  "$desktop_path/Validadores"
   endInstall
 fi
 
@@ -91,7 +92,10 @@ if [ "$acao" = "SPED ICMS IPI" ]; then
   cd "$desktop_path"
   rm -Rf EFD*
   rm -Rf Desinstalar*
+
+  cp "$user_path"/ProgramasSPED/EFD-ICMS-IPI.desktop "$desktop_path/Validadores"
   # cp /opt/projetus/facilitador/atalhos/efd-icms-ipi.desktop "$desktop_path/Validadores"
+
 
   endInstall
 fi
