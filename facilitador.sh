@@ -38,8 +38,8 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     --title "Facilitador Linux - Contábil" \
     --height="220" --width="350" \
     --column="" --column "Programa" --column "Descrição"\
-    TRUE "SPED ECD" "Versão 10.2.3" \
-    FALSE "SPED ECF" "Versão 11.0.2" \
+    TRUE "SPED ECD" "Versão 10.3.3" \
+    FALSE "SPED ECF" "Versão 11.1.1" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2"\
     FALSE "Receita Net BX" "Versão 25062020");
 
@@ -67,7 +67,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "DIEF PA 2024" "Versão 2024.2.0"\
     FALSE "DIEF PI" "Versao v2.4.2"\
     FALSE "DMA BA" "Versão 5.1.2"\
-    FALSE "EFD Contribuições" "Versão 6.0.6" \
+    FALSE "EFD Contribuições" "Versão 6.0.8" \
     FALSE "GIA MT" "Versão 3.0.7m"\
     FALSE "GIA RS" "Versão 9-26/03/2018"\
     FALSE "GIAM TO" "Versão 10.01.02 2023v1"\
@@ -77,7 +77,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     FALSE "SEF 2012 PE" "Versão 1.6.5"\
     FALSE "SEFAZNET PE" "Versão 1.24.0.3"\
     FALSE "SINTEGRA" "Versão 2017"\
-    FALSE "SPED ICMS IPI" "Versão 5.0.2");  
+    FALSE "SPED ICMS IPI" "Versão 5.0.3");  
 
     if [ $? = 1 ] ; then
       /opt/projetus/facilitador/facilitador.sh
