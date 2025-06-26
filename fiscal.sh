@@ -42,6 +42,7 @@ if [ "$acao" = "EFD Contribuições" ]; then
   # executar "java -jar $cache_path/EFDContribuicoes.jar"
 
   download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFD-Contribuicoes_linux_x86_64-6.0.8.sh" "$cache_path/EFDContribuicoes.sh"
+  
 
   chmod +X "$cache_path/EFDContribuicoes.sh"
   executar "sh $cache_path/EFDContribuicoes.sh"

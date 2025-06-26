@@ -29,7 +29,7 @@ if [ "$acao" = "SPED ECF" ]; then
   # download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedEcf_linux_x64-10.0.10.jar" "$cache_path/SpedEcf.jar"  
   # executar "java -jar $cache_path/SpedEcf.jar"
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedECF_linux_x86_64-11.1.1.sh" "$cache_path/SpedEcf.sh"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF/SpedECF_linux_x86_64-11.2.1.sh" "$cache_path/SpedEcf.sh"
   chmod +X "$cache_path/SpedEcf.sh"
   executar "sh $cache_path/SpedEcf.sh"
 
