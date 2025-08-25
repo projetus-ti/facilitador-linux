@@ -94,7 +94,10 @@ if [ "$acao" = "SPED ICMS IPI" ]; then
   rm -Rf EFD*
   rm -Rf Desinstalar*
 
-  cp "$user_path"/ProgramasSPED/Fiscal/EFD ICMS IPI.desktop "$desktop_path/Validadores"
+  # cp "$user_path"/ProgramasSPED/Fiscal/EFD ICMS IPI.desktop "$desktop_path/Validadores"
+
+  cp "$user_path"/ProgramasSPED/Fiscal/*.desktop "$desktop_path/Validadores"
+
   # cp /opt/projetus/facilitador/atalhos/efd-icms-ipi.desktop "$desktop_path/Validadores"
 
 
