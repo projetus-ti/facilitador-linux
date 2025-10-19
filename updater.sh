@@ -1,10 +1,14 @@
 #!/bin/sh
 # Descricao: Atualizador do facilitador
 # Autor: Evandro Begati
-# Data: 30/12/2019
+# Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
+# Data: 19/10/2025
 # Uso: ./updater.sh
 
 # atualizar a base de scripts 
+
+ls /opt/projetus/facilitador || exit
+
 cd /opt/projetus/facilitador
 git reset --hard HEAD
 git pull origin master
