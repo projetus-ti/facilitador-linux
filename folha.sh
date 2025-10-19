@@ -1,7 +1,22 @@
 #!/bin/bash
 # Descricao: Script facilitador de instalacao de aplicativos para uso do suporte
 # Autor: Evandro Begati e Fabiano Henrique
+# Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Data: 18/11/2019
+
+
+# Testa conectividade com a internet (ping no Google DNS)
+
+if ! ping -c 1 8.8.8.8 &>/dev/null; then
+
+    yad --center --title="Erro de Conexão" \
+        --text="Sem acesso à internet.\nVerifique sua conexão de rede." \
+        --button=OK \
+        --width=300 --height=100
+        
+    exit 1
+fi
+
 
 source /opt/projetus/facilitador/funcoes.sh
 
