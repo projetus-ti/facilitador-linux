@@ -3,7 +3,6 @@
 # Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Data: 19/10/2025
 
-set echo off
 
 # Usar array para pegar todos os possíveis caminhos
 JAVA_PATHS=(/usr/lib/jvm/*/bin/java)
@@ -15,6 +14,7 @@ for JAVA in "${JAVA_PATHS[@]}"; do
     fi
 done
 
+ls ~/ProgramasRFB/IRPF2021/ || exit
 
 cd ~/ProgramasRFB/IRPF2021/
 
