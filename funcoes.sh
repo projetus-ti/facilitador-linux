@@ -16,7 +16,7 @@ atalho_path="/opt/projetus/facilitador/atalhos"
 
 if ! java --version &>/dev/null; then
     # Exibe mensagem de erro com YAD
-    yad --title="Erro: Java não encontrado" \
+    yad --center --title="Erro: Java não encontrado" \
         --text="O Java não está instalado no sistema.\nPor favor, instale o Java para continuar." \
         --button=OK \
         --width=300 --height=100
