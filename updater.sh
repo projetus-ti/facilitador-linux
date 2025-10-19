@@ -1,11 +1,30 @@
-#!/bin/sh
-# Descricao: Atualizador do facilitador
+#!/usr/bin/env bash
+
 # Autor: Evandro Begati
 # Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
+# Descricao: Atualizador do facilitador
 # Data: 19/10/2025
 # Uso: ./updater.sh
 
-# Testa conectividade com a internet (ping no Google DNS)
+ 
+# Verifica se o comando flatpak existe
+
+if ! command -v flatpak &>/dev/null; then
+    echo "flatpak não está disponível neste sistema."
+    exit 1
+fi
+
+ 
+# Verifica se o comando git existe
+
+if ! command -v git &>/dev/null; then
+    echo "git não está disponível neste sistema."
+    exit 1
+fi
+
+
+
+# Testa conectividade com a internet
 
 if ! ping -c 1 google.com &>/dev/null; then
 
@@ -20,6 +39,7 @@ fi
 # Verifica se o Java está instalado
 
 if ! java --version &>/dev/null; then
+
     # Exibe mensagem de erro com YAD
     yad --center --title="Erro: Java não encontrado" \
         --text="O Java não está instalado no sistema.\nPor favor, instale o Java para continuar." \
@@ -28,11 +48,25 @@ if ! java --version &>/dev/null; then
     exit 1
 fi
 
-# atualizar a base de scripts 
+# Atualizar a base de scripts 
 
-ls /opt/projetus/facilitador || exit
+
+# Verifica se o diretório existe
+
+if [[ ! -d /opt/projetus/facilitador ]]; then
+
+    echo -e "\nDiretório /opt/projetus/facilitador não encontrado. \n"
+
+        yad --center --title="Erro" \
+        --text="Diretório /opt/projetus/facilitador não encontrado." \
+        --button=OK \
+        --width=300 --height=100
+        
+    exit 1
+fi
 
 cd /opt/projetus/facilitador
+
 git reset --hard HEAD
 git pull origin master
 
@@ -44,7 +78,9 @@ chmod -R +x /opt/projetus/facilitador/*.desktop
 chmod -R +x /opt/projetus/facilitador/atalhos/*.sh
 chmod -R +x /opt/projetus/facilitador/atalhos/*.desktop
 
+
 # Verificar se o FlatpakWine está instalado.
+
 if ! (flatpak list | grep WineZGUI); then
     echo $'#!/bin/bash 
     flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -58,11 +94,20 @@ if ! (flatpak list | grep WineZGUI); then
 
 fi
 
-# Verifica se  o Winestricks esta instalado 
-if [ ! -e  "/usr/bin/winetricks" ]; then
-    pkexec apt-get install winetricks
-fi    
+
+# Verifica se o comando winetricks existe
+
+if ! command -v winetricks &>/dev/null; then
+    echo "winetricks não está disponível neste sistema."
+
+    if which apt &>/dev/null; then
+       pkexec apt update && apt install -y winetricks
+    fi 
+ 
+fi
+
 
 # Executar a aplicacao
 nohup /opt/projetus/facilitador/facilitador.sh >/dev/null 2>&1 &
 
+exit 0
