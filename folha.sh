@@ -2,7 +2,7 @@
 # Descricao: Script facilitador de instalacao de aplicativos para uso do suporte
 # Autor: Evandro Begati e Fabiano Henrique
 # Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
-# Data: 18/11/2019
+# Data: 19/10/2025
 
 
 # Testa conectividade com a internet (ping no Google DNS)
