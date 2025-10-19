@@ -5,6 +5,19 @@
 # Data: 19/10/2025
 # Uso: ./updater.sh
 
+# Testa conectividade com a internet (ping no Google DNS)
+
+if ! ping -c 1 google.com &>/dev/null; then
+
+    yad --center --title="Erro de Conexão" \
+        --text="Sem acesso à internet.\nVerifique sua conexão de rede." \
+        --button=OK \
+        --width=300 --height=100
+        
+    exit 1
+fi
+
+
 # atualizar a base de scripts 
 
 ls /opt/projetus/facilitador || exit
