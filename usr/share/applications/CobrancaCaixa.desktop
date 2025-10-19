@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name[pt_BR]=CobrancaCaixa
+Exec="/usr/local/bin/CobrancaCaixa.sh"
+Icon=/usr/share/icons/facilitador/CobrancaCaixa.ico
+Terminal=false
+

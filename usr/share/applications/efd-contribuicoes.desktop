@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name[pt_BR]=EFD Contribuições
+Exec="/usr/local/bin/sped-efd-contribuicoes.sh"
+Icon=/usr/share/icons/facilitador/logo.ico
+Terminal=false
+
