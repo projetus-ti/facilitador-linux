@@ -1,7 +1,24 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-set echo off
+# Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
+# Data: 19/10/2025
 
-cd ~/ProgramasSPED/EFDContribuicoes
 
-~/ProgramasSPED/EFDContribuicoes/jre/bin/java -Xmx2048m -Dfile.encoding=ISO-8859-1 -XX:+UseParallelGC -XX:FreqInlineSize=512 -XX:MaxInlineSize=35 -jar ~/ProgramasSPED/EFDContribuicoes/efdcontribuicoes.jar
+# Verifica se o diretório existe
+if [[ ! -d ~/ProgramasSPED/EFDContribuicoes ]]; then
+    echo "Diretório ~/ProgramasSPED/EFDContribuicoes não encontrado."
+    exit 1
+fi
+
+# Verifica se o Java está presente
+if [[ ! -x ~/ProgramasSPED/EFDContribuicoes/jre/bin/java ]]; then
+    echo "Java não encontrado em ~/ProgramasSPED/EFDContribuicoes/jre/bin/java"
+    exit 1
+fi
+
+# Executa
+~/ProgramasSPED/EFDContribuicoes/jre/bin/java \
+    -Xmx2048m \
+    -Dfile.encoding=ISO-8859-1 -XX:+UseParallelGC -XX:FreqInlineSize=512 -XX:MaxInlineSize=35 \
+    -jar ~/ProgramasSPED/EFDContribuicoes/efdcontribuicoes.jar
+
