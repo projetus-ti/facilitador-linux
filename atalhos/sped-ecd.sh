@@ -5,7 +5,14 @@
 
 # Verifica se o diretório do SPED existe
 if [[ ! -d ~/ProgramasSPED/SpedContabil ]]; then
-    echo "Diretório ~/ProgramasSPED/SpedContabil não encontrado."
+
+    echo -e "\nDiretório ~/ProgramasSPED/SpedContabil não encontrado. \n"
+
+        yad --center --title="Erro" \
+        --text="Diretório ~/ProgramasSPED/SpedContabil não encontrado." \
+        --button=OK \
+        --width=300 --height=100
+        
     exit 1
 fi
 
