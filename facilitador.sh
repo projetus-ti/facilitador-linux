@@ -10,7 +10,7 @@ source /opt/projetus/facilitador/funcoes.sh
 nohup mkdir "$desktop_path/Validadores" >/dev/null 2>&1
 
 # Menu
-setor=$(zenity  --list  --text "Selecione a categoria desejada:" \
+setor=$(yad  --list  --text "Selecione a categoria desejada:" \
     --radiolist \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
@@ -31,7 +31,7 @@ fi
 
 if [ "$setor" = "Contábil" ]; then ## Contabil
 
-    acao=$(zenity  --list  --text "Selecione o programa desejado:" \
+    acao=$(yad  --list  --text "Selecione o programa desejado:" \
     --radiolist \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
@@ -50,7 +50,7 @@ if [ "$setor" = "Contábil" ]; then ## Contabil
     fi
 elif [ "$setor" = "Fiscal" ]; then ## Fiscal 
 
-  acao=$(zenity  --list  --text "Selecione o programa desejado:" \
+  acao=$(yad  --list  --text "Selecione o programa desejado:" \
     --radiolist \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
@@ -86,7 +86,7 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
 
 elif [ "$setor" = "Folha" ]; then ## Folha
 
-  acao=$(zenity  --list  --text "Selecione o programa desejado:" \
+  acao=$(yad  --list  --text "Selecione o programa desejado:" \
     --radiolist \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
@@ -113,7 +113,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
   'https://cloud-api-controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
  | python3 -c "import sys, json; print(json.load(sys.stdin)['versao'])")
 
-  acao=$(zenity  --list  --text "Selecione o programa desejado:" \
+  acao=$(yad  --list  --text "Selecione o programa desejado:" \
     --radiolist \
     --window-icon=/opt/projetus/facilitador/icon.png \
     --class=InfinalitySettings \
