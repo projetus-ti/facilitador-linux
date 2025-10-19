@@ -7,6 +7,20 @@
 
 clear
 
+# Mostra aviso sobre backup do sistema
+
+yad --center --title="Aviso Importante" \
+    --width=400 --height=150 \
+    --text="⚠️ <b>Recomendação:</b>\n\nAntes de executar este script, é altamente recomendável criar uma <b>imagem de backup do sistema</b>.\n\nDeseja continuar mesmo assim?" \
+    --button=Não:1 --button=Sim:0
+    
+# Verifica a resposta do usuário
+if [[ $? -ne 0 ]]; then
+    yad --center --title="Cancelado" --text="Execução cancelada pelo usuário." --button=OK  --width=300
+    exit 1
+fi
+
+
 # Testa conectividade com a internet
 
 if ! ping -c 1 google.com &>/dev/null; then
