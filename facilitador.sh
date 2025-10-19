@@ -9,7 +9,7 @@
 source /opt/projetus/facilitador/funcoes.sh
 
 # Criacao de diretorios..
-nohup mkdir "$desktop_path/Validadores" >/dev/null 2>&1
+nohup mkdir -p "$desktop_path/Validadores" >/dev/null 2>&1
 
 # Menu
 setor=$(yad --center --list  --text "Selecione a categoria desejada:" \
