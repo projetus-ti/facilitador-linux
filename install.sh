@@ -19,7 +19,7 @@ dpkg --add-architecture i386
 apt-get purge -y wine*
 apt-get update
 apt-get install --install-recommends -y \
- zenity \
+ yad \
  git \
  exe-thumbnailer \
  cabextract \
