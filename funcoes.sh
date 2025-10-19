@@ -16,12 +16,12 @@ setWinePrefix() {
  
 
 executar() {
-  response=$($1) | zenity --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png  --width="280" --no-cancel --auto-close --title="Facilitador Linux"
+  response=$($1) | yad --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png  --width="280" --no-cancel --auto-close --title="Facilitador Linux"
   echo $response
 }
 
 executarFlatpak() {
-  response=$($1) | zenity --progress --text="Executando a instação e configuração do Flatpak, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png  --width="380" --no-cancel --auto-close --title="Facilitador Linux"
+  response=$($1) | yad --progress --text="Executando a instação e configuração do Flatpak, aguarde..." --pulsate --class=InfinalitySettings --window-icon=/opt/projetus/facilitador/icon.png  --width="380" --no-cancel --auto-close --title="Facilitador Linux"
   echo $response
 }
 
@@ -52,7 +52,7 @@ download() {
   wget_info=`ps ax |grep "wget.*$1" |awk '{print $1"|"$2}'`
   wget_pid=`echo $wget_info|cut -d'|' -f1 `
  
-  zenity --class=InfinalitySettings --progress --auto-close --auto-kill --text="Efetuando o download do arquivo: $1\n\n" --width="500" --window-icon=/opt/projetus/facilitador/icon.png --title="Facilitador Linux - $versao"< $pipe
+  yad --class=InfinalitySettings --progress --auto-close --auto-kill --text="Efetuando o download do arquivo: $1\n\n" --width="500" --window-icon=/opt/projetus/facilitador/icon.png --title="Facilitador Linux - $versao"< $pipe
   if [ "`ps -A |grep "$wget_pid"`" ];then
     kill $wget_pid
   fi
@@ -61,7 +61,7 @@ download() {
 }
 
 endInstall() {
-    zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Instalação Finalizada!" \
+    yad --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Instalação Finalizada!" \
          --text 'Execute o programa pela pasta "Validadores" em sua "Área de Trabalho".' \
          --height="50" --width="450"
 
@@ -72,12 +72,12 @@ endInstall() {
     find "$desktop_path/Validadores/" -type f -name '*.desktop' | while read f; do mv "$f" "${f%.desktop}"; done
   fi
   
-  zenity --notification --text="Facilitador Linux - Instalação finalizada com sucecsso!"
+  yad --notification --text="Facilitador Linux - Instalação finalizada com sucecsso!"
   exec $app_path/facilitador.sh
 }
 
 showMessage() {
-  zenity --notification --text="Facilitador Linux - $1"
+  yad --notification --text="Facilitador Linux - $1"
 }
 
 # Funcao de ajuste no wine
@@ -114,14 +114,14 @@ configurarWine32() {
 
 # Funcao de descontinuação de programa.
 descontinuado() {
-  zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Programa Descontinuado!" \
+  yad --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Programa Descontinuado!" \
          --text 'Esse validador foi descontinuado.' \
          --height="50" --width="250"
 }
 
 # Validador não Configurado.
 naoCompativel() {
-  zenity --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Programa não executavel!" \
+  yad --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon=/opt/projetus/facilitador/icon.png --title "Programa não executavel!" \
          --text 'Este validador não é possível usar no linux. Use a maquina virtual.' \
          --height="50" --width="450"
 }
