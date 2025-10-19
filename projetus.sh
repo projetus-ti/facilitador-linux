@@ -6,6 +6,7 @@
 # Data: 19/10/2025
 
 which pkexec || exit
+which curl   || exit
 
 source /opt/projetus/facilitador/funcoes.sh
 
