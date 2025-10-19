@@ -1,7 +1,24 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-set echo off
+# Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
+# Data: 19/10/2025
 
-cd ~/ProgramasSPED/SpedContabil
+# Verifica se o diretório do SPED existe
+if [[ ! -d ~/ProgramasSPED/SpedContabil ]]; then
+    echo "Diretório ~/ProgramasSPED/SpedContabil não encontrado."
+    exit 1
+fi
 
-~/ProgramasSPED/SpedContabil/jre/bin/java -Xmx2048m -Dfile.encoding=ISO-8859-1 -jar ~/ProgramasSPED/SpedContabil/contabilpva.jar
+# Verifica se o Java está presente
+if [[ ! -x ~/ProgramasSPED/SpedContabil/jre/bin/java ]]; then
+    echo "Java não encontrado em ~/ProgramasSPED/SpedContabil/jre/bin/java"
+    exit 1
+fi
+
+
+# Executa o SPED Contábil
+~/ProgramasSPED/SpedContabil/jre/bin/java \
+    -Xmx2048m \
+    -Dfile.encoding=ISO-8859-1 \
+    -jar ~/ProgramasSPED/SpedContabil/contabilpva.jar
+    
