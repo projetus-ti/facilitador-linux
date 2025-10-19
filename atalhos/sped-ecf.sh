@@ -5,7 +5,14 @@
 
 # Verifica se o diretório existe
 if [[ ! -d ~/ProgramasSPED/ECF/ ]]; then
-    echo "Diretório ~/ProgramasSPED/ECF/ não encontrado."
+
+    echo -e "\nDiretório ~/ProgramasSPED/ECF/ não encontrado.\n"
+
+        yad --center --title="Erro" \
+        --text="Diretório ~/ProgramasSPED/ECF/ não encontrado." \
+        --button=OK \
+        --width=300 --height=100
+        
     exit 1
 fi
 
