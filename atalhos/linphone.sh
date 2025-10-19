@@ -2,7 +2,20 @@
 # Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Data: 19/10/2025
 
-ls /opt/projetus/ || exit
+
+# Verifica se o diretório existe
+
+if [[ ! -d /opt/projetus/ ]]; then
+
+    echo -e "\nDiretório /opt/projetus/ não encontrado. \n"
+    
+     yad --center --title="Erro" \
+        --text="Diretório /opt/projetus/ não encontrado." \
+        --button=OK \
+        --width=300 --height=100
+        
+    exit 1
+fi
 
 source /opt/projetus/facilitador/funcoes.sh
 
