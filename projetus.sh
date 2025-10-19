@@ -1,7 +1,8 @@
 #!/bin/bash
 # Descricao: Script facilitador de instalacao de aplicativos para uso do suporte
 # Autor: Fabiano Henrique
-# Data: 18/11/2019
+# Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
+# Data: 19/10/2025
 
 source /opt/projetus/facilitador/funcoes.sh
 
