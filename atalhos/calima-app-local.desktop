@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Calima Acesso Local
-Comment=Acesso local ao Calima ERP Contábil
-GenericName=Calima Acesso Local
-Exec=calima-app --baseurl=http://localhost:8081/calima
-Icon=/opt/projetus/facilitador/atalhos/calima-app-local.png
-Type=Application
-StartupNotify=true
-Categories=Office;
