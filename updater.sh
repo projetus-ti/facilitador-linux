@@ -17,6 +17,16 @@ if ! ping -c 1 google.com &>/dev/null; then
     exit 1
 fi
 
+# Verifica se o Java está instalado
+
+if ! java --version &>/dev/null; then
+    # Exibe mensagem de erro com YAD
+    yad --center --title="Erro: Java não encontrado" \
+        --text="O Java não está instalado no sistema.\nPor favor, instale o Java para continuar." \
+        --button=OK \
+        --width=300 --height=100
+    exit 1
+fi
 
 # atualizar a base de scripts 
 
