@@ -14,6 +14,7 @@ for JAVA in "${JAVA_PATHS[@]}"; do
     fi
 done
 
+ls "/opt/Programas RFB/Dirf2022" || exit
 
 cd "/opt/Programas RFB/Dirf2022"
 
