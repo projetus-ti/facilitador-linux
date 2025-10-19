@@ -4,6 +4,18 @@
 # Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Uso: sudo sh install.sh
 
+# Testa conectividade com a internet
+
+if ! ping -c 1 google.com &>/dev/null; then
+
+    yad --center --title="Erro de Conexão" \
+        --text="Sem acesso à internet.\nVerifique sua conexão de rede." \
+        --button=OK \
+        --width=300 --height=100
+        
+    exit 1
+fi
+
 
 # Verifica se o Java está instalado
 
