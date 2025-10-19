@@ -7,7 +7,7 @@
 
 # Testa conectividade com a internet (ping no Google DNS)
 
-if ! ping -c 1 8.8.8.8 &>/dev/null; then
+if ! ping -c 1 google.com &>/dev/null; then
 
     yad --center --title="Erro de Conexão" \
         --text="Sem acesso à internet.\nVerifique sua conexão de rede." \
