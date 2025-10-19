@@ -10,6 +10,20 @@ app_path="/opt/projetus/facilitador"
 cache_path="$app_path/cache"
 atalho_path="/opt/projetus/facilitador/atalhos"
 
+
+
+# Verifica se o Java está instalado
+
+if ! java --version &>/dev/null; then
+    # Exibe mensagem de erro com YAD
+    yad --title="Erro: Java não encontrado" \
+        --text="O Java não está instalado no sistema.\nPor favor, instale o Java para continuar." \
+        --button=OK \
+        --width=300 --height=100
+    exit 1
+fi
+
+
 setWinePrefix() {
   wine=env WINEARCH="$1" WINEPREFIX=$HOME/."$2"
 }
