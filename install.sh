@@ -1,7 +1,21 @@
 #!/bin/sh
 # Descricao: Script de Instalação do Facilitador Linux
 # Autor: Evandro Begati
+# Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Uso: sudo sh install.sh
+
+
+# Verifica se o Java está instalado
+
+if ! java --version &>/dev/null; then
+
+    # Exibe mensagem de erro
+    
+    echo -e "\n O Java não está instalado no sistema.\nPor favor, instale o Java para continuar. \n"
+    
+    exit 1
+fi
+
 
 # Remove current installation
 sudo -u $SUDO_USER env WINEARCH=win32 WINEPREFIX=/home/$SUDO_USER/.wine32 wineserver -k
