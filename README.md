@@ -7,3 +7,6 @@ Aplicativo para auxílio da instalação de programas da receita federal, estadu
  ```bash
 curl -s https://raw.githubusercontent.com/projetus-ti/facilitador-linux/master/install.sh | sudo bash
  ```
+
+
+https://diolinux.com.br/softwares/instalar-o-programa-da-receita-federal-no-linux.html
