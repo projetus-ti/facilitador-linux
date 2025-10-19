@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Setar a versao do script
+
 versao="4.7.1"
 
 # Setar outras variaveis
@@ -11,6 +13,18 @@ app_path="/opt/projetus/facilitador"
 cache_path="$app_path/cache"
 atalho_path="/opt/projetus/facilitador/atalhos"
 
+# Verifica se o diretório existe
+if [[ ! -d /opt/projetus/ ]]; then
+
+    echo -e "\nDiretório /opt/projetus/ não encontrado. \n"
+
+        yad --center --title="Erro" \
+        --text="Diretório /opt/projetus/ não encontrado." \
+        --button=OK \
+        --width=300 --height=100
+        
+    exit 1
+fi
 
 # Testa conectividade com a internet
 
