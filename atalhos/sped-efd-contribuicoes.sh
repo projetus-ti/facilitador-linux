@@ -6,7 +6,13 @@
 
 # Verifica se o diretório existe
 if [[ ! -d ~/ProgramasSPED/EFDContribuicoes ]]; then
-    echo "Diretório ~/ProgramasSPED/EFDContribuicoes não encontrado."
+    echo -e "\nDiretório ~/ProgramasSPED/EFDContribuicoes não encontrado. \n"
+
+        yad --center --title="Erro" \
+        --text="Diretório ~/ProgramasSPED/EFDContribuicoes não encontrado." \
+        --button=OK \
+        --width=300 --height=100
+        
     exit 1
 fi
 
