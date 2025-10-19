@@ -1,4 +1,5 @@
 #!/bin/bash
+# Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Setar a versao do script
 versao="4.7.1"
 
