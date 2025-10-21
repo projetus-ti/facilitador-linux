@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name[pt_BR]=SVA
-Exec=wine ~/.wine/drive_c/Arquivos\ de\ Programas\ RFB/SVA\ 3.3.0/Sva.exe
-Icon=/usr/share/icons/facilitador/rfb.png
-Terminal=false
-

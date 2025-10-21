@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name[pt_BR]=Validador Sintegra
-Exec=wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Validador\ Sintegra\ 2017/ValidadorSintegra2017.exe
-Icon=/usr/share/icons/facilitador/sintegra.png
-Terminal=false
-

@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name[pt_BR]=SPED ECF
-Exec="/usr/local/bin/sped-ecf.sh"
-Icon=/usr/share/icons/facilitador/logo.ico
-Terminal=false
-
