@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name[pt_BR]=IRPF
+Exec="/usr/local/bin/IRPF.sh"
+Icon=/usr/share/icons/facilitador/RFB.ico
+Terminal=false
+

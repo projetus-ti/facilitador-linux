@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name[pt_BR]=Linphone
+Exec="/opt/projetus/facilitador/atalhos/linphone.AppImage"
+Icon=/usr/share/icons/facilitador/linphone_logo.ico
+Terminal=false

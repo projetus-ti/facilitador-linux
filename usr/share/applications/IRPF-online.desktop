@@ -1,0 +1,39 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=IRPF online
+Name[pt_BR]=IRPF online
+Name[en]=
+Name[es]=
+GenericName=
+GenericName[pt_BR]=
+GenericName[en]=
+GenericName[es]=
+Comment=
+Comment[pt_BR]=A declaração do imposto sobre a renda das pessoas físicas também pode ser preenchida de forma online, pelo e-CAC, sem precisar baixar ou instalar nenhum programa.
+Comment[en]=
+Comment[es]=
+
+# xdg-open: Garante que o link será aberto no navegador padrão do usuário.
+Exec=xdg-open https://mir.receita.fazenda.gov.br/portalmir
+
+# Usa o ícone padrão internet-web-browser, mas você pode substituir por um personalizado.
+
+# Icon=internet-web-browser
+Icon=/usr/share/icons/facilitador/RFB.ico
+
+
+Terminal=false
+Categories=Network;
+Keywords=xml;
+Keywords[pt_BR]=imposto;declaracao;online;ecac;IRPF;
+Keywords[en]=
+Keywords[es]=
+
+
+
+# https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
+
+# Meu Imposto de Renda
+
+# A declaração do imposto sobre a renda das pessoas físicas também pode ser preenchida de forma online, pelo e-CAC, sem precisar baixar ou instalar nenhum programa

@@ -1,0 +1,31 @@
+[Desktop Entry]
+Type=Application
+Name=Microsoft Teams (Web)
+Comment=Colaboração e reuniões com Microsoft Teams. (Acessar via navegador web)
+# Exec=google-chrome --new-window https://teams.microsoft.com/
+
+Exec=firefox --new-window https://teams.microsoft.com/
+# Exec=microsoft-edge --new-window https://teams.microsoft.com/
+
+
+# Deixar como "app" (sem interface do navegador)
+
+# Exec=google-chrome --app=https://teams.microsoft.com/
+# Exec=microsoft-edge --app=https://teams.microsoft.com/
+
+# Icon=teams
+Icon=/usr/share/icons/facilitador/microsoft_teams.png
+
+StartupNotify=true
+Categories=Network;
+Terminal=false
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gov.br
+Name[pt_BR]=Gov.br - Governo do Brasil
+Name[en]=Gov.br - Government of Brazil
+Name[es]=Gov.br - Gobierno de Brasil
+GenericName=Government Services Portal
+GenericName[pt_BR]=Portal de Serviços do Governo
+GenericName[en]=Government Services Portal
+GenericName[es]=Portal de Servicios del Gobierno
+Comment=Access official services and information from the Brazilian government
+Comment[pt_BR]=Acesse serviços e informações oficiais do governo brasileiro
+Comment[en]=Access official services and information from the Brazilian government
+Comment[es]=Acceda a servicios e información oficial del gobierno brasileño
+
+# xdg-open: Garante que o link será aberto no navegador padrão do usuário.
+Exec=xdg-open https://www.gov.br/pt-br
+
+# Usa o ícone padrão internet-web-browser, mas você pode substituir por um personalizado.
+
+# Icon=internet-web-browser
+Icon=/usr/share/icons/facilitador/gov.br.png
+
+
+Terminal=false
+Categories=Network;WebBrowser;
+Keywords=gov;brasil;governo;serviços;servicos;governo federal;site oficial;portal;government;services;oficial;
+Keywords[pt_BR]=governo;brasil;serviços;públicos;portal;oficial
+Keywords[en]=government;brazil;services;official;portal
+Keywords[es]=gobierno;brasil;servicios;oficial;portal
+StartupWMClass=GovBr
+
