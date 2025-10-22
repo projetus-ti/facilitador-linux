@@ -144,6 +144,8 @@ chmod -R +x /usr/share/applications/govbr.desktop               2>> "$log"
 chmod -R +x /usr/share/applications/Consultar-NF-e.desktop      2>> "$log"
 chmod -R +x /usr/share/applications/IRPF-online.desktop         2>> "$log"
 chmod -R +x /usr/share/applications/microsoft-teams-web.desktop 2>> "$log"
+chmod -R +x /usr/share/applications/e-CAC.desktop               2>> "$log"
+
 
 # ----------------------------------------------------------------------------------------
 
