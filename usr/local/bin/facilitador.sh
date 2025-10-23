@@ -9,6 +9,8 @@
 
 
 # https://servicos.receitafederal.gov.br/
+# https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/
+
 
 
 # Usar o .conf no script
@@ -16,7 +18,24 @@
 
 source /etc/facilitador.conf
 
-/usr/local/bin/funcoes.sh
+
+# Carrega as funções definidas em funcoes.sh
+
+source /usr/local/bin/funcoes.sh
+
+
+sudo rm -Rf /tmp/facilitador-linux.log*
+
+
+ano=`date +%Y`
+arch=`uname -m`
+
+
+# Detecta a distribuição
+
+DISTRO=$(detectar_distro)
+
+echo -e "\n🧩 Distribuição detectada: $DISTRO \n"
 
 
 # ----------------------------------------------------------------------------------------
@@ -64,6 +83,7 @@ done
 # Mostra aviso sobre backup do sistema
 
 yad --center \
+    --window-icon="$logo" \
     --title="Aviso Importante" \
     --text="⚠️ <b>Recomendação:</b>\n\nAntes de executar este script, é altamente recomendável criar uma <b>imagem de backup do sistema</b>.\n\nDeseja continuar mesmo assim?" \
     --buttons-layout=center \
@@ -76,7 +96,7 @@ yad --center \
 
 if [[ $? -ne 0 ]]; then
 
-    yad --center --title="Cancelado" --text="Execução cancelada pelo usuário." --buttons-layout=center --button="OK"  --width="300" 2> /dev/null
+    yad --center --window-icon="$logo" --title="Cancelado" --text="Execução cancelada pelo usuário." --buttons-layout=center --button="OK"  --width="300" 2> /dev/null
 
     exit 1
 fi
@@ -92,6 +112,7 @@ if [[ ! -d /opt/projetus/ ]]; then
 
         yad \
         --center \
+        --window-icon="$logo" \
         --title="Erro" \
         --text="Diretório /opt/projetus/ não encontrado." \
         --buttons-layout=center \
@@ -154,35 +175,35 @@ case "$DISTRO" in
     ubuntu|debian|linuxmint)
         echo -e "\n📦 Usando apt para instalar OpenJDK \n"
         sudo apt update
-        sudo apt install -y default-jre 2>> "$log"
+        sudo apt install -y default-jre 
         ;;
     fedora)
         echo -e "\n📦 Usando dnf para instalar OpenJDK \n"
-        sudo dnf install -y java-17-openjdk 2>> "$log"
+        sudo dnf install -y java-17-openjdk 
         ;;
     centos|rhel)
         echo -e "\n📦 Usando yum para instalar OpenJDK \n"
-        sudo yum install -y java-17-openjdk 2>> "$log"
+        sudo yum install -y java-17-openjdk 
         ;;
     arch|manjaro)
         echo -e "\n📦 Usando pacman para instalar OpenJDK \n"
-        sudo pacman -S --noconfirm jre-openjdk 2>> "$log"
+        sudo pacman -S --noconfirm jre-openjdk 
         ;;
     opensuse*|suse)
         echo -e "\n📦 Usando zypper para instalar OpenJDK \n"
-        sudo zypper install -y java-17-openjdk 2>> "$log"
+        sudo zypper install -y java-17-openjdk 
         ;;
     void)
         echo -e "\n📦 Usando xbps para instalar OpenJDK (Void Linux) \n"
-        sudo xbps-install -Sy openjdk17-jre 2>> "$log"
+        sudo xbps-install -Sy openjdk17-jre 
         ;;
     slackware)
         echo -e "\n📦 Slackware detectado. \n"
         if command -v slackpkg >/dev/null 2>&1; then
             echo -e "\n📦 Instalando via slackpkg \n"
-            sudo slackpkg update gpg      2>> "$log"
-            sudo slackpkg update          2>> "$log"
-            sudo slackpkg install openjdk 2>> "$log"
+            sudo slackpkg update gpg      
+            sudo slackpkg update          
+            sudo slackpkg install openjdk 
         else
             echo -e "\n❌ slackpkg não encontrado. Instale manualmente ou configure o sbopkg. \n"
 
@@ -233,6 +254,7 @@ if ! java --version &>/dev/null; then
 
     yad \
         --center \
+        --window-icon="$logo" \
         --title="Erro: Java não encontrado" \
         --text="O Java não está instalado no sistema.\nPor favor, instale o Java para continuar." \
         --buttons-layout=center \
@@ -246,7 +268,28 @@ fi
 # ----------------------------------------------------------------------------------------
 
 
+# A chamada da função "get_distro" no arquivo /usr/local/bin/funcoes.sh não funcionou aqui.
+
+
+# Função para detectar a distribuição automaticamente
+
+get_distro() {
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        echo "$ID"
+    elif command -v lsb_release >/dev/null 2>&1; then
+        lsb_release -si
+    else
+        echo "Desconhecida"
+    fi
+}
+
+# Atribui a variável DISTRO
+DISTRO=$(get_distro)
+
+
 # Verificar se o wine já está instalado
+
 
 if command -v wine >/dev/null 2>&1; then
 
@@ -256,61 +299,52 @@ if command -v wine >/dev/null 2>&1; then
 
     wine --version
 
-    
 else
 
-# Instala o Wine com base na distribuição
+    # Instala o Wine com base na distribuição
 
-case "$DISTRO" in
-    ubuntu|debian|linuxmint)
-        echo -e "\n📦 Usando apt para instalar o Wine \n"
-        sudo apt update
-        sudo apt install -y wine 2>> "$log"
-        ;;
-    fedora)
-        echo -e "\n📦 Usando dnf para instalar o Wine \n"
-        sudo dnf install -y wine 2>> "$log"
-        ;;
-    centos|rhel)
-        echo -e "\n📦 Usando yum para instalar o Wine \n"
-        sudo yum install -y wine 2>> "$log"
-        ;;
-    arch|manjaro)
-        echo -e "\n📦 Usando pacman para instalar o Wine \n"
-        sudo pacman -S --noconfirm wine 2>> "$log"
-        ;;
-    opensuse*|suse)
-        echo -e "\n📦 Usando zypper para instalar o Wine \n"
-        sudo zypper install -y wine 2>> "$log"
-        ;;
-    void)
-        echo -e "\n📦 Usando xbps para instalar o Wine (Void Linux) \n"
-        sudo xbps-install -Sy wine 2>> "$log"
-        ;;
-    slackware)
-        echo -e "\n📦 Slackware detectado. \n"
-        if command -v slackpkg >/dev/null 2>&1; then
-            echo -e "\n📦 Instalando via slackpkg \n"
-            sudo slackpkg update gpg    2>> "$log"
-            sudo slackpkg update        2>> "$log"
-            sudo slackpkg install wine  2>> "$log"
-        else
-            echo -e "\n❌ slackpkg não encontrado. Instale manualmente ou configure o sbopkg. \n"
-
-            # exit 1
-        fi
-
-        ;;
-    *)
-        echo -e "\n❌ Distribuição não reconhecida ou não suportada automaticamente.
+    case "$DISTRO" in
+        ubuntu|debian|linuxmint)
+            echo -e "\n📦 Usando apt para instalar o Wine \n"
+            sudo apt update
+            sudo apt install -y wine 
+            ;;
+        fedora)
+            echo -e "\n📦 Usando dnf para instalar o Wine \n"
+            sudo dnf install -y wine 
+            ;;
+        centos|rhel)
+            echo -e "\n📦 Usando yum para instalar o Wine \n"
+            sudo yum install -y wine 
+            ;;
+        arch|manjaro)
+            echo -e "\n📦 Usando pacman para instalar o Wine \n"
+            sudo pacman -S --noconfirm wine 
+            ;;
+        opensuse*|suse)
+            echo -e "\n📦 Usando zypper para instalar o Wine \n"
+            sudo zypper install -y wine 
+            ;;
+        void)
+            echo -e "\n📦 Usando xbps para instalar o Wine (Void Linux) \n"
+            sudo xbps-install -Sy wine
+            ;;
+        slackware)
+            echo -e "\n📦 Slackware detectado. \n"
+            if command -v slackpkg >/dev/null 2>&1; then
+                echo -e "\n📦 Instalando via slackpkg \n"
+                sudo slackpkg update gpg    
+                sudo slackpkg update       
+                sudo slackpkg install wine 
+            else
+                echo -e "\n❌ slackpkg não encontrado. Instale manualmente ou configure o sbopkg. \n"
+            fi
+            ;;
+        *)
+            echo -e "\n❌ Distribuição não reconhecida ou não suportada automaticamente.
 Por favor, instale o Wine manualmente. \n"
-
-        # exit 1
-
-        ;;
-esac
-
-
+            ;;
+    esac
 fi
 
 
@@ -324,8 +358,8 @@ if [ ! -w "$cache_path" ]; then
     # Se não tiver permissão, exibir uma mensagem usando yad
 
     yad --center \
-        --title "Erro de Permissão" \
         --window-icon="$logo" \
+        --title "Erro de Permissão" \
         --icon-name="dialog-error" \
         --text="Você não tem permissão de escrita no diretório: $cache_path" \
         --buttons-layout=center \
@@ -399,6 +433,7 @@ if [ "$setor" = "Contábil" ]; then # Contabil
     TRUE  "SPED ECD" "Versão 10.3.3" \
     FALSE "SPED ECF" "Versão 11.3.4" \
     FALSE "Arquivo Remessa CX" "Versão V2.2.2" \
+    FALSE "Receitanet" "Versão 1.32" \
     FALSE "Receita Net BX" "Versão 1.9.24" \
     --buttons-layout=center \
     --button="OK" \
@@ -463,7 +498,7 @@ elif [ "$setor" = "Folha" ]; then ## Folha
     --title "$titulo - Folha" \
     --column="" --column "Programa"  --column "Descrição" \
     TRUE "ACI" "Validador do CAGED" \
-    FALSE "DIRF" "Versão 2025" \
+    FALSE "DIRF" "Versão ${ano}" \
     FALSE "GDRAIS" "Versão 2021.1.1" \
     FALSE "GRRF" "Versão 3.3.21" \
     FALSE "SEFIP" "Versão v 8.4-20_12_2024" \
@@ -504,7 +539,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "DBeaver" "Gerenciador de Banco de Dados" \
     FALSE "Discord" "Versão 0.0.112" \
     FALSE "iSGS App" "Versão 1.0.1" \
-    FALSE "IRPF" "Versão 2025 v1.7" \
+    FALSE "IRPF" "Versão ${ano} v1.7" \
     FALSE "Linphone" "Softphone" \
     FALSE "MySuite" "Sistema de Atendimento" \
     FALSE "TeamViewer" "Versão 15" \
@@ -525,7 +560,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     fi
 fi
 
-clear
+# clear
 
 exit 0
 

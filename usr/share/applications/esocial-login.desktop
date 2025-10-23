@@ -1,0 +1,45 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=eSocial - Login
+Name[pt_BR]=eSocial - Login
+Name[en_US]=eSocial - Login
+Name[es_ES]=eSocial - Inicio de sesión eSocial
+Name[fr_FR]=eSocial - Connexion
+
+GenericName=Portal eSocial
+GenericName[pt_BR]=Portal eSocial
+GenericName[en_US]=eSocial Portal
+GenericName[es_ES]=Portal eSocial
+GenericName[fr_FR]=Portail eSocial
+
+Comment=Acessar área de login do eSocial
+Comment[pt_BR]=Acessar área de login do eSocial
+Comment[en_US]=Open eSocial login page
+Comment[es_ES]=Abrir la página de inicio de sesión de eSocial
+Comment[fr_FR]=Ouvrir la page de connexion eSocial
+
+# Exec=xdg-open https://login.esocial.gov.br/login.aspx
+
+Exec=/usr/local/bin/esocial.sh
+
+Terminal=false
+StartupNotify=true
+Icon=internet-web-browser
+Categories=Network;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+
+# Palavras-chave (GNOME) - terminam com ponto-e-vírgula
+Keywords=eSocial;login;gov;folha de pagamento;emprego;
+Keywords[pt_BR]=eSocial;login;gov;folha de pagamento;emprego;
+Keywords[en_US]=eSocial;login;government;payroll;employment;
+Keywords[es_ES]=eSocial;inicio de sesión;gobierno;nómina;empleo;
+Keywords[fr_FR]=eSocial;connexion;gouvernement;paie;emploi;
+
+# Palavras-chave para KDE (opcional)
+X-KDE-Keywords=eSocial;login;gov;folha;
+X-KDE-Keywords[pt_BR]=eSocial;login;gov;folha de pagamento;emprego;
+X-KDE-Keywords[en_US]=eSocial;login;government;payroll;employment;
+X-KDE-Keywords[es_ES]=eSocial;inicio de sesión;gobierno;nómina;empleo;
+X-KDE-Keywords[fr_FR]=eSocial;connexion;gouvernement;paie;emploi;
+

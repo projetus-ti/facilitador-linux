@@ -12,7 +12,15 @@
 
 source /etc/facilitador.conf
 
-/usr/local/bin/funcoes.sh
+
+# Carrega as funções definidas em funcoes.sh
+
+source /usr/local/bin/funcoes.sh
+
+
+ano=`date +%Y`
+arch=`uname -m`
+
 
 acao=$1
 
@@ -242,6 +250,11 @@ sudo cp /opt/anydesk/icons/hicolor/48x48/apps/anydesk.png /usr/share/pixmaps/ 2>
 sudo update-desktop-database /usr/share/applications/
 
 
+  cp /usr/share/applications/anydesk.desktop "$desktop_path/Validadores" 2>> "$log"
+
+  endInstall
+
+
   /usr/local/bin/facilitador.sh
 
 
@@ -270,6 +283,8 @@ fi
 # ----------------------------------------------------------------------------------------
 
 if [ "$acao" = "Skype" ]; then
+
+# https://web.skype.com
 
 
         yad --center --window-icon="$logo"  --title="🧯 Skype" \
@@ -347,8 +362,8 @@ if [ "$acao" = "Calima App" ]; then
 
   download "$URL_CALIMA_APP" "$cache_path/calima.deb"
 
-  rm -Rf ~/.config/calima-app      2>> "$log"
-  rm -Rf ~/.config/calima-app-web  2>> "$log"
+  rm -Rf $HOME/.config/calima-app      2>> "$log"
+  rm -Rf $HOME/.config/calima-app-web  2>> "$log"
   
   echo $'#!/bin/bash 
     apt purge calima-app -y
@@ -401,13 +416,16 @@ if [ "$acao" = "IRPF" ]; then
 
   # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
 
-  # IRPF2025Linux-x86_64v1.7.sh.bin
 
-  download "https://downloadirpf.receita.fazenda.gov.br/irpf/2025/irpf/arquivos/IRPF2025Linux-x86_64v1.7.sh.bin" "$cache_path/irpf.bin"
+  download="https://downloadirpf.receita.fazenda.gov.br/irpf/${ano}/irpf/arquivos/IRPF${ano}Linux-${arch}v1.7.sh.bin" 
+
+  wget -c "$download" -O "$cache_path/irpf.bin" 2>> "$log"
   
   chmod +x $cache_path/irpf.bin 2>> "$log"
 
-  executar "$cache_path/irpf.bin"
+  cd "$cache_path"
+
+  sudo ./irpf.bin 2>> "$log"
 
   # cd $app_path
   # echo $'#!/bin/bash 

@@ -26,6 +26,7 @@ arquivo="$atalho_path/linphone.AppImage"
 if [[ ! -f "$arquivo" ]]; then
 
     yad --center \
+        --window-icon="$logo" \
         --title="Arquivo não encontrado" \
         --text="O arquivo linphone.AppImage não foi encontrado em:\n$atalho_path" \
         --button="OK" \
@@ -50,6 +51,7 @@ arquivo="$atalho_path/linphone.desktop"
 if [[ ! -f "$arquivo" ]]; then
 
     yad --center \
+        --window-icon="$logo" \
         --title="Arquivo não encontrado" \
         --text="O arquivo linphone.desktop não foi encontrado em:\n$atalho_path" \
         --button=OK \

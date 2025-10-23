@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Contábeis - Fórum
+Comment=Acesse o fórum de contabilidade do site Contábeis.
+Exec=xdg-open https://www.contabeis.com.br/forum/
+Icon=internet-web-browser
+Terminal=false
+Categories=Network;
+StartupNotify=true
+

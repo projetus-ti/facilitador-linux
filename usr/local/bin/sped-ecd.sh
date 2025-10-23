@@ -5,18 +5,33 @@
 # Licença:  MIT
 
 
+# Validador da Escrituração Contábil Digital (ECD).
+
+# Utilize este programa para validar o arquivo da sua Escrituração Contábil Digital (ECD).
+
+# https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/sped/ecd
+
+
+# Usar o .conf no script
+# Para carregar as variáveis do .conf
+
+source /etc/facilitador.conf
+
+
 log="/tmp/sped-ecd.log"
 
 # ----------------------------------------------------------------------------------------
 
 # Verifica se o diretório do SPED existe
 
-if [[ ! -d ~/ProgramasSPED/SpedContabil ]]; then
+if [[ ! -d $HOME/ProgramasSPED/SpedContabil ]]; then
 
-    echo -e "\nDiretório ~/ProgramasSPED/SpedContabil não encontrado. \n"
+    echo -e "\nDiretório $HOME/ProgramasSPED/SpedContabil não encontrado. \n"
 
-        yad --center --title="Erro" \
-        --text="Diretório ~/ProgramasSPED/SpedContabil não encontrado." \
+        yad --center \
+        --window-icon="$logo" \
+        --title="Erro" \
+        --text="Diretório $HOME/ProgramasSPED/SpedContabil não encontrado." \
         --buttons-layout=center \
         --button="OK" \
         --width="300" --height="100" \
@@ -29,11 +44,14 @@ fi
 
 # Verifica se o Java está presente
 
-if [[ ! -x ~/ProgramasSPED/SpedContabil/jre/bin/java ]]; then
-    echo -e "\nJava não encontrado em ~/ProgramasSPED/SpedContabil/jre/bin/java \n"
+if [[ ! -x $HOME/ProgramasSPED/SpedContabil/jre/bin/java ]]; then
 
-        yad --center --title="Erro" \
-        --text="Java não encontrado em ~/ProgramasSPED/SpedContabil/jre/bin/java" \
+    echo -e "\nJava não encontrado em $HOME/ProgramasSPED/SpedContabil/jre/bin/java \n"
+
+        yad --center \
+        --window-icon="$logo" \
+        --title="Erro" \
+        --text="Java não encontrado em $HOME/ProgramasSPED/SpedContabil/jre/bin/java" \
         --buttons-layout=center \
         --button="OK" \
         --width="300" --height="100" \
@@ -46,10 +64,10 @@ fi
 
 # Executa o SPED Contábil
 
-~/ProgramasSPED/SpedContabil/jre/bin/java \
+$HOME/ProgramasSPED/SpedContabil/jre/bin/java \
     -Xmx2048m \
     -Dfile.encoding=ISO-8859-1 \
-    -jar ~/ProgramasSPED/SpedContabil/contabilpva.jar 2>> "$log"
+    -jar $HOME/ProgramasSPED/SpedContabil/contabilpva.jar 2>> "$log"
 
 # ----------------------------------------------------------------------------------------
 

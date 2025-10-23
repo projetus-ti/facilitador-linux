@@ -10,9 +10,11 @@ clear
 
 # ----------------------------------------------------------------------------------------
 
-which yad             1> /dev/null 2> /dev/null || { echo "Programa Yad não esta instalado."      ; exit ; }
+# Usar o .conf no script
+# Para carregar as variáveis do .conf
 
-# ----------------------------------------------------------------------------------------
+source etc/facilitador.conf
+
 
 # log=$(mktemp "/tmp/facilitador-linux.log.XXXXXX")
 
@@ -21,17 +23,18 @@ which yad             1> /dev/null 2> /dev/null || { echo "Programa Yad não est
 rm -Rf "$log" 2>/dev/null
 
 
-# Usar o .conf no script
-# Para carregar as variáveis do .conf
+# ----------------------------------------------------------------------------------------
 
-source etc/facilitador.conf
+which yad             1> /dev/null 2> /dev/null || { echo "Programa Yad não esta instalado."      ; exit ; }
 
 # ----------------------------------------------------------------------------------------
 
 
 # Mostra aviso sobre backup do sistema
 
-yad --center --title="Aviso Importante" \
+yad --center \
+    --window-icon="$logo" \
+    --title="Aviso Importante" \
     --text="⚠️ <b>Recomendação:</b>\n\nAntes de executar este script, é altamente recomendável criar uma <b>imagem de backup do sistema</b>.\n\nDeseja continuar mesmo assim?" \
     --buttons-layout=center \
     --button=Não:1 --button=Sim:0 \
@@ -43,7 +46,14 @@ yad --center --title="Aviso Importante" \
 
 if [[ $? -ne 0 ]]; then
 
-    yad --center --title="Cancelado" --text="Execução cancelada pelo usuário." --buttons-layout=center --button="OK"  --width="300" 2> /dev/null
+    yad --center \
+        --window-icon="$logo" \
+        --title="Cancelado" \
+        --text="Execução cancelada pelo usuário." \
+        --buttons-layout=center \
+        --button="OK"  \
+        --width="300" \
+        2> /dev/null
 
     exit 1
 fi
@@ -53,7 +63,9 @@ fi
 
 if ! ping -c 1 google.com &>/dev/null; then
 
-    yad --center --title="Erro de Conexão" \
+    yad --center \
+        --window-icon="$logo" \
+        --title="Erro de Conexão" \
         --text="Sem acesso à internet.\nVerifique sua conexão de rede." \
         --buttons-layout=center \
         --button=OK \
@@ -83,7 +95,11 @@ ajuda() {
   echo "Exemplo: $0 desinstalar|uninstall"      | tee -a "$log"
 
 
-yad --center --title="Facilitador Linux" --text="
+yad \
+--center  \
+--window-icon="$logo" \
+--title="Facilitador Linux" \
+--text="
 
 Uso: $0 [instalar|desinstalar]
 
@@ -91,7 +107,11 @@ Exemplo: $0 instalar|install
 
 Exemplo: $0 desinstalar|uninstall
 
-" --buttons-layout=center --button="OK"  --width="800" --height="300" 2> /dev/null
+" \
+--buttons-layout=center \
+--button="OK"  \
+--width="800" --height="300" \
+2> /dev/null
 
 }
 
@@ -113,9 +133,9 @@ sleep 1
 sed -i 's/^/\//g' facilitador-linux-instalacao.log
 
 
-sudo cp -r opt /  2>> "$log"
+sudo cp -r opt /                2>> "$log"
 
-chmod +x usr/local/bin/*.sh 2>> "$log"
+chmod +x usr/local/bin/*.sh     2>> "$log"
 
 chmod -R 755 usr/local/bin/*.sh 2>> "$log"
 
@@ -178,7 +198,7 @@ if [ ! -d "$cache_path" ]; then
 
     echo "Diretório não encontrado: $cache_path"
 
-    sudo mkdir -p "$cache_path"
+    sudo mkdir -p "$cache_path" 2>> "$log"
 
     # exit 1
 
@@ -186,7 +206,7 @@ fi
 
 # Definir permissões de escrita para todos
 
-sudo chmod -R 777 "$cache_path"
+sudo chmod -R 777 "$cache_path" 2>> "$log"
 
 
 # Verificar se as permissões foram aplicadas corretamente
@@ -219,7 +239,7 @@ echo "Iniciando a desinstalação..." | tee -a "$log"
 
 echo "Desinstalando pacote..." | tee -a "$log"
 
-cp /usr/share/doc/facilitador/facilitador-linux-instalacao.log /tmp
+cp /usr/share/doc/facilitador/facilitador-linux-instalacao.log /tmp 2>> "$log"
 
 cat /tmp/facilitador-linux-instalacao.log | xargs sudo rm -f   
 

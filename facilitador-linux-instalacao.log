@@ -1,6 +1,5 @@
 /opt/projetus/facilitador/DLLs/DLLs_MSSTDFMT.DLL
 /opt/projetus/facilitador/cache/.gitignore
-/opt/projetus/facilitador/cache/.nodelete
 /usr/local/bin/updater.sh
 /usr/local/bin/linphone.sh
 /usr/local/bin/IRPF.sh
@@ -23,10 +22,12 @@
 /usr/share/doc/facilitador/ChangeLog
 /usr/share/doc/facilitador/README-original.md
 /usr/share/doc/facilitador/LICENSE
+/usr/share/applications/microsoft-teams-web.desktop
 /usr/share/applications/DIRF.desktop
 /usr/share/applications/facilitador.desktop
 /usr/share/applications/Consultar-NF-e.desktop
 /usr/share/applications/CobrancaCaixa.desktop
+/usr/share/applications/e-CAC.desktop
 /usr/share/applications/sintegra.desktop
 /usr/share/applications/sva.desktop
 /usr/share/applications/sped-ecd.desktop
@@ -35,8 +36,10 @@
 /usr/share/applications/IRPF.desktop
 /usr/share/applications/calima-app-local.desktop
 /usr/share/applications/efd-contribuicoes.desktop
+/usr/share/applications/IRPF-online.desktop
 /usr/share/applications/govbr.desktop
 /usr/share/applications/linphone.desktop
+/usr/share/icons/facilitador/e-cac.png
 /usr/share/icons/facilitador/icon.png
 /usr/share/icons/facilitador/calima-app-local.png
 /usr/share/icons/facilitador/rfb.png
@@ -48,3 +51,4 @@
 /usr/share/icons/facilitador/sintegra.png
 /usr/share/icons/facilitador/GDRAIS.ico
 /usr/share/icons/facilitador/linphone_logo.ico
+/usr/share/icons/facilitador/microsoft_teams.png

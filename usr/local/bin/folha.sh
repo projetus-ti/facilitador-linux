@@ -12,9 +12,21 @@
 
 source /etc/facilitador.conf
 
-/usr/local/bin/funcoes.sh
+
+# Carrega as funções definidas em funcoes.sh
+
+source /usr/local/bin/funcoes.sh
+
+
+# Ano atual
+
+ano=$(date +%Y)
+ARCH=$(uname -m)
 
 acao=$1
+
+
+mkdir -p $HOME/.local/share/applications/  2>> "$log"
 
 # ----------------------------------------------------------------------------------------
 
@@ -26,14 +38,17 @@ testainternet
 # ----------------------------------------------------------------------------------------
 
 if [ "$acao" = "ACI" ]; then
+
   clear
-  mkdir -p ~/.java/deployment/security 2>> "$log"
+
+  mkdir -p $HOME/.java/deployment/security 2>> "$log"
+
   echo "https://caged.maisemprego.mte.gov.br
-  http://caged.maisemprego.mte.gov.br" >>~/.java/deployment/security/exception.sites
+  http://caged.maisemprego.mte.gov.br" >> $HOME/.java/deployment/security/exception.sites
 
   showMessage "Nas próximas mensagens, marque a única opção que aparecer na tela e depois clique no botão Later, Continuar e Executar."
 
-  rm -Rf ~/.java/deployment/cache 2>> "$log"
+  rm -Rf $HOME/.java/deployment/cache 2>> "$log"
   cd $desktop_path
   rm -Rf jws_app_shortcut_* 2>> "$log"
   cd Validadores
@@ -50,7 +65,7 @@ if [ "$acao" = "ACI" ]; then
   done
 
   mv "$aci_path" "$desktop_path/Validadores" 2>> "$log"
-  rm -Rf ~/.local/share/applications/jws_app_shortcut* 2>> "$log"
+  rm -Rf $HOME/.local/share/applications/jws_app_shortcut* 2>> "$log"
 
 
   endInstall
@@ -62,8 +77,6 @@ fi
 if [ "$acao" = "DIRF" ]; then
 
   clear
-
-  ano=$(date +%Y)
 
   cd "$desktop_path/Validadores"
   rm -Rf Dirf* 2>> "$log"
@@ -87,20 +100,38 @@ if [ "$acao" = "DIRF" ]; then
 # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirf
 
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Dirf/$ano/Dirf$anoLinux-x86_64v1.0.sh" "$cache_path/Dirf.sh"
+  # download "https://servicos.receita.fazenda.gov.br/publico/programas/Dirf/${ano}/Dirf${ano}Linux-${ARCH}v1.0.sh" "$cache_path/Dirf.sh"
 
-  chmod +x $cache_path/Dirf.sh
+  download="https://servicos.receita.fazenda.gov.br/publico/programas/Dirf/${ano}/Dirf${ano}Linux-${ARCH}v1.0.sh"
 
-  echo $'#!/bin/bash 
-    chmod +x '$cache_path'/Dirf.sh
-    '$cache_path'/Dirf.sh --mode silent 
-    chmod 777 /usr/share/applications/Dirf'$ano'-program.desktop 
-    cp /usr/share/applications/Dirf'$ano'-program.desktop '"'$desktop_path/Validadores'"'
-    chmod 777 '"'$desktop_path/Validadores/Dirf'$ano'-program.desktop'"'
-    rm -Rf /usr/share/applications/Dirf*
-    '>$cache_path/exec.sh
+  wget -c "$download" -O "$cache_path/Dirf.sh" 2>> "$log"
+
+  chmod +x $cache_path/Dirf.sh  2>> "$log"
+
+
+# gzip: sfx_archive.tar.gz: not in gzip format
+# chmod: não foi possível acessar '/usr/share/applications/Dirf2025-program.desktop': Arquivo ou diretório inexistente
+# cp: não foi possível obter estado de '/usr/share/applications/Dirf2025-program.desktop': Arquivo ou diretório inexistente
+# chmod: não foi possível acessar '/home/anon/Desktop/Validadores/Dirf2025-program.desktop': Arquivo ou diretório inexistente
+
+  echo "#!/bin/bash 
+
+    chmod +x $cache_path/Dirf.sh
+
+    $cache_path/Dirf.sh --mode silent 
+
+    chmod 755 /opt/Programas\ RFB/Dirf${ano}/Dirf${ano}.desktop
+
+    cp /opt/Programas\ RFB/Dirf${ano}/Dirf${ano}.desktop $desktop_path/Validadores
+
+    chmod 755 $desktop_path/Validadores/Dirf${ano}.desktop
+
+    sudo rm -Rf /usr/share/applications/Dirf*
+
+    " > $cache_path/exec.sh
 
   chmod +x $cache_path/exec.sh
+
   executar "pkexec $cache_path/exec.sh"
 
   endInstall
@@ -119,6 +150,7 @@ if [ "$acao" = "GDRAIS" ]; then
 
         yad \
         --center \
+        --window-icon="$logo" \
         --title="GDRAIS" \
         --text="⚠️ Importante: GDRAIS e eSocial
 
@@ -134,9 +166,11 @@ No entanto, empresas que ainda não migraram para o eSocial (como órgãos públ
 
 
   cd "$desktop_path/Validadores"
-  rm -Rf GDRais*   2>> "$log"
-  rm -Rf ~/GDRais* 2>> "$log"
-  cd $app_path/cache 
+  rm -Rf GDRais*       2>> "$log"
+  rm -Rf $HOME/GDRais* 2>> "$log"
+
+  cd $app_path/cache
+
   download "http://www.rais.gov.br/sitio/rais_ftp/GDRAIS2021-1.1-Linux-x86-Install.bin" "GDRAIS.bin"
 
   sleep 2
@@ -147,21 +181,22 @@ No entanto, empresas que ainda não migraram para o eSocial (como órgãos públ
 
   cd $app_path/atalhos
 
-  echo $'[Desktop Entry]
-        Exec='$user_path'/GDRais2021/gdrais.sh
+  echo "[Desktop Entry]
+        Exec=$user_path/GDRais2021/gdrais.sh
         Terminal=false
         Type=Application
-        Icon='$user_path'/GDRais2021/gdrais.ico
+        Icon=$user_path/GDRais2021/gdrais.ico
         Name[pt_BR]=GDRAIS
-        '>GDRais2021.desktop
+        " > GDRais2021.desktop
 
 
-  cp $app_path/atalhos/GDRais2021* "$desktop_path/Validadores"                    2>> "$log"
-  cp "$desktop_path/Validadores/GDRais2021.desktop"  ~/.local/share/applications/ 2>> "$log"
-  chmod +x "$desktop_path/Validadores/GDRais2021.desktop"
-  rm -Rf ~/.local/share/applications/Desinstalar* 2>> "$log"
+  cp $app_path/atalhos/GDRais2021* "$desktop_path/Validadores"                        2>> "$log"
+  cp "$desktop_path/Validadores/GDRais2021.desktop"  $HOME/.local/share/applications/ 2>> "$log"
+  chmod +x "$desktop_path/Validadores/GDRais2021.desktop"  2>> "$log"
+  rm -Rf $HOME/.local/share/applications/Desinstalar*      2>> "$log"
 
   # Ajustar atalho
+
   sed -i 's/Terminal=/Terminal=False/g' "$desktop_path/Validadores/GDRais.desktop"
 
   endInstall
@@ -176,6 +211,7 @@ if [ "$acao" = "GRRF" ]; then
 
         yad \
         --center \
+        --window-icon="$logo" \
         --title="GRRF" \
         --text="A GRRF é a Guia de Recolhimento Rescisório do FGTS, um documento obrigatório que deve ser gerado e pago quando ocorre rescisão de contrato de trabalho com direito a multa rescisória (exceto em casos de pedido de demissão ou justa causa, por exemplo).
 
@@ -277,23 +313,23 @@ E instalar um Windows (pode ser com licença ou imagem de avaliação gratuita d
 
   # Rodar o programa após instalado
 
-  echo '[Desktop Entry]
+  echo "[Desktop Entry]
 Name=GRRF
 Comment=GRRF - Guia de Recolhimento Rescisório do FGTS
-Exec=wine start /unix "$HOME/.wine/drive_c/Arquivos de Programas/CAIXA/GRRF/GRRF.exe"
+Exec=wine start /unix $HOME/.wine/drive_c/Arquivos\ de\ Programas/CAIXA/GRRF/GRRF.exe
 Type=Application
 StartupNotify=true
-Path=$HOME/.wine/drive_c/Arquivos de Programas/CAIXA/GRRF
+Path=$HOME/.wine/drive_c/Arquivos\ de\ Programas/CAIXA/GRRF
 Icon=application-x-executable
 Categories=Office;
-' > ~/.local/share/applications/grrf.desktop
+" > $HOME/.local/share/applications/grrf.desktop
 
 
 # Atualizar ícones/menu (opcional)
 
 # Se não aparecer no menu de imediato:
 
-update-desktop-database ~/.local/share/applications/
+update-desktop-database $HOME/.local/share/applications/ 2>> "$log"
 
 # Ou reinicie a sessão/ambiente gráfico.
 
@@ -306,8 +342,8 @@ update-desktop-database ~/.local/share/applications/
 
 
   # executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI $cache_path/GRRF.exe /silent "
-  # mv ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
-  # rm -Rf ~/.local/share/applications/wine/GRRF*
+  # mv $HOME/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/GRRF/GRRF\ Eletronica.desktop "$desktop_path/Validadores"
+  # rm -Rf $HOME/.local/share/applications/wine/GRRF*
 
   endInstall
 
@@ -319,6 +355,7 @@ if [ "$acao" = "SEFIP" ]; then
 
         yad \
         --center \
+        --window-icon="$logo" \
         --title="SEFIP" \
         --text="O SEFIP (Sistema Empresa de Recolhimento do FGTS e Informações à Previdência Social) é um programa da Caixa Econômica Federal, usado para gerar e transmitir:
 
@@ -387,7 +424,7 @@ Ou seja, você pode gerar a GFIP no Linux, mas deve transmiti-la em uma máquina
 
   # Rodar o programa após instalado
 
-  echo '[Desktop Entry]
+  echo "[Desktop Entry]
 Type=Application
 Name=SEFIP
 Comment=Sistema Empresa de Recolhimento do FGTS e Informações à Previdência Social (SEFIP) é um aplicativo desenvolvido pela Caixa para o empregador.
@@ -396,21 +433,21 @@ StartupNotify=true
 Path=$HOME/.wine/drive_c/Arquivos de Programas/CAIXA/SEFIP
 Icon=application-x-executable
 Categories=Office;
-' > ~/.local/share/applications/sefip.desktop
+" > $HOME/.local/share/applications/sefip.desktop
 
 
 # Atualizar ícones/menu (opcional)
 
 # Se não aparecer no menu de imediato:
 
-update-desktop-database ~/.local/share/applications/
+update-desktop-database $HOME/.local/share/applications/ 2>> "$log"
 
 # Ou reinicie a sessão/ambiente gráfico.
 
 
   # executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI $cache_path/sefip.exe /silent"
   # mv "$desktop_path/SEFIP.desktop" "$desktop_path/Validadores"
-  # rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/SEFIP
+  # rm -Rf $HOME/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/SEFIP
 
   endInstall
 
@@ -421,13 +458,11 @@ fi
 if [ "$acao" = "SVA" ]; then
 
 
-        yad \
-        --center \
-        --title="SVA" \
-        --text="SVA (Sistema de Validação e Autenticação de Arquivos Digitais) da Receita Federal do Brasil (RFB).
+echo "
+SVA (Sistema de Validação e Autenticação de Arquivos Digitais) da Receita Federal do Brasil (RFB).
 Ele serve para validar leiautes de arquivos digitais entregues à RFB e gerar códigos de autenticação únicos para esses arquivos.
 
-suporte limitado.
+Suporte limitado.
 
 
 ⚠️ Atenção:
@@ -439,14 +474,11 @@ Pode haver falhas ao validar ou assinar arquivos.
 Se for uso oficial ou profissional, prefira usar em Windows.
 
 
-Ou usar uma Máquina Virtual (VM) com Windows para garantir funcionamento completo, especialmente se houver assinatura digital ou certificação envolvida (casos típicos do SVA).
+Ou usar uma Máquina Virtual (VM) com Windows para garantir funcionamento completo, especialmente se houver assinatura digital ou 
+certificação envolvida (casos típicos do SVA).
 
 
-" \
-        --buttons-layout=center \
-        --button="OK" \
-        --width="900" \
-        2>/dev/null
+" | yad --center --window-icon="$logo" --title "SVA" --text-info --fontname "mono 10" --buttons-layout=center --button=OK:0 --width="1200" --height="400"  2> /dev/null
 
 
 
@@ -470,37 +502,69 @@ Ou usar uma Máquina Virtual (VM) com Windows para garantir funcionamento comple
   download "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/auditoria-fiscal/arquivos/sva-arquivos/instala_sva-3-3-0.exe/@@download/file" "$cache_path/sva.exe"
 
 
+    # Void Linux
+
+    if which xbps-install &>/dev/null; then
+
+       echo -e "\nAtivando o repositório multilib e instalando o wine-32bit...\n"
+
+       sudo xbps-install -Sy void-repo-multilib
+
+       sudo xbps-install -Sy wine-32bit
+
+
+    fi 
+
+
   wine "$cache_path/sva.exe" 2>> "$log"
 
 
   # Rodar o programa após instalado
 
-  echo '[Desktop Entry]
+  echo "[Desktop Entry]
 Type=Application
 Name=SVA
 Comment=Sistema de Validação e Autenticação de Arquivos Digitais da Receita Federal do Brasil (RFB).
-Exec=wine ~/.wine/drive_c/Arquivos\ de\ Programas/SVA/SVA.exe
+Exec=wine $HOME/.wine/drive_c/Arquivos\ de\ Programas/SVA/SVA.exe
 StartupNotify=true
-Path=$HOME/.wine/drive_c/Arquivos de Programas/SVA
+Path=$HOME/.wine/drive_c/Arquivos\ de\ Programas/SVA
 Icon=application-x-executable
 Categories=Office;
-' > ~/.local/share/applications/SVA.desktop
+" > $HOME/.local/share/applications/SVA.desktop
+
+
+
+# $ wine ~/.wine/drive_c/Arquivos\ de\ Programas/SVA/SVA.exe
+# it looks like wine-32bit is missing, you should install it.
+# the multilib repository needs to be enabled first.  as root, please
+# execute "xbps-install -S void-repo-multilib && xbps-install -S wine-32bit"
+# 002c:err:winediag:getaddrinfo Failed to resolve your host name IP
+# wine: failed to open "/home/anon/.wine/drive_c/Arquivos de Programas/SVA/SVA.exe"
+
+# Esse erro indica que o Wine está tentando executar um aplicativo de 32 bits, mas você não tem 
+# o suporte para 32 bits instalado no Void Linux. Além disso, há também um problema com a resolução 
+# do nome de host.
+
+
+
+chmod -R +x $HOME/.local/share/applications/SVA.desktop  2>> "$log"
 
 
 # Atualizar ícones/menu (opcional)
 
 # Se não aparecer no menu de imediato:
 
-update-desktop-database ~/.local/share/applications/
+update-desktop-database $HOME/.local/share/applications/ 2>> "$log"
 
 # Ou reinicie a sessão/ambiente gráfico.
 
+reiniciar_painel
 
 
   # executar "flatpak run --command=wine io.github.fastrizwaan.WineZGUI $cache_path/sva.exe /silent "
   # sleep 1
-  # mv ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/SVA\ 3.3.0/SVA\ 3.3.desktop "$desktop_path/Validadores"
-  # rm -Rf ~/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/SVA*
+  # mv $HOME/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/SVA\ 3.3.0/SVA\ 3.3.desktop "$desktop_path/Validadores"
+  # rm -Rf $HOME/.var/app/io.github.fastrizwaan.WineZGUI/data/applications/wine/Programs/Programas\ RFB/SVA*
 
   endInstall
 

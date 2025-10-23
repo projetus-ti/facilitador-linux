@@ -4,6 +4,28 @@
 # Data: 19/10/2025
 # Licença:  MIT
 
+
+# Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda Retido na Fonte (DIRF).
+
+
+# Declaração do Imposto sobre a Renda Retido na Fonte
+
+# Utilize este programa para preencher Declaração do Imposto sobre a Renda Retido na Fonte (DIRF).
+
+# Esse programa é destinado às FONTES PAGADORAS, ou seja, cidadãos e empresas que pagam 
+# valores (como salário, por exemplo) a outras pessoas e que fazem a retenção da parte 
+# correspondente ao imposto de renda.
+
+
+# https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirf
+
+
+# Usar o .conf no script
+# Para carregar as variáveis do .conf
+
+source /etc/facilitador.conf
+
+
 ano=$(date +%Y)
 
 log="/tmp/dirf.log"
@@ -16,17 +38,16 @@ if [[ ! -d "/opt/Programas RFB/Dirf$ano" ]]; then
 
     echo -e "\nDiretório /opt/Programas RFB/Dirf$ano não encontrado. \n"
 
-        yad \
-        --center \
-        --title="Erro" \
-        --text="Diretório /opt/Programas RFB/Dirf$ano não encontrado.
+
+
+echo "Diretório /opt/Programas RFB/Dirf$ano não encontrado.
 
 
 ⚠️ Observações importantes
 
 A DIRF está sendo substituída gradualmente pelo eSocial e EFD-Reinf, mas ainda pode ser exigida dependendo do ano e da situação fiscal.
 
-Fique atento ao ano da DIRF (por exemplo, DIRF 2024 se refere ao ano-calendário 2023).
+Fique atento ao ano da DIRF (por exemplo, DIRF ${ano} se refere ao ano-calendário `echo "${ano}-1" | bc`).
 
 Sempre baixe o programa no site oficial da Receita Federal para evitar fraudes.
 
@@ -35,22 +56,20 @@ Declarar imposto de renda retido na fonte (DIRF)
 
 https://www.gov.br/pt-br/servicos/declarar-imposto-de-renda-retido-na-fonte
 
-" \
-        --buttons-layout=center \
-        --button="OK" \
-        --width="300" --height="100" \
-        2>/dev/null
+" | yad --center --window-icon="$logo" --title "Erro" --text-info --fontname "mono 10" --buttons-layout=center --button=OK:0 --width="1200" --height="400"  2> /dev/null
+
 
     exit 1
+
 fi
 
 
 # ----------------------------------------------------------------------------------------
 
-        yad \
-        --center \
-        --title="Dirf" \
-        --text="A DIRF (Declaração do Imposto de Renda Retido na Fonte) é uma obrigação acessória da Receita Federal do Brasil (RFB). Ela é usada por empresas e outros órgãos para declarar os valores de impostos retidos na fonte, como:
+
+echo "
+A DIRF (Declaração do Imposto de Renda Retido na Fonte) é uma obrigação acessória da Receita Federal do Brasil (RFB). Ela é usada por empresas e 
+outros órgãos para declarar os valores de impostos retidos na fonte, como:
 
 Imposto de Renda Retido na Fonte (IRRF)
 
@@ -70,11 +89,9 @@ Empresas que pagam ou creditam rendimentos com retenção de IR
 
 Órgãos públicos
 
-Pessoas físicas ou jurídicas que fizeram pagamentos com retenção na fonte" \
-        --buttons-layout=center \
-        --button="OK" \
-        --width="900" \
-        2>/dev/null
+Pessoas físicas ou jurídicas que fizeram pagamentos com retenção na fonte." | yad --center --window-icon="$logo" --title "Dirf" --text-info --fontname "mono 10" --buttons-layout=center --button=OK:0 --width="1200" --height="500"  2> /dev/null
+
+
 
 # ----------------------------------------------------------------------------------------
 

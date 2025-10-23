@@ -17,34 +17,24 @@ source /etc/facilitador.conf
 
 # Função para detectar a distribuição
 
-detectar_distro() {
 
+
+# Função para detectar a distribuição automaticamente
+
+get_distro() {
     if [ -f /etc/os-release ]; then
         . /etc/os-release
-
-        echo -e "\n$ID \n"
-
-    elif [ -f /etc/slackware-version ]; then
-
-        echo -e "\nslackware \n"
-
-    elif command -v xbps-install >/dev/null 2>&1; then
-
-        echo -e "\nvoid \n"
-
+        echo "$ID"
+    elif command -v lsb_release >/dev/null 2>&1; then
+        lsb_release -si
     else
-
-        echo -e "\nDesconhecida. \n"
-
+        echo "Desconhecida"
     fi
-
 }
 
+# Atribui a variável DISTRO
+DISTRO=$(get_distro)
 
-# Detecta a distribuição
-DISTRO=$(detectar_distro)
-
-echo -e "\n🧩 Distribuição detectada: $DISTRO \n"
 
 
 # ----------------------------------------------------------------------------------------
@@ -56,6 +46,7 @@ testainternet() {
 if ! ping -c 1 google.com &>/dev/null; then
 
     yad --center \
+        --window-icon="$logo" \
         --title="Erro de Conexão" \
         --text="Sem acesso à internet.\nVerifique sua conexão de rede." \
         --buttons-layout=center \
@@ -79,13 +70,31 @@ setWinePrefix() {
 
 # ----------------------------------------------------------------------------------------
 
+
+# Podemos usar a opção de mostrar a saída do comando no terminal, mas ainda exibir o progresso 
+# no yad. A ideia é capturar a saída do comando e exibir no terminal em tempo real, enquanto o 
+# yad continua mostrando a interface de progresso.
+
 executar() {
 
-  response=$($1) | yad --center --window-icon="$logo"  --title="$titulo" --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings  --width="280" --no-cancel  --buttons-layout=center --button="OK"  --auto-close 
+  # Exibe a saída do comando no terminal enquanto está sendo executado
+  # Usando o comando em segundo plano para que a saída seja exibida no terminal
 
-  echo $response
+  $1 | tee /dev/tty | yad --center --window-icon="$logo" --title="$titulo" --progress --text="Executando, aguarde..." --pulsate --class=InfinalitySettings --width="500" --no-cancel --buttons-layout=center --button="OK" --auto-close
+  
+  # Verifica se houve erro no comando
+
+  if [ ${PIPESTATUS[0]} -ne 0 ]; then
+
+    yad --center --window-icon="$logo" --title="$titulo" --text="Erro ao executar o comando!" --button="OK:0" --width="300" --height="100"
+
+    return 1
+
+  fi
 
 }
+
+
 
 # ----------------------------------------------------------------------------------------
 
@@ -98,6 +107,8 @@ executarFlatpak() {
 }
 
 # ----------------------------------------------------------------------------------------
+
+# Falta verifica o funcionamento
 
 download() {
 
@@ -129,7 +140,7 @@ download() {
   wget_info=`ps ax |grep "wget.*$1" |awk '{print $1"|"$2}'`
   wget_pid=`echo $wget_info|cut -d'|' -f1 `
  
-  yad --center --class=InfinalitySettings --progress --auto-close --auto-kill --text="Efetuando o download do arquivo: $1\n\n" --width="500" --window-icon="$logo" --title="$titulo - $versao"< $pipe
+  yad --center  --window-icon="$logo" --class=InfinalitySettings --title="$titulo - $versao" --progress --auto-close --auto-kill --text="Efetuando o download do arquivo: $1\n\n" --width="500" --buttons-layout=center --button="OK" < $pipe
 
   if [ "`ps -A |grep "$wget_pid"`" ];then
     kill $wget_pid
@@ -145,17 +156,79 @@ download() {
 
 endInstall() {
 
-    yad --center --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon="$logo" --title "Instalação Finalizada!" \
+
+    chmod -R +x "$desktop_path/Validadores/" 2>> "$log"
+
+
+    yad --center  --window-icon="$logo" --class=InfinalitySettings --info --icon-name='dialog-warning' --title "Instalação Finalizada!" \
          --text 'Execute o programa pela pasta "Validadores" em sua "Área de Trabalho".' \
          --buttons-layout=center \
          --button="OK" \
          --height="50" --width="500" 2> /dev/null
 
-  chmod -R +x "$desktop_path/Validadores/"
-  rm -Rf $cache_path/*
+
+
+# ========================================================================================
+
+# Caminho do cache
+
+echo -e "\n$cache_path \n"
+
+
+ls -lh "$cache_path"
+
+
+# Pergunta ao usuário se deseja limpar o cache
+
+yad --center \
+    --window-icon="$logo" \
+    --title="Limpar Downloads" \
+    --text="Deseja realmente apagar todos os programas baixados da internet?\n\nIsso irá remover todo o conteúdo de:\n$cache_path" \
+    --buttons-layout=center \
+    --button=Sim:0 --button=Não:1 \
+    --width="400" \
+    --height="150" \
+    2> /dev/null
+
+# Captura o código de saída do yad
+resposta=$?
+
+# Se o usuário clicou em "Sim" (código de saída 0)
+if [ "$resposta" -eq 0 ]; then
+
+    rm -Rf "$cache_path"/*
+
+    yad --center \
+        --window-icon="$logo" \
+        --title="Limpeza concluída" \
+        --text="Os programas foram apagados com sucesso." \
+        --buttons-layout=center \
+        --button=OK:0 \
+        --width="300" \
+        --height="100" \
+        2> /dev/null
+
+else
+
+    yad --center \
+        --window-icon="$logo" \
+        --title="Cancelado" \
+        --text="A limpeza foi cancelada." \
+        --buttons-layout=center \
+        --button=OK:0 \
+        --width="300" \
+        --height="100" \
+        2> /dev/null
+fi
+
+# ========================================================================================
+
+
   
   if [ $DESKTOP_SESSION = "plasma" ]; then
+
     find "$desktop_path/Validadores/" -type f -name '*.desktop' | while read f; do mv "$f" "${f%.desktop}"; done
+
   fi
   
   # yad --center --notification --text="$titulo - Instalação finalizada com sucecsso!" 2> /dev/null
@@ -184,15 +257,15 @@ configurarWine() {
 
   echo -e "\nConfigurando o Wine... \n"
 
-  if [ ! -f ~/.wine/user.reg ]; then
+  if [ ! -f $HOME/.wine/user.reg ]; then
     wineboot >/dev/null 2>&1
-    while [[ ! -f ~/.wine/user.reg ]]; do
+    while [[ ! -f $HOME/.wine/user.reg ]]; do
       sleep 1
     done
   fi
 
-  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine/user.reg
-  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine/drive_c/windows/win.ini
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" $HOME/.wine/user.reg
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" $HOME/.wine/drive_c/windows/win.ini
 
   clear
 }
@@ -207,15 +280,15 @@ configurarWine32() {
 
   echo -e "\nConfigurando o Wine... \n"
 
-  if [ ! -f ~/.wine32/user.reg ]; then
+  if [ ! -f $HOME/.wine32/user.reg ]; then
     env WINEARCH=win32 WINEPREFIX=$HOME/.wine32 wineboot >/dev/null 2>&1
-    while [[ ! -f ~/.wine32/user.reg ]]; do
+    while [[ ! -f $HOME/.wine32/user.reg ]]; do
       sleep 1
     done
   fi
 
-  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/user.reg
-  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" ~/.wine32/drive_c/windows/win.ini
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" $HOME/.wine32/user.reg
+  sed -i "s,d/M/yyyy,dd/MM/yyyy,g" $HOME/.wine32/drive_c/windows/win.ini
 
   clear
 }
@@ -227,7 +300,8 @@ configurarWine32() {
 descontinuado() {
 
   yad \
-  --center --class=InfinalitySettings \
+  --center \
+  --class=InfinalitySettings \
   --info \
   --icon-name='dialog-warning' \
   --window-icon="$logo" \
@@ -263,5 +337,61 @@ naoCompativel() {
 
 # ----------------------------------------------------------------------------------------
 
-exit 0
+# Para reiniciar o painel com base no ambiente de desktop
+
+reiniciar_painel() {
+
+
+
+# Verifica qual o ambiente de desktop ativo
+
+DESKTOP_ENV=$(echo $XDG_SESSION_DESKTOP)
+
+case $DESKTOP_ENV in
+  xfce)
+    echo "Reiniciando o painel do XFCE..."
+    xfce4-panel --restart
+    ;;
+  gnome)
+    echo "Reiniciando o painel do GNOME..."
+    gnome-shell --replace &
+    ;;
+  kde)
+    echo "Reiniciando o painel do KDE..."
+    killall plasmashell && kstart5 plasmashell
+    ;;
+  cinnamon)
+    echo "Reiniciando o painel do Cinnamon..."
+    cinnamon --replace &
+    ;;
+  mate)
+    echo "Reiniciando o painel do MATE..."
+    mate-panel --replace &
+    ;;
+  openbox)
+    echo "Openbox não tem painel, mas você pode reiniciar a barra de tarefas."
+    killall tint2 && tint2 &
+    ;;
+  fluxbox)
+    echo "Fluxbox não tem painel, mas você pode reiniciar o painel com o comando `fbpanel`."
+    killall fbpanel && fbpanel &
+    ;;
+  i3)
+    echo "Reiniciando o painel do i3 (i3bar)..."
+    killall i3bar && i3bar &
+    ;;
+  bspwm)
+    echo "Reiniciando o painel do BSPWM (com i3bar ou outro utilitário de barra)."
+    killall i3bar && i3bar &
+    ;;
+  *)
+    echo "Ambiente de desktop ou gerenciador de janelas desconhecido ou não suportado."
+    ;;
+esac
+
+
+
+}
+
+# ----------------------------------------------------------------------------------------
 

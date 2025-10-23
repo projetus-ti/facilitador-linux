@@ -15,7 +15,14 @@
 
 source /etc/facilitador.conf
 
-/usr/local/bin/funcoes.sh
+
+# Carrega as funções definidas em funcoes.sh
+
+source /usr/local/bin/funcoes.sh
+
+
+mkdir -p $HOME/.local/share/applications/
+
 
 acao=$1
 
@@ -120,55 +127,110 @@ endInstall
 
 fi
 
+# ----------------------------------------------------------------------------------------
+
+if [ "$acao" = "Receitanet" ]; then
+
+# Receitanet
+
+# O programa Receitanet é utilizado para validar e enviar pela internet os arquivos de 
+# declarações e escriturações à Receita Federal.
+
+# A máquina virtual java (JVM), versão 1.8 ou superior, deve estar instalada, pois 
+# programa desenvolvido em Java não pode ser executado sem a JVM.
+
+# Para instalar o Receitanet, é necessário adicionar permissão de execução, por meio do 
+# comando "chmod +x Receitanet-1.32.jar" ou conforme o Gerenciador de Janelas utilizado. 
+# Em seguida, execute "java -jar Receitanet-1.32.jar" na linha de comando. 
+
+
+# https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet
+
+  echo -e "\nBaixando o Receitanet...\n"
+
+  download="https://servicos.receita.fazenda.gov.br/publico/programas/receitanet/Receitanet-1.32.jar"
+
+  wget -P "$cache_path" -c "$download" 2>> "$log"
+
+  FILE="$cache_path/Receitanet-1.32.jar"
+
+  if [ ! -f "$FILE" ]; then
+
+    # Adicionar permissão de execução, por meio do comando "chmod +x Receitanet-1.32.jar" 
+
+    chmod +x "$FILE" 2>> "$log"
+
+    sudo mv "$FILE" /opt/  2>> "$log"
+
+
+    if command -v java >/dev/null 2>&1; then
+
+    # Executa
+
+    
+    echo "[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Receitanet
+Name[pt_BR]=Receitanet
+Comment=O programa Receitanet é utilizado para validar e enviar pela internet os arquivos de declarações e escriturações à Receita Federal.
+Exec=java -jar /opt/Receitanet-1.32.jar
+# Icon=
+Terminal=false
+# Categories=;
+StartupNotify=true" > $HOME/.local/share/applications/receitanet.desktop
+
+
+chmod +x $HOME/.local/share/applications/receitanet.desktop
+
+
+    fi
+
+
+  fi
+
+endInstall
+
+fi
 
 # ----------------------------------------------------------------------------------------
 
 if [ "$acao" = "Receita Net BX" ]; then
 
+   # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanetbx/receitanetbx
+
    # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanetbx/download-do-programa-receitanetbx-windows
+
+   # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanetbx/download-do-programa-receitanetbx-linux
+
+
+# Multiplataforma (JAR)
 
   echo -e "\nBaixando o ReceitanetBX...\n"
 
-  download="https://servicos.receita.fazenda.gov.br/publico/programas/ReceitanetBX/ReceitanetBX-1.9.24.exe"
+
+ARCH=$(uname -m)
+
+if [[ "$ARCH" == *"64"* ]]; then
+
+  # https://servicos.receita.fazenda.gov.br/publico/programas/ReceitanetBX/ReceitanetBX-1.9.24.exe
+
+  download="https://servicos.receita.fazenda.gov.br/publico/programas/ReceitanetBX/ReceitanetBX-1.9.24-Linux-x86_64-Install.bin"
 
   wget -P "$cache_path" -c "$download" 2>> "$log"
 
-  FILE="$cache_path/ReceitanetBX-1.9.24.exe"
+  FILE="$cache_path/ReceitanetBX-1.9.24-Linux-x86_64-Install.bin"
 
   if [ ! -f "$FILE" ]; then
 
+     chmod +x "$FILE" 2>> "$log"
 
-    # Para Debian e derivados
+     cd "$cache_path"
 
-    # if which apt &>/dev/null; then
-
-    # executar "pkexec apt install -y libgtk2.0-0:i386 libpangoxft-1.0-0:i386 libidn11:i386 libglu1-mesa:i386 libxtst6:i386 libncurses5:i386"
-
-    # fi
+     ./ReceitanetBX-1.9.24-Linux-x86_64-Install.bin 2>> "$log"
 
 
-    # Para Void Linux
-
-    if which xbps-install &>/dev/null; then
-
-    # Habilitar o repositório multilib
-
-    sudo xbps-install -Sy void-repo-multilib 2>> "$log"
-
-    # Instalar o Wine 32-bit
-
-    sudo xbps-install -Sy wine-32bit 2>> "$log"
-
-    # Instalar dependências do Wine
-
-    sudo xbps-install -Sy wine wine-gecko wine-mono 2>> "$log" # wine-staging
-
-
-    # $ file ReceitanetBX-1.9.24.exe 
-    # ReceitanetBX-1.9.24.exe: PE32 executable for MS Windows 4.00 (GUI), Intel i386 (stripped to external PDB), PECompact2 compressed, 2 sections
-
-
-    fi
+  fi
 
 
     # yad --center --class=InfinalitySettings --info --icon-name='dialog-warning' --window-icon="$logo" --title "Atenção!" \
@@ -176,11 +238,36 @@ if [ "$acao" = "Receita Net BX" ]; then
     #     --height="50" --width="450" 2>/dev/null
 
 
-   cd "$cache_path"
 
-   wine ReceitanetBX-1.9.24.exe 2>> "$log"
 
- fi
+
+else
+
+    echo "🧯 Sistema 32 bits detectado: $ARCH"
+
+
+  download="https://servicos.receita.fazenda.gov.br/publico/programas/ReceitanetBX/ReceitanetBX-1.9.24-Linux-x86-Install.bin"
+
+  wget -P "$cache_path" -c "$download" 2>> "$log"
+
+  FILE="$cache_path/ReceitanetBX-1.9.24-Linux-x86-Install.bin"
+
+  if [ ! -f "$FILE" ]; then
+
+     chmod +x "$FILE" 2>> "$log"
+
+     cd "$cache_path"
+
+     ./ReceitanetBX-1.9.24-Linux-x86-Install.bin 2>> "$log"
+
+
+  fi
+
+
+
+fi
+
+
 
 endInstall
 

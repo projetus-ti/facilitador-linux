@@ -5,6 +5,20 @@
 # Licença:  MIT
 
 
+# https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
+
+
+# Usar o .conf no script
+# Para carregar as variáveis do .conf
+
+source /etc/facilitador.conf
+
+
+# Carrega as funções definidas em funcoes.sh
+
+source /usr/local/bin/funcoes.sh
+
+
 # Ano atual
 
 ano=$(date +%Y)
@@ -16,14 +30,15 @@ log="/tmp/irpf.log"
 
 # Verifica se o diretório existe
 
-if [[ ! -d ~/ProgramasRFB/IRPF$ano/ ]]; then
+if [[ ! -d $HOME/IRPF$ano/ ]]; then
 
-    echo -e "\nDiretório ~/ProgramasRFB/IRPF$ano/ não encontrado. \n"
+    echo -e "\nDiretório $HOME/IRPF$ano/ não encontrado. \n"
 
         yad \
         --center \
+        --window-icon="$logo" \
         --title="Erro" \
-        --text="Diretório ~/ProgramasRFB/IRPF$ano/ não encontrado." \
+        --text="Diretório $HOME/IRPF$ano/ não encontrado." \
         --buttons-layout=center \
         --button="OK" \
         --width="300" --height="100" \
@@ -34,17 +49,20 @@ fi
 
 # ----------------------------------------------------------------------------------------
 
-cd ~/ProgramasRFB/IRPF$ano/
+cd $HOME/IRPF$ano/
 
 
 # Verifica se o arquivo existe
 
-if [[ -f ~/ProgramasRFB/IRPF$ano/irpf.jar ]]; then
+if [[ -f $HOME/IRPF$ano/irpf.jar ]]; then
 
 
   if java --version &>/dev/null; then
 
-    java -jar irpf.jar 2>> "$log"
+
+    java -jar $HOME/IRPF$ano/irpf.jar 2>> "$log"
+
+    notify-send -i "$logo" -t $tempo_notificacao "$titulo" "\nArquivo de log $log...\n"
 
   fi
 
