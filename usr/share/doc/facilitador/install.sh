@@ -5,7 +5,13 @@
 # Descricao: Script de Instalação do Facilitador Linux
 # Uso: sudo sh install.sh
 
-repositorio="https://github.com/projetus-ti/facilitador-linux.git"
+
+# Usar o .conf no script
+# Para carregar as variáveis do .conf
+
+source etc/facilitador.conf
+
+
 
 clear
 
@@ -23,7 +29,7 @@ which yad          1> /dev/null 2> /dev/null || { echo -e "\nPrograma Yad não e
 
 # Mostra aviso sobre backup do sistema
 
-yad --center --title="Aviso Importante" \
+yad --center --window-icon="$logo" --title="Aviso Importante" \
     --text="⚠️ <b>Recomendação:</b>\n\nAntes de executar este script, é altamente recomendável criar uma <b>imagem de backup do sistema</b>.\n\nDeseja continuar mesmo assim?" \
     --buttons-layout=center \
     --button=Não:1 --button=Sim:0 \
@@ -35,7 +41,7 @@ yad --center --title="Aviso Importante" \
 
 if [[ $? -ne 0 ]]; then
 
-    yad --center --title="Cancelado" --text="Execução cancelada pelo usuário." --buttons-layout=center --button="OK"  --width="300" 2> /dev/null
+    yad --center --window-icon="$logo" --title="Cancelado" --text="Execução cancelada pelo usuário." --buttons-layout=center --button="OK"  --width="300" 2> /dev/null
 
     exit 1
 fi
@@ -45,7 +51,7 @@ fi
 
 if ! ping -c 1 google.com &>/dev/null; then
 
-    yad --center --title="Erro de Conexão" \
+    yad --center --window-icon="$logo" --title="Erro de Conexão" \
         --text="Sem acesso à internet.\nVerifique sua conexão de rede." \
         --buttons-layout=center \
         --button=OK \
@@ -64,7 +70,7 @@ if ! java --version &>/dev/null; then
     
     echo -e "\nO Java não está instalado no sistema.\nPor favor, instale o Java para continuar. \n\nhttps://www.java.com/pt-br/download/manual.jsp\n"
 
-        yad --center --title="Erro" \
+        yad --center --window-icon="$logo" --title="Erro" \
         --text="O Java não está instalado no sistema.\nPor favor, instale o Java para continuar. \n\nhttps://www.java.com/pt-br/download/manual.jsp\n" \
         --buttons-layout=center \
         --button="OK" \
@@ -76,6 +82,7 @@ fi
 
 
 # Remove current installation
+
 sudo -u $SUDO_USER env WINEARCH=win32 WINEPREFIX=/home/$SUDO_USER/.wine32 wineserver -k
 sudo -u $SUDO_USER env WINEARCH=win64 WINEPREFIX=/home/$SUDO_USER/.wine wineserver -k
 rm -rf /home/$SUDO_USER/.wine32
@@ -88,6 +95,7 @@ if which apt &>/dev/null; then
 
 
 # Add Wine repository
+
 mkdir -pm755 /etc/apt/keyrings
 wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
 wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
@@ -114,24 +122,30 @@ fi
 
 
 # Create workspace dir
+
 sudo rm -Rf /opt/projetus/facilitador 
 sudo mkdir -p /opt/projetus/facilitador
 
 # Give permission for current user
+
 chown $SUDO_USER:$SUDO_USER -R /opt/projetus
 
 # Clone scripts from git
-sudo -u $SUDO_USER git clone "$repositorio" /opt/projetus/facilitador
+
+sudo -u $SUDO_USER git clone "$repositorio_remoto" /opt/projetus/facilitador
 sudo -u $SUDO_USER git config --global --add safe.directory /opt/projetus/facilitador
 
 # Give permission to script execution
+
 # sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.sh
 # sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
 
 # Create desktop shortcut
+
 # cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop
 
 # Update desktop database
+
 sudo update-desktop-database
 
 sleep 10
@@ -143,7 +157,7 @@ clear
 echo "Instalação concluída!"
 echo "O Facilitador Linux encontra-se no menu de aplicativos do sistema."
 
-        yad --center --title="Instalação concluída!" \
+        yad --center --window-icon="$logo" --title="Instalação concluída!" \
         --text="O Facilitador Linux encontra-se no menu de aplicativos do sistema." \
         --buttons-layout=center \
         --button="OK" \

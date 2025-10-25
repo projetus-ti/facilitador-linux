@@ -25,7 +25,11 @@ Exec=/usr/local/bin/esocial.sh
 
 Terminal=false
 StartupNotify=true
-Icon=internet-web-browser
+
+# Icon=internet-web-browser
+
+Icon=/usr/share/icons/facilitador/eSocial.png
+
 Categories=Network;
 MimeType=x-scheme-handler/http;x-scheme-handler/https;
 

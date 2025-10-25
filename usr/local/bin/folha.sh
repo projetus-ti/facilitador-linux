@@ -104,7 +104,7 @@ if [ "$acao" = "DIRF" ]; then
 
   download="https://servicos.receita.fazenda.gov.br/publico/programas/Dirf/${ano}/Dirf${ano}Linux-${ARCH}v1.0.sh"
 
-  wget -c "$download" -O "$cache_path/Dirf.sh" 2>> "$log"
+  wget -c "$download" -O "$cache_path/Dirf.sh" | tee -a "$log"
 
   chmod +x $cache_path/Dirf.sh  2>> "$log"
 

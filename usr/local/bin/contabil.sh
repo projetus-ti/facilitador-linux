@@ -47,9 +47,10 @@ if [ "$acao" = "SPED ECD" ]; then
 ARCH=$(uname -m)
 
 if [[ "$ARCH" == *"64"* ]]; then
-    echo "✅ Sistema 64 bits detectado: $ARCH"
 
-    wget -P "$cache_path" -c "$download" 2>> "$log"
+    echo -e "\n✅ Sistema 64 bits detectado: $ARCH \n"
+
+    wget -P "$cache_path" -c "$download" | tee -a "$log"
 
     sleep 2
 
@@ -94,9 +95,10 @@ if [ "$acao" = "SPED ECF" ]; then
 ARCH=$(uname -m)
 
 if [[ "$ARCH" == *"64"* ]]; then
-    echo "✅ Sistema 64 bits detectado: $ARCH"
 
-    wget -P "$cache_path" -c "$download" 2>> "$log"
+    echo -e "\n✅ Sistema 64 bits detectado: $ARCH \n"
+
+    wget -P "$cache_path" -c "$download" | tee -a "$log"
 
     sleep 2
 
@@ -109,10 +111,10 @@ if [[ "$ARCH" == *"64"* ]]; then
 
 else
 
-    echo "🧯 Sistema 32 bits detectado: $ARCH
+    echo -e "\n🧯 Sistema 32 bits detectado: $ARCH
 
 Não existe versão do Sped ECF para arquitetura 32-bit atualmente para o Linux.
-"
+\n"
 
         yad --center --window-icon="$logo"  --title="🧯 Sistema 32 bits detectado" \
         --text="Não existe versão do Sped ECF para arquitetura 32-bit atualmente para o Linux." \
@@ -146,21 +148,197 @@ if [ "$acao" = "Receitanet" ]; then
 
 # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet
 
+
+# ----------------------------------------------------------------------------------------
+
+echo "
+
+O Receitanet é um programa desenvolvido pela Receita Federal do Brasil utilizado para o envio de declarações de Imposto de Renda de pessoas físicas 
+e jurídicas, além de ser uma ferramenta para o envio de documentos fiscais relacionados à Receita Federal.
+
+🚀 Funções principais do Receitanet:
+
+Envio de Declaração de Imposto de Renda:
+O Receitanet é usado principalmente para enviar a Declaração de Imposto de Renda (IRPF) de pessoas físicas e jurídicas para a Receita Federal. Esse 
+envio ocorre após o preenchimento da declaração utilizando o programa Receita Federal - IRPF.
+
+Envio de Declarações de Pessoas Jurídicas:
+Também é utilizado para o envio de Declarações de Imposto de Renda de Pessoas Jurídicas (IRPJ), incluindo aquelas feitas por empresas que optam pelo 
+Simples Nacional, Lucro Presumido, ou Lucro Real.
+
+Declaração de Débitos e Créditos Tributários Federais:
+O Receitanet também é utilizado para transmitir outras declarações fiscais à Receita Federal, como DCTF (Declaração de Débitos e Créditos Tributários 
+Federais), DASN (Declaração Anual do Simples Nacional) e outras obrigações acessórias.
+
+Declaração de Imposto sobre Produtos e Serviços (PIS, Cofins):
+Outro uso importante do Receitanet é para o envio de documentos relacionados à Contribuição para o PIS/Pasep e Cofins, ambos de competência da Receita 
+Federal.
+
+🧩 Como funciona o Receitanet?
+
+Instalação: O Receitanet é instalado em computadores com sistemas operacionais como Windows, macOS ou Linux.
+
+Preenchimento da Declaração: Para enviar a Declaração de Imposto de Renda ou outro tipo de documento, o contribuinte primeiro preenche a declaração no 
+Programa IRPF ou no programa correspondente (por exemplo, DCTF ou DASN).
+
+Envio via Receitanet: Após o preenchimento da declaração, o programa Receitanet é usado para fazer a transmissão segura dos dados para a Receita Federal. 
+Ele cria o Arquivo XML da declaração, que será enviado à Receita.
+
+Recebimento de Comprovante: Depois de enviado, o Receitanet retorna um protocólo de recebimento (ou recibo), que serve como confirmação de que a declaração 
+foi transmitida corretamente.
+
+🛠️ Características principais:
+
+Segurança: A transmissão dos dados é feita de forma segura, com criptografia para garantir a privacidade das informações enviadas.
+
+Compatibilidade: Receitanet é compatível com as versões de sistemas operacionais Windows e as versões mais recentes de navegadores.
+
+Validação: Antes de enviar a declaração, o Receitanet valida se os dados informados estão corretos, para evitar erros na transmissão.
+
+📈 Versões:
+
+O Receitanet sempre tem novas versões lançadas anualmente, principalmente para atualizar os requisitos de envio de declarações de Imposto de Renda, além de 
+ajustes em outros programas da Receita Federal.
+
+🧑‍💻 Onde baixar o Receitanet?
+
+Você pode fazer o download do Receitanet diretamente do site da Receita Federal:
+
+http://www.receita.fazenda.gov.br
+
+
+⚠️ Dicas e Considerações:
+
+Certificado Digital: Para alguns tipos de declaração, como as de empresas, é necessário o uso de um certificado digital para garantir a autenticidade da 
+transmissão.
+
+Atualização: Sempre instale a versão mais recente do Receitanet antes de enviar a declaração, para evitar problemas com a compatibilidade de novas obrigações 
+fiscais.
+
+
+O certificado digital utilizado no Receitanet para enviar declarações à Receita Federal é geralmente do tipo e-CPF (para pessoas físicas) ou e-CNPJ 
+(para pessoas jurídicas). Esse certificado digital é necessário principalmente para garantir a autenticidade, segurança e integridade da comunicação entre 
+o contribuinte e a Receita Federal.
+
+### Tipos de Certificado Digital no Receitanet:
+
+1. e-CPF (Certificado Digital de Pessoa Física):
+
+   * Usado por pessoas físicas para assinar e transmitir suas declarações, como a Declaração de Imposto de Renda (IRPF), e outros documentos fiscais.
+
+2. e-CNPJ (Certificado Digital de Pessoa Jurídica):
+
+   * Usado por empresas (pessoas jurídicas) para transmitir suas declarações fiscais e de impostos, como DCTF, DASN, DIRF, entre outras.
+
+Ambos os certificados podem ser adquiridos e instalados em diferentes tipos de mídia, como cartão inteligente (smart card) ou token USB, e também podem ser 
+emitidos por uma Autoridade Certificadora (AC) credenciada pela ICP-Brasil.
+
+### 🧩 Instalando Certificado Digital no Linux
+
+Para usar o certificado digital no Receitanet em um sistema Linux, o processo envolve instalar e configurar a infraestrutura necessária para que o certificado 
+funcione corretamente com os aplicativos da Receita Federal.
+
+#### Passos para Instalar o Certificado Digital no Linux:
+
+1. Instalar Pacotes Necessários:
+
+   Para usar o certificado digital, você precisará de algumas bibliotecas e ferramentas. No Linux, as mais comuns são o OpenSSL e o pkcs11.
+
+   Execute o comando abaixo para instalar as dependências no Void Linux (e outras distribuições baseadas no xbps ou apt):
+
+   Para Void Linux:
+
+
+   sudo xbps-install -Suvy openssl pcsc-lite pcsc-lite-devel
+
+
+   Para Ubuntu/Debian:
+
+
+   sudo apt install -y openssl pcscd pcsc-tools
+
+
+2. Configurar o Leitor de Cartão (se for o caso):
+
+   Se você estiver usando um certificado digital em um smartcard ou token USB, você precisará configurar o leitor de cartão inteligente no seu sistema.
+
+   A maneira mais simples de testar a comunicação com o dispositivo é usar o comando pcsc_scan, que irá listar os leitores de cartões e tokens conectados:
+
+
+   pcsc_scan
+
+
+   Isso irá verificar se o leitor de cartão está sendo reconhecido corretamente.
+
+3. Instalar o Software do Certificado Digital:
+
+   A maioria dos certificados digitais exige a instalação de um driver ou software adicional, dependendo do tipo de dispositivo (smartcard, token USB).
+
+   Se o certificado for emitido por uma Autoridade Certificadora específica (como Serasa, Certisign, Soluti, etc.), é possível que você precise baixar 
+o software da própria autoridade para gerenciar o certificado. Para a maioria dos casos, o software necessário é o Middleware que fornece a interface 
+entre o certificado e os aplicativos que o utilizam, como o Receitanet.
+
+4. Instalar o Java e Certificados no Sistema:
+
+   O Receitanet pode exigir a instalação do Java no sistema. Você pode verificar a versão do Java e instalar o OpenJDK se necessário.
+
+   Instale o OpenJDK 21 (ou outra versão compatível):
+
+
+   sudo xbps-install -Suvy openjdk21
+
+
+   Para importar o certificado digital no Java, você pode usar o comando keytool para adicionar o certificado ao Keystore do Java, caso seja necessário.
+
+
+5. Importar o Certificado no Navegador (caso use via Web):
+
+   Se você estiver utilizando um serviço web da Receita Federal (como o PGD (Programa Gerador da Declaração) via navegador) para enviar a declaração, 
+o certificado digital precisa ser importado no seu navegador.
+
+   Para importar no Firefox ou Chrome, siga o procedimento de importação de certificados digitais (por exemplo, no 
+Firefox: Preferências → Privacidade e Segurança → Certificados → Exibir Certificados).
+
+
+### 🧑‍💻 Usando o Certificado Digital no Receitanet:
+
+1. Após configurar o certificado digital corretamente, quando você executar o Receitanet, será necessário selecionar o certificado (geralmente ele aparece 
+como uma opção) e confirmar o uso do mesmo para assinar e transmitir a declaração.
+
+2. Verificação: Ao realizar o envio da declaração, o Receitanet irá usar o certificado digital para assinar a declaração e enviá-la à Receita Federal. Se 
+houver algum problema, você será notificado.
+
+
+### ⚠️ Considerações Finais:
+
+* Compatibilidade: A compatibilidade do certificado digital no Linux depende muito do tipo de dispositivo (token, smartcard) e da Autoridade Certificadora. 
+Certifique-se de baixar os drivers necessários.
+
+* Certificado Digital Válido: Certifique-se de que seu certificado digital seja válido e esteja dentro do prazo de validade.
+
+" | yad --center --window-icon="$logo" --title "Receitanet" --text-info --fontname "mono 10" --buttons-layout=center --button=OK:0 --width="1300" --height="730"  2> /dev/null
+
+# ----------------------------------------------------------------------------------------
+
+
   echo -e "\nBaixando o Receitanet...\n"
 
   download="https://servicos.receita.fazenda.gov.br/publico/programas/receitanet/Receitanet-1.32.jar"
 
-  wget -P "$cache_path" -c "$download" 2>> "$log"
+  wget -P "$cache_path" -c "$download" | tee -a "$log"
 
   FILE="$cache_path/Receitanet-1.32.jar"
 
-  if [ ! -f "$FILE" ]; then
+
+  # Verifica se o arquivo existe.
+
+  if [ -f "$FILE" ]; then
 
     # Adicionar permissão de execução, por meio do comando "chmod +x Receitanet-1.32.jar" 
 
     chmod +x "$FILE" 2>> "$log"
 
-    sudo mv "$FILE" /opt/  2>> "$log"
+    sudo cp -r "$FILE" /opt/  2>> "$log"
 
 
     if command -v java >/dev/null 2>&1; then
@@ -184,6 +362,12 @@ StartupNotify=true" > $HOME/.local/share/applications/receitanet.desktop
 chmod +x $HOME/.local/share/applications/receitanet.desktop
 
 
+  echo -e "\nInstalando o Receitanet... \n"
+
+  java -jar /opt/Receitanet-1.32.jar | tee -a "$log"
+
+
+
     fi
 
 
@@ -204,9 +388,10 @@ if [ "$acao" = "Receita Net BX" ]; then
    # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanetbx/download-do-programa-receitanetbx-linux
 
 
+
 # Multiplataforma (JAR)
 
-  echo -e "\nBaixando o ReceitanetBX...\n"
+  echo -e "\nBaixando o ReceitanetBX... \n"
 
 
 ARCH=$(uname -m)
@@ -217,17 +402,17 @@ if [[ "$ARCH" == *"64"* ]]; then
 
   download="https://servicos.receita.fazenda.gov.br/publico/programas/ReceitanetBX/ReceitanetBX-1.9.24-Linux-x86_64-Install.bin"
 
-  wget -P "$cache_path" -c "$download" 2>> "$log"
+  wget -P "$cache_path" -c "$download" | tee -a "$log"
 
   FILE="$cache_path/ReceitanetBX-1.9.24-Linux-x86_64-Install.bin"
 
-  if [ ! -f "$FILE" ]; then
+  if [ -f "$FILE" ]; then
 
      chmod +x "$FILE" 2>> "$log"
 
      cd "$cache_path"
 
-     ./ReceitanetBX-1.9.24-Linux-x86_64-Install.bin 2>> "$log"
+     sudo ./ReceitanetBX-1.9.24-Linux-x86_64-Install.bin 2>> "$log"
 
 
   fi
@@ -243,22 +428,22 @@ if [[ "$ARCH" == *"64"* ]]; then
 
 else
 
-    echo "🧯 Sistema 32 bits detectado: $ARCH"
+    echo -e "\n🧯 Sistema 32 bits detectado: $ARCH \n"
 
 
   download="https://servicos.receita.fazenda.gov.br/publico/programas/ReceitanetBX/ReceitanetBX-1.9.24-Linux-x86-Install.bin"
 
-  wget -P "$cache_path" -c "$download" 2>> "$log"
+  wget -P "$cache_path" -c "$download" | tee -a "$log"
 
   FILE="$cache_path/ReceitanetBX-1.9.24-Linux-x86-Install.bin"
 
-  if [ ! -f "$FILE" ]; then
+  if [ -f "$FILE" ]; then
 
      chmod +x "$FILE" 2>> "$log"
 
      cd "$cache_path"
 
-     ./ReceitanetBX-1.9.24-Linux-x86-Install.bin 2>> "$log"
+     sudo ./ReceitanetBX-1.9.24-Linux-x86-Install.bin 2>> "$log"
 
 
   fi

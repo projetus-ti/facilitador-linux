@@ -19,6 +19,9 @@ source /etc/facilitador.conf
 source /usr/local/bin/funcoes.sh
 
 
+ARCH=$(uname -m)
+
+
 # ----------------------------------------------------------------------------------------
  
 # Verifica se o comando flatpak existe
@@ -309,6 +312,7 @@ sudo chmod -R +x /usr/share/applications/efd-icms-ipi.desktop        2>> "$log"
 sudo chmod -R +x /usr/share/applications/facilitador.desktop         2>> "$log"
 sudo chmod -R +x /usr/share/applications/linphone.desktop            2>> "$log"
 sudo chmod -R +x /usr/share/applications/sintegra.desktop            2>> "$log"
+sudo chmod -R +x /usr/share/applications/sintegra-links.desktop      2>> "$log"
 sudo chmod -R +x /usr/share/applications/sped-ecd.desktop            2>> "$log"
 sudo chmod -R +x /usr/share/applications/sped-ecf.desktop            2>> "$log"
 sudo chmod -R +x /usr/share/applications/sva.desktop                 2>> "$log"
@@ -320,22 +324,38 @@ sudo chmod -R +x /usr/share/applications/e-CAC.desktop               2>> "$log"
 sudo chmod -R +x /usr/share/applications/contabeis-forum.desktop     2>> "$log"
 sudo chmod -R +x /usr/share/applications/esocial-login.desktop       2>> "$log"
 sudo chmod -R +x /usr/share/applications/consulta-cnpj.desktop       2>> "$log"
+sudo chmod -R +x /usr/share/applications/sefaz_pb_efd.desktop        2>> "$log"
+sudo chmod -R +x /usr/share/applications/dief_consulta_envio.desktop 2>> "$log"
+sudo chmod -R +x /usr/share/applications/BHISS-Digital.desktop       2>> "$log"
+sudo chmod -R +x /usr/share/applications/DCTFWeb.desktop             2>> "$log"
+
 
 # ----------------------------------------------------------------------------------------
 
 # Verificar se o FlatpakWine está instalado.
 
+# https://github.com/fastrizwaan/flatpak-wine/releases
+
+
 if ! (flatpak list | grep WineZGUI); then
-    echo $'#!/bin/bash 
+
+
+
+if [[ "$ARCH" == *"64"* ]]; then
+
+    echo "#!/bin/bash 
     flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak --user -y install flathub org.winehq.Wine/x86_64/stable-22.08
     flatpak -y remove io.github.fastrizwaan.WineZGUI
-    wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12/flatpak-winezgui_0.97.12_20230522.flatpak
-    flatpak --user install -y flatpak-winezgui_0.97.12_20230522.flatpak'>$cache_path/flatpak.sh
+    wget -c https://github.com/fastrizwaan/flatpak-wine/releases/download/0.97.12-1/flatpak-winezgui_0.97.12_20230908.flatpak
+    flatpak --user install -y flatpak-winezgui_0.97.12_20230908.flatpak" > "$cache_path"/flatpak.sh
 
     chmod +x $cache_path/flatpak.sh 2>> "$log"
 
     # executarFlatpak "pkexec $cache_path/flatpak.sh"
+
+fi
+
 
 fi
 
@@ -375,7 +395,7 @@ fi
 
 # Executar
 
-/usr/local/bin/facilitador.sh >/dev/null 2>&1 &
+/usr/local/bin/facilitador.sh
 
 # ----------------------------------------------------------------------------------------
 

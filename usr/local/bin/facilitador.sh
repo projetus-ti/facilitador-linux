@@ -7,10 +7,14 @@
 # Licença:  MIT
 # Uso: facilitador.sh
 
+# Para maiores informações acesse: /usr/share/doc/facilitador/
+
 
 # https://servicos.receitafederal.gov.br/
 # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/
 
+
+clear
 
 
 # Usar o .conf no script
@@ -23,6 +27,7 @@ source /etc/facilitador.conf
 
 source /usr/local/bin/funcoes.sh
 
+sleep 1
 
 sudo rm -Rf /tmp/facilitador-linux.log*
 
@@ -32,8 +37,6 @@ arch=`uname -m`
 
 
 # Detecta a distribuição
-
-DISTRO=$(detectar_distro)
 
 echo -e "\n🧩 Distribuição detectada: $DISTRO \n"
 
@@ -280,7 +283,7 @@ get_distro() {
     elif command -v lsb_release >/dev/null 2>&1; then
         lsb_release -si
     else
-        echo "Desconhecida"
+        echo -e "\nDesconhecida \n"
     fi
 }
 
@@ -456,25 +459,25 @@ elif [ "$setor" = "Fiscal" ]; then ## Fiscal
     --class=InfinalitySettings \
     --title "$titulo - Fiscal" \
     --column="" --column "Programa"  --column "Descrição" \
-    TRUE "DAPI MG" "Versão 9.03.00" \
+    TRUE "DAPI MG" "Versão 9.04.00" \
     FALSE "DAC AL" "Versão 2.2.10.12" \
     FALSE "DCTF" "Mensal v. 3.6" \
-    FALSE "DMED" "Versão 2023" \
+    FALSE "DMED" "Versão ${ano}" \
     FALSE "DIEF CE" "Versão 6.0.8" \
     FALSE "DIEF MA" "Versão 6.4.5" \
-    FALSE "DIEF PA" "Versão 2022.2.0" \
+    FALSE "DIEF PA" "Versão web" \
     FALSE "DIEF PI" "Versao v2.4.2" \
     FALSE "DMA BA" "Versão 5.1.2" \
     FALSE "EFD Contribuições" "Versão 5.1.0" \
     FALSE "GIA MT" "Versão 3.0.7m" \
-    FALSE "GIA RS" "Versão 9-26/03/2018" \
-    FALSE "GIAM TO" "Versão 10.01.02 2023v1" \
-    FALSE "GIM ICMS PB" "Versão 2473" \
+    FALSE "GIA RS" "Versão 9 - 09/2017" \
+    FALSE "GIAM TO" "Versão 10.0 07.03.2024" \
+    FALSE "GIM ICMS PB" "Sistema EFD (Escrituração Fiscal Digital)" \
     FALSE "Livro Eletronico GDF" "Versão 2.0.9.0" \
     FALSE "SEDIF-SN" "Versão 1.0.6.00" \
-    FALSE "SEF 2012 PE" "Versão 1.6.5" \
+    FALSE "SEF 2012 PE" "Versão 1.6.5.00" \
     FALSE "SEFAZNET PE" "Versão 1.24.0.3" \
-    FALSE "SINTEGRA" "Versão 2017" \
+    FALSE "SINTEGRA" "Versão atual" \
     FALSE "SPED ICMS IPI" "Versão 3.0.6" \
     --buttons-layout=center \
     --button="OK" \

@@ -49,11 +49,12 @@ if [ "$acao" = "ZRam" ]; then
   
   if which apt &>/dev/null; then
 
-  echo $'#!/bin/bash 
-     apt update
-     apt install -y zram-config '>$cache_path/exec.sh
+  echo "#!/bin/bash 
+     sudo apt update
+     sudo apt install -y zram-config " > "$cache_path"/exec.sh
 
-  chmod +x $cache_path/exec.sh 2>> "$log"
+  chmod +x "$cache_path"/exec.sh 2>> "$log"
+
   executar "pkexec $cache_path/exec.sh"
 
   showMessage "Otimização ativada com sucesso! \nReinicie sua máquina assim que possível."
@@ -88,7 +89,7 @@ xbps-query -l | grep zramen || sudo xbps-install -Suvy zramen
 # Para remover o ZRAM:
 
 # sudo swapoff /dev/zram0
-# echo 0 > /sys/class/zram-control/hot_remove
+# sudo echo 0 > /sys/class/zram-control/hot_remove
 
 
 
@@ -106,23 +107,30 @@ if [ "$acao" = "Bitrix" ]; then
 
 # https://www.bitrix24.com.br
 
+
+# Link funcionando: tamanho 163M
+
+
   download "https://dl.bitrix24.com/b24/bitrix24_desktop.deb" "$cache_path/bitrix.deb"
 
   # Verificar se está rodando em Debian ou derivados
   
   if which apt &>/dev/null; then
   
-  echo $'#!/bin/bash 
-      dpkg -i '$cache_path'/bitrix.deb 
-      apt update && apt -f install -y'>$cache_path/exec.sh
+  echo "#!/bin/bash 
+      sudo dpkg -i $cache_path/bitrix.deb 
+      sudo apt update && sudo apt -f install -y "> "$cache_path"/exec.sh
 
     chmod +x $cache_path/exec.sh 2>> "$log"
+
     executar "pkexec $cache_path/exec.sh"
+
  fi
 
     showMessage "Bitrix instalado com êxito! \nO atalho encontra-se no menu do sistema."
 
     /usr/local/bin/facilitador.sh
+
 fi
 
 # ----------------------------------------------------------------------------------------
@@ -130,12 +138,123 @@ fi
 
 if [ "$acao" = "MySuite" ]; then
 
-  # configurarWine
-  download "https://cdn.projetusti.com.br/suporte/mysuite.msi" "$cache_path/mysuite.msi"
-  wine msiexec /i $cache_path/mysuite.msi /quiet > /dev/null 2>&1 &
-  rm -Rf "$desktop_path/BraZip Central.lnk" 2>> "$log"
+# https://play.google.com/store/apps/details?id=air.mySuiteAndroid&hl=pt_BR
+# https://www.brazip.com.br/sites/br/mysuite/
+# https://campomourao.atende.net/cidadao/pagina/orientacoes-sistema-mysuite-help-desk
 
-  showMessage "O MySuite foi instalado com sucesso! \nO atalho encontra-se em sua Área de Trabalho."
+
+        yad --center --window-icon="$logo"  --title="MySuite (HELP DESK)" \
+        --text="O sistema MySuite é uma aplicação desenvolvida pela BraZip que tem foco em atendimentos Help Desk. A Gerência de Tecnologia da Informação centraliza os atendimentos de suporte e serviços para organizar as atividades, priorizar os atendimentos conforme a necessidade e organiza a rotina dos profissionais afim de agilizar os atendimentos.
+
+
+MySuite não tem versão para Linux usa o OcoMon.
+
+https://ocomon.com.br/site/downloads/
+" \
+        --buttons-layout=center \
+        --button="OK" \
+        --width="900" --height="100" \
+        2>/dev/null
+
+
+  # configurarWine
+
+# $ wget -c https://cdn.projetusti.com.br/suporte/mysuite.msi
+# --2025-10-23 18:10:30--  https://cdn.projetusti.com.br/suporte/mysuite.msi
+# Resolvendo cdn.projetusti.com.br (cdn.projetusti.com.br)... falha: Nome ou serviço desconhecido.
+# wget: não foi possível resolver endereço de máquina "cdn.projetusti.com.br"
+
+
+  # download "https://cdn.projetusti.com.br/suporte/mysuite.msi" "$cache_path/mysuite.msi"
+
+  # wine msiexec /i "$cache_path"/mysuite.msi /quiet > /dev/null 2>&1 &
+
+  # rm -Rf "$desktop_path/BraZip Central.lnk" 2>> "$log"
+
+  # showMessage "O MySuite foi instalado com sucesso! \nO atalho encontra-se em sua Área de Trabalho."
+
+
+
+  if which xbps-install &>/dev/null; then
+
+
+  # https://ocomon.com.br/site/algumas-telas/
+
+  # https://ocomon.com.br/site/instalacao/
+
+
+  # Servidor web com Apache (não testado com outros servidores)
+
+  sudo xbps-install -Suvy apache  | tee -a "$log"
+
+  # MySQL (ou MariaDB)
+
+  sudo xbps-install -Suvy mariadb | tee -a "$log"
+
+  # PHP
+
+  sudo xbps-install -Suvy php | tee -a "$log"
+
+
+  echo -e "\nBaixando o OcoMon...\n"
+
+  download="https://sourceforge.net/projects/ocomonphp/files/latest/download" 
+
+  wget -c "$download" -O "$cache_path/ocomon.zip" | tee -a "$log"
+
+
+  # Extrair o arquivo para /var/www
+
+  sudo mkdir -p /var/www  2>> "$log"
+
+  sudo unzip "$cache_path/ocomon.zip" -d /var/www | tee -a "$log"
+
+  sudo mv /var/www/ocomon*  /var/www/ocomon 2>> "$log"
+
+
+  # Importe o arquivo de atualização do banco de dados "00-DB-UPDATE_FROM_6.0.1.sql"
+
+
+# Caso queira que a base e/ou usuario tenham outro nome (ao invés de "ocomon_6"), edite diretamente no arquivo (identifique as entradas relacionadas ao nome do banco, usuário e senha no início do arquivo):
+
+# 01-DB_OCOMON_6.x-FRESH_INSTALL_STRUCTURE_AND_BASIC_DATA.sql
+
+# antes de realizar a importação do mesmo. Utilize essas mesmas informações no arquivo de configurações do sistema
+
+ # sudo mysql -u root -p < /var/www/ocomon/install/6.x/01-DB_OCOMON_6.x-FRESH_INSTALL_STRUCTURE_AND_BASIC_DATA.sql
+
+  # É importante alterar essa senha do usuário "ocomon_6" no MySQL logo após a instalação do sistema.
+
+# Após a importação, é recomendável a exclusão da pasta "install".
+
+
+
+
+# Para abrir o OcoMon (criando o arquivo .desktop)
+
+
+sudo echo "[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OcoMon
+Name[pt_BR]=OcoMon
+Comment=Access Ocomon on localhost:8080
+Comment[pt_BR]=Acesse Ocomon em localhost:8080
+Exec=xdg-open http://localhost:8080
+Icon=/var/www/ocomon/favicon.svg
+Terminal=false
+Categories=Network;
+
+Keywords=ocomon;
+Keywords[pt_BR]=ocomon;chamado;
+
+" > /usr/share/applications/ocomon.desktop
+
+
+# Torne o arquivo .desktop executável
+
+chmod +x /usr/share/applications/ocomon.desktop
+
 
   /usr/local/bin/facilitador.sh
 
@@ -154,11 +273,12 @@ if [ "$acao" = "Discord" ]; then
   
   if which apt &>/dev/null; then
   
-    echo $'#!/bin/bash 
-      dpkg -i '$cache_path'/discord.deb 
-      apt update && apt -f install -y'>$cache_path/exec.sh
+    echo "#!/bin/bash 
+      sudo dpkg -i $cache_path/discord.deb 
+      sudp apt update && sudo apt -f install -y " > "$cache_path"/exec.sh
 
     chmod +x $cache_path/exec.sh 2>> "$log"
+
     executar "pkexec $cache_path/exec.sh"
 
   fi
@@ -184,10 +304,10 @@ if [ "$acao" = "TeamViewer" ]; then
 
   download "https://download.teamviewer.com/download/linux/teamviewer_amd64.deb" "$cache_path/tv.deb"
   
-  echo $'#!/bin/bash 
-    dpkg -i '$cache_path'/tv.deb 
-    apt update && apt -f install -y
-    apt-mark hold teamviewer'>$cache_path/exec.sh
+  echo "#!/bin/bash 
+    sudo dpkg -i $cache_path/tv.deb 
+    sudo apt update && sudo apt -f install -y
+    sudo apt-mark hold teamviewer" > "$cache_path"/exec.sh
 
   chmod +x $cache_path/exec.sh 2>> "$log"
 
@@ -213,14 +333,14 @@ ARCH=$(uname -m)
 
 if [[ "$ARCH" == *"64"* ]]; then
 
-    echo "✅ Sistema 64 bits detectado: $ARCH"
+    echo -e "\n✅ Sistema 64 bits detectado: $ARCH \n"
 
 
 sudo rm -Rf /opt/anydesk-* 2>> "$log"
 
   download="https://download.anydesk.com/linux/anydesk-7.1.0-amd64.tar.gz" 
 
-  wget -c "$download" -O "$cache_path/anydesk-amd64.tar.gz" 2>> "$log"
+  wget -c "$download" -O "$cache_path/anydesk-amd64.tar.gz" | tee -a "$log"
 
 # Para extrair o arquivo anydesk-amd64.tar.gz que está localizado em $cache_path/anydesk-amd64.tar.gz para o diretório /opt/
 
@@ -290,7 +410,7 @@ if [ "$acao" = "Skype" ]; then
         yad --center --window-icon="$logo"  --title="🧯 Skype" \
         --text="O Skype não está mais sendo atualizado e foi descontinuado no dia 5 de maio de 2025. 
 
-A Microsoft orienta os usuários a migrarem para o Microsoft Teams (versão gratuita)
+A Microsoft orienta os usuários a migrarem para o Microsoft Teams (versão gratuita).
 
 https://www.microsoft.com/pt-br/microsoft-teams/log-in
 " \
@@ -305,11 +425,11 @@ https://www.microsoft.com/pt-br/microsoft-teams/log-in
   
 #  download "https://repo.skype.com/latest/skypeforlinux-64.deb" "$cache_path/skype.deb"
 
-#  echo $'#!/bin/bash 
-#    dpkg -i '$cache_path'/skype.deb 
-#    apt update && apt -f install -y'>$cache_path/exec.sh
+#  echo "#!/bin/bash 
+#    sudo dpkg -i $cache_path/skype.deb 
+#    sudo apt update && sudo apt -f install -y " > "$cache_path"/exec.sh
 
-#  chmod +x $cache_path/exec.sh 2>> "$log"
+#  chmod +x "$cache_path"/exec.sh 2>> "$log"
 
 #  executar "pkexec $cache_path/exec.sh"
   
@@ -325,27 +445,178 @@ fi
 
 if [ "$acao" = "DBeaver" ]; then
 
+# https://dbeaver.io/download/
+
+
+  echo -e "\nBaixando o DBeaver Community...\n"
+
+
+
+
   # Verificar se está rodando em Debian ou derivados
   
   if which apt &>/dev/null; then
   
+ARCH=$(uname -m)
+
+if [[ "$ARCH" == *"64"* ]]; then
+
+    echo "✅ Sistema 64 bits detectado: $ARCH"
+
+
   download "https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb" "$cache_path/dbeaver.deb"
   
-  echo $'#!/bin/bash 
-    dpkg -i '$cache_path'/dbeaver.deb 
-    apt update && apt -f install -y'>$cache_path/exec.sh
+  echo "#!/bin/bash 
+    sudo dpkg -i $cache_path/dbeaver.deb 
+    sudo apt update && sudo apt -f install -y " > "$cache_path"/exec.sh
 
   chmod +x $cache_path/exec.sh 2>> "$log"
 
   executar "pkexec $cache_path/exec.sh"
 
-  fi
+fi
     
+
+  fi
+
+
+
+  if which xbps-install &>/dev/null; then
+
+
+sudo xbps-install -Sy glib gtk+3 mesa | tee -a "$log"
+
+
+ARCH=$(uname -m)
+
+if [[ "$ARCH" == *"64"* ]]; then
+
+    echo -e "\n✅ Sistema 64 bits detectado: $ARCH \n"
+
+
+    download="https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64-nojdk.tar.gz"
+
+    wget -P "$cache_path" -c "$download" | tee -a "$log"
+
+    sleep 1
+
+    cd "$cache_path"
+
+    # Extraia o arquivo diretamente para /opt
+
+    sudo tar -xvzf dbeaver-ce-latest-linux.gtk.x86_64-nojdk.tar.gz -C /opt | tee -a "$log"
+
+
+    # Crie um link simbólico para facilitar o acesso:
+
+    sudo ln -s /opt/dbeaver/dbeaver /usr/local/bin/dbeaver
+
+
+   # Agora você pode abrir o DBeaver apenas digitando:
+
+   # dbeaver &
+
+
+fi
+
+
+
+DESKTOP_FILE="/opt/dbeaver/dbeaver-ce.desktop"
+
+if [ -f "$DESKTOP_FILE" ]; then
+
+    echo "✅ O arquivo $DESKTOP_FILE existe."
+
+    sudo cp /opt/dbeaver/dbeaver-ce.desktop /usr/share/applications/  2>> "$log"
+
+else
+
+    echo "❌ O arquivo $DESKTOP_FILE não existe."
+    
+
+   # Criar um atalho no menu
+
+    echo "Criando arquivo .desktop padrão..."
+
+   sudo echo "[Desktop Entry]
+Name=DBeaver Community
+Comment=Universal Database Manager
+Exec=/opt/dbeaver/dbeaver
+Icon=/opt/dbeaver/dbeaver.png
+Terminal=false
+Type=Application
+Categories=Development;Database;
+" > /usr/share/applications/dbeaver.desktop
+
+    echo "✔️ Arquivo $DESKTOP_FILE criado..."
+fi
+
+
+
+
+
+
+
+
+# Esse erro ocorre porque o DBeaver foi compilado com uma versão mais recente do Java (Java 17, versão 61.0), enquanto o Java Runtime instalado no seu sistema é uma versão mais antiga (provavelmente Java 11, versão 55.0 ou anterior).
+
+# 🚀 Solução
+
+# A solução aqui é instalar uma versão mais recente do Java, compatível com o DBeaver, como o Java 17 ou superior.
+
+
+# $ env NO_AT_BRIDGE=1 dbeaver
+# Erro: ocorreu LinkageError ao carregar a classe principal org.eclipse.equinox.launcher.Main
+#	java.lang.UnsupportedClassVersionError: org/eclipse/equinox/launcher/Main has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 55.0
+
+
+# Verifica a versão do Java
+
+JAVA_VERSION=$(java -version 2>&1 | head -n 1 | awk -F '"' '{print $2}')
+MAJOR_VERSION=$(echo $JAVA_VERSION | awk -F. '{print $1}')
+
+
+# Verifica se a versão é menor que 21
+
+if [ "$MAJOR_VERSION" -lt 21 ]; then
+
+    echo -e "\n❌ A versão do Java é inferior a 21 (versão detectada: $JAVA_VERSION). Instalando o OpenJDK 21...\n"
+
+    sudo xbps-install -Sy openjdk21 | tee -a "$log"
+
+
+    sudo ln -sf /lib/jvm/openjdk21/bin/java  /usr/local/bin/
+
+    java --version
+
+    sleep 10
+
+else
+
+    echo -e "\n✅ A versão do Java já é $JAVA_VERSION ou superior. Nenhuma atualização necessária.\n"
+
+fi
+
+
+
+
+  fi
+
+
+
+# Flatpak 
+
+# flatpak install flathub io.dbeaver.DBeaverCommunity
+
+
+
   showMessage "DBeaver instalado com êxito! \nO atalho encontra-se no menu do sistema."
 
   /usr/local/bin/facilitador.sh
 
+
 fi
+
 
 # ----------------------------------------------------------------------------------------
 
@@ -365,13 +636,13 @@ if [ "$acao" = "Calima App" ]; then
   rm -Rf $HOME/.config/calima-app      2>> "$log"
   rm -Rf $HOME/.config/calima-app-web  2>> "$log"
   
-  echo $'#!/bin/bash 
-    apt purge calima-app -y
-    apt purge calima-app-web -y
-    dpkg -i '$cache_path'/calima.deb
-    # cp /usr/share/applications/calima-app-local.desktop /usr/share/applications
-    chmod 777 /usr/share/applications/calima-app-local.desktop
-    apt update && apt -f install -y'>$cache_path/exec.sh
+  echo "#!/bin/bash 
+    sudo apt purge -y calima-app
+    sudo apt purge -y calima-app-web
+    sudo dpkg -i $cache_path/calima.deb
+    # cp /usr/share/applications/calima-app-local.desktop /usr/share/applications/
+    sudo chmod 755 /usr/share/applications/calima-app-local.desktop
+    sudo apt update && sudo apt -f install -y " > "$cache_path"/exec.sh
 
   chmod +x $cache_path/exec.sh 2>> "$log"
 
@@ -389,15 +660,22 @@ fi
 
 if [ "$acao" = "iSGS App" ]; then
 
+
   # Verificar se está rodando em Debian ou derivados
   
   if which apt &>/dev/null; then
   
+# $ wget https://cdn.projetusti.com.br/suporte/isgs-app_1.0.1_amd64.deb
+# --2025-10-23 16:50:44--  https://cdn.projetusti.com.br/suporte/isgs-app_1.0.1_amd64.deb
+# Resolvendo cdn.projetusti.com.br (cdn.projetusti.com.br)... falha: Nome ou serviço desconhecido.
+# wget: não foi possível resolver endereço de máquina “cdn.projetusti.com.br”
+
+
   download "https://cdn.projetusti.com.br/suporte/isgs-app_1.0.1_amd64.deb" "$cache_path/isgs.deb"
   
-  echo $'#!/bin/bash 
-    dpkg -i '$cache_path'/isgs.deb 
-    apt update && apt -f install -y'>$cache_path/exec.sh
+  echo "#!/bin/bash 
+    sudo dpkg -i $cache_path/isgs.deb 
+    sudo apt update && sudo apt -f install -y " > "$cache_path"/exec.sh
 
   chmod +x $cache_path/exec.sh 2>> "$log"
 
@@ -405,9 +683,10 @@ if [ "$acao" = "iSGS App" ]; then
   
   fi
     
-  showMessage "iSGS App instalado com êxito!\nO atalho encontra-se no menu do sistema."
+  showMessage "iSGS App instalado com êxito! \nO atalho encontra-se no menu do sistema."
 
   /usr/local/bin/facilitador.sh
+
 fi
 
 # ----------------------------------------------------------------------------------------
@@ -419,7 +698,7 @@ if [ "$acao" = "IRPF" ]; then
 
   download="https://downloadirpf.receita.fazenda.gov.br/irpf/${ano}/irpf/arquivos/IRPF${ano}Linux-${arch}v1.7.sh.bin" 
 
-  wget -c "$download" -O "$cache_path/irpf.bin" 2>> "$log"
+  wget -c "$download" -O "$cache_path/irpf.bin" | tee -a "$log"
   
   chmod +x $cache_path/irpf.bin 2>> "$log"
 
@@ -496,8 +775,8 @@ if [ "$acao" = "Crisp Chat App" ]; then
   download "https://cdn.projetusti.com.br/suporte/crisp-app.deb" "$cache_path/crisp.deb"
 
  
-  echo $'#!/bin/bash 
-  dpkg -i '$cache_path'/crisp.deb'>$cache_path/exec.sh
+  echo "#!/bin/bash 
+  sudo dpkg -i $cache_path/crisp.deb " > "$cache_path"/exec.sh
 
   chmod +x $cache_path/exec.sh
 
@@ -519,6 +798,9 @@ if [ "$acao" = "Zoom" ]; then
 # https://www.zoom.com/pt/
 
 # https://www.zoom.us/pt/download
+
+
+notify-send -i "/run/media/anon/daf5b603-ed05-46f5-b5ec-5535135cc56a/usr/local/bin/facilitador-linux/usr/share/icons/facilitador/us.zoom.Zoom.desktop.png" -t $tempo_notificacao "$titulo" "\nIniciando a instalação do Zoom...\n"
 
 
 # ========================================================================================
@@ -589,9 +871,9 @@ echo "URL de download: $zoom_url"
 
     download "https://cdn.zoom.us/prod/${zoom_versao}/zoom_amd64.deb" "$cache_path/zoom.deb"
 
-    echo $'#!/bin/bash 
-      dpkg -i '$cache_path'/zoom.deb 
-      apt update && apt -f install -y'>$cache_path/exec.sh
+    echo "#!/bin/bash 
+      sudo dpkg -i $cache_path/zoom.deb 
+      sudo apt update && sudo apt -f install -y" > "$cache_path"/exec.sh
 
     chmod +x $cache_path/exec.sh 2>> "$log"
 
@@ -608,7 +890,7 @@ echo "URL de download: $zoom_url"
 
    # download="https://cdn.zoom.us/prod/${zoom_versao}/zoom_${arch}.tar.xz" 
 
-   # wget -c "$download" -O "$cache_path/zoom_${arch}.tar.xz" 2>> "$log"
+   # wget -c "$download" -O "$cache_path/zoom_${arch}.tar.xz" | tee -a "$log"
   
    # Para extrair o Zoom em /opt
 
@@ -624,15 +906,36 @@ echo "URL de download: $zoom_url"
 
 
 
+
 # Última alternativa — usar o Zoom via Flatpak
+
+# https://flathub.org/pt-BR/apps/us.zoom.Zoom
+
+# https://www.edivaldobrito.com.br/zoom-no-linux-veja-como-instalar-esse-app-de-videoconferencia/
+
 
 # Isso elimina todas as incompatibilidades, pois roda tudo isolado:
 
-sudo xbps-install -S flatpak         2>> "$log"
+sudo xbps-install -Sy flatpak         2>> "$log"
 
-flatpak install flathub us.zoom.Zoom 2>> "$log"
 
-flatpak run us.zoom.Zoom
+ARCH=$(uname -m)
+
+if [[ "$ARCH" == *"64"* ]]; then
+
+    echo "✅ Sistema 64 bits detectado: $ARCH"
+
+# Instalação manual
+
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo  2>> "$log"
+
+sudo flatpak install -y flathub us.zoom.Zoom | tee -a "$log"
+
+# Para executar
+
+# flatpak run us.zoom.Zoom
+
+fi
 
 
   fi

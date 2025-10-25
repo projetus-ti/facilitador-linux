@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=BHISS Digital
+Comment=Acesso ao Sistema de NFSe de Belo Horizonte
+Exec=xdg-open https://bhissdigital.pbh.gov.br/nfse/
+Icon=internet-web-browser
+Terminal=false
+Type=Application
+Categories=Network;
+
+
+# O DES-PBH-ISS é um documento eletrônico utilizado para o pagamento e declaração do ISS (Imposto Sobre Serviços) em Belo Horizonte, Minas Gerais.
+
+# https://servicos.pbh.gov.br/servicos+des-declaracao-eletronica-de-servicos-protocolo-de-entrega-e-arquivo+63779e98e959e52d9a3af6fc
+

@@ -33,6 +33,7 @@ get_distro() {
 }
 
 # Atribui a variável DISTRO
+
 DISTRO=$(get_distro)
 
 
@@ -349,43 +350,46 @@ DESKTOP_ENV=$(echo $XDG_SESSION_DESKTOP)
 
 case $DESKTOP_ENV in
   xfce)
-    echo "Reiniciando o painel do XFCE..."
+    echo -e "\nReiniciando o painel do XFCE... \n"
+
+    # killall -9 xfce4-panel ; xfce4-panel &
+
     xfce4-panel --restart
     ;;
   gnome)
-    echo "Reiniciando o painel do GNOME..."
+    echo -e "\nReiniciando o painel do GNOME... \n"
     gnome-shell --replace &
     ;;
   kde)
-    echo "Reiniciando o painel do KDE..."
+    echo -e "\nReiniciando o painel do KDE... \n"
     killall plasmashell && kstart5 plasmashell
     ;;
   cinnamon)
-    echo "Reiniciando o painel do Cinnamon..."
+    echo -e "\nReiniciando o painel do Cinnamon... \n"
     cinnamon --replace &
     ;;
   mate)
-    echo "Reiniciando o painel do MATE..."
+    echo -e "\nReiniciando o painel do MATE... \n"
     mate-panel --replace &
     ;;
   openbox)
-    echo "Openbox não tem painel, mas você pode reiniciar a barra de tarefas."
+    echo -e "\nOpenbox não tem painel, mas você pode reiniciar a barra de tarefas. \n"
     killall tint2 && tint2 &
     ;;
   fluxbox)
-    echo "Fluxbox não tem painel, mas você pode reiniciar o painel com o comando `fbpanel`."
+    echo -e "\nFluxbox não tem painel, mas você pode reiniciar o painel com o comando fbpanel. \n"
     killall fbpanel && fbpanel &
     ;;
   i3)
-    echo "Reiniciando o painel do i3 (i3bar)..."
+    echo -e "\nReiniciando o painel do i3 (i3bar)... \n"
     killall i3bar && i3bar &
     ;;
   bspwm)
-    echo "Reiniciando o painel do BSPWM (com i3bar ou outro utilitário de barra)."
+    echo -e "\nReiniciando o painel do BSPWM (com i3bar ou outro utilitário de barra). \n"
     killall i3bar && i3bar &
     ;;
   *)
-    echo "Ambiente de desktop ou gerenciador de janelas desconhecido ou não suportado."
+    echo -e "\nAmbiente de desktop ou gerenciador de janelas desconhecido ou não suportado. \n"
     ;;
 esac
 
@@ -394,4 +398,5 @@ esac
 }
 
 # ----------------------------------------------------------------------------------------
+
 

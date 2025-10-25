@@ -10,22 +10,32 @@ clear
 
 # ----------------------------------------------------------------------------------------
 
+
 # Usar o .conf no script
 # Para carregar as variáveis do .conf
 
 source etc/facilitador.conf
 
 
+# Carrega as funções definidas em funcoes.sh
+
+source usr/local/bin/funcoes.sh  2> /dev/null
+
+
+logo="usr/share/icons/facilitador/icon.png"
+
+
+
 # log=$(mktemp "/tmp/facilitador-linux.log.XXXXXX")
 
 # Remove o arquivo de log
 
-rm -Rf "$log" 2>/dev/null
+rm -Rf /tmp/facilitador-linux.log.* 2>/dev/null
 
 
 # ----------------------------------------------------------------------------------------
 
-which yad             1> /dev/null 2> /dev/null || { echo "Programa Yad não esta instalado."      ; exit ; }
+which yad             1> /dev/null 2> /dev/null || { echo -e "\nPrograma Yad não esta instalado. \n"      ; exit ; }
 
 # ----------------------------------------------------------------------------------------
 
@@ -98,7 +108,7 @@ ajuda() {
 yad \
 --center  \
 --window-icon="$logo" \
---title="Facilitador Linux" \
+--title="$titulo" \
 --text="
 
 Uso: $0 [instalar|desinstalar]
@@ -119,12 +129,15 @@ Exemplo: $0 desinstalar|uninstall
 
 instalar(){
 
+
 # Para instalar
+
 
 echo "Iniciando a instalação..." | tee -a "$log"
 
 find opt -type f > facilitador-linux-instalacao.log
 find usr -type f >> facilitador-linux-instalacao.log
+find etc -type f >> facilitador-linux-instalacao.log
 
 sleep 1
 
@@ -213,18 +226,36 @@ sudo chmod -R 777 "$cache_path" 2>> "$log"
 
 if [ -w "$cache_path" ]; then
 
-    echo "Permissões de escrita para todos foram concedidas no diretório '$cache_path'."
+    echo "Permissões de escrita para todos foram concedidas no diretório '$cache_path'." | tee -a "$log"
 
 else
 
-    echo "Falha ao conceder permissões de escrita."
+    echo "Falha ao conceder permissões de escrita." | tee -a "$log"
 
 fi
 
 
 
+# Update desktop database
+
+sudo update-desktop-database
+
+
 echo -e "\n\n"
 
+
+reiniciar_painel
+
+    yad --center \
+        --window-icon="$logo" \
+        --title="$titulo" \
+        --text="Instalação concluída!
+
+O Facilitador Linux encontra-se no menu de aplicativos do sistema." \
+        --buttons-layout=center \
+        --button=OK \
+        --width="500" --height="200" \
+        2> /dev/null
 
 }
 
@@ -233,6 +264,26 @@ echo -e "\n\n"
 desinstalar(){
 
 # Para remover
+
+
+# Usar o .conf no script
+# Para carregar as variáveis do .conf
+
+source /etc/facilitador.conf
+
+
+# Carrega as funções definidas em funcoes.sh
+
+source /usr/local/bin/funcoes.sh
+
+logo="usr/share/icons/facilitador/icon.png"
+
+
+
+# Verificar se o arquivo facilitador-linux-instalacao.log existe
+
+if [ -e "/usr/share/doc/facilitador/facilitador-linux-instalacao.log" ]; then
+
 
 echo "Iniciando a desinstalação..." | tee -a "$log"
 
@@ -253,11 +304,49 @@ sudo rm -Rf \
 
 
     if [ $? -eq 0 ]; then
+
+
+# Update desktop database
+
+sudo update-desktop-database
+
+echo -e "\n\n"
+
+reiniciar_painel
+
+
       echo "Desinstalado com sucesso." | tee -a "$log"
+
+    yad --center \
+        --window-icon="$logo" \
+        --title="$titulo" \
+        --text="Desinstalado com sucesso." \
+        --buttons-layout=center \
+        --button=OK \
+        --width="300" --height="100" \
+        2> /dev/null
+
+
     else
+
       echo "Erro ao desinstalar. Verifique o log $log para mais detalhes." | tee -a "$log"
+
     fi
     
+    else
+
+      echo "Erro ao desinstalar: arquivo /usr/share/doc/facilitador/facilitador-linux-instalacao.log não existe" | tee -a "$log"
+
+    yad --center \
+        --window-icon="$logo" \
+        --title="$titulo" \
+        --text="Erro ao desinstalar: arquivo /usr/share/doc/facilitador/facilitador-linux-instalacao.log não existe" \
+        --buttons-layout=center \
+        --button=OK \
+        --width="700" --height="100" \
+        2> /dev/null
+
+fi
 
 echo "
 Para mais informações verifique o arquivo de log $log
@@ -287,11 +376,13 @@ shift
 case "$comando" in
 
   instalar|install)
+
     instalar "$@"
     
     ;;
 
   desinstalar|uninstall)
+
     desinstalar "$@"
     
     ;;
@@ -299,6 +390,7 @@ case "$comando" in
   *)
   
     ajuda
+
     exit 1
     
     ;;
@@ -311,7 +403,7 @@ echo -e "\n\n-------------------------------------------------------------\n\nCo
 
 cat "$log"
 
-rm "$log"  2>/dev/null
+# rm "$log"  2>/dev/null
 
 # ----------------------------------------------------------------------------------------
 
