@@ -7,19 +7,33 @@ Aplicativo para auxílio da instalação de programas da receita federal, estadu
 # Instalação
 
  ```bash
-curl -s https://raw.githubusercontent.com/tuxslack/facilitador-linux/master/facilitador-linux-acao.sh install | sudo bash
+
+rm -rf /tmp/facilitador-linux
+
+cd /tmp
+
+git clone https://github.com/tuxslack/facilitador-linux.git
+
+cd /tmp/facilitador-linux/
+
+chmod +x facilitador-linux-acao.sh
+
+sudo ./facilitador-linux-acao.sh instalar
+
  ```
 
 # Desinstalação
 
  ```bash
+
 cp /usr/share/doc/facilitador/facilitador-linux-acao.sh /tmp
 
 cd /tmp
 
-chmdo +x facilitador-linux-acao.sh
+chmod +x facilitador-linux-acao.sh
 
 sudo ./facilitador-linux-acao.sh desinstalar
+
  ```
 
 

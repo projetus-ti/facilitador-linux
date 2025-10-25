@@ -20,6 +20,29 @@
 # https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirf
 
 
+# ----------------------------------------------------------------------------------------
+
+# Verifica se o arqivo existe
+
+if [[ ! -e /etc/facilitador.conf ]]; then
+
+    echo -e "\nO arquivo /etc/facilitador.conf não encontrado. \n"
+
+        yad \
+        --center \
+        --window-icon="$logo" \
+        --title="Erro" \
+        --text="O arquivo /etc/facilitador.conf não encontrado." \
+        --buttons-layout=center \
+        --button="OK" \
+        --width="400" --height="100" \
+        2> /dev/null
+        
+    exit 1
+fi
+
+
+
 # Usar o .conf no script
 # Para carregar as variáveis do .conf
 

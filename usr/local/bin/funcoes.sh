@@ -7,11 +7,59 @@
 
 clear
 
+
+# ----------------------------------------------------------------------------------------
+
+# Verifica se o arqivo existe
+
+if [[ ! -e /etc/facilitador.conf ]]; then
+
+    echo -e "\nO arquivo /etc/facilitador.conf não encontrado. \n"
+       
+    exit 1
+fi
+
+
 # Usar o .conf no script
 # Para carregar as variáveis do .conf
 
 source /etc/facilitador.conf
 
+
+# ----------------------------------------------------------------------------------------
+
+# Verifica se o usuário atual tem privilégios de sudo no sistema:
+
+
+# Obtém o nome do usuário atual
+
+USUARIO=$(whoami)
+
+
+echo "Verificando privilégios de sudo para o usuário: $USUARIO"
+
+# Testa se o usuário pode executar sudo sem precisar de senha
+
+if sudo -l &>/dev/null; then
+
+    echo -e "\n✅ O usuário '$USUARIO' tem privilégios de sudo. \n"
+
+else
+
+    echo -e "\n❌ O usuário '$USUARIO' NÃO tem privilégios de sudo. \n"
+
+    yad --center \
+        --window-icon="$logo" \
+        --title="Erro" \
+        --text="❌ O usuário '$USUARIO' NÃO tem privilégios de sudo. " \
+        --buttons-layout=center \
+        --button="OK" \
+        --width="400" --height="100" \
+        2> /dev/null
+        
+    exit 1
+
+fi
 
 # ----------------------------------------------------------------------------------------
 
@@ -22,13 +70,14 @@ source /etc/facilitador.conf
 # Função para detectar a distribuição automaticamente
 
 get_distro() {
+
     if [ -f /etc/os-release ]; then
         . /etc/os-release
         echo "$ID"
     elif command -v lsb_release >/dev/null 2>&1; then
         lsb_release -si
     else
-        echo "Desconhecida"
+        echo -e "\nDesconhecida. \n"
     fi
 }
 
@@ -192,9 +241,12 @@ yad --center \
     2> /dev/null
 
 # Captura o código de saída do yad
+
 resposta=$?
 
+
 # Se o usuário clicou em "Sim" (código de saída 0)
+
 if [ "$resposta" -eq 0 ]; then
 
     rm -Rf "$cache_path"/*

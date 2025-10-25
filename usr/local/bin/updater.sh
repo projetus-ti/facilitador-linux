@@ -8,10 +8,54 @@
 # Uso: updater.sh
 
 
+# ----------------------------------------------------------------------------------------
+
+# Verifica se o arqivo existe
+
+if [[ ! -e /etc/facilitador.conf ]]; then
+
+    echo -e "\nO arquivo /etc/facilitador.conf não encontrado. \n"
+
+        yad \
+        --center \
+        --window-icon="$logo" \
+        --title="Erro" \
+        --text="O arquivo /etc/facilitador.conf não encontrado." \
+        --buttons-layout=center \
+        --button="OK" \
+        --width="400" --height="100" \
+        2> /dev/null
+        
+    exit 1
+fi
+
+
 # Usar o .conf no script
 # Para carregar as variáveis do .conf
 
 source /etc/facilitador.conf
+
+
+# ----------------------------------------------------------------------------------------
+
+# Verifica se o arqivo existe
+
+if [[ ! -e /usr/local/bin/funcoes.sh ]]; then
+
+    echo -e "\nO arquivo /usr/local/bin/funcoes.sh não encontrado. \n"
+
+        yad \
+        --center \
+        --window-icon="$logo" \
+        --title="Erro" \
+        --text="O arquivo /usr/local/bin/funcoes.sh não encontrado." \
+        --buttons-layout=center \
+        --button="OK" \
+        --width="400" --height="100" \
+        2> /dev/null
+        
+    exit 1
+fi
 
 
 # Carrega as funções definidas em funcoes.sh
@@ -21,14 +65,14 @@ source /usr/local/bin/funcoes.sh
 
 ARCH=$(uname -m)
 
-
 # ----------------------------------------------------------------------------------------
+
  
 # Verifica se o comando flatpak existe
 
 if ! command -v flatpak &>/dev/null; then
 
-    echo -e "\nflatpak não está disponível neste sistema.\n"
+    echo -e "\nflatpak não está disponível neste sistema. \n"
 
     yad --center \
         --window-icon="$logo" \

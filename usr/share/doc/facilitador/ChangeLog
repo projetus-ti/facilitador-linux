@@ -181,6 +181,9 @@ Criado os arquivos:
 /usr/share/applications/IRPF-online.desktop
 
 
+Verifica se o usuário atual tem privilégios de sudo no sistema.
+
+
 # ----------------------------------------------------------------------------------------
 
 
