@@ -129,15 +129,29 @@ done
 # ----------------------------------------------------------------------------------------
 
 
-# Mostra aviso sobre backup do sistema
+# Mostra aviso sobre backup do sistema.
+
+# Solicitar feedback em caso de bug.
 
 yad --center \
     --window-icon="$logo" \
     --title="Aviso Importante" \
-    --text="⚠️ <b>Recomendação:</b>\n\nAntes de executar este script, é altamente recomendável criar uma <b>imagem de backup do sistema</b>.\n\nDeseja continuar mesmo assim?" \
+    --text="
+<b>Observação:</b>
+
+Se ocorrer um erro inesperado.
+
+Por favor, envie o log de erro $log com uma breve descrição do que você estava fazendo.
+
+Seu feedback ajuda a corrigir o problema mais rapidamente!
+
+
+⚠️ <b>Recomendação:</b>\n\nAntes de executar este script, é altamente recomendável criar uma <b>imagem de backup do sistema</b>.\n\nDeseja continuar mesmo assim?
+
+" \
     --buttons-layout=center \
     --button=Não:1 --button=Sim:0 \
-    --width="400" --height="150" \
+    --width="700" --height="150" \
     2> /dev/null
 
  

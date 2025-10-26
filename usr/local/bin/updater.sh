@@ -372,6 +372,7 @@ sudo chmod -R +x /usr/share/applications/sefaz_pb_efd.desktop        2>> "$log"
 sudo chmod -R +x /usr/share/applications/dief_consulta_envio.desktop 2>> "$log"
 sudo chmod -R +x /usr/share/applications/BHISS-Digital.desktop       2>> "$log"
 sudo chmod -R +x /usr/share/applications/DCTFWeb.desktop             2>> "$log"
+sudo chmod -R +x /usr/share/applications/calima-app.desktop          2>> "$log"
 
 
 # ----------------------------------------------------------------------------------------

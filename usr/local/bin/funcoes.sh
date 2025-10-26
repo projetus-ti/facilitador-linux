@@ -150,7 +150,7 @@ executar() {
 
 executarFlatpak() {
 
-  response=$($1) | yad --center --window-icon="$logo" --title="$titulo" --progress --text="Executando a instação e configuração do Flatpak, aguarde..." --pulsate --class=InfinalitySettings   --width="480" --no-cancel --buttons-layout=center --button="OK"  --auto-close 
+  response=$($1) | yad --center --window-icon="$logo" --title="$titulo" --progress --text="Executando a instalação e configuração do Flatpak, aguarde..." --pulsate --class=InfinalitySettings   --width="480" --no-cancel --buttons-layout=center --button="OK"  --auto-close 
 
   echo $response
 

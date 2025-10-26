@@ -43,5 +43,10 @@ Recomendação:
 Antes de executar este script, é altamente recomendável criar uma imagem de backup do sistema.
 
 
+Caso encontre algum bug, por favor, reporte o problema abrindo uma issue neste repositório.
+
+
+
 https://diolinux.com.br/softwares/instalar-o-programa-da-receita-federal-no-linux.html
+
 

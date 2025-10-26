@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+# Autor: Evandro Begati
 # Colaboração: Fernando Souza https://github.com/tuxslack / https://www.youtube.com/@fernandosuporte
 # Data: 19/10/2025
 # Licença:  MIT
