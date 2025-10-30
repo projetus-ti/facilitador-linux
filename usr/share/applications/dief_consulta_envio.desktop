@@ -1,0 +1,44 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Consultation and Shipping DIEF - SEFA-PA
+Name[en_US]=Consultation and Shipping DIEF - SEFA-PA
+Name[es]=Consulta y Envío DIEF - SEFA-PA
+Name[pt_BR]=Consulta e Envio DIEF - SEFA-PA
+
+Comment=Access the DIEF consultation and submission service on the SEFA-PA website.
+Comment[en_US]=Access the DIEF consultation and submission service on the SEFA-PA website.
+Comment[es]=Acceda al servicio de consulta y presentación del DIEF en el sitio web del SEFA-PA.
+Comment[pt_BR]=Acesse o serviço de consulta e envio da DIEF no site da SEFA-PA.
+
+
+Exec=xdg-open https://app.sefa.pa.gov.br/pservicos/autenticacao?servico=https://app.sefa.pa.gov.br:443/consulta-dief/index.jsp
+Icon=internet-web-browser
+Terminal=false
+
+Categories=Network;
+
+Keywords=DIEF;
+Keywords[en_US]=DIEF;
+Keywords[es_ES]=DIEF;
+Keywords[pt_BR]=DIEF;SEFA-PA;consulta;envio;ICMS;informações;fiscais;
+
+MimeType=text/html;
+Language=pt_BR.UTF-8
+
+
+# DIEF Comércio Exterior
+
+# É a apresentação de Declaração eletrônica, DIEF - Comercio Exterior, por ocasião da realização das operações de importação de mercadorias ou bens provenientes do exterior por contribuinte deste Estado, conforme estabelece a Instrução normativa 020/2005.
+
+
+# https://www.sefa.pa.gov.br/internal/services/iig
+
+
+# Consulta DIEF
+
+# É a consulta do recibo definitivo da DIEF, processado pela Secretaria de Estado da Fazenda (SEFA), após a validação dos dados enviados no arquivo enviado de DIEF.
+
+# https://www.sefa.pa.gov.br/internal/services/iif
+

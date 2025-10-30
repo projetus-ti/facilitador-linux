@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Application
+
+Name=DIRF
+Name[en_US]=DIRF
+Name[es]=DIRF
+Name[pt_BR]=DIRF
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=
+
+Exec=/usr/local/bin/DIRF.sh
+Icon=/usr/share/icons/facilitador/RFB.ico
+Terminal=false
+
+Categories=Office;
+
+Keywords=DIRF;
+Keywords[en_US]=DIRF;
+Keywords[es_ES]=DIRF;
+Keywords[pt_BR]=DIRF;

@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Dirf2025
+Exec="/opt/Programas RFB/Dirf2025/dirf.sh"
+Icon=/opt/Programas RFB/Dirf2025/.install4j/i4j_extf_2_6bunmd_78j2zy.png
+Categories=Application;Dirf2025;

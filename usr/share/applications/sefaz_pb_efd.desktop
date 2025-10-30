@@ -1,0 +1,33 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=EFD Mandatory Consultation - SEF-PB
+Name[en_US]=EFD Mandatory Consultation - SEF-PB
+Name[es]=Consulta EFD obligatoria - SEF-PB
+Name[pt_BR]=Consulta Obrigatoriedade EFD - SEF-PB
+
+Comment=Check the mandatory Digital Tax Recording (EFD) on the SEF-PB website.
+Comment[en_US]=Check the mandatory Digital Tax Recording (EFD) on the SEF-PB website.
+Comment[es]=Consulta el Registro Digital Tributario (RDT) obligatorio en la web del SEF-PB.
+Comment[pt_BR]=Consulte a obrigatoriedade da Escrituração Fiscal Digital (EFD) no site da SEF-PB.
+
+Exec=xdg-open https://www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/consulta-obrigatoriedade-de-efd
+Icon=internet-web-browser
+Terminal=false
+
+Categories=Network;
+
+
+MimeType=text/html;
+Language=pt_BR.UTF-8
+
+Keywords=
+Keywords[en_US]=;
+Keywords[es_ES]=;
+Keywords[pt_BR]=SEF-PB;EFD;consulta;obrigatoriedade;fiscal;escrituracao;digital;
+
+
+# https://www.sefaz.pb.gov.br/info/declaracoes/gim
+# https://www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/consulta-obrigatoriedade-de-efd
+

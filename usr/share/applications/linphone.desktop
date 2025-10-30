@@ -1,0 +1,27 @@
+[Desktop Entry]
+Type=Application
+
+Name=Linphone
+Name[en_US]=Linphone
+Name[es]=Linphone
+Name[pt_BR]=Linphone
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=
+
+# Exec=/opt/projetus/facilitador/atalhos/linphone.AppImage
+
+Exec=/usr/local/bin/linphone.sh
+
+Icon=/usr/share/icons/facilitador/linphone_logo.ico
+Terminal=false
+
+Categories=Office;
+
+Keywords=linphone;AppImage;
+Keywords[en_US]=linphone;AppImage;
+Keywords[es_ES]=linphone;AppImage;
+Keywords[pt_BR]=linphone;AppImage;
+

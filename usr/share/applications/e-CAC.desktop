@@ -1,0 +1,32 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Access e-CAC
+Name[pt_BR]=Acessar o e-CAC 
+Name[en]=Access e-CAC
+Name[es]=Acceder al e-CAC
+
+Comment=Access the Brazilian Federal Revenue virtual assistance.
+Comment[pt_BR]=Acesse o atendimento virtual da Receita Federal.
+Comment[en]=Access the Brazilian Federal Revenue virtual assistance.
+Comment[es]=Accede al servicio virtual de la Receita Federal de Brasil.
+
+Exec=xdg-open https://cav.receita.fazenda.gov.br/autenticacao/login/index
+
+# Icon=internet-web-browser
+Icon=/usr/share/icons/facilitador/e-cac.png
+
+Terminal=false
+Categories=Network;
+
+Keywords=revenue;tax;brazil;government;service;e-cac;rfb;gov
+Keywords[pt_BR]=receita;federal;imposto;renda;ecac;governo;brasil;rfb;atendimento;gov
+Keywords[en]=revenue;tax;brazil;government;service;e-cac;rfb
+Keywords[es]=impuestos;gobierno;brasil;rfb;e-cac;servicio
+
+
+
+
+# https://www.gov.br/receitafederal/pt-br/canais_atendimento/atendimento-virtual
+

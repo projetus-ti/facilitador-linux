@@ -1,0 +1,31 @@
+[Desktop Entry]
+Type=Application
+
+Name=SVA
+Name[en_US]=SVA
+Name[es]=SVA
+Name[pt_BR]=SVA
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=Sistema de Validação e Autenticação de Arquivos Digitais da Receita Federal do Brasil (RFB).
+
+# Exec=wine ~/.wine/drive_c/Arquivos\ de\ Programas\ RFB/SVA\ 3.3.0/Sva.exe
+
+# Exec=wine $HOME/.wine/drive_c/Arquivos\ de\ Programas/SVA/SVA.exe
+# Path=$HOME/.wine/drive_c/Arquivos\ de\ Programas/SVA
+
+Exec=/usr/local/bin/sva.sh
+
+Icon=/usr/share/icons/facilitador/rfb.png
+Categories=Office;
+Terminal=false
+StartupNotify=true
+
+Keywords=sva;
+Keywords[en_US]=sva;
+Keywords[es_ES]=sva;
+Keywords[pt_BR]=sva;valida;arquivos;autenticacao;MANAD;dados;contribuinte;relatorios;autenticacao;validacao;CD;integridade;
+
+

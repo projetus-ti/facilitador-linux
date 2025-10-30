@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+
+Name=SPED ECD
+Name[en_US]=
+Name[es]=
+Name[pt_BR]=SPED ECD
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=
+
+Exec=/usr/local/bin/sped-ecd.sh
+Icon=/usr/share/icons/facilitador/logo.ico
+Terminal=false
+
+Categories=Office;
+
+Keywords=sped;
+Keywords[en_US]=sped;
+Keywords[es_ES]=sped;
+Keywords[pt_BR]=sped;
+

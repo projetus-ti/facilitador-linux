@@ -1,0 +1,35 @@
+[Desktop Entry]
+Type=Application
+
+Name=Linux Facilitator
+Name[en_US]=Linux Facilitator
+Name[es]=Facilitador de Linux
+Name[pt_BR]=Facilitador Linux
+
+GenericName=Linux Facilitator
+GenericName[en_US]=Linux Facilitator
+GenericName[es]=Facilitador de Linux
+GenericName[pt_BR]=Facilitador Linux
+
+Comment=Linux Facilitator – Installer of accounting programs.
+Comment[en_US]=Linux Facilitator – Installer of accounting programs.
+Comment[es]=Facilitador de Linux – Instalador de programas de contabilidad.
+Comment[pt_BR]=Facilitador Linux – Instalador de programas contábeis.
+
+Exec=/usr/local/bin/updater.sh
+Icon=/usr/share/icons/facilitador/icon.png
+Categories=Office;
+
+# Terminal=false
+Terminal=true
+
+StartupWMClass=InfinalitySettings
+
+
+Keywords=contabilidade;videoconferencia;DCTF;DCTFWeb;facilitador;dmed;receitanet;dbeaver;consulta;cnpj;calima;ERP;contabil;receita;nfe;DANFE;xml;contabilidade;DIRF;ecac;imposto;EFD;EFD;icms;ipi;eSocial;gov;IRPF;fazenda;teams;zoom;sintegra;SPED;ECD;ECF;wine;java;SVA;flatpak;instalar;skype;anydesk;teamviewer;mysuite;OcoMon;helpdesk;NFSe;
+Keywords[pt_BR]=contabilidade;videoconferencia;DCTF;DCTFWeb;facilitador;dmed;receitanet;dbeaver;consulta;cnpj;calima;ERP;contabil;receita;nfe;DANFE;xml;contabilidade;DIRF;ecac;imposto;EFD;EFD;icms;ipi;eSocial;gov;IRPF;fazenda;teams;zoom;sintegra;SPED;ECD;ECF;wine;java;SVA;flatpak;instalar;skype;anydesk;teamviewer;mysuite;OcoMon;helpdesk;chamado;NFSe;
+Keywords[en_US]=;;;;;;
+Keywords[es_ES]=;;;;;;
+Keywords[fr_FR]=;;;;;;
+
+

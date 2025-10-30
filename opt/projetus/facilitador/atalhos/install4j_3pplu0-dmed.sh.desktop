@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Dmed2025
+Exec="/opt/Programas RFB/Dmed2025/dmed.sh"
+Icon=/opt/Programas RFB/Dmed2025/.install4j/i4j_extf_2_k016fo_78j2zy.png
+Categories=Application;Dmed2025;

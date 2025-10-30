@@ -1,0 +1,38 @@
+[Desktop Entry]
+Type=Application
+
+Name=Microsoft Teams (Web)
+Name[en_US]=Microsoft Teams (Web)
+Name[es]=Microsoft Teams (Acceso mediante navegador web)
+Name[pt_BR]=Microsoft Teams (Web)
+
+Comment=Collaboration and meetings with Microsoft Teams. (Access via web browser).
+Comment[en_US]=Collaboration and meetings with Microsoft Teams. (Access via web browser).
+Comment[es]=Colaboración y reuniones con Microsoft Teams. (Acceso mediante navegador web).
+Comment[pt_BR]=Colaboração e reuniões com Microsoft Teams. (Acessar via navegador web).
+
+# Exec=google-chrome --new-window https://teams.microsoft.com/
+
+Exec=firefox --new-window https://teams.microsoft.com/
+# Exec=microsoft-edge --new-window https://teams.microsoft.com/
+
+
+# Deixar como "app" (sem interface do navegador)
+
+# Exec=google-chrome --app=https://teams.microsoft.com/
+# Exec=microsoft-edge --app=https://teams.microsoft.com/
+
+# Icon=teams
+Icon=/usr/share/icons/facilitador/microsoft_teams.png
+
+StartupNotify=true
+Categories=Network;
+Terminal=false
+
+
+Keywords=teams;
+Keywords[en_US]=teams;
+Keywords[es_ES]=teams;
+Keywords[pt_BR]=teams;
+
+

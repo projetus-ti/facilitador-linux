@@ -1,0 +1,26 @@
+[Desktop Entry]
+Type=Application
+
+Name=Calima Local Access
+Name[en_US]=Calima Local Access
+Name[es]=Acceso local a Calima
+Name[pt_BR]=Calima Acesso Local
+
+GenericName=Calima Local Access
+GenericName[pt_BR]=Calima Acesso Local
+
+Comment=Local access to Calima ERP Accounting.
+Comment[en_US]=Local access to Calima ERP Accounting.
+Comment[es]=Acceso local a Calima ERP Contabilidad.
+Comment[pt_BR]=Acesso local ao Calima ERP Contábil.
+
+Exec=calima-app --baseurl=http://localhost:8081/calima
+
+Icon=/usr/share/icons/facilitador/calima-app-local.png
+StartupNotify=true
+Categories=Office;
+
+Keywords=calima;
+Keywords[en_US]=calima;
+Keywords[es_ES]=calima;
+Keywords[pt_BR]=calima;

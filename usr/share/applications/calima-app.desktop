@@ -1,0 +1,51 @@
+[Desktop Entry]
+Type=Application
+
+Name=Calima App
+Name[pt_BR]=Calima App
+Name[en]=Calima Accounting App
+Name[es]=Calima Aplicación Contable
+
+GenericName=Accounting Software
+GenericName[pt_BR]=Sistema Contábil
+GenericName[en]=Accounting System
+GenericName[es]=Sistema Contable
+
+
+Comment=Online accounting ERP system
+Comment[pt_BR]=ERP Contábil online - Calima
+Comment[en]=Online accounting ERP for accountants and offices
+Comment[es]=ERP contable en línea para contadores y oficinas
+
+# Exec=xdg-open https://www.calima.app/
+
+
+# 🧠 Explicação:
+
+# yad retorna 0 se o usuário clicar em OK.
+
+# Se ele clicar em Cancelar ou fechar a janela (X), o código de retorno será diferente de 0.
+
+# O script só executa xdg-open se o retorno for 0.
+
+
+# Use dois sinais de porcentagem (%%) sempre que quiser mostrar apenas um %. Isso é o método correto segundo o padrão .desktop.
+
+Exec=bash -c 'logo="/usr/share/icons/facilitador/calima-app.png"; echo -e "\nO site https://www.calima.app/ é a versão mais recente do Calima ERP Contábil, um sistema \ngratuito e 100%% web desenvolvido pela Projetus TI. Ele é voltado para contadores, escritórios \ncontábeis e estudantes de contabilidade no Brasil. \n\n### O que é o Calima?\n\nO Calima é um sistema de gestão contábil que oferece diversos módulos essenciais para a \nárea contábil, incluindo: \n\n* Contábil: para lançamentos contábeis e geração de relatórios.\n* Fiscal: para apuração de impostos e obrigações fiscais.\n* Folha de Pagamento: para cálculos trabalhistas e geração de obrigações acessórias.\n* Depreciação: para controle de ativos imobilizados.\n* Honorários: para gestão de cobranças e contratos.\n* Protocolos: para controle de documentos e processos.\n\nO sistema é 100%% web, o que permite acesso de qualquer lugar com conexão à internet. Além \ndisso, o Calima oferece uma versão gratuita com recursos essenciais, sendo uma opção \nacessível para profissionais e estudantes da área contábil.\n\n### Calima App\n\nRecentemente, a Projetus TI lançou o "Calima App", um aplicativo que permite utilizar o \nCalima ERP Contábil sem a dependência de navegadores tradicionais. O Calima App oferece \nvantagens como melhor desempenho, maior segurança na troca de informações e a possibilidade \nde preencher o PGDAS-D e comunicar-se com o eSocial utilizando o certificado A3, recursos \nque não estão disponíveis na versão web tradicional.\n\n### Acesso ao Sistema\n\nPara acessar o Calima, basta visitar o site oficial https://www.calima.app/ e realizar o \nlogin com seu usuário e senha. Se ainda não possui uma conta, é possível se cadastrar gratuitamente.\n\n### Considerações Finais\n\nO Calima é uma excelente opção para quem busca um sistema contábil completo, acessível e \ncom suporte contínuo. Sua versão gratuita atende às necessidades básicas da contabilidade, e a versão \npaga oferece recursos adicionais para escritórios que necessitam de funcionalidades \nmais avançadas.\n\n" | yad --center --window-icon="$logo" --title "Calima App" --text-info --fontname "mono 10" --buttons-layout=center --button=OK:0 --width="900" --height="800"  2> /dev/null ; ret=$? ; if [ $ret -eq 0 ]; then  xdg-open https://www.calima.app/ ; fi ;'
+
+Icon=/usr/share/icons/facilitador/calima-app.png
+
+Terminal=false
+Categories=Network;
+StartupNotify=true
+
+# Permite que o Calima apareça nas buscas do menu de aplicativos com as palavras-chave 
+# definidas abaixo.
+
+Keywords=calima;accounting;erp;contabilidade;finance;bookkeeping;
+Keywords[pt_BR]=calima;contábil;calima;projetus;fiscal;erp;folha;pgdas;eSocial;
+Keywords[en]=calima;accounting;erp;tax;bookkeeping;finance;reports;
+Keywords[es]=calima;contable;erp;impuestos;finanzas;contabilidad;
+
+
+

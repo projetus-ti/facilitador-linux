@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Application
+
+Name=IRPF
+Name[en_US]=IRPF
+Name[es]=IRPF
+Name[pt_BR]=IRPF
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=
+
+Exec=/usr/local/bin/IRPF.sh
+Icon=/usr/share/icons/facilitador/RFB.ico
+Terminal=false
+
+Categories=Office;
+
+Keywords=IRPF;
+Keywords[en_US]=IRPF;
+Keywords[es_ES]=IRPF;
+Keywords[pt_BR]=IRPF;

@@ -1,0 +1,25 @@
+[Desktop Entry]
+Categories=
+Comment=Executa o Receitanet
+Comment[pt]=Executa o Receitanet
+Encoding=UTF-8
+Exec=java -jar '/opt/Programas RFB/Receitanet/receitanet.jar'
+GenericName=
+GenericName[pt]=
+Icon=/opt/Programas RFB/Receitanet/imagens/Receitanet.xpm
+MimeType=
+Name=Receitanet 1.32 
+Name[pt]=Receitanet 1.32 
+Path=
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+URL=
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+
+# created by com.izforge.izpack.util.os.Unix_Shortcut $Revision: 1.1 $
+# $Id: Unix_Shortcut.java,v 1.1 2011/04/08 14:28:31 07473503618 Exp $

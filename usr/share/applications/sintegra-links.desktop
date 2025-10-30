@@ -1,0 +1,35 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=SINTEGRA
+Name[pt_BR]=SINTEGRA
+Name[en_US]=SINTEGRA
+Name[es]=SINTEGRA
+
+Comment=Acessar o Sistema Integrado de Informações sobre Operações Interestaduais.
+Comment[pt_BR]=Acessar o Sistema Integrado de Informações sobre Operações Interestaduais.
+Comment[en_US]=Access the Integrated System of Information on Interstate Operations.
+Comment[es]=
+
+
+Exec=xdg-open http://www.sintegra.gov.br/
+
+# Icon=network-web-browser
+
+Icon=/usr/share/icons/facilitador/sintegra.png
+
+Terminal=false
+Categories=Network;
+StartupNotify=true
+
+
+Keywords=sintragra;
+Keywords[en_US]=sintragra;
+Keywords[es_ES]=sintragra;
+Keywords[pt_BR]=tributos;impostos;fisco;sintragra;ICMS;tax;taxes;fiscal;
+
+
+# Você pode baixar os programas relacionados ao VALIDADOR SINTEGRA ou ao TED‑TEF 
+# (ou outros aplicativos de entrega de arquivos do SINTEGRA) para cada estado brasileiro, 
+# nos sites das respectivas secretarias da fazenda estaduais ou no portal nacional.

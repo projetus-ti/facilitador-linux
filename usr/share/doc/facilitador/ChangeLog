@@ -1,0 +1,323 @@
+
+
+# ----------------------------------------------------------------------------------------
+
+20/10/2025 - Fernando 
+
+Teste realizado no Void Linux 64 bit.
+
+
+Os arquivos .desktop vão para as categorias Escritório, Internet e Outros.
+
+
+
+
+
+$ sudo xbps-install -Sy wine
+[*] Updating repository `https://repo-default.voidlinux.org/current/x86_64-repodata' ...
+x86_64-repodata: 2026KB [avg rate: 93KB/s]
+[*] Updating repository `https://repo-default.voidlinux.org/current/multilib/x86_64-repodata' ...
+x86_64-repodata: 690KB [avg rate: 11GB/s]
+[*] Updating repository `https://repo-default.voidlinux.org/current/nonfree/x86_64-repodata' ...
+x86_64-repodata: 14KB [avg rate: 236MB/s]
+
+Name           Action    Version           New version            Download size
+wine-common    install   -                 10.17_1                2543KB 
+glib           update    2.84.0_2          2.86.0_1               3398KB 
+libxkbregistry install   -                 1.12.0_1               14KB 
+wine           install   -                 10.17_1                166MB 
+
+Size to download:              172MB
+Size required on disk:         829MB
+Space available on disk:      3610MB
+
+
+[*] Downloading packages
+wine-common-10.17_1.x86_64.xbps.sig2: 512B [avg rate: 14MB/s]
+...
+
+
+Criado o arquivo .conf 
+
+/etc/facilitador.conf
+
+
+Testado a instalação do SPED ECD (SpedContabil_linux_x86_64-10.3.3.sh) - erro ao abrir no Void Linux
+
+Testado a instalação do Sped ECF (SpedECF_linux_x86_64-11.3.4.sh) usando a pasta /opt/ProgramasSPED/SpedECF falta fonte Arial do windows no Void Linux
+
+Testado a instalação do Receita Net BX (ReceitanetBX-1.9.24.exe)
+
+
+$ wine ReceitanetBX-1.9.24.exe
+it looks like wine-32bit is missing, you should install it.
+the multilib repository needs to be enabled first.  as root, please
+execute "xbps-install -S void-repo-multilib && xbps-install -S wine-32bit"
+002c:err:winediag:getaddrinfo Failed to resolve your host name IP
+0128:err:environ:init_peb starting L"Z:\\opt\\projetus\\facilitador\\cache\\ReceitanetBX-1.9.24.exe" in experimental wow64 mode
+wine: failed to load L"\\??\\C:\\windows\\syswow64\\ntdll.dll" error c0000135
+O aplicativo não pôde ser iniciado ou não existe aplicativo associado ao arquivo
+ especificado.
+ShellExecuteEx falhou: 0024:err:start:fatal_error FormatMessage failed
+
+
+O erro wine: failed to load L"\\??\\C:\\windows\\syswow64\\ntdll.dll" error c0000135 indica 
+que o Wine não conseguiu carregar um arquivo necessário para a execução do programa.
+
+
+$ wine ReceitanetBX-1.9.24.exe
+002c:err:winediag:getaddrinfo Failed to resolve your host name IP
+wine: could not load kernel32.dll, status c0000135
+
+
+O erro wine: could not load kernel32.dll, status c0000135 indica que o Wine não conseguiu localizar o arquivo kernel32.dll, que é uma das bibliotecas principais do Windows, e isso geralmente acontece quando há problemas com a configuração do Wine, como a falta de um prefixo correto ou a ausência de bibliotecas necessárias.
+
+Já o erro 002c:err:winediag:getaddrinfo Failed to resolve your host name IP sugere um problema com a resolução de DNS no Wine, que pode estar relacionado a configurações de rede ou de ambiente no seu sistema.
+
+
+Não funcionou
+
+WINEPREFIX=~/.wine32 winecfg
+
+
+$ wineserver: could not save registry branch to system.reg : No space left on device
+wineserver: could not save registry branch to userdef.reg : No space left on device
+wineserver: could not save registry branch to user.reg : No space left on device
+
+
+O erro No space left on device que você está recebendo no Wine significa que o seu sistema está sem espaço livre no disco. O Wine tenta salvar as configurações do registro (system.reg, user.reg e userdef.reg) no diretório do seu prefixo Wine e não consegue, porque não há espaço disponível no dispositivo onde essas configurações são armazenadas.
+
+Verificar o espaço disponível no disco
+
+Primeiro, verifique quanto espaço livre você tem no disco. Use o comando df para ver a utilização do espaço de disco:
+
+df -h
+
+
+rm -Rf ~/.wine*
+
+
+# Feche todos os processos do Wine
+wineserver -k
+
+
+
+Soluções para o erro kernel32.dll
+
+Solução 1: Criar um novo prefixo Wine
+
+Um prefixo Wine é um diretório onde o Wine armazena seu "C: drive" e outras configurações necessárias. Se o seu prefixo atual estiver corrompido, o Wine não será capaz de localizar os arquivos essenciais como o kernel32.dll.
+
+
+WINEPREFIX=~/.wine32 winecfg
+
+
+
+$ file ReceitanetBX-1.9.24.exe 
+ReceitanetBX-1.9.24.exe: PE32 executable for MS Windows 4.00 (GUI), Intel i386 (stripped to external PDB), PECompact2 compressed, 2 sections
+
+
+# Configurar Wine para usar um prefixo de 32-bit
+WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
+
+
+
+rm -Rf ~/.wine*
+
+
+$ wine ReceitanetBX-1.9.24.exe
+wine: created the configuration directory '/home/anon/.wine'
+004c:err:ole:StdMarshalImpl_MarshalInterface Failed to create ifstub, hr 0x80004002
+004c:err:ole:CoMarshalInterface Failed to marshal the interface {6d5140c1-7436-11ce-8034-00aa006009fa}, hr 0x80004002
+004c:err:ole:apartment_get_local_server_stream Failed: 0x80004002
+004c:err:ole:start_rpcss Failed to open RpcSs service
+0054:err:ole:StdMarshalImpl_MarshalInterface Failed to create ifstub, hr 0x80004002
+0054:err:ole:CoMarshalInterface Failed to marshal the interface {6d5140c1-7436-11ce-8034-00aa006009fa}, hr 0x80004002
+0054:err:ole:apartment_get_local_server_stream Failed: 0x80004002
+009c:err:msi:extract_cabinet_stream FDICopy failed
+009c:err:msi:ACTION_InstallFiles Failed to extract cabinet: L"#image.cab"
+009c:err:msi:execute_script Execution of script 0 halted; action L"InstallFiles" returned 1603
+009c:err:msi:ITERATE_Actions Execution halted, action L"InstallFinalize" returned 1603
+009c:err:appwizcpl:install_file MsiInstallProduct failed: 1603
+002c:err:setupapi:do_file_copyW Unsupported style(s) 0x10
+002c:err:setupapi:do_file_copyW Unsupported style(s) 0x10
+0114:err:setupapi:do_file_copyW Unsupported style(s) 0x10
+002c:err:setupapi:do_file_copyW Unsupported style(s) 0x10
+0114:err:setupapi:do_file_copyW Unsupported style(s) 0x10
+
+
+Criado os arquivos:
+
+/usr/share/applications/govbr.desktop
+/usr/share/applications/Consultar-NF-e.desktop
+/usr/share/applications/IRPF-online.desktop
+
+
+Verifica se o usuário atual tem privilégios de sudo no sistema.
+
+Arquivo calima-app.desktop criado para o site https://www.calima.app/.
+
+
+Void Linux:
+
+No script /usr/local/bin/projetus.sh foi criado uma opção para instalação e remoção do TeamViewer
+no Void Linux (extra o conteúdo do pacote .deb).
+
+Testado o TeamViewer 15.
+
+
+Arquivo /etc/sv/teamviewerd/run
+
+Não esta iniciado o TeamViewer no Void Linux com o comando: sudo sv start teamviewerd tem que usar /opt/teamviewer/tv_bin/teamviewerd
+
+Adicionado /opt/teamviewer/tv_bin/teamviewerd no arquivo /etc/rc.local
+
+
+
+bunsenlabs:
+
+Arquivo .desktop a opção Terminal=true deve esta como Terminal=false
+
+
+
+Salix:
+
+Não tem yad, JAVA, git
+
+
+sudo slapt-get --update
+
+sudo slapt-get --install yad
+
+sudo slapt-get --install -y git
+
+
+Java usa:
+
+
+A copia do openjdk11 da distro instalada no HD para a iso não funcionou (modo live).
+
+$ pwd
+/run/media/one/debian/usr/lib/jvm
+
+$ sudo mkdir -p /usr/lib/jvm
+$ sudo cp -r openjdk11  /usr/lib/jvm
+$ sudo ln -s /usr/lib/jvm/openjdk11/bin/java /usr/local/bin/
+
+$ java --version
+java: /lib64/libc.so.6: version `GLIBC_2.34' not found (required by java)
+java: /lib64/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/jvm/openjdk11/bin/../lib/jli/libjli.so)
+java: /lib64/libc.so.6: version `GLIBC_2.34' not found (required by /usr/lib/jvm/openjdk11/bin/../lib/jli/libjli.so)
+
+
+$ sudo slapt-get --search glibc
+aaa_glibc-solibs-2.33-x86_64-5 [inst=sim]: aaa_glibc-solibs (shared GNU C libraries)
+aaa_glibc-solibs-2.33-x86_64-8_slack15.0 [inst=não]: aaa_glibc-solibs (shared GNU C libraries)
+glibc-2.33-x86_64-5 [inst=não]: glibc (GNU C libraries)
+glibc-2.33-x86_64-8_slack15.0 [inst=sim]: glibc (GNU C libraries)
+glibc-i18n-2.33-x86_64-5 [inst=sim]: glibc-i18n (locale files from glibc)
+glibc-i18n-2.33-x86_64-8_slack15.0 [inst=não]: glibc-i18n (locale files from glibc)
+glibc-profile-2.33-x86_64-5 [inst=não]: glibc-profile (GNU C libraries with profiling support)
+glibc-profile-2.33-x86_64-8_slack15.0 [inst=não]: glibc-profile (GNU C libraries with profiling support)
+glibc-zoneinfo-2021e-noarch-1 [inst=não]: glibc-zoneinfo (timezone database)
+glibc-zoneinfo-2025b-noarch-1_slack15.0 [inst=não]: glibc-zoneinfo (timezone database)
+jansson-2.14-x86_64-1 [inst=sim]: jansson (JSON data handling library)
+libnsl-1.3.0-x86_64-3 [inst=não]: libnsl (NIS/YP and NIS+ library)
+libnss_nis-3.1-x86_64-3 [inst=não]: libnss_nis (glibc NSS NIS plugin)
+mkchroot-1.5-noarch-1salix15.0 [inst=não]: mkchroot (create chroot-able directory tree)
+nss-mdns-0.14.1-x86_64-1salix15.0 [inst=não]: nss-mdns (Multicast DNS host name resolution NSS module)
+rpcsvc-proto-1.4.3-x86_64-1 [inst=não]: rpcsvc-proto (rpcsvc proto.x files)
+glibc-zoneinfo-2022c-noarch-1_slack15.0 [inst=sim]: glibc-zoneinfo (timezone database)
+
+
+sudo slapt-get --install -y glibc
+
+$ java --version
+java: /lib64/libc.so.6: version `GLIBC_2.34' not found (required by java)
+java: /lib64/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/jvm/openjdk11/bin/../lib/jli/libjli.so)
+java: /lib64/libc.so.6: version `GLIBC_2.34' not found (required by /usr/lib/jvm/openjdk11/bin/../lib/jli/libjli.so)
+
+
+
+A pasta /usr/share/doc é link para /usr/doc/
+
+cp: não é possível sobrescrever o não-diretório '/usr/share/doc' com o diretório 'usr/share/doc'
+
+
+$ ls -l /usr/share/ | grep doc
+lrwxrwxrwx  1 root root    6 set 30  2022 doc -> ../doc
+drwxr-xr-x  1 root root   27 set 30  2022 gtk-doc
+
+
+facilitador-linux-acao.sh:
+
+Corrigido no Salix => cp: não é possível sobrescrever o não-diretório '/usr/share/doc' com o diretório 'usr/share/doc'
+
+
+
+Falta testar a instalação dos programas para Windows:
+
+
+dma_2012.exe
+Instalargiam10.0_07.03.2024v1.exe
+SEF2012_v1.6.5.00_instalador.exe
+SefazNet_v1.24.0.3_instalador.exe
+dief_atualizacao.exe
+dief.exe
+dapi.exe
+ValidadorSintegra*.exe
+InstalaDAC221012.exe
+dief.exe
+validadorlfe.exe
+Instalador_Unico_v6u3.EXE
+GIA_ICMS_307n_Atualizacao.exe
+InstalaGIA9.exe
+sedif_Setup.exe
+Sva.exe
+GRRF.exe
+Sefip_v_8_4_20_12_2024.exe
+instala_sva-3-3-0.exe
+validacd-1.exe
+
+
+https://www.gov.br/receitafederal/pt-br
+
+
+
+Arquivo: /usr/local/bin/funcoes.sh
+
+Corrigido o problema do arquivo incompleto (agora baixa 100%). 
+
+Usado o script /usr/local/bin/teste.sh para testar a "função download" do arquivo /usr/local/bin/funcoes.sh
+
+Testar em arquivos grandes a função download.
+
+
+BigLinux:
+
+* Os arquivos .desktop na categoria Outros não aparece no BigLinux 6.12.41-1-MANJARO com KDE Plasma 6.3.6.
+
+
+* Problema com tema de icones (bigicons-papient) no BigLinux 
+
+(yad:38696): Gtk-WARNING **: 19:58:16.673: Theme directory 16x16@2x/symbolic/up-to-32 of theme bigicons-papient has no size field
+
+Fontconfig warning: using without calling FcInit()
+
+Testando o tema de icones: breeze
+
+
+
+Programa Sped ECF no Void Linux
+
+
+Instalar a fonte Arial (não é a fonte arial)
+
+wget -P ~/.fonts/ -c https://www.offidocs.com/pt/images/Arial-font.zip
+
+https://www.offidocs.com/pt/index.php/new-features/1667159-arial-font-download
+
+
+# ----------------------------------------------------------------------------------------
+
+

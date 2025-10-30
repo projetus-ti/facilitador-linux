@@ -1,0 +1,40 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Consult DANFE
+Name[pt_BR]=Consultar DANFE
+Name[en]=Consult DANFE
+Name[es]=Consultar DANFE
+
+GenericName=Consult DANFE
+GenericName[pt_BR]=Consultar DANFE
+GenericName[en]=Consult DANFE
+GenericName[es]=Consultar DANFE
+
+Comment=
+Comment[pt_BR]=
+Comment[en]=
+Comment[es]=
+
+
+# xdg-open: Garante que o link será aberto no navegador padrão do usuário.
+
+Exec=xdg-open https://www.nfe.fazenda.gov.br/portal/principal.aspx
+
+
+# Usa o ícone padrão internet-web-browser, mas você pode substituir por um personalizado.
+
+# Icon=internet-web-browser
+Icon=/usr/share/icons/facilitador/NFe.png
+
+
+Terminal=false
+Categories=Network;
+
+Keywords=DANFE;xml;nfe;
+Keywords[pt_BR]=DANFE;nota;xml;consultar;nfe;
+Keywords[en]=DANFE;xml;nfe;
+Keywords[es]=DANFE;xml;nfe;
+
+

@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+
+Name=EFD Contributions
+Name[en_US]=EFD Contributions
+Name[es]=Contribuciones del EFD
+Name[pt_BR]=EFD Contribuições
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=
+
+Exec=/usr/local/bin/sped-efd-contribuicoes.sh
+Icon=/usr/share/icons/facilitador/logo.ico
+Terminal=false
+
+Categories=Office;
+
+Keywords=sped;
+Keywords[en_US]=sped;
+Keywords[es_ES]=sped;
+Keywords[pt_BR]=sped;
+

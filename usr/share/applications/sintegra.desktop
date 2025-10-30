@@ -1,0 +1,26 @@
+[Desktop Entry]
+Type=Application
+
+Name=Sintegra Validator
+Name[en_US]=Sintegra Validator
+Name[es]=Validador Sintegra
+Name[pt_BR]=Validador Sintegra
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=
+
+# Exec=wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Validador\ Sintegra\ 2025/ValidadorSintegra2025.exe
+
+Exec=bash -c 'PROG=$(find "$HOME/.wine/drive_c/Program*" -type f -iname "ValidadorSintegra*.exe" | head -n 1); if [ -z "$PROG" ]; then yad --center --error --window-icon="/usr/share/icons/facilitador/sintegra.png" --title="Erro" --text="Validador Sintegra não encontrado!" --buttons-layout=center --button="OK"  2> /dev/null ; else wine "$PROG"; fi'
+
+Icon=/usr/share/icons/facilitador/sintegra.png
+Categories=Office;
+Terminal=false
+
+Keywords=sintegra;validator;
+Keywords[en_US]=sintegra;validator;
+Keywords[es_ES]=sintegra;validador;
+Keywords[pt_BR]=sintegra;validador;
+

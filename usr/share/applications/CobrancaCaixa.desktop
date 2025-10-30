@@ -1,0 +1,32 @@
+[Desktop Entry]
+Type=Application
+
+Name=Cobrança Caixa
+Name[en_US]=
+Name[es]=
+Name[pt_BR]=Cobrança Caixa
+
+Comment=
+Comment[en_US]=
+Comment[es]=
+Comment[pt_BR]=
+
+Exec=/usr/local/bin/CobrancaCaixa.sh
+
+Icon=/usr/share/icons/facilitador/CobrancaCaixa.ico
+
+Terminal=false
+
+Categories=Office;
+
+Keywords=caixa;
+Keywords[en_US]=caixa;
+Keywords[es_ES]=caixa;
+Keywords[pt_BR]=caixa;
+
+
+# Para desativar o arquivo .desktop (esconder o programa do menu)
+
+Hidden=true
+
+
