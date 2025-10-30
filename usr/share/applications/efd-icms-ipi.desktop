@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name[pt_BR]=EFD ICMS IPI
-Exec="/usr/local/bin/efd-icms-ipi.sh"
-Icon=/usr/share/icons/facilitador/logo.ico
-Terminal=false
-

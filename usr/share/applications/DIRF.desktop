@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name[pt_BR]=DIRF
-Exec=/usr/local/bin/DIRF.sh
-Icon=/usr/share/icons/facilitador/RFB.ico
-Terminal=false
-
