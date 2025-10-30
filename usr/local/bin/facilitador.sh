@@ -757,10 +757,12 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
 
   # Pega a versão do Calima App no site https://www.projetusti.com.br/
 
-  VERSAO_CALIMA_APP=$(curl -L -X GET \
-  -H'Content-Type: application/json' \
-  'https://cloud-api-controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
- | python3 -c "import sys, json; print(json.load(sys.stdin)['versao'])")
+#   VERSAO_CALIMA_APP=$(curl -L -X GET \
+#   -H'Content-Type: application/json' \
+#   'https://cloud-api-controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
+#  | python3 -c "import sys, json; print(json.load(sys.stdin)['versao'])")
+
+#     FALSE "Calima App" "Versão $VERSAO_CALIMA_APP" \
 
 
   acao=$(yad --center --list  --text "Selecione o programa desejado:" \
@@ -770,11 +772,8 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     --title "$titulo - Projetus e Outros" \
     --column="" --column "Programa"  --column "Descrição" \
     TRUE "Bitrix" "Versão stable" \
-    FALSE "Calima App" "Versão $VERSAO_CALIMA_APP" \
-    FALSE "Crisp Chat App" "Versão 1.0.0" \
     FALSE "DBeaver" "Gerenciador de Banco de Dados" \
     FALSE "Discord" "Versão 0.0.112" \
-    FALSE "iSGS App" "Versão 1.0.1" \
     FALSE "IRPF" "Versão ${ano} v1.7" \
     FALSE "Linphone" "Softphone" \
     FALSE "MySuite" "Sistema de Atendimento" \

@@ -1802,74 +1802,62 @@ fi
 
 # ----------------------------------------------------------------------------------------
 
-if [ "$acao" = "Calima App" ]; then
+# if [ "$acao" = "Calima App" ]; then
 
   # Verificar se está rodando em Debian ou derivados
   
-  if which apt &>/dev/null; then
+#   if which apt &>/dev/null; then
   
-  URL_CALIMA_APP=$(curl -L -X GET \
-  -H'Content-Type: application/json' \
-  'https://cloud-api-controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
- | python3 -c "import sys, json; print(json.load(sys.stdin)['informacaoComplementar'].split(';')[0])")
+#   URL_CALIMA_APP=$(curl -L -X GET \
+#   -H'Content-Type: application/json' \
+#   'https://cloud-api-controller.projetusti.com.br/versao/sistema/get?identificacao=calima-app' \
+#  | python3 -c "import sys, json; print(json.load(sys.stdin)['informacaoComplementar'].split(';')[0])")
 
-  download "$URL_CALIMA_APP" "$cache_path/calima.deb"
+#   download "$URL_CALIMA_APP" "$cache_path/calima.deb"
 
-  rm -Rf $HOME/.config/calima-app      2>> "$log"
-  rm -Rf $HOME/.config/calima-app-web  2>> "$log"
+#   rm -Rf $HOME/.config/calima-app      2>> "$log"
+#   rm -Rf $HOME/.config/calima-app-web  2>> "$log"
   
-  echo '#!/bin/bash 
-    sudo apt purge -y calima-app
-    sudo apt purge -y calima-app-web
-    sudo dpkg -i "'$cache_path'"/calima.deb
-    # cp /usr/share/applications/calima-app-local.desktop /usr/share/applications/
-    sudo chmod 755 /usr/share/applications/calima-app-local.desktop
-    sudo apt update && sudo apt -f install -y ' > "$cache_path"/exec.sh
+#   echo '#!/bin/bash 
+#     sudo apt purge -y calima-app
+#     sudo apt purge -y calima-app-web
+#     sudo dpkg -i "'$cache_path'"/calima.deb
+#     sudo chmod 755 /usr/share/applications/calima-app-local.desktop
+#     sudo apt update && sudo apt -f install -y ' > "$cache_path"/exec.sh
 
-  chmod +x "$cache_path"/exec.sh 2>> "$log"
+#   chmod +x "$cache_path"/exec.sh 2>> "$log"
 
-  executar 'pkexec "'$cache_path'"/exec.sh'
+#   executar 'pkexec "'$cache_path'"/exec.sh'
   
-  fi
+#   fi
   
-  showMessage "Calima App Local instalado com êxito! \nO atalho encontra-se no menu do sistema."
+#   showMessage "Calima App Local instalado com êxito! \nO atalho encontra-se no menu do sistema."
 
-  /usr/local/bin/facilitador.sh
+#   /usr/local/bin/facilitador.sh
 
-fi
+# fi
 
 # ----------------------------------------------------------------------------------------
 
-if [ "$acao" = "iSGS App" ]; then
+# if [ "$acao" = "" ]; then
 
 
   # Verificar se está rodando em Debian ou derivados
   
-  if which apt &>/dev/null; then
+#   if which apt &>/dev/null; then
   
-# $ wget https://cdn.projetusti.com.br/suporte/isgs-app_1.0.1_amd64.deb
-# --2025-10-23 16:50:44--  https://cdn.projetusti.com.br/suporte/isgs-app_1.0.1_amd64.deb
-# Resolvendo cdn.projetusti.com.br (cdn.projetusti.com.br)... falha: Nome ou serviço desconhecido.
-# wget: não foi possível resolver endereço de máquina “cdn.projetusti.com.br”
 
-
-  download "https://cdn.projetusti.com.br/suporte/isgs-app_1.0.1_amd64.deb" "$cache_path/isgs.deb"
+#   download "" "$cache_path/"
   
-  echo '#!/bin/bash 
-    sudo dpkg -i "'$cache_path'"/isgs.deb 
-    sudo apt update && sudo apt -f install -y ' > "$cache_path"/exec.sh
-
-  chmod +x "$cache_path"/exec.sh 2>> "$log"
-
-  executar 'pkexec "'$cache_path'"/exec.sh'
+#   executar ''
   
-  fi
+#   fi
     
-  showMessage "iSGS App instalado com êxito! \nO atalho encontra-se no menu do sistema."
+#   showMessage ""
 
-  /usr/local/bin/facilitador.sh
+#   /usr/local/bin/facilitador.sh
 
-fi
+# fi
 
 # ----------------------------------------------------------------------------------------
 
@@ -1975,31 +1963,26 @@ fi
 
 # ----------------------------------------------------------------------------------------
  
-if [ "$acao" = "Crisp Chat App" ]; then 
+# if [ "$acao" = "" ]; then 
 
 
   # Verificar se está rodando em Debian ou derivados
   
-  if which apt &>/dev/null; then
+#   if which apt &>/dev/null; then
   
-  download "https://cdn.projetusti.com.br/suporte/crisp-app.deb" "$cache_path/crisp.deb"
+#   download "" "$cache_path/"
 
  
-  echo '#!/bin/bash 
-  sudo dpkg -i "'$cache_path'"/crisp.deb ' > "$cache_path"/exec.sh
+#   executar ''
 
-  chmod +x "$cache_path"/exec.sh
+#   showMessage "Instalação concluída com sucesso!"
 
-  executar 'pkexec bash "'$cache_path'"/exec.sh'
+#   /usr/local/bin/facilitador.sh 
 
-  showMessage "Instalação concluída com sucesso!"
-
-  /usr/local/bin/facilitador.sh 
-
-  fi
+#   fi
 
 
-fi
+# fi
 
 # ----------------------------------------------------------------------------------------
 
