@@ -129,7 +129,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "iSGS App" "Versão 1.0.1"\
     FALSE "IRPF" "Versão 2025 v1.0"\
     FALSE "Linphone" "Softphone" \
-    FALSE "MySuite" "Sistema de Atendimento" \ 
+    FALSE "MySuite" "Sistema de Atendimento" \
     FALSE "TeamViewer" "Versão 13" \
     FALSE "Projetus Remoto" "Versão 1.0" \
     FALSE "Skype" "Última Versão" \
