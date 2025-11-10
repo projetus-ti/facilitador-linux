@@ -7,7 +7,6 @@ source /opt/projetus/facilitador/funcoes.sh
 
 acao=$1
 
-
 if [ "$acao" = "Projetus Remoto" ]; then
 
     download "https://id3qvymhlwic.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/id3qvymhlwic/b/downloads/o/projetusremoto%2Fprojetusremoto-bidirecional.deb" "$cache_path/ProjetusRemoto.deb"
@@ -21,7 +20,6 @@ if [ "$acao" = "Projetus Remoto" ]; then
 
     showMessage "Projetus Remoto instalado com êxito!\nO atalho encontra-se no menu do sistema."
     exec $app_path/facilitador.sh
-
 fi 
 
 if [ "$acao" = "ZRam" ]; then
