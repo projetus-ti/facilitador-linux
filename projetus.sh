@@ -7,6 +7,23 @@ source /opt/projetus/facilitador/funcoes.sh
 
 acao=$1
 
+
+if [ "$acao" = "Projetus Remoto" ]; then
+
+    download "https://id3qvymhlwic.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/id3qvymhlwic/b/downloads/o/projetusremoto%2Fprojetusremoto-bidirecional.deb" "$cache_path/ProjetusRemoto.deb"
+
+    echo $'#!/bin/bash 
+      dpkg -i '$cache_path'/ProjetusRemoto.deb 
+      apt-get update && apt-get -f install -y'>$cache_path/exec.sh
+
+    chmod +x $cache_path/exec.sh
+    executar "pkexec $cache_path/exec.sh"
+
+    showMessage "Projetus Remoto instalado com êxito!\nO atalho encontra-se no menu do sistema."
+    exec $app_path/facilitador.sh
+
+fi 
+
 if [ "$acao" = "ZRam" ]; then
 
   echo $'#!/bin/bash 

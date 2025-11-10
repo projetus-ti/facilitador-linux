@@ -131,6 +131,7 @@ elif [ "$setor" = "Projetus e Outros" ]; then ## Projetus e Outros
     FALSE "Linphone" "Softphone" \
     FALSE "MySuite" "Sistema de Atendimento" \ 
     FALSE "TeamViewer" "Versão 13" \
+    FALSE "Projetus Remoto" "Versão 1.0 \
     FALSE "Skype" "Última Versão" \
     FALSE "Zoom" "Reunião Anual" \
     );
