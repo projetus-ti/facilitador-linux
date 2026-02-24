@@ -41,7 +41,8 @@ if [ "$acao" = "EFD Contribuições" ]; then
   # download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFDContribuicoes_linux_x64-5.1.1.jar" "$cache_path/EFDContribuicoes.jar"
   # executar "java -jar $cache_path/EFDContribuicoes.jar"
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFD-Contribuicoes_linux_x86_64-6.1.0.sh" "$cache_path/EFDContribuicoes.sh"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA/EFD-Contribuicoes_linux_x86_64-6.1.2.sh" "$cache_path/EFDContribuicoes.sh"
+            
 
   
   
@@ -87,7 +88,8 @@ if [ "$acao" = "SPED ICMS IPI" ]; then
   #   executar "/usr/lib/jvm/jre1.8.0_212/bin/java -jar $cache_path/PVA_EFD.jar"
   # fi
 
-  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/SpedEFD_linux_x86_64-6.0.1.sh" "$cache_path/PVA_EFD.sh"
+  download "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal/SpedEFD_linux_x86_64-6.0.2.sh" "$cache_path/PVA_EFD.sh"
+            
 
   
 
