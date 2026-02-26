@@ -174,7 +174,7 @@ fi
 
 if [ "$acao" = "Linphone" ]; then 
 
-  download "https://www.linphone.org/releases/linux/app/Linphone-4.4.1.AppImage" "$atalho_path/linphone.AppImage"
+  download "https://download.linphone.org/releases/linux/app/Linphone-6.1.0-x86_64.AppImage" "$atalho_path/linphone.AppImage"
 
   bash "$atalho_path/linphone.sh"
 
